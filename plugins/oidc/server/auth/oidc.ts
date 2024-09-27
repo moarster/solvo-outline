@@ -3,8 +3,8 @@ import type { Context } from "koa";
 import Router from "koa-router";
 import get from "lodash/get";
 import { Strategy } from "passport-oauth2";
-import { slugifyDomain } from "@shared/utils/domains";
-import { parseEmail } from "@shared/utils/email";
+import config from "../../plugin.json";
+import env from "../env";
 import accountProvisioner from "@server/commands/accountProvisioner";
 import {
   OIDCMalformedUserInfoError,
@@ -19,8 +19,8 @@ import {
   getClientFromContext,
   request,
 } from "@server/utils/passport";
-import config from "../../plugin.json";
-import env from "../env";
+import { slugifyDomain } from "@shared/utils/domains";
+import { parseEmail } from "@shared/utils/email";
 
 const router = new Router();
 const scopes = env.OIDC_SCOPES.split(" ");
@@ -93,22 +93,29 @@ if (
           }
           const team = await getTeamFromContext(ctx);
           const client = getClientFromContext(ctx);
+          const { domain } = parseEmail(profile.email);
 
           // Only a single OIDC provider is supported – find the existing, if any.
           const authenticationProvider = team
-            ? await AuthenticationProvider.findOne({
+            ? ((await AuthenticationProvider.findOne({
+                where: {
+                  name: "oidc",
+                  teamId: team.id,
+                  providerId: domain,
+                },
+              })) ??
+              (await AuthenticationProvider.findOne({
                 where: {
                   name: "oidc",
                   teamId: team.id,
                 },
-              })
+              })))
             : undefined;
 
           // Derive a providerId from the OIDC location if there is no existing provider.
           const oidcURL = new URL(env.OIDC_AUTH_URI!);
           const providerId =
             authenticationProvider?.providerId ?? oidcURL.hostname;
-          const { domain } = parseEmail(profile.email);
 
           if (!domain) {
             throw OIDCMalformedUserInfoError();

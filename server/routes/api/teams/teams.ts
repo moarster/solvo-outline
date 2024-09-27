@@ -1,6 +1,5 @@
-import invariant from "invariant";
 import Router from "koa-router";
-import { UserRole } from "@shared/types";
+import * as T from "./schema";
 import teamCreator from "@server/commands/teamCreator";
 import teamDestroyer from "@server/commands/teamDestroyer";
 import teamUpdater from "@server/commands/teamUpdater";
@@ -17,7 +16,7 @@ import { presentTeam, presentPolicies } from "@server/presenters";
 import { APIContext } from "@server/types";
 import { RateLimiterStrategy } from "@server/utils/RateLimiter";
 import { safeEqual } from "@server/utils/crypto";
-import * as T from "./schema";
+import { UserRole } from "@shared/types";
 
 const router = new Router();
 const emailEnabled = !!(env.SMTP_HOST || env.isDevelopment);
@@ -145,11 +144,6 @@ router.post(
         name: provider.name,
         providerId: provider.providerId,
       })
-    );
-
-    invariant(
-      authenticationProviders?.length,
-      "Team must have at least one authentication provider"
     );
 
     const team = await teamCreator({

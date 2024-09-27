@@ -82,7 +82,7 @@ import { findParentNode } from "../queries/findParentNode";
 import { getMarkRange } from "../queries/getMarkRange";
 import { isInCode } from "../queries/isInCode";
 import Node from "./Node";
-import { DiagramType } from "@shared/editor/extensions/kroki/types";
+import { krokiDiagrams } from "@shared/editor/extensions/kroki/types";
 import type { Dictionary } from "~/hooks/useDictionary";
 
 const DEFAULT_LANGUAGE = "javascript";
@@ -186,7 +186,7 @@ export default class CodeFence extends Node {
             this.showLineNumbers ? "with-line-numbers" : ""
           }`,
           "data-language": node.attrs.language,
-          isKroki: node.attrs.language satisfies DiagramType,
+          isKroki: node.attrs.language in krokiDiagrams,
         },
         ["pre", ["code", { spellCheck: "false" }, 0]],
       ],

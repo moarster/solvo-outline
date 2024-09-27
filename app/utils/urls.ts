@@ -14,7 +14,7 @@ export function isHash(href: string) {
     ) {
       return true;
     }
-  } catch (e) {
+  } catch {
     // failed to parse as url
   }
 
@@ -32,7 +32,7 @@ export function decodeURIComponentSafe(text: string) {
     return text
       ? decodeURIComponent(text.replace(/%(?![0-9][0-9a-fA-F]+)/g, "%25"))
       : text;
-  } catch (_) {
+  } catch {
     return text;
   }
 }
@@ -47,10 +47,10 @@ export function redirectTo(url: string) {
 }
 
 /**
- * Check if the path is a valid redirect after login
+ * Check if the path is a valid path for redirect after login.
  *
  * @param path
  * @returns boolean indicating if the path is a valid redirect
  */
-export const isValidPostLoginRedirect = (path: string) =>
-  !["/", "/create", "/home", "/logout"].includes(path);
+export const isAllowedLoginRedirect = (path: string) =>
+  !["/", "/create", "/home", "/logout", "/auth/"].includes(path);
