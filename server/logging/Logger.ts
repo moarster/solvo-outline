@@ -1,13 +1,15 @@
 /* eslint-disable no-console */
 import { IncomingMessage } from "http";
 import chalk from "chalk";
+import isArray from "lodash/isArray";
 import isEmpty from "lodash/isEmpty";
+import isObject from "lodash/isObject";
 import winston from "winston";
-import * as Tracing from "./tracer";
 import env from "@server/env";
 import Metrics from "@server/logging/Metrics";
 import Sentry from "@server/logging/sentry";
 import ShutdownHelper from "@server/utils/ShutdownHelper";
+import * as Tracing from "./tracer";
 
 type LogCategory =
   | "lifecycle"
@@ -203,10 +205,9 @@ class Logger {
    * Sanitize data attached to logs and errors to remove sensitive information.
    *
    * @param input The data to sanitize
-   * @param level The current recursion level (default: 0)
    * @returns The sanitized data
    */
-  private sanitize<T>(input: T, level = 0): T {
+  private sanitize = <T>(input: T, level = 0): T => {
     // Short circuit if we're not in production to enable easier debugging
     if (!env.isProduction) {
       return input;
@@ -219,58 +220,36 @@ class Logger {
       "password",
       "content",
     ];
-    const maxRecursionLevel = 3;
-    const truncatedValue = "[…]";
 
-    // Prevent excessive recursion
-    if (level > maxRecursionLevel) {
-      return truncatedValue as unknown as T;
+    if (level > 3) {
+      return "[…]" as any as T;
     }
 
-    if (typeof input === "string") {
-      return this.sanitizeString(input, sensitiveFields);
+    if (isArray(input)) {
+      return input.map((item) => this.sanitize(item, level + 1)) as any as T;
     }
 
-    if (Array.isArray(input)) {
-      return this.sanitizeArray(input, level) as unknown as T;
-    }
+    if (isObject(input)) {
+      const output: Record<string, any> = { ...input };
 
-    if (typeof input === "object" && input !== null) {
-      return this.sanitizeObject(input, sensitiveFields, level);
+      for (const key of Object.keys(output)) {
+        if (isObject(output[key])) {
+          output[key] = this.sanitize(output[key], level + 1);
+        } else if (isArray(output[key])) {
+          output[key] = output[key].map((value: unknown) =>
+            this.sanitize(value, level + 1)
+          );
+        } else if (sensitiveFields.includes(key)) {
+          output[key] = "[Filtered]";
+        } else {
+          output[key] = this.sanitize(output[key], level + 1);
+        }
+      }
+      return output as T;
     }
 
     return input;
-  }
-
-  private sanitizeString(input: string, sensitiveFields: string[]): string {
-    return sensitiveFields.some((field) => input.includes(field))
-      ? "[Filtered]"
-      : input;
-  }
-
-  private sanitizeArray<T>(input: T[], level: number): T[] {
-    return input.map((item) => this.sanitize(item, level + 1));
-  }
-
-  private sanitizeObject<T extends object>(
-    input: T,
-    sensitiveFields: string[],
-    level: number
-  ): T {
-    const output = { ...input };
-
-    for (const [key, value] of Object.entries(output)) {
-      if (sensitiveFields.includes(key)) {
-        output[key as keyof T] = "[Filtered]" as unknown as T[keyof T];
-      } else if (typeof value === "object" && value !== null) {
-        output[key as keyof T] = this.sanitize(value, level + 1);
-      } else {
-        output[key as keyof T] = this.sanitize(value, level + 1);
-      }
-    }
-
-    return output;
-  }
+  };
 }
 
 export default new Logger();

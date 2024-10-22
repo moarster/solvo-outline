@@ -19,7 +19,6 @@ import { DiagramType } from "@shared/editor/extensions/kroki/types";
 type DiagramState = {
   decorationSet: DecorationSet;
   isDark: boolean;
-  initialized: boolean;
 };
 
 class Cache {
@@ -102,7 +101,7 @@ class DiagramRenderer {
     if (this._rendererFunc) {
       return this._rendererFunc;
     }
-    this._rendererFunc = debounce<RendererFunc>(this.renderImmediately, 500);
+    this._rendererFunc = debounce<RendererFunc>(this.renderImmediately, 250);
     return this.renderImmediately;
   }
 
@@ -159,11 +158,6 @@ function getNewState({
       (item.node.attrs.language satisfies DiagramType)
   );
 
-  let { initialized } = pluginState;
-  if (blocks.length > 0 && !initialized) {
-    initialized = true;
-  }
-
   blocks.forEach((block) => {
     const existingDecorations = pluginState.decorationSet.find(
       block.pos,
@@ -210,7 +204,6 @@ function getNewState({
   return {
     decorationSet: DecorationSet.create(doc, decorations),
     isDark: pluginState.isDark,
-    initialized,
   };
 }
 
@@ -228,7 +221,6 @@ export default function DiagramAsCode({
         const pluginState: DiagramState = {
           decorationSet: DecorationSet.create(doc, []),
           isDark,
-          initialized: false,
         };
         return getNewState({
           doc,
