@@ -2,7 +2,7 @@ import es from "eslint-plugin-es-x";
 import tseslint from "typescript-eslint";
 import typescriptEslint from "@typescript-eslint/eslint-plugin";
 import _import from "eslint-plugin-import-x";
-import node from "eslint-plugin-node";
+import node from "eslint-plugin-n";
 import react from "eslint-plugin-react";
 import lodash from "eslint-plugin-lodash";
 import tsParser from "@typescript-eslint/parser";
@@ -67,7 +67,7 @@ export default [
       curly: 2,
       "no-console": "error",
       "arrow-body-style": ["error", "as-needed"],
-      // "spaced-comment": "error",
+      "spaced-comment": "error",
       "object-shorthand": "error",
       // "no-mixed-operators": "off",
       "no-useless-escape": "off",
