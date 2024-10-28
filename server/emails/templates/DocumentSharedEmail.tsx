@@ -1,12 +1,12 @@
 import * as React from "react";
-import BaseEmail, { EmailProps } from "./BaseEmail";
+import { DocumentPermission } from "@shared/types";
+import { Document, UserMembership } from "@server/models";
+import BaseEmail, { EmailMessageCategory, EmailProps } from "./BaseEmail";
 import Body from "./components/Body";
 import Button from "./components/Button";
 import EmailTemplate from "./components/EmailLayout";
 import Header from "./components/Header";
 import Heading from "./components/Heading";
-import { Document, UserMembership } from "@server/models";
-import { DocumentPermission } from "@shared/types";
 
 type InputProps = EmailProps & {
   userId: string;
@@ -29,6 +29,10 @@ export default class DocumentSharedEmail extends BaseEmail<
   InputProps,
   BeforeSend
 > {
+  protected get category() {
+    return EmailMessageCategory.Notification;
+  }
+
   protected async beforeSend({ documentId, userId }: InputProps) {
     const document = await Document.unscoped().findByPk(documentId);
     if (!document) {

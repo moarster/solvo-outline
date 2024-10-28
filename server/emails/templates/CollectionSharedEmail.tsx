@@ -1,12 +1,12 @@
 import * as React from "react";
-import BaseEmail, { EmailProps } from "./BaseEmail";
+import { CollectionPermission } from "@shared/types";
+import { Collection, UserMembership } from "@server/models";
+import BaseEmail, { EmailMessageCategory, EmailProps } from "./BaseEmail";
 import Body from "./components/Body";
 import Button from "./components/Button";
 import EmailTemplate from "./components/EmailLayout";
 import Header from "./components/Header";
 import Heading from "./components/Heading";
-import { Collection, UserMembership } from "@server/models";
-import { CollectionPermission } from "@shared/types";
 
 type InputProps = EmailProps & {
   userId: string;
@@ -29,6 +29,10 @@ export default class CollectionSharedEmail extends BaseEmail<
   InputProps,
   BeforeSend
 > {
+  protected get category() {
+    return EmailMessageCategory.Notification;
+  }
+
   protected async beforeSend({ userId, collectionId }: InputProps) {
     const collection = await Collection.findByPk(collectionId);
     if (!collection) {
@@ -76,8 +80,8 @@ View Document: ${teamUrl}${collection.path}
       membership.permission === CollectionPermission.ReadWrite
         ? "view and edit"
         : membership.permission === CollectionPermission.Admin
-          ? "manage"
-          : "view";
+        ? "manage"
+        : "view";
 
     return (
       <EmailTemplate

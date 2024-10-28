@@ -1,5 +1,6 @@
 import * as React from "react";
-import BaseEmail, { EmailProps } from "./BaseEmail";
+import env from "@server/env";
+import BaseEmail, { EmailMessageCategory, EmailProps } from "./BaseEmail";
 import Body from "./components/Body";
 import CopyableCode from "./components/CopyableCode";
 import EmailTemplate from "./components/EmailLayout";
@@ -7,7 +8,6 @@ import EmptySpace from "./components/EmptySpace";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Heading from "./components/Heading";
-import env from "@server/env";
 
 type Props = EmailProps & {
   deleteConfirmationCode: string;
@@ -17,6 +17,10 @@ type Props = EmailProps & {
  * Email sent to a user when they request to delete their workspace.
  */
 export default class ConfirmTeamDeleteEmail extends BaseEmail<Props> {
+  protected get category() {
+    return EmailMessageCategory.Notification;
+  }
+
   protected subject() {
     return `Your workspace deletion request`;
   }

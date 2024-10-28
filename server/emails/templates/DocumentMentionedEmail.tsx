@@ -1,6 +1,12 @@
 import differenceBy from "lodash/differenceBy";
 import * as React from "react";
-import BaseEmail, { EmailProps } from "./BaseEmail";
+import { Day } from "@shared/utils/time";
+import { Document, Revision } from "@server/models";
+import { DocumentHelper } from "@server/models/helpers/DocumentHelper";
+import HTMLHelper from "@server/models/helpers/HTMLHelper";
+import { ProsemirrorHelper } from "@server/models/helpers/ProsemirrorHelper";
+import { TextHelper } from "@server/models/helpers/TextHelper";
+import BaseEmail, { EmailMessageCategory, EmailProps } from "./BaseEmail";
 import Body from "./components/Body";
 import Button from "./components/Button";
 import Diff from "./components/Diff";
@@ -8,12 +14,6 @@ import EmailTemplate from "./components/EmailLayout";
 import EmptySpace from "./components/EmptySpace";
 import Header from "./components/Header";
 import Heading from "./components/Heading";
-import { Document, Revision } from "@server/models";
-import { DocumentHelper } from "@server/models/helpers/DocumentHelper";
-import HTMLHelper from "@server/models/helpers/HTMLHelper";
-import { ProsemirrorHelper } from "@server/models/helpers/ProsemirrorHelper";
-import { TextHelper } from "@server/models/helpers/TextHelper";
-import { Day } from "@shared/utils/time";
 
 type InputProps = EmailProps & {
   documentId: string;
@@ -37,6 +37,10 @@ export default class DocumentMentionedEmail extends BaseEmail<
   InputProps,
   BeforeSend
 > {
+  protected get category() {
+    return EmailMessageCategory.Notification;
+  }
+
   protected async beforeSend({ documentId, revisionId, userId }: InputProps) {
     const document = await Document.unscoped().findByPk(documentId);
     if (!document) {

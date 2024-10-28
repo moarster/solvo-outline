@@ -1,5 +1,6 @@
 import * as React from "react";
-import BaseEmail, { EmailProps } from "./BaseEmail";
+import env from "@server/env";
+import BaseEmail, { EmailMessageCategory, EmailProps } from "./BaseEmail";
 import Body from "./components/Body";
 import Button from "./components/Button";
 import EmailTemplate from "./components/EmailLayout";
@@ -7,7 +8,6 @@ import EmptySpace from "./components/EmptySpace";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Heading from "./components/Heading";
-import env from "@server/env";
 
 type Props = EmailProps & {
   name: string;
@@ -21,6 +21,10 @@ type Props = EmailProps & {
  * Email sent to an external user when an admin sends them an invite.
  */
 export default class InviteEmail extends BaseEmail<Props, Record<string, any>> {
+  protected get category() {
+    return EmailMessageCategory.Invitation;
+  }
+
   protected subject({ actorName, teamName }: Props) {
     return `${actorName} invited you to join ${teamName}’s workspace`;
   }

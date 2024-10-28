@@ -1,5 +1,8 @@
 import * as React from "react";
-import BaseEmail, { EmailProps } from "./BaseEmail";
+import { NotificationEventType } from "@shared/types";
+import env from "@server/env";
+import NotificationSettingsHelper from "@server/models/helpers/NotificationSettingsHelper";
+import BaseEmail, { EmailMessageCategory, EmailProps } from "./BaseEmail";
 import Body from "./components/Body";
 import Button from "./components/Button";
 import EmailTemplate from "./components/EmailLayout";
@@ -7,9 +10,6 @@ import EmptySpace from "./components/EmptySpace";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Heading from "./components/Heading";
-import env from "@server/env";
-import NotificationSettingsHelper from "@server/models/helpers/NotificationSettingsHelper";
-import { NotificationEventType } from "@shared/types";
 
 type InputProps = EmailProps & {
   inviterId: string;
@@ -30,6 +30,10 @@ export default class InviteAcceptedEmail extends BaseEmail<
   InputProps,
   BeforeSend
 > {
+  protected get category() {
+    return EmailMessageCategory.Notification;
+  }
+
   protected async beforeSend(props: InputProps) {
     return {
       unsubscribeUrl: this.unsubscribeUrl(props),

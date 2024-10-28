@@ -1,5 +1,7 @@
 import * as React from "react";
-import BaseEmail, { EmailProps } from "./BaseEmail";
+import { UserRole } from "@shared/types";
+import env from "@server/env";
+import BaseEmail, { EmailMessageCategory, EmailProps } from "./BaseEmail";
 import Body from "./components/Body";
 import Button from "./components/Button";
 import EmailTemplate from "./components/EmailLayout";
@@ -7,8 +9,6 @@ import EmptySpace from "./components/EmptySpace";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Heading from "./components/Heading";
-import env from "@server/env";
-import { UserRole } from "@shared/types";
 
 type Props = EmailProps & {
   role: UserRole;
@@ -22,6 +22,10 @@ type BeforeSend = Record<string, never>;
  * in for the first time from an invite.
  */
 export default class WelcomeEmail extends BaseEmail<Props, BeforeSend> {
+  protected get category() {
+    return EmailMessageCategory.Notification;
+  }
+
   protected subject() {
     return `Welcome to ${env.APP_NAME}`;
   }
