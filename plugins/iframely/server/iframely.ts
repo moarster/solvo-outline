@@ -1,8 +1,8 @@
-import { JSONObject, UnfurlResourceType } from "@shared/types";
+import env from "./env";
 import Logger from "@server/logging/Logger";
 import { UnfurlSignature } from "@server/types";
 import fetch from "@server/utils/fetch";
-import env from "./env";
+import { JSONObject, UnfurlResourceType } from "@shared/types";
 
 class Iframely {
   public static defaultUrl = "https://iframe.ly";

@@ -5,13 +5,16 @@ import { BackIcon } from "outline-icons";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
+import { Wrapper, presence } from "../components";
+import { CopyLinkButton } from "../components/CopyLinkButton";
+import { PermissionAction } from "../components/PermissionAction";
+import { SearchInput } from "../components/SearchInput";
+import { Suggestions } from "../components/Suggestions";
+import { AccessControlList } from "./AccessControlList";
 import { CollectionPermission } from "@shared/types";
-import Collection from "~/models/Collection";
-import Group from "~/models/Group";
-import User from "~/models/User";
+import { createAction } from "~/actions";
 import { Avatar, AvatarSize } from "~/components/Avatar";
 import NudeButton from "~/components/NudeButton";
-import { createAction } from "~/actions";
 import { UserSection } from "~/actions/sections";
 import useBoolean from "~/hooks/useBoolean";
 import useCurrentTeam from "~/hooks/useCurrentTeam";
@@ -19,14 +22,11 @@ import useKeyDown from "~/hooks/useKeyDown";
 import usePolicy from "~/hooks/usePolicy";
 import usePrevious from "~/hooks/usePrevious";
 import useStores from "~/hooks/useStores";
+import Collection from "~/models/Collection";
+import Group from "~/models/Group";
+import User from "~/models/User";
 import { Permission } from "~/types";
 import { collectionPath, urlify } from "~/utils/routeHelpers";
-import { Wrapper, presence } from "../components";
-import { CopyLinkButton } from "../components/CopyLinkButton";
-import { PermissionAction } from "../components/PermissionAction";
-import { SearchInput } from "../components/SearchInput";
-import { Suggestions } from "../components/Suggestions";
-import { AccessControlList } from "./AccessControlList";
 
 type Props = {
   /** The collection to share. */

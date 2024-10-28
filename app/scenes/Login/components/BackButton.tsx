@@ -3,8 +3,8 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { parseDomain } from "@shared/utils/domains";
-import { Config } from "~/stores/AuthStore";
 import env from "~/env";
+import { Config } from "~/stores/AuthStore";
 import Desktop from "~/utils/Desktop";
 import isCloudHosted from "~/utils/isCloudHosted";
 

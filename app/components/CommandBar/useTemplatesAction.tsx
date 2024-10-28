@@ -1,8 +1,8 @@
 import { NewDocumentIcon, ShapesIcon } from "outline-icons";
 import * as React from "react";
-import Icon from "~/components/Icon";
 import { createAction } from "~/actions";
 import { DocumentSection } from "~/actions/sections";
+import Icon from "~/components/Icon";
 import useStores from "~/hooks/useStores";
 import history from "~/utils/history";
 import { newDocumentPath } from "~/utils/routeHelpers";

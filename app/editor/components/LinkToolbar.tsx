@@ -1,12 +1,12 @@
 import { EditorView } from "prosemirror-view";
 import * as React from "react";
+import { useEditor } from "./EditorContext";
+import FloatingToolbar from "./FloatingToolbar";
+import LinkEditor, { SearchResult } from "./LinkEditor";
 import createAndInsertLink from "@shared/editor/commands/createAndInsertLink";
 import { creatingUrlPrefix } from "@shared/utils/urls";
 import useDictionary from "~/hooks/useDictionary";
 import useEventListener from "~/hooks/useEventListener";
-import { useEditor } from "./EditorContext";
-import FloatingToolbar from "./FloatingToolbar";
-import LinkEditor, { SearchResult } from "./LinkEditor";
 
 type Props = {
   isActive: boolean;

@@ -1,5 +1,4 @@
 import * as React from "react";
-import Flex from "~/components/Flex";
 import {
   Preview,
   Title,
@@ -8,6 +7,7 @@ import {
   CardContent,
   Thumbnail,
 } from "./Components";
+import Flex from "~/components/Flex";
 
 type Props = {
   /** Link url */

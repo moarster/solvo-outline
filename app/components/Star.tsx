@@ -3,16 +3,16 @@ import { StarredIcon, UnstarredIcon } from "outline-icons";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import styled, { useTheme } from "styled-components";
-import Collection from "~/models/Collection";
-import Document from "~/models/Document";
+import NudeButton from "./NudeButton";
 import {
   starCollection,
   unstarCollection,
 } from "~/actions/definitions/collections";
 import { starDocument, unstarDocument } from "~/actions/definitions/documents";
 import useActionContext from "~/hooks/useActionContext";
+import Collection from "~/models/Collection";
+import Document from "~/models/Document";
 import { hover } from "~/styles";
-import NudeButton from "./NudeButton";
 
 type Props = {
   /** Target collection */
@@ -53,10 +53,10 @@ function Star({ size, document, collection, color, ...rest }: Props) {
             ? unstarCollection
             : starCollection
           : document
-          ? document.isStarred
-            ? unstarDocument
-            : starDocument
-          : undefined
+            ? document.isStarred
+              ? unstarDocument
+              : starDocument
+            : undefined
       }
       size={size}
       {...rest}

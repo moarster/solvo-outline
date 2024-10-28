@@ -1,7 +1,7 @@
-import { PluginManager, Hook } from "@server/utils/PluginManager";
 import config from "../plugin.json";
 import router from "./auth/google";
 import env from "./env";
+import { PluginManager, Hook } from "@server/utils/PluginManager";
 
 const enabled = !!env.GOOGLE_CLIENT_ID && !!env.GOOGLE_CLIENT_SECRET;
 

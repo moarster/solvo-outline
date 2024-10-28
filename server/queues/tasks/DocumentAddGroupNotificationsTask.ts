@@ -1,9 +1,9 @@
 import { Op } from "sequelize";
+import BaseTask, { TaskPriority } from "./BaseTask";
+import DocumentAddUserNotificationsTask from "./DocumentAddUserNotificationsTask";
 import Logger from "@server/logging/Logger";
 import { GroupUser, UserMembership } from "@server/models";
 import { DocumentGroupEvent } from "@server/types";
-import BaseTask, { TaskPriority } from "./BaseTask";
-import DocumentAddUserNotificationsTask from "./DocumentAddUserNotificationsTask";
 
 export default class DocumentAddGroupNotificationsTask extends BaseTask<DocumentGroupEvent> {
   public async perform(event: DocumentGroupEvent) {

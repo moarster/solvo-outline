@@ -2,13 +2,6 @@ import chunk from "lodash/chunk";
 import escapeRegExp from "lodash/escapeRegExp";
 import startCase from "lodash/startCase";
 import { Transaction } from "sequelize";
-import { AttachmentPreset } from "@shared/types";
-import {
-  getCurrentDateAsString,
-  getCurrentDateTimeAsString,
-  getCurrentTimeAsString,
-  unicodeCLDRtoBCP47,
-} from "@shared/utils/date";
 import attachmentCreator from "@server/commands/attachmentCreator";
 import env from "@server/env";
 import { trace } from "@server/logging/tracing";
@@ -16,6 +9,13 @@ import { Attachment, User } from "@server/models";
 import FileStorage from "@server/storage/files";
 import parseAttachmentIds from "@server/utils/parseAttachmentIds";
 import parseImages from "@server/utils/parseImages";
+import { AttachmentPreset } from "@shared/types";
+import {
+  getCurrentDateAsString,
+  getCurrentDateTimeAsString,
+  getCurrentTimeAsString,
+  unicodeCLDRtoBCP47,
+} from "@shared/utils/date";
 
 @trace()
 export class TextHelper {

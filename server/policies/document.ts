@@ -1,9 +1,9 @@
 import invariant from "invariant";
 import filter from "lodash/filter";
-import { DocumentPermission, TeamPreference } from "@shared/types";
-import { Document, Revision, User, Team } from "@server/models";
 import { allow, cannot, can } from "./cancan";
 import { and, isTeamAdmin, isTeamModel, isTeamMutable, or } from "./utils";
+import { Document, Revision, User, Team } from "@server/models";
+import { DocumentPermission, TeamPreference } from "@shared/types";
 
 allow(User, "createDocument", Team, (actor, document) =>
   and(

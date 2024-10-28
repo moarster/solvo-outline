@@ -1,8 +1,8 @@
 import * as React from "react";
+import { Preview, Title, Info, Card, CardContent } from "./Components";
 import { UnfurlResourceType, UnfurlResponse } from "@shared/types";
 import { Avatar, AvatarSize } from "~/components/Avatar";
 import Flex from "~/components/Flex";
-import { Preview, Title, Info, Card, CardContent } from "./Components";
 
 type Props = Omit<UnfurlResponse[UnfurlResourceType.Mention], "type">;
 

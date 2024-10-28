@@ -7,12 +7,13 @@ import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import styled, { css } from "styled-components";
 import breakpoint from "styled-components-breakpoint";
+import CommentEditor from "./CommentEditor";
+import { HighlightedText } from "./HighlightText";
 import EventBoundary from "@shared/components/EventBoundary";
 import { s } from "@shared/styles";
 import { ProsemirrorData } from "@shared/types";
 import { dateToRelative } from "@shared/utils/date";
 import { Minute } from "@shared/utils/time";
-import Comment from "~/models/Comment";
 import { Avatar } from "~/components/Avatar";
 import ButtonSmall from "~/components/ButtonSmall";
 import Flex from "~/components/Flex";
@@ -20,9 +21,8 @@ import Text from "~/components/Text";
 import Time from "~/components/Time";
 import useBoolean from "~/hooks/useBoolean";
 import CommentMenu from "~/menus/CommentMenu";
+import Comment from "~/models/Comment";
 import { hover } from "~/styles";
-import CommentEditor from "./CommentEditor";
-import { HighlightedText } from "./HighlightText";
 
 /**
  * Hook to calculate if we should display a timestamp on a comment
@@ -266,7 +266,9 @@ const Menu = styled(CommentMenu)<{ dir?: "rtl" | "ltr" }>`
   transition: opacity 100ms ease-in-out;
   color: ${s("textSecondary")};
 
-  &: ${hover}, &[aria-expanded= "true"] {
+  &:
+    ${hover},
+    &[aria-expanded= "true"] {
     opacity: 1;
     background: ${s("sidebarActiveBackground")};
   }
@@ -297,7 +299,9 @@ export const Bubble = styled(Flex)<{
   min-width: 2em;
   margin-bottom: 1px;
   padding: 8px 12px;
-  transition: color 100ms ease-out, ${s("backgroundTransition")};
+  transition:
+    color 100ms ease-out,
+    ${s("backgroundTransition")};
 
   ${({ $lastOfThread, $canReply }) =>
     $lastOfThread &&

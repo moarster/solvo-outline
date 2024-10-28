@@ -15,6 +15,7 @@ import {
 import * as React from "react";
 import { useTranslation, Trans } from "react-i18next";
 import { toast } from "sonner";
+import SettingRow from "./components/SettingRow";
 import { NotificationEventType } from "@shared/types";
 import Flex from "~/components/Flex";
 import Heading from "~/components/Heading";
@@ -26,7 +27,6 @@ import Text from "~/components/Text";
 import env from "~/env";
 import useCurrentUser from "~/hooks/useCurrentUser";
 import isCloudHosted from "~/utils/isCloudHosted";
-import SettingRow from "./components/SettingRow";
 
 function Notifications() {
   const user = useCurrentUser();

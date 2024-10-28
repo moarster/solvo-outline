@@ -5,13 +5,6 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import Flex from "~/components/Flex";
-import Scrollable from "~/components/Scrollable";
-import useSettingsConfig from "~/hooks/useSettingsConfig";
-import useStores from "~/hooks/useStores";
-import isCloudHosted from "~/utils/isCloudHosted";
-import { metaDisplay } from "~/utils/keyboard";
-import { settingsPath } from "~/utils/routeHelpers";
 import Tooltip from "../Tooltip";
 import Sidebar from "./Sidebar";
 import Header from "./components/Header";
@@ -21,6 +14,13 @@ import SidebarButton from "./components/SidebarButton";
 import SidebarLink from "./components/SidebarLink";
 import ToggleButton from "./components/ToggleButton";
 import Version from "./components/Version";
+import Flex from "~/components/Flex";
+import Scrollable from "~/components/Scrollable";
+import useSettingsConfig from "~/hooks/useSettingsConfig";
+import useStores from "~/hooks/useStores";
+import isCloudHosted from "~/utils/isCloudHosted";
+import { metaDisplay } from "~/utils/keyboard";
+import { settingsPath } from "~/utils/routeHelpers";
 
 function SettingsSidebar() {
   const { ui } = useStores();

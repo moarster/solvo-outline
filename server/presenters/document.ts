@@ -1,8 +1,8 @@
+import presentUser from "./user";
 import { traceFunction } from "@server/logging/tracing";
 import { Document } from "@server/models";
 import { DocumentHelper } from "@server/models/helpers/DocumentHelper";
 import { APIContext } from "@server/types";
-import presentUser from "./user";
 
 type Options = {
   /** Whether to render the document's public fields. */

@@ -1,12 +1,12 @@
 import { observer } from "mobx-react";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import { DocumentValidation } from "@shared/validations";
-import Document from "~/models/Document";
-import ConfirmationDialog from "~/components/ConfirmationDialog";
 import Input from "./Input";
 import Switch from "./Switch";
 import Text from "./Text";
+import { DocumentValidation } from "@shared/validations";
+import ConfirmationDialog from "~/components/ConfirmationDialog";
+import Document from "~/models/Document";
 
 type Props = {
   /** The original document to duplicate */

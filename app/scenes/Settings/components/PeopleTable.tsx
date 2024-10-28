@@ -2,7 +2,6 @@ import { observer } from "mobx-react";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import User from "~/models/User";
 import { Avatar } from "~/components/Avatar";
 import Badge from "~/components/Badge";
 import Flex from "~/components/Flex";
@@ -10,6 +9,7 @@ import TableFromParams from "~/components/TableFromParams";
 import Time from "~/components/Time";
 import useCurrentUser from "~/hooks/useCurrentUser";
 import UserMenu from "~/menus/UserMenu";
+import User from "~/models/User";
 
 type Props = Omit<React.ComponentProps<typeof TableFromParams>, "columns"> & {
   data: User[];

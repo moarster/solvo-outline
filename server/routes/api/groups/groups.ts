@@ -1,6 +1,7 @@
 import Router from "koa-router";
 import { Op, WhereOptions } from "sequelize";
-import { MAX_AVATAR_DISPLAY } from "@shared/constants";
+import pagination from "../middlewares/pagination";
+import * as T from "./schema";
 import groupCreator from "@server/commands/groupCreator";
 import groupDestroyer from "@server/commands/groupDestroyer";
 import groupUpdater from "@server/commands/groupUpdater";
@@ -20,8 +21,7 @@ import {
 } from "@server/presenters";
 import { APIContext } from "@server/types";
 import { RateLimiterStrategy } from "@server/utils/RateLimiter";
-import pagination from "../middlewares/pagination";
-import * as T from "./schema";
+import { MAX_AVATAR_DISPLAY } from "@shared/constants";
 
 const router = new Router();
 

@@ -1,10 +1,10 @@
 import invariant from "invariant";
 import { action, runInAction, computed } from "mobx";
+import RootStore from "./RootStore";
+import Store from "./base/Store";
 import Star from "~/models/Star";
 import { PaginationParams } from "~/types";
 import { client } from "~/utils/ApiClient";
-import RootStore from "./RootStore";
-import Store from "./base/Store";
 
 export default class StarsStore extends Store<Star> {
   constructor(rootStore: RootStore) {

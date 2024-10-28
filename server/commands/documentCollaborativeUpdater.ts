@@ -3,11 +3,11 @@ import uniq from "lodash/uniq";
 import { Node } from "prosemirror-model";
 import { yDocToProsemirrorJSON } from "y-prosemirror";
 import * as Y from "yjs";
-import { ProsemirrorData } from "@shared/types";
 import { schema, serializer } from "@server/editor";
 import Logger from "@server/logging/Logger";
 import { Document, Event } from "@server/models";
 import { sequelize } from "@server/storage/database";
+import { ProsemirrorData } from "@shared/types";
 
 type Props = {
   /** The document ID to update. */

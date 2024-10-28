@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { hover } from "~/styles";
 import SidebarButton from "./SidebarButton";
+import { hover } from "~/styles";
 
 const ToggleButton = styled(SidebarButton)`
   opacity: 0;

@@ -1,9 +1,9 @@
 import invariant from "invariant";
 import filter from "lodash/filter";
 import { action, runInAction } from "mobx";
+import Revision from "~/models/Revision";
 import RootStore from "~/stores/RootStore";
 import Store, { RPCAction } from "~/stores/base/Store";
-import Revision from "~/models/Revision";
 import { PaginationParams } from "~/types";
 import { client } from "~/utils/ApiClient";
 

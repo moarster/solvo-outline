@@ -3,15 +3,15 @@ import * as React from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { ListItem } from "../components/ListItem";
 import { s } from "@shared/styles";
 import { DocumentPermission } from "@shared/types";
-import User from "~/models/User";
-import UserMembership from "~/models/UserMembership";
 import { Avatar, AvatarSize } from "~/components/Avatar";
 import InputMemberPermissionSelect from "~/components/InputMemberPermissionSelect";
 import Time from "~/components/Time";
+import User from "~/models/User";
+import UserMembership from "~/models/UserMembership";
 import { EmptySelectValue, Permission } from "~/types";
-import { ListItem } from "../components/ListItem";
 
 type Props = {
   user: User;

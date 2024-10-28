@@ -1,5 +1,5 @@
-import { Comment } from "@server/models";
 import presentUser from "./user";
+import { Comment } from "@server/models";
 
 export default function present(comment: Comment) {
   return {

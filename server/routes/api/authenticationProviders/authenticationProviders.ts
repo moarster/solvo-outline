@@ -1,5 +1,5 @@
 import Router from "koa-router";
-import { UserRole } from "@shared/types";
+import * as T from "./schema";
 import auth from "@server/middlewares/authentication";
 import { transaction } from "@server/middlewares/transaction";
 import validate from "@server/middlewares/validate";
@@ -11,7 +11,7 @@ import {
   presentPolicies,
 } from "@server/presenters";
 import { APIContext } from "@server/types";
-import * as T from "./schema";
+import { UserRole } from "@shared/types";
 
 const router = new Router();
 

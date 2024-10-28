@@ -41,10 +41,10 @@ export default class Notice extends Node {
             style: dom.className.includes("tip")
               ? "tip"
               : dom.className.includes("warning")
-              ? "warning"
-              : dom.className.includes("success")
-              ? "success"
-              : undefined,
+                ? "warning"
+                : dom.className.includes("success")
+                  ? "success"
+                  : undefined,
           }),
         },
         // Quill editor parsing
@@ -63,8 +63,8 @@ export default class Notice extends Node {
             style: dom.className.includes("warning")
               ? "warning"
               : dom.className.includes("success")
-              ? "success"
-              : undefined,
+                ? "success"
+                : undefined,
           }),
         },
         // Confluence parsing
@@ -75,10 +75,10 @@ export default class Notice extends Node {
             style: dom.className.includes("confluence-information-macro-tip")
               ? "success"
               : dom.className.includes("confluence-information-macro-note")
-              ? "tip"
-              : dom.className.includes("confluence-information-macro-warning")
-              ? "warning"
-              : undefined,
+                ? "tip"
+                : dom.className.includes("confluence-information-macro-warning")
+                  ? "warning"
+                  : undefined,
           }),
         },
       ],

@@ -1,4 +1,5 @@
 import { subDays } from "date-fns";
+import teamPermanentDeleter from "./teamPermanentDeleter";
 import { Attachment, User, Document, Collection, Team } from "@server/models";
 import {
   buildAttachment,
@@ -6,7 +7,6 @@ import {
   buildTeam,
   buildDocument,
 } from "@server/test/factories";
-import teamPermanentDeleter from "./teamPermanentDeleter";
 
 describe("teamPermanentDeleter", () => {
   it("should destroy related data", async () => {

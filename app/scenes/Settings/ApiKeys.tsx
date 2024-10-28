@@ -3,20 +3,20 @@ import { CodeIcon } from "outline-icons";
 import * as React from "react";
 import { useTranslation, Trans } from "react-i18next";
 import { toast } from "sonner";
-import ApiKey from "~/models/ApiKey";
+import ApiKeyListItem from "./components/ApiKeyListItem";
+import { createApiKey } from "~/actions/definitions/apiKeys";
 import { Action } from "~/components/Actions";
 import Button from "~/components/Button";
 import Heading from "~/components/Heading";
 import PaginatedList from "~/components/PaginatedList";
 import Scene from "~/components/Scene";
 import Text from "~/components/Text";
-import { createApiKey } from "~/actions/definitions/apiKeys";
 import useActionContext from "~/hooks/useActionContext";
 import useCurrentTeam from "~/hooks/useCurrentTeam";
 import useCurrentUser from "~/hooks/useCurrentUser";
 import usePolicy from "~/hooks/usePolicy";
 import useStores from "~/hooks/useStores";
-import ApiKeyListItem from "./components/ApiKeyListItem";
+import ApiKey from "~/models/ApiKey";
 
 function ApiKeys() {
   const team = useCurrentTeam();

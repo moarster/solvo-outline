@@ -1,10 +1,10 @@
 import { Node as ProsemirrorNode } from "prosemirror-model";
 import { EditorView, Decoration } from "prosemirror-view";
 import { FunctionComponent } from "react";
+import { NodeViewRenderer } from "./NodeViewRenderer";
 import Extension from "@shared/editor/lib/Extension";
 import { ComponentProps } from "@shared/editor/types";
 import { Editor } from "~/editor";
-import { NodeViewRenderer } from "./NodeViewRenderer";
 
 type ComponentViewConstructor = {
   /** The editor instance. */

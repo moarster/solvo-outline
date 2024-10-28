@@ -1,8 +1,4 @@
 import * as React from "react";
-import { richExtensions } from "@shared/editor/nodes";
-import { UnfurlResourceType, UnfurlResponse } from "@shared/types";
-import Editor from "~/components/Editor";
-import Flex from "~/components/Flex";
 import ErrorBoundary from "../ErrorBoundary";
 import {
   Preview,
@@ -12,6 +8,10 @@ import {
   CardContent,
   Description,
 } from "./Components";
+import { richExtensions } from "@shared/editor/nodes";
+import { UnfurlResourceType, UnfurlResponse } from "@shared/types";
+import Editor from "~/components/Editor";
+import Flex from "~/components/Flex";
 
 type Props = Omit<UnfurlResponse[UnfurlResourceType.Document], "type">;
 

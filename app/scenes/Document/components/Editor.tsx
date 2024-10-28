@@ -4,11 +4,12 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { mergeRefs } from "react-merge-refs";
 import { useHistory, useRouteMatch } from "react-router-dom";
+import MultiplayerEditor from "./AsyncMultiplayerEditor";
+import DocumentMeta from "./DocumentMeta";
+import DocumentTitle from "./DocumentTitle";
 import { richExtensions, withComments } from "@shared/editor/nodes";
 import { TeamPreference } from "@shared/types";
 import { colorPalette } from "@shared/utils/collections";
-import Comment from "~/models/Comment";
-import Document from "~/models/Document";
 import { RefHandle } from "~/components/ContentEditable";
 import { useDocumentContext } from "~/components/DocumentContext";
 import Editor, { Props as EditorProps } from "~/components/Editor";
@@ -28,15 +29,14 @@ import useCurrentUser from "~/hooks/useCurrentUser";
 import useFocusedComment from "~/hooks/useFocusedComment";
 import usePolicy from "~/hooks/usePolicy";
 import useStores from "~/hooks/useStores";
+import Comment from "~/models/Comment";
+import Document from "~/models/Document";
 import {
   documentHistoryPath,
   documentPath,
   matchDocumentHistory,
 } from "~/utils/routeHelpers";
 import { decodeURIComponentSafe } from "~/utils/urls";
-import MultiplayerEditor from "./AsyncMultiplayerEditor";
-import DocumentMeta from "./DocumentMeta";
-import DocumentTitle from "./DocumentTitle";
 
 const extensions = [
   ...withComments(richExtensions),

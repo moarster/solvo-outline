@@ -2,14 +2,14 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Menu, MenuButton, MenuItem, useMenuState } from "reakit";
 import styled from "styled-components";
+import { Emoji } from "./Emoji";
+import { IconButton } from "./IconButton";
 import { depths, s } from "@shared/styles";
 import { EmojiSkinTone } from "@shared/types";
 import { getEmojiVariants } from "@shared/utils/emoji";
 import Flex from "~/components/Flex";
 import NudeButton from "~/components/NudeButton";
 import { hover } from "~/styles";
-import { Emoji } from "./Emoji";
-import { IconButton } from "./IconButton";
 
 const SkinTonePicker = ({
   skinTone,

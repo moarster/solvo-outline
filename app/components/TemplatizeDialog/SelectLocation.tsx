@@ -2,6 +2,7 @@ import { observer } from "mobx-react";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
+import Label from "./Label";
 import { AvatarSize } from "~/components/Avatar";
 import CollectionIcon from "~/components/Icons/CollectionIcon";
 import InputSelect, { Option } from "~/components/InputSelect";
@@ -10,7 +11,6 @@ import useCurrentTeam from "~/hooks/useCurrentTeam";
 import usePolicy from "~/hooks/usePolicy";
 import useRequest from "~/hooks/useRequest";
 import useStores from "~/hooks/useStores";
-import Label from "./Label";
 
 type Props = {
   /** Collection ID to select by default. */

@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { CommentStatusFilter } from "@shared/types";
 import { BaseSchema, ProsemirrorSchema } from "@server/routes/api/schema";
+import { CommentStatusFilter } from "@shared/types";
 
 const BaseIdSchema = z.object({
   /** Comment Id */

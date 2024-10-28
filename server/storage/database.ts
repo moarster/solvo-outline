@@ -2,10 +2,10 @@ import path from "path";
 import { InferAttributes, InferCreationAttributes } from "sequelize";
 import { Sequelize } from "sequelize-typescript";
 import { Umzug, SequelizeStorage, MigrationError } from "umzug";
-import env from "@server/env";
-import Model from "@server/models/base/Model";
 import Logger from "../logging/Logger";
 import * as models from "../models";
+import env from "@server/env";
+import Model from "@server/models/base/Model";
 
 const isSSLDisabled = env.PGSSLMODE === "disable";
 const poolMax = env.DATABASE_CONNECTION_POOL_MAX ?? 5;
@@ -75,14 +75,13 @@ export function createMigrationRunner(
         {
           cwd?: string | undefined;
           ignore?: string | string[] | undefined;
-        }
+        },
       ]
 ) {
   return new Umzug({
     migrations: {
       glob,
       resolve: ({ name, path, context }) => {
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
         const migration = require(path as string);
         return {
           name,

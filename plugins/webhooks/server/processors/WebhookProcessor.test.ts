@@ -1,7 +1,7 @@
-import { buildUser, buildWebhookSubscription } from "@server/test/factories";
-import type { UserEvent } from "@server/types";
 import DeliverWebhookTask from "../tasks/DeliverWebhookTask";
 import WebhookProcessor from "./WebhookProcessor";
+import { buildUser, buildWebhookSubscription } from "@server/test/factories";
+import type { UserEvent } from "@server/types";
 
 jest.mock("../tasks/DeliverWebhookTask");
 const ip = "127.0.0.1";

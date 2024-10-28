@@ -2,8 +2,6 @@ import sortBy from "lodash/sortBy";
 import { observer } from "mobx-react";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import { PAGINATION_SYMBOL } from "~/stores/base/Store";
-import Collection from "~/models/Collection";
 import { Avatar, AvatarSize } from "~/components/Avatar";
 import Facepile from "~/components/Facepile";
 import Fade from "~/components/Fade";
@@ -11,6 +9,8 @@ import NudeButton from "~/components/NudeButton";
 import useActionContext from "~/hooks/useActionContext";
 import useMobile from "~/hooks/useMobile";
 import useStores from "~/hooks/useStores";
+import Collection from "~/models/Collection";
+import { PAGINATION_SYMBOL } from "~/stores/base/Store";
 
 type Props = {
   collection: Collection;

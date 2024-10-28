@@ -1,4 +1,3 @@
- 
 import { WarningIcon } from "outline-icons";
 import * as React from "react";
 import { Trans } from "react-i18next";

@@ -1,4 +1,3 @@
-import { CommentStatusFilter } from "@shared/types";
 import {
   buildAdmin,
   buildCollection,
@@ -9,6 +8,7 @@ import {
   buildUser,
 } from "@server/test/factories";
 import { getTestServer } from "@server/test/support";
+import { CommentStatusFilter } from "@shared/types";
 
 const server = getTestServer();
 

@@ -9,9 +9,14 @@ import {
   MenuStateReturn,
 } from "reakit/Menu";
 import styled, { useTheme } from "styled-components";
+import Header from "./Header";
+import MenuItem, { MenuAnchor } from "./MenuItem";
+import MouseSafeArea from "./MouseSafeArea";
+import Separator from "./Separator";
+import ContextMenu from ".";
+import { actionToMenuItem } from "~/actions";
 import MenuIconWrapper from "~/components/ContextMenu/MenuIconWrapper";
 import Flex from "~/components/Flex";
-import { actionToMenuItem } from "~/actions";
 import useActionContext from "~/hooks/useActionContext";
 import {
   Action,
@@ -20,11 +25,6 @@ import {
   MenuHeading,
   MenuItem as TMenuItem,
 } from "~/types";
-import Header from "./Header";
-import MenuItem, { MenuAnchor } from "./MenuItem";
-import MouseSafeArea from "./MouseSafeArea";
-import Separator from "./Separator";
-import ContextMenu from ".";
 
 type Props = Omit<MenuStateReturn, "items"> & {
   actions?: (Action | MenuSeparator | MenuHeading)[];

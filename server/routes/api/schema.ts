@@ -1,9 +1,9 @@
 import formidable from "formidable";
 import { Node } from "prosemirror-model";
 import { z } from "zod";
+import { schema } from "@server/editor";
 import { ProsemirrorData as TProsemirrorData } from "@shared/types";
 import { ProsemirrorHelper } from "@shared/utils/ProsemirrorHelper";
-import { schema } from "@server/editor";
 
 export const BaseSchema = z.object({
   body: z.unknown(),

@@ -1,8 +1,8 @@
 import { Op } from "sequelize";
+import BaseProcessor from "./BaseProcessor";
 import { Document, Backlink } from "@server/models";
 import { Event, DocumentEvent, RevisionEvent } from "@server/types";
 import parseDocumentIds from "@server/utils/parseDocumentIds";
-import BaseProcessor from "./BaseProcessor";
 
 export default class BacklinksProcessor extends BaseProcessor {
   static applicableEvents: Event["name"][] = [

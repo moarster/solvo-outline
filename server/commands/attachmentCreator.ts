@@ -1,10 +1,10 @@
 import { Transaction } from "sequelize";
 import { v4 as uuidv4 } from "uuid";
-import { AttachmentPreset } from "@shared/types";
 import { Attachment, Event, User } from "@server/models";
 import AttachmentHelper from "@server/models/helpers/AttachmentHelper";
 import FileStorage from "@server/storage/files";
 import { RequestInit } from "@server/utils/fetch";
+import { AttachmentPreset } from "@shared/types";
 
 type BaseProps = {
   /** The ID of the attachment */

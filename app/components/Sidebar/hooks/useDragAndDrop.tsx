@@ -6,18 +6,18 @@ import { getEmptyImage } from "react-dnd-html5-backend";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { useTheme } from "styled-components";
+import { DragObject } from "../components/SidebarLink";
+import { useSidebarLabelAndIcon } from "./useSidebarLabelAndIcon";
 import { NavigationNode } from "@shared/types";
+import ConfirmMoveDialog from "~/components/ConfirmMoveDialog";
+import Icon from "~/components/Icon";
+import useCurrentUser from "~/hooks/useCurrentUser";
+import useStores from "~/hooks/useStores";
 import Collection from "~/models/Collection";
 import Document from "~/models/Document";
 import GroupMembership from "~/models/GroupMembership";
 import Star from "~/models/Star";
 import UserMembership from "~/models/UserMembership";
-import ConfirmMoveDialog from "~/components/ConfirmMoveDialog";
-import Icon from "~/components/Icon";
-import useCurrentUser from "~/hooks/useCurrentUser";
-import useStores from "~/hooks/useStores";
-import { DragObject } from "../components/SidebarLink";
-import { useSidebarLabelAndIcon } from "./useSidebarLabelAndIcon";
 
 /**
  * Hook for shared logic that allows dragging a Starred item
@@ -148,7 +148,7 @@ export function useDragDocument(
         depth,
         icon: icon ? <Icon value={icon} color={color} /> : undefined,
         collectionId: document?.collectionId || "",
-      } as DragObject),
+      }) as DragObject,
     canDrag: () => !!document?.isActive,
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
@@ -393,7 +393,7 @@ export function useDragMembership(
         id,
         title,
         icon,
-      } as DragObject),
+      }) as DragObject,
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),

@@ -8,10 +8,9 @@ import type { Context } from "koa";
 import Router from "koa-router";
 
 import { Strategy } from "passport-oauth2";
-import { languages } from "@shared/i18n";
-import { slugifyDomain } from "@shared/utils/domains";
-import { parseEmail } from "@shared/utils/email";
-import slugify from "@shared/utils/slugify";
+import config from "../../plugin.json";
+import env from "../env";
+import { DiscordGuildError, DiscordGuildRoleError } from "../errors";
 import accountProvisioner from "@server/commands/accountProvisioner";
 import { InvalidRequestError, TeamDomainRequiredError } from "@server/errors";
 import passportMiddleware from "@server/middlewares/passport";
@@ -23,9 +22,10 @@ import {
   getClientFromContext,
   request,
 } from "@server/utils/passport";
-import config from "../../plugin.json";
-import env from "../env";
-import { DiscordGuildError, DiscordGuildRoleError } from "../errors";
+import { languages } from "@shared/i18n";
+import { slugifyDomain } from "@shared/utils/domains";
+import { parseEmail } from "@shared/utils/email";
+import slugify from "@shared/utils/slugify";
 
 const router = new Router();
 

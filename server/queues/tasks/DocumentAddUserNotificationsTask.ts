@@ -1,7 +1,7 @@
-import { NotificationEventType } from "@shared/types";
+import BaseTask, { TaskPriority } from "./BaseTask";
 import { Notification, User } from "@server/models";
 import { DocumentUserEvent } from "@server/types";
-import BaseTask, { TaskPriority } from "./BaseTask";
+import { NotificationEventType } from "@shared/types";
 
 export default class DocumentAddUserNotificationsTask extends BaseTask<DocumentUserEvent> {
   public async perform(event: DocumentUserEvent) {

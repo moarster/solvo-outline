@@ -4,16 +4,16 @@ import * as React from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation, Trans } from "react-i18next";
 import { toast } from "sonner";
+import Icon from "./Icon";
 import { IntegrationType, IntegrationService } from "@shared/types";
-import Integration from "~/models/Integration";
-import SettingRow from "~/scenes/Settings/components/SettingRow";
 import Button from "~/components/Button";
 import Heading from "~/components/Heading";
 import Input from "~/components/Input";
 import Scene from "~/components/Scene";
 import Text from "~/components/Text";
 import useStores from "~/hooks/useStores";
-import Icon from "./Icon";
+import Integration from "~/models/Integration";
+import SettingRow from "~/scenes/Settings/components/SettingRow";
 
 type FormData = {
   umamiDomain: string;

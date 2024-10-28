@@ -1,8 +1,8 @@
 import "./bootstrap";
 import { Transaction } from "sequelize";
-import parseTitle from "@shared/utils/parseTitle";
 import { Revision } from "@server/models";
 import { sequelize } from "@server/storage/database";
+import parseTitle from "@shared/utils/parseTitle";
 
 let page = parseInt(process.argv[2], 10);
 page = Number.isNaN(page) ? 0 : page;

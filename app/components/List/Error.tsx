@@ -2,12 +2,12 @@ import { DisconnectedIcon, WarningIcon } from "outline-icons";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import ButtonLink from "../ButtonLink";
+import Flex from "../Flex";
 import { s } from "@shared/styles";
 import Empty from "~/components/Empty";
 import useEventListener from "~/hooks/useEventListener";
 import { OfflineError } from "~/utils/errors";
-import ButtonLink from "../ButtonLink";
-import Flex from "../Flex";
 
 type Props = {
   error: Error;

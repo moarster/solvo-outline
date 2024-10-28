@@ -1,8 +1,6 @@
 import Router from "koa-router";
 import { v4 as uuidv4 } from "uuid";
-import { AttachmentPreset } from "@shared/types";
-import { bytesToHumanReadable } from "@shared/utils/files";
-import { AttachmentValidation } from "@shared/validations";
+import * as T from "./schema";
 import { AuthorizationError, ValidationError } from "@server/errors";
 import auth from "@server/middlewares/authentication";
 import { rateLimiter } from "@server/middlewares/rateLimiter";
@@ -17,7 +15,9 @@ import BaseStorage from "@server/storage/files/BaseStorage";
 import { APIContext } from "@server/types";
 import { RateLimiterStrategy } from "@server/utils/RateLimiter";
 import { assertIn } from "@server/validation";
-import * as T from "./schema";
+import { AttachmentPreset } from "@shared/types";
+import { bytesToHumanReadable } from "@shared/utils/files";
+import { AttachmentValidation } from "@shared/validations";
 
 const router = new Router();
 

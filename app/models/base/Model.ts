@@ -1,11 +1,11 @@
 import pick from "lodash/pick";
 import { observable, action } from "mobx";
-import { JSONObject } from "@shared/types";
-import type Store from "~/stores/base/Store";
-import Logger from "~/utils/Logger";
 import { getFieldsForModel } from "../decorators/Field";
 import { LifecycleManager } from "../decorators/Lifecycle";
 import { getRelationsForModelClass } from "../decorators/Relation";
+import { JSONObject } from "@shared/types";
+import type Store from "~/stores/base/Store";
+import Logger from "~/utils/Logger";
 
 export default abstract class Model {
   static modelName: string;

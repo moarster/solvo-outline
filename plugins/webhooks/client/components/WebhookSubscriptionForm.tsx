@@ -8,12 +8,12 @@ import { useForm } from "react-hook-form";
 import { useTranslation, Trans } from "react-i18next";
 import styled from "styled-components";
 import { TeamPreference } from "@shared/types";
-import WebhookSubscription from "~/models/WebhookSubscription";
 import Button from "~/components/Button";
 import Input from "~/components/Input";
 import Text from "~/components/Text";
 import useCurrentTeam from "~/hooks/useCurrentTeam";
 import useMobile from "~/hooks/useMobile";
+import WebhookSubscription from "~/models/WebhookSubscription";
 
 const WEBHOOK_EVENTS = {
   users: [
@@ -218,8 +218,8 @@ function WebhookSubscriptionForm({ handleSubmit, webhookSubscription }: Props) {
       value === "*"
         ? AllEventCheckboxLabel
         : Object.keys(WEBHOOK_EVENTS).includes(value)
-        ? GroupEventCheckboxLabel
-        : EventCheckboxLabel;
+          ? GroupEventCheckboxLabel
+          : EventCheckboxLabel;
 
     return (
       <LabelComponent>

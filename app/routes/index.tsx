@@ -1,11 +1,11 @@
 import * as React from "react";
 import { Switch, Redirect } from "react-router-dom";
-import DesktopRedirect from "~/scenes/DesktopRedirect";
 import DelayedMount from "~/components/DelayedMount";
 import FullscreenLoading from "~/components/FullscreenLoading";
 import Route from "~/components/ProfiledRoute";
 import env from "~/env";
 import useQueryNotices from "~/hooks/useQueryNotices";
+import DesktopRedirect from "~/scenes/DesktopRedirect";
 import lazyWithRetry from "~/utils/lazyWithRetry";
 import { matchDocumentSlug as slug } from "~/utils/routeHelpers";
 

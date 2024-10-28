@@ -1,8 +1,8 @@
 import { Transaction, Op } from "sequelize";
+import documentCreator from "./documentCreator";
 import { User, Collection, Document } from "@server/models";
 import { DocumentHelper } from "@server/models/helpers/DocumentHelper";
 import { ProsemirrorHelper } from "@server/models/helpers/ProsemirrorHelper";
-import documentCreator from "./documentCreator";
 
 type Props = {
   /** The user who is creating the document */

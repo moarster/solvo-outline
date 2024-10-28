@@ -2,11 +2,6 @@ import { observer } from "mobx-react";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
-import Star from "~/models/Star";
-import DelayedMount from "~/components/DelayedMount";
-import Flex from "~/components/Flex";
-import usePaginatedRequest from "~/hooks/usePaginatedRequest";
-import useStores from "~/hooks/useStores";
 import {
   useDropToCreateStar,
   useDropToReorderStar,
@@ -18,6 +13,11 @@ import Relative from "./Relative";
 import SidebarContext from "./SidebarContext";
 import SidebarLink from "./SidebarLink";
 import StarredLink from "./StarredLink";
+import DelayedMount from "~/components/DelayedMount";
+import Flex from "~/components/Flex";
+import usePaginatedRequest from "~/hooks/usePaginatedRequest";
+import useStores from "~/hooks/useStores";
+import Star from "~/models/Star";
 
 const STARRED_PAGINATION_LIMIT = 10;
 

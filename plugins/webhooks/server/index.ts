@@ -1,9 +1,9 @@
-import { PluginManager, Hook } from "@server/utils/PluginManager";
 import config from "../plugin.json";
 import webhookSubscriptions from "./api/webhookSubscriptions";
 import WebhookProcessor from "./processors/WebhookProcessor";
 import CleanupWebhookDeliveriesTask from "./tasks/CleanupWebhookDeliveriesTask";
 import DeliverWebhookTask from "./tasks/DeliverWebhookTask";
+import { PluginManager, Hook } from "@server/utils/PluginManager";
 
 PluginManager.add([
   {

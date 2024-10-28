@@ -6,13 +6,13 @@ import { useTranslation } from "react-i18next";
 import { Link, useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
 import { TeamPreference } from "@shared/types";
-import Document from "~/models/Document";
-import Revision from "~/models/Revision";
 import DocumentMeta from "~/components/DocumentMeta";
 import Fade from "~/components/Fade";
 import useCurrentTeam from "~/hooks/useCurrentTeam";
 import usePolicy from "~/hooks/usePolicy";
 import useStores from "~/hooks/useStores";
+import Document from "~/models/Document";
+import Revision from "~/models/Revision";
 import { documentPath, documentInsightsPath } from "~/utils/routeHelpers";
 
 type Props = {

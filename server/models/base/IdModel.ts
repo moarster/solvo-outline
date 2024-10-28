@@ -12,7 +12,7 @@ import Model from "./Model";
 
 class IdModel<
   TModelAttributes extends {} = any,
-  TCreationAttributes extends {} = TModelAttributes
+  TCreationAttributes extends {} = TModelAttributes,
 > extends Model<TModelAttributes, TCreationAttributes> {
   @IsUUID(4)
   @PrimaryKey

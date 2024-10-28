@@ -1,7 +1,7 @@
+import documentUpdater from "./documentUpdater";
 import { Event } from "@server/models";
 import { sequelize } from "@server/storage/database";
 import { buildDocument, buildUser } from "@server/test/factories";
-import documentUpdater from "./documentUpdater";
 
 describe("documentUpdater", () => {
   const ip = "127.0.0.1";

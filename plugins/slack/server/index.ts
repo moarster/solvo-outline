@@ -1,9 +1,9 @@
-import { PluginManager, Hook } from "@server/utils/PluginManager";
 import config from "../plugin.json";
 import hooks from "./api/hooks";
 import router from "./auth/slack";
 import env from "./env";
 import SlackProcessor from "./processors/SlackProcessor";
+import { PluginManager, Hook } from "@server/utils/PluginManager";
 
 const enabled = !!env.SLACK_CLIENT_ID && !!env.SLACK_CLIENT_SECRET;
 

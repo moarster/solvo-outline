@@ -47,7 +47,7 @@ export const getFrequentCodeLanguages = () => {
   const recentLang = Storage.get(RecentStorageKey);
   const frequentLangEntries = Object.entries(Storage.get(StorageKey) ?? {}) as [
     keyof typeof LANGUAGES,
-    number
+    number,
   ][];
 
   const frequentLangs = sortFrequencies(frequentLangEntries)

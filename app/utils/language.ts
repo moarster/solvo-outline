@@ -1,6 +1,6 @@
 import { i18n } from "i18next";
-import { locales, unicodeCLDRtoBCP47 } from "@shared/utils/date";
 import Desktop from "./Desktop";
+import { locales, unicodeCLDRtoBCP47 } from "@shared/utils/date";
 
 /**
  * Formats a number using the user's locale where possible.

@@ -2,6 +2,7 @@ import { observer } from "mobx-react";
 import { getLuminance } from "polished";
 import * as React from "react";
 import styled from "styled-components";
+import Flex from "./Flex";
 import { IconType } from "@shared/types";
 import { IconLibrary } from "@shared/utils/IconLibrary";
 import { colorPalette } from "@shared/utils/collections";
@@ -9,7 +10,6 @@ import { determineIconType } from "@shared/utils/icon";
 import EmojiIcon from "~/components/Icons/EmojiIcon";
 import useStores from "~/hooks/useStores";
 import Logger from "~/utils/Logger";
-import Flex from "./Flex";
 
 export type Props = {
   /** The icon to render */

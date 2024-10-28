@@ -3,10 +3,10 @@ import { TrashIcon, ArchiveIcon, ShapesIcon, InputIcon } from "outline-icons";
 import * as React from "react";
 import { Trans, useTranslation } from "react-i18next";
 import styled from "styled-components";
-import Document from "~/models/Document";
 import ErrorBoundary from "~/components/ErrorBoundary";
 import Notice from "~/components/Notice";
 import Time from "~/components/Time";
+import Document from "~/models/Document";
 
 type Props = {
   document: Document;

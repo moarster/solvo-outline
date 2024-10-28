@@ -1,5 +1,6 @@
 import invariant from "invariant";
 import { Transaction } from "sequelize";
+import pinDestroyer from "./pinDestroyer";
 import { traceFunction } from "@server/logging/tracing";
 import {
   User,
@@ -10,7 +11,6 @@ import {
   UserMembership,
   GroupMembership,
 } from "@server/models";
-import pinDestroyer from "./pinDestroyer";
 
 type Props = {
   /** User attempting to move the document */

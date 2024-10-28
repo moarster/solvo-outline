@@ -17,12 +17,12 @@ import {
   PrimaryKey,
   Scopes,
 } from "sequelize-typescript";
-import Model from "@server/models/base/Model";
 import { ValidationError } from "../errors";
 import Team from "./Team";
 import UserAuthentication from "./UserAuthentication";
 import Fix from "./decorators/Fix";
 import Length from "./validators/Length";
+import Model from "@server/models/base/Model";
 
 // TODO: Avoid this hardcoding of plugins
 import AzureClient from "plugins/azure/server/azure";

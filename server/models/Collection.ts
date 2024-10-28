@@ -1,4 +1,3 @@
-/* eslint-disable lines-between-class-members */
 import find from "lodash/find";
 import findIndex from "lodash/findIndex";
 import remove from "lodash/remove";
@@ -34,14 +33,6 @@ import {
   AllowNull,
 } from "sequelize-typescript";
 import isUUID from "validator/lib/isUUID";
-import type { CollectionSort, ProsemirrorData } from "@shared/types";
-import { CollectionPermission, NavigationNode } from "@shared/types";
-import { UrlHelper } from "@shared/utils/UrlHelper";
-import { sortNavigationNodes } from "@shared/utils/collections";
-import slugify from "@shared/utils/slugify";
-import { CollectionValidation } from "@shared/validations";
-import { ValidationError } from "@server/errors";
-import { generateUrlId } from "@server/utils/url";
 import Document from "./Document";
 import FileOperation from "./FileOperation";
 import Group from "./Group";
@@ -56,6 +47,14 @@ import { DocumentHelper } from "./helpers/DocumentHelper";
 import IsHexColor from "./validators/IsHexColor";
 import Length from "./validators/Length";
 import NotContainsUrl from "./validators/NotContainsUrl";
+import { ValidationError } from "@server/errors";
+import { generateUrlId } from "@server/utils/url";
+import { CollectionPermission, NavigationNode } from "@shared/types";
+import type { CollectionSort, ProsemirrorData } from "@shared/types";
+import { UrlHelper } from "@shared/utils/UrlHelper";
+import { sortNavigationNodes } from "@shared/utils/collections";
+import slugify from "@shared/utils/slugify";
+import { CollectionValidation } from "@shared/validations";
 
 type AdditionalFindOptions = {
   rejectOnEmpty?: boolean | Error;
@@ -401,9 +400,8 @@ class Collection extends ParanoidModel<
    * @returns userIds
    */
   static async membershipUserIds(collectionId: string) {
-    const collection = await this.scope("withAllMemberships").findByPk(
-      collectionId
-    );
+    const collection =
+      await this.scope("withAllMemberships").findByPk(collectionId);
     if (!collection) {
       return [];
     }

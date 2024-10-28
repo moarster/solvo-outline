@@ -1,8 +1,8 @@
 import { Context, Next } from "koa";
 import { Op } from "sequelize";
-import { parseDomain } from "@shared/utils/domains";
 import env from "@server/env";
 import { Share } from "@server/models";
+import { parseDomain } from "@shared/utils/domains";
 
 export default function shareDomains() {
   return async function shareDomainsMiddleware(ctx: Context, next: Next) {

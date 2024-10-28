@@ -1,3 +1,4 @@
+import subscriptionDestroyer from "./subscriptionDestroyer";
 import { Subscription } from "@server/models";
 import { sequelize } from "@server/storage/database";
 import {
@@ -5,7 +6,6 @@ import {
   buildSubscription,
   buildUser,
 } from "@server/test/factories";
-import subscriptionDestroyer from "./subscriptionDestroyer";
 
 describe("subscriptionDestroyer", () => {
   const ip = "127.0.0.1";

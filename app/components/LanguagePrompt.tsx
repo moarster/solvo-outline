@@ -3,6 +3,8 @@ import find from "lodash/find";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { LanguageIcon } from "./Icons/LanguageIcon";
+import Text from "./Text";
 import { languages, languageOptions } from "@shared/i18n";
 import ButtonLink from "~/components/ButtonLink";
 import Flex from "~/components/Flex";
@@ -10,8 +12,6 @@ import env from "~/env";
 import useCurrentUser from "~/hooks/useCurrentUser";
 import useStores from "~/hooks/useStores";
 import { detectLanguage } from "~/utils/language";
-import { LanguageIcon } from "./Icons/LanguageIcon";
-import Text from "./Text";
 
 export default function LanguagePrompt() {
   const { ui } = useStores();

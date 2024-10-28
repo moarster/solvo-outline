@@ -1,8 +1,8 @@
 import * as React from "react";
 import { NavigationNode, NavigationNodeType } from "@shared/types";
 import { sortNavigationNodes } from "@shared/utils/collections";
-import Collection from "~/models/Collection";
 import useStores from "~/hooks/useStores";
+import Collection from "~/models/Collection";
 
 /**
  * React hook that modifies the document structure

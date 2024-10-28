@@ -1,7 +1,6 @@
 import { CopyIcon } from "outline-icons";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import ApiKey from "~/models/ApiKey";
 import Button from "~/components/Button";
 import CopyToClipboard from "~/components/CopyToClipboard";
 import Flex from "~/components/Flex";
@@ -10,6 +9,7 @@ import Text from "~/components/Text";
 import Time from "~/components/Time";
 import useUserLocale from "~/hooks/useUserLocale";
 import ApiKeyMenu from "~/menus/ApiKeyMenu";
+import ApiKey from "~/models/ApiKey";
 import { dateToExpiry } from "~/utils/date";
 
 type Props = {

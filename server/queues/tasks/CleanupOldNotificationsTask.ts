@@ -1,8 +1,8 @@
 import { subMonths } from "date-fns";
 import { Op } from "sequelize";
+import BaseTask, { TaskPriority, TaskSchedule } from "./BaseTask";
 import Logger from "@server/logging/Logger";
 import { Notification } from "@server/models";
-import BaseTask, { TaskPriority, TaskSchedule } from "./BaseTask";
 
 type Props = Record<string, never>;
 

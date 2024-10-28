@@ -8,10 +8,10 @@ import {
   DataType,
   IsIn,
 } from "sequelize-typescript";
-import { type WebhookDeliveryStatus } from "@server/types";
 import WebhookSubscription from "./WebhookSubscription";
 import IdModel from "./base/IdModel";
 import Fix from "./decorators/Fix";
+import { type WebhookDeliveryStatus } from "@server/types";
 
 @Table({
   tableName: "webhook_deliveries",

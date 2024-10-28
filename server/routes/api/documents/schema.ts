@@ -2,11 +2,11 @@ import formidable from "formidable";
 import isEmpty from "lodash/isEmpty";
 import isUUID from "validator/lib/isUUID";
 import { z } from "zod";
-import { DocumentPermission, StatusFilter } from "@shared/types";
-import { UrlHelper } from "@shared/utils/UrlHelper";
 import { BaseSchema } from "@server/routes/api/schema";
 import { zodIconType } from "@server/utils/zod";
 import { ValidateColor } from "@server/validation";
+import { DocumentPermission, StatusFilter } from "@shared/types";
+import { UrlHelper } from "@shared/utils/UrlHelper";
 
 const DocumentsSortParamsSchema = z.object({
   /** Specifies the attributes by which documents will be sorted in the list */

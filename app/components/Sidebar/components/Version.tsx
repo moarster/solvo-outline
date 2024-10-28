@@ -1,11 +1,11 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { version as currentVersion } from "../../../../package.json";
+import SidebarLink from "./SidebarLink";
 import Badge from "~/components/Badge";
 import { client } from "~/utils/ApiClient";
 import Logger from "~/utils/Logger";
-import { version as currentVersion } from "../../../../package.json";
-import SidebarLink from "./SidebarLink";
 
 export default function Version() {
   const [versionsBehind, setVersionsBehind] = React.useState(-1);

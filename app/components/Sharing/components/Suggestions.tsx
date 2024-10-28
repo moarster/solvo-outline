@@ -5,12 +5,9 @@ import { CheckmarkIcon, CloseIcon } from "outline-icons";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { InviteIcon, ListItem } from "./ListItem";
 import { s } from "@shared/styles";
 import { stringToColor } from "@shared/utils/color";
-import Collection from "~/models/Collection";
-import Document from "~/models/Document";
-import Group from "~/models/Group";
-import User from "~/models/User";
 import ArrowKeyNavigation from "~/components/ArrowKeyNavigation";
 import { Avatar, GroupAvatar, AvatarSize, IAvatar } from "~/components/Avatar";
 import Empty from "~/components/Empty";
@@ -20,8 +17,11 @@ import useCurrentUser from "~/hooks/useCurrentUser";
 import useMaxHeight from "~/hooks/useMaxHeight";
 import useStores from "~/hooks/useStores";
 import useThrottledCallback from "~/hooks/useThrottledCallback";
+import Collection from "~/models/Collection";
+import Document from "~/models/Document";
+import Group from "~/models/Group";
+import User from "~/models/User";
 import { hover } from "~/styles";
-import { InviteIcon, ListItem } from "./ListItem";
 
 type Suggestion = IAvatar & {
   id: string;
@@ -96,8 +96,8 @@ export const Suggestions = observer(
         document
           ? users.notInDocument(document.id, query)
           : collection
-          ? users.notInCollection(collection.id, query)
-          : users.orderedData
+            ? users.notInCollection(collection.id, query)
+            : users.orderedData
       ).filter((u) => !u.isSuspended && u.id !== user.id);
 
       if (isEmail(query)) {
@@ -108,8 +108,8 @@ export const Suggestions = observer(
         ...(document
           ? groups.notInDocument(document.id, query)
           : collection
-          ? groups.notInCollection(collection.id, query)
-          : []),
+            ? groups.notInCollection(collection.id, query)
+            : []),
         ...filtered,
       ];
     }, [
@@ -132,7 +132,7 @@ export const Suggestions = observer(
           .map((id) =>
             isEmail(id)
               ? getSuggestionForEmail(id)
-              : users.get(id) ?? groups.get(id)
+              : (users.get(id) ?? groups.get(id))
           )
           .filter(Boolean) as User[],
       [users, groups, getSuggestionForEmail, pendingIds]
@@ -157,8 +157,8 @@ export const Suggestions = observer(
         subtitle: suggestion.email
           ? suggestion.email
           : suggestion.isViewer
-          ? t("Viewer")
-          : t("Editor"),
+            ? t("Viewer")
+            : t("Editor"),
         image: (
           <Avatar
             model={suggestion}

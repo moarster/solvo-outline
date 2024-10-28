@@ -1,7 +1,7 @@
 import { subMinutes } from "date-fns";
 import JWT from "jsonwebtoken";
-import { Team, User } from "@server/models";
 import { AuthenticationError } from "../errors";
+import { Team, User } from "@server/models";
 
 export function getJWTPayload(token: string) {
   let payload;

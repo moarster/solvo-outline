@@ -1,3 +1,12 @@
+import CollectionAddUserNotificationsTask from "../tasks/CollectionAddUserNotificationsTask";
+import CollectionCreatedNotificationsTask from "../tasks/CollectionCreatedNotificationsTask";
+import CommentCreatedNotificationsTask from "../tasks/CommentCreatedNotificationsTask";
+import CommentUpdatedNotificationsTask from "../tasks/CommentUpdatedNotificationsTask";
+import DocumentAddGroupNotificationsTask from "../tasks/DocumentAddGroupNotificationsTask";
+import DocumentAddUserNotificationsTask from "../tasks/DocumentAddUserNotificationsTask";
+import DocumentPublishedNotificationsTask from "../tasks/DocumentPublishedNotificationsTask";
+import RevisionCreatedNotificationsTask from "../tasks/RevisionCreatedNotificationsTask";
+import BaseProcessor from "./BaseProcessor";
 import {
   CollectionEvent,
   RevisionEvent,
@@ -8,15 +17,6 @@ import {
   DocumentUserEvent,
   DocumentGroupEvent,
 } from "@server/types";
-import CollectionAddUserNotificationsTask from "../tasks/CollectionAddUserNotificationsTask";
-import CollectionCreatedNotificationsTask from "../tasks/CollectionCreatedNotificationsTask";
-import CommentCreatedNotificationsTask from "../tasks/CommentCreatedNotificationsTask";
-import CommentUpdatedNotificationsTask from "../tasks/CommentUpdatedNotificationsTask";
-import DocumentAddGroupNotificationsTask from "../tasks/DocumentAddGroupNotificationsTask";
-import DocumentAddUserNotificationsTask from "../tasks/DocumentAddUserNotificationsTask";
-import DocumentPublishedNotificationsTask from "../tasks/DocumentPublishedNotificationsTask";
-import RevisionCreatedNotificationsTask from "../tasks/RevisionCreatedNotificationsTask";
-import BaseProcessor from "./BaseProcessor";
 
 export default class NotificationsProcessor extends BaseProcessor {
   static applicableEvents: Event["name"][] = [

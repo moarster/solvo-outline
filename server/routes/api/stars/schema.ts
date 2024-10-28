@@ -1,7 +1,7 @@
 import isEmpty from "lodash/isEmpty";
 import { z } from "zod";
-import { ValidateDocumentId, ValidateIndex } from "@server/validation";
 import { BaseSchema } from "../schema";
+import { ValidateDocumentId, ValidateIndex } from "@server/validation";
 
 export const StarsCreateSchema = BaseSchema.extend({
   body: z

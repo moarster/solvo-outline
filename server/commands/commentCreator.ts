@@ -1,6 +1,6 @@
 import { Transaction } from "sequelize";
-import { ProsemirrorData } from "@shared/types";
 import { Comment, User, Event } from "@server/models";
+import { ProsemirrorData } from "@shared/types";
 
 type Props = {
   id?: string;

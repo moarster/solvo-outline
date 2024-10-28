@@ -1,10 +1,10 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { UserRole } from "@shared/types";
-import User from "~/models/User";
 import ConfirmationDialog from "~/components/ConfirmationDialog";
 import Input from "~/components/Input";
 import useStores from "~/hooks/useStores";
+import User from "~/models/User";
 
 type Props = {
   user: User;

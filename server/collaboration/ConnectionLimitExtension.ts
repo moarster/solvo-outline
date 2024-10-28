@@ -3,11 +3,11 @@ import {
   connectedPayload,
   onDisconnectPayload,
 } from "@hocuspocus/server";
+import { TooManyConnections } from "./CloseEvents";
+import { withContext } from "./types";
 import env from "@server/env";
 import Logger from "@server/logging/Logger";
 import { trace } from "@server/logging/tracing";
-import { TooManyConnections } from "./CloseEvents";
-import { withContext } from "./types";
 
 @trace()
 export class ConnectionLimitExtension implements Extension {

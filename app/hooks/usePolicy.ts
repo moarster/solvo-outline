@@ -1,7 +1,7 @@
 import * as React from "react";
-import Model from "~/models/base/Model";
 import useCurrentUser from "./useCurrentUser";
 import useStores from "./useStores";
+import Model from "~/models/base/Model";
 
 /**
  * Retrieve the abilities of a policy for a given entity, if the policy is not

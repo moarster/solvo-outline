@@ -3,12 +3,12 @@ import { MoreIcon, PlusIcon } from "outline-icons";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import Collection from "~/models/Collection";
 import { Action, Separator } from "~/components/Actions";
 import Button from "~/components/Button";
 import Tooltip from "~/components/Tooltip";
 import usePolicy from "~/hooks/usePolicy";
 import CollectionMenu from "~/menus/CollectionMenu";
+import Collection from "~/models/Collection";
 import { newDocumentPath } from "~/utils/routeHelpers";
 
 type Props = {

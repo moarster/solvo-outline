@@ -2,11 +2,11 @@ import { DoneIcon, TrashIcon } from "outline-icons";
 import * as React from "react";
 import { toast } from "sonner";
 import stores from "~/stores";
-import Comment from "~/models/Comment";
-import CommentDeleteDialog from "~/components/CommentDeleteDialog";
-import history from "~/utils/history";
 import { createAction } from "..";
 import { DocumentSection } from "../sections";
+import CommentDeleteDialog from "~/components/CommentDeleteDialog";
+import Comment from "~/models/Comment";
+import history from "~/utils/history";
 
 export const deleteCommentFactory = ({
   comment,

@@ -1,12 +1,12 @@
 import { DefaultState } from "koa";
 import randomstring from "randomstring";
+import auth from "./authentication";
 import {
   buildUser,
   buildTeam,
   buildAdmin,
   buildApiKey,
 } from "@server/test/factories";
-import auth from "./authentication";
 
 describe("Authentication middleware", () => {
   describe("with JWT", () => {

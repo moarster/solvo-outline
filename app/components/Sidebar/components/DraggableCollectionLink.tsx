@@ -4,10 +4,6 @@ import * as React from "react";
 import { useDrop, useDrag, DropTargetMonitor } from "react-dnd";
 import { getEmptyImage } from "react-dnd-html5-backend";
 import styled from "styled-components";
-import Collection from "~/models/Collection";
-import Document from "~/models/Document";
-import CollectionIcon from "~/components/Icons/CollectionIcon";
-import useStores from "~/hooks/useStores";
 import { useLocationState } from "../hooks/useLocationState";
 import CollectionLink from "./CollectionLink";
 import CollectionLinkChildren from "./CollectionLinkChildren";
@@ -15,6 +11,10 @@ import DropCursor from "./DropCursor";
 import Relative from "./Relative";
 import { useSidebarContext } from "./SidebarContext";
 import { DragObject } from "./SidebarLink";
+import CollectionIcon from "~/components/Icons/CollectionIcon";
+import useStores from "~/hooks/useStores";
+import Collection from "~/models/Collection";
+import Document from "~/models/Document";
 
 type Props = {
   collection: Collection;

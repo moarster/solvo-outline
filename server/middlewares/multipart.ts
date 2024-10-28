@@ -1,8 +1,8 @@
 import { Next } from "koa";
-import { bytesToHumanReadable } from "@shared/utils/files";
 import { InvalidRequestError } from "@server/errors";
 import { APIContext } from "@server/types";
 import { getFileFromRequest } from "@server/utils/koa";
+import { bytesToHumanReadable } from "@shared/utils/files";
 
 export default function multipart({
   maximumFileSize,

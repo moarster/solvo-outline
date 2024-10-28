@@ -1,9 +1,9 @@
 import { subDays } from "date-fns";
 import { Op } from "sequelize";
-import Logger from "@server/logging/Logger";
-import { Team } from "@server/models";
 import BaseTask, { TaskPriority, TaskSchedule } from "./BaseTask";
 import CleanupDeletedTeamTask from "./CleanupDeletedTeamTask";
+import Logger from "@server/logging/Logger";
+import { Team } from "@server/models";
 
 type Props = {
   limit: number;

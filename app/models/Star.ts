@@ -1,10 +1,10 @@
 import { observable } from "mobx";
-import type StarsStore from "~/stores/StarsStore";
 import Collection from "./Collection";
 import Document from "./Document";
 import Model from "./base/Model";
 import Field from "./decorators/Field";
 import Relation from "./decorators/Relation";
+import type StarsStore from "~/stores/StarsStore";
 
 class Star extends Model {
   static modelName = "Star";

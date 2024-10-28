@@ -7,9 +7,6 @@ import { toast } from "sonner";
 import styled from "styled-components";
 import { s } from "@shared/styles";
 import { IntegrationType } from "@shared/types";
-import Collection from "~/models/Collection";
-import Integration from "~/models/Integration";
-import { ConnectedButton } from "~/scenes/Settings/components/ConnectedButton";
 import ButtonLink from "~/components/ButtonLink";
 import Flex from "~/components/Flex";
 import CollectionIcon from "~/components/Icons/CollectionIcon";
@@ -17,6 +14,9 @@ import ListItem from "~/components/List/Item";
 import Popover from "~/components/Popover";
 import Switch from "~/components/Switch";
 import Text from "~/components/Text";
+import Collection from "~/models/Collection";
+import Integration from "~/models/Integration";
+import { ConnectedButton } from "~/scenes/Settings/components/ConnectedButton";
 
 type Props = {
   integration: Integration<IntegrationType.Post>;

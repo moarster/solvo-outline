@@ -1,10 +1,10 @@
 import { Blob } from "buffer";
 import { Readable } from "stream";
 import { PresignedPost } from "@aws-sdk/s3-presigned-post";
-import { isBase64Url } from "@shared/utils/urls";
 import env from "@server/env";
 import Logger from "@server/logging/Logger";
 import fetch, { RequestInit } from "@server/utils/fetch";
+import { isBase64Url } from "@shared/utils/urls";
 
 export default abstract class BaseStorage {
   /** The default number of seconds until a signed URL expires. */

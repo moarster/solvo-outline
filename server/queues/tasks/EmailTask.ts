@@ -1,5 +1,5 @@
-import emails from "@server/emails/templates";
 import BaseTask from "./BaseTask";
+import emails from "@server/emails/templates";
 
 type Props = {
   templateName: string;

@@ -1,7 +1,7 @@
-import { UserRole } from "@shared/types";
+import { serialize } from "./index";
 import { buildUser, buildTeam, buildAdmin } from "@server/test/factories";
 import { setSelfHosted } from "@server/test/support";
-import { serialize } from "./index";
+import { UserRole } from "@shared/types";
 
 describe("policies/team", () => {
   it("should allow reading only", async () => {

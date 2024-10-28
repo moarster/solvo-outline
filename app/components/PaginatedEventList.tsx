@@ -1,9 +1,9 @@
 import * as React from "react";
 import styled from "styled-components";
+import EventListItem from "./EventListItem";
+import PaginatedList from "~/components/PaginatedList";
 import Document from "~/models/Document";
 import Event from "~/models/Event";
-import PaginatedList from "~/components/PaginatedList";
-import EventListItem from "./EventListItem";
 
 type Props = {
   events: Event[];

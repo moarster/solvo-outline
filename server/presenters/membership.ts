@@ -1,5 +1,5 @@
-import { CollectionPermission, DocumentPermission } from "@shared/types";
 import { UserMembership } from "@server/models";
+import { CollectionPermission, DocumentPermission } from "@shared/types";
 
 type Membership = {
   id: string;

@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { ValidateDocumentId } from "@server/validation";
 import { BaseSchema } from "../schema";
+import { ValidateDocumentId } from "@server/validation";
 
 export const SubscriptionsListSchema = BaseSchema.extend({
   body: z.object({

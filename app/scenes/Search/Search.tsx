@@ -7,6 +7,13 @@ import { Waypoint } from "react-waypoint";
 import styled from "styled-components";
 import breakpoint from "styled-components-breakpoint";
 import { v4 as uuidv4 } from "uuid";
+import CollectionFilter from "./components/CollectionFilter";
+import DateFilter from "./components/DateFilter";
+import { DocumentFilter } from "./components/DocumentFilter";
+import DocumentTypeFilter from "./components/DocumentTypeFilter";
+import RecentSearches from "./components/RecentSearches";
+import SearchInput from "./components/SearchInput";
+import UserFilter from "./components/UserFilter";
 import { Pagination } from "@shared/constants";
 import { hideScrollbars } from "@shared/styles";
 import {
@@ -31,13 +38,6 @@ import { hover } from "~/styles";
 import { SearchResult } from "~/types";
 import { searchPath } from "~/utils/routeHelpers";
 import { decodeURIComponentSafe } from "~/utils/urls";
-import CollectionFilter from "./components/CollectionFilter";
-import DateFilter from "./components/DateFilter";
-import { DocumentFilter } from "./components/DocumentFilter";
-import DocumentTypeFilter from "./components/DocumentTypeFilter";
-import RecentSearches from "./components/RecentSearches";
-import SearchInput from "./components/SearchInput";
-import UserFilter from "./components/UserFilter";
 
 type Props = { notFound?: boolean };
 
@@ -221,8 +221,8 @@ function Search(props: Props) {
               documentId
                 ? t("Search in document")
                 : collectionId
-                ? t("Search in collection")
-                : t("Search")
+                  ? t("Search in collection")
+                  : t("Search")
             }…`}
             onKeyDown={handleKeyDown}
             defaultValue={query}

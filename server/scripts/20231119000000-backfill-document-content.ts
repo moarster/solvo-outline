@@ -2,9 +2,9 @@ import "./bootstrap";
 import { Node } from "prosemirror-model";
 import { yDocToProsemirrorJSON } from "y-prosemirror";
 import * as Y from "yjs";
-import { ProsemirrorData } from "@shared/types";
 import { parser, schema } from "@server/editor";
 import { Document } from "@server/models";
+import { ProsemirrorData } from "@shared/types";
 
 const limit = 100;
 const page = 0;

@@ -1,6 +1,7 @@
 import { toggleMark } from "prosemirror-commands";
 import { Slice } from "prosemirror-model";
 import { Plugin } from "prosemirror-state";
+import stores from "~/stores";
 import { LANGUAGES } from "@shared/editor/extensions/Prism";
 import Extension from "@shared/editor/lib/Extension";
 import isMarkdown from "@shared/editor/lib/isMarkdown";
@@ -11,7 +12,6 @@ import { IconType } from "@shared/types";
 import { determineIconType } from "@shared/utils/icon";
 import parseDocumentSlug from "@shared/utils/parseDocumentSlug";
 import { isDocumentUrl, isUrl } from "@shared/utils/urls";
-import stores from "~/stores";
 
 /**
  * Checks if the HTML string is likely coming from Dropbox Paper.

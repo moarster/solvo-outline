@@ -17,15 +17,15 @@ import {
   DefaultScope,
   AllowNull,
 } from "sequelize-typescript";
-import { WebhookSubscriptionValidation } from "@shared/validations";
-import { ValidationError } from "@server/errors";
-import { Event } from "@server/types";
 import Team from "./Team";
 import User from "./User";
 import ParanoidModel from "./base/ParanoidModel";
 import Encrypted from "./decorators/Encrypted";
 import Fix from "./decorators/Fix";
 import Length from "./validators/Length";
+import { ValidationError } from "@server/errors";
+import { Event } from "@server/types";
+import { WebhookSubscriptionValidation } from "@shared/validations";
 
 @DefaultScope(() => ({
   include: [

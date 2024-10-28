@@ -1,6 +1,7 @@
 import { Context, Next } from "koa";
 import Router from "koa-router";
 import randomstring from "randomstring";
+import * as T from "./schema";
 import userInviter, { Invite } from "@server/commands/userInviter";
 import env from "@server/env";
 import Logger from "@server/logging/Logger";
@@ -8,7 +9,6 @@ import auth from "@server/middlewares/authentication";
 import validate from "@server/middlewares/validate";
 import { presentUser } from "@server/presenters";
 import { APIContext } from "@server/types";
-import * as T from "./schema";
 
 const router = new Router();
 

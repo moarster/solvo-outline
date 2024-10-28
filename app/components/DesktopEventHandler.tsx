@@ -2,9 +2,9 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 import { toast } from "sonner";
-import KeyboardShortcuts from "~/scenes/KeyboardShortcuts";
 import { useDesktopTitlebar } from "~/hooks/useDesktopTitlebar";
 import useStores from "~/hooks/useStores";
+import KeyboardShortcuts from "~/scenes/KeyboardShortcuts";
 import Desktop from "~/utils/Desktop";
 
 export default function DesktopEventHandler() {

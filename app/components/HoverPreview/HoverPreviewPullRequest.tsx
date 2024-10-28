@@ -1,8 +1,5 @@
 import * as React from "react";
 import { Trans } from "react-i18next";
-import { UnfurlResourceType, UnfurlResponse } from "@shared/types";
-import { Avatar } from "~/components/Avatar";
-import Flex from "~/components/Flex";
 import { PullRequestIcon } from "../Icons/PullRequestIcon";
 import Text from "../Text";
 import Time from "../Time";
@@ -14,6 +11,9 @@ import {
   CardContent,
   Info,
 } from "./Components";
+import { UnfurlResourceType, UnfurlResponse } from "@shared/types";
+import { Avatar } from "~/components/Avatar";
+import Flex from "~/components/Flex";
 
 type Props = Omit<UnfurlResponse[UnfurlResourceType.PR], "type">;
 

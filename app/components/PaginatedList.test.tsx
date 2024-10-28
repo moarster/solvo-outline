@@ -3,8 +3,8 @@ import { render } from "@testing-library/react";
 import { TFunction } from "i18next";
 import * as React from "react";
 import { getI18n } from "react-i18next";
-import { Pagination } from "@shared/constants";
 import { Component as PaginatedList } from "./PaginatedList";
+import { Pagination } from "@shared/constants";
 
 describe("PaginatedList", () => {
   const i18n = getI18n();

@@ -136,26 +136,26 @@ export type IntegrationSettings<T> = T extends IntegrationType.Embed
       };
     }
   : T extends IntegrationType.Analytics
-  ? { measurementId: string; instanceUrl?: string; scriptName?: string }
-  : T extends IntegrationType.Post
-  ? { url: string; channel: string; channelId: string }
-  : T extends IntegrationType.Command
-  ? { serviceTeamId: string }
-  :
-      | { url: string }
-      | {
-          github?: {
-            installation: {
-              id: number;
-              account: { id?: number; name: string; avatarUrl?: string };
-            };
-          };
-        }
-      | { url: string; channel: string; channelId: string }
-      | { serviceTeamId: string }
-      | { measurementId: string }
-      | { slack: { serviceTeamId: string; serviceUserId: string } }
-      | undefined;
+    ? { measurementId: string; instanceUrl?: string; scriptName?: string }
+    : T extends IntegrationType.Post
+      ? { url: string; channel: string; channelId: string }
+      : T extends IntegrationType.Command
+        ? { serviceTeamId: string }
+        :
+            | { url: string }
+            | {
+                github?: {
+                  installation: {
+                    id: number;
+                    account: { id?: number; name: string; avatarUrl?: string };
+                  };
+                };
+              }
+            | { url: string; channel: string; channelId: string }
+            | { serviceTeamId: string }
+            | { measurementId: string }
+            | { slack: { serviceTeamId: string; serviceUserId: string } }
+            | undefined;
 
 export enum UserPreference {
   /** Whether reopening the app should redirect to the last viewed document. */

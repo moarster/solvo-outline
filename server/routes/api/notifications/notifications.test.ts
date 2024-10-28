@@ -1,5 +1,3 @@
-import { randomElement } from "@shared/random";
-import { NotificationEventType } from "@shared/types";
 import {
   buildCollection,
   buildDocument,
@@ -8,6 +6,8 @@ import {
   buildUser,
 } from "@server/test/factories";
 import { getTestServer } from "@server/test/support";
+import { randomElement } from "@shared/random";
+import { NotificationEventType } from "@shared/types";
 
 const server = getTestServer();
 

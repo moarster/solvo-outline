@@ -17,6 +17,16 @@ import {
 import { toast } from "sonner";
 import styled from "styled-components";
 import breakpoint from "styled-components-breakpoint";
+import Container from "./Container";
+import Contents from "./Contents";
+import Editor from "./Editor";
+import Header from "./Header";
+import KeyboardShortcutsButton from "./KeyboardShortcutsButton";
+import MarkAsViewed from "./MarkAsViewed";
+import { MeasuredContainer } from "./MeasuredContainer";
+import Notices from "./Notices";
+import PublicReferences from "./PublicReferences";
+import References from "./References";
 import { EditorStyleHelper } from "@shared/editor/styles/EditorStyleHelper";
 import { s } from "@shared/styles";
 import {
@@ -53,16 +63,6 @@ import {
   documentEditPath,
   updateDocumentPath,
 } from "~/utils/routeHelpers";
-import Container from "./Container";
-import Contents from "./Contents";
-import Editor from "./Editor";
-import Header from "./Header";
-import KeyboardShortcutsButton from "./KeyboardShortcutsButton";
-import MarkAsViewed from "./MarkAsViewed";
-import { MeasuredContainer } from "./MeasuredContainer";
-import Notices from "./Notices";
-import PublicReferences from "./PublicReferences";
-import References from "./References";
 import RevisionViewer from "./RevisionViewer";
 
 const AUTOSAVE_DELAY = 3000;

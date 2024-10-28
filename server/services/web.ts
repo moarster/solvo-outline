@@ -1,4 +1,3 @@
- 
 import crypto from "crypto";
 import { Server } from "https";
 import Koa from "koa";
@@ -12,15 +11,15 @@ import enforceHttps, {
   httpsResolver,
   xForwardedProtoResolver,
 } from "koa-sslify";
-import { Second } from "@shared/utils/time";
+import routes from "../routes";
+import api from "../routes/api";
+import auth from "../routes/auth";
 import env from "@server/env";
 import Logger from "@server/logging/Logger";
 import Metrics from "@server/logging/Metrics";
 import ShutdownHelper, { ShutdownOrder } from "@server/utils/ShutdownHelper";
 import { initI18n } from "@server/utils/i18n";
-import routes from "../routes";
-import api from "../routes/api";
-import auth from "../routes/auth";
+import { Second } from "@shared/utils/time";
 
 // Construct scripts CSP based on services in use by this installation
 const defaultSrc = ["'self'"];

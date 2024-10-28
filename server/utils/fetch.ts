@@ -1,4 +1,3 @@
- 
 import fetchWithProxy from "fetch-with-proxy";
 import nodeFetch, { RequestInit, Response } from "node-fetch";
 import { useAgent } from "request-filtering-agent";

@@ -1,8 +1,8 @@
 import queryString from "query-string";
+import env from "~/env";
 import Collection from "~/models/Collection";
 import Comment from "~/models/Comment";
 import Document from "~/models/Document";
-import env from "~/env";
 
 export function homePath(): string {
   return env.ROOT_SHARE_ID ? "/" : "/home";

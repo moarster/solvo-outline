@@ -1,6 +1,6 @@
+import commentDestroyer from "./commentDestroyer";
 import { Comment, Event } from "@server/models";
 import { buildComment, buildDocument, buildUser } from "@server/test/factories";
-import commentDestroyer from "./commentDestroyer";
 
 describe("commentDestroyer", () => {
   const ip = "127.0.0.1";

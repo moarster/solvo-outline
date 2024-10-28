@@ -1,9 +1,9 @@
 import crypto from "crypto";
+import env from "@server/env";
 import {
   NotificationEventDefaults,
   NotificationEventType,
 } from "@shared/types";
-import env from "@server/env";
 
 /**
  * Helper class for working with notification settings

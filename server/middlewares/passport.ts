@@ -1,13 +1,13 @@
 import passport from "@outlinewiki/koa-passport";
 import { Context } from "koa";
 import { InternalOAuthError } from "passport-oauth2";
-import { Client } from "@shared/types";
 import env from "@server/env";
 import { AuthenticationError, OAuthStateMismatchError } from "@server/errors";
 import Logger from "@server/logging/Logger";
 import { AuthenticationResult } from "@server/types";
 import { signIn } from "@server/utils/authentication";
 import { parseState } from "@server/utils/passport";
+import { Client } from "@shared/types";
 
 export default function createMiddleware(providerName: string) {
   return function passportMiddleware(ctx: Context) {
@@ -44,7 +44,7 @@ export default function createMiddleware(providerName: string) {
             const requestHost =
               err instanceof OAuthStateMismatchError
                 ? ctx.hostname
-                : state?.host ?? ctx.hostname;
+                : (state?.host ?? ctx.hostname);
             const url = new URL(
               env.isCloudHosted
                 ? `${reqProtocol}://${requestHost}${redirectPath}`

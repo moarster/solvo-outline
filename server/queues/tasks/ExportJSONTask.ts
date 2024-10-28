@@ -1,6 +1,7 @@
 import JSZip from "jszip";
 import omit from "lodash/omit";
-import { NavigationNode } from "@shared/types";
+import packageJson from "../../../package.json";
+import ExportTask from "./ExportTask";
 import env from "@server/env";
 import Logger from "@server/logging/Logger";
 import {
@@ -15,8 +16,7 @@ import { presentAttachment, presentCollection } from "@server/presenters";
 import { CollectionJSONExport, JSONExportMetadata } from "@server/types";
 import ZipHelper from "@server/utils/ZipHelper";
 import { serializeFilename } from "@server/utils/fs";
-import packageJson from "../../../package.json";
-import ExportTask from "./ExportTask";
+import { NavigationNode } from "@shared/types";
 
 export default class ExportJSONTask extends ExportTask {
   public async export(collections: Collection[], fileOperation: FileOperation) {

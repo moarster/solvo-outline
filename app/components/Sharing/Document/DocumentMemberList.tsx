@@ -5,19 +5,19 @@ import { useTranslation, Trans } from "react-i18next";
 import { Link, useHistory } from "react-router-dom";
 import { toast } from "sonner";
 import styled, { useTheme } from "styled-components";
+import { ListItem } from "../components/ListItem";
+import DocumentMemberListItem from "./DocumentMemberListItem";
 import { s } from "@shared/styles";
 import { DocumentPermission } from "@shared/types";
-import Document from "~/models/Document";
-import UserMembership from "~/models/UserMembership";
 import { GroupAvatar } from "~/components/Avatar";
 import InputMemberPermissionSelect from "~/components/InputMemberPermissionSelect";
 import useCurrentUser from "~/hooks/useCurrentUser";
 import usePolicy from "~/hooks/usePolicy";
 import useStores from "~/hooks/useStores";
+import Document from "~/models/Document";
+import UserMembership from "~/models/UserMembership";
 import { EmptySelectValue, Permission } from "~/types";
 import { homePath } from "~/utils/routeHelpers";
-import { ListItem } from "../components/ListItem";
-import DocumentMemberListItem from "./DocumentMemberListItem";
 
 type Props = {
   /** Document to which team members are supposed to be invited */

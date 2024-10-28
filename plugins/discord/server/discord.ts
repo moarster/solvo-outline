@@ -1,6 +1,6 @@
 import invariant from "invariant";
-import OAuthClient from "@server/utils/oauth";
 import env from "./env";
+import OAuthClient from "@server/utils/oauth";
 
 export default class DiscordClient extends OAuthClient {
   endpoints = {

@@ -152,14 +152,14 @@ ${resizeObserverScript(ctx)}
   }
 
   if (
-      parsed.host === "structurizr.solvo.ru" &&
-      ctx.path.match(/^\/embeds\/(\d+)$/)
+    parsed.host === "structurizr.solvo.ru" &&
+    ctx.path.match(/^\/embeds\/(\d+)$/)
   ) {
     const csp = ctx.response.get("Content-Security-Policy");
 
     ctx.set(
-        "Content-Security-Policy",
-        csp.replace("script-src", "script-src 'self' solvo.ru")
+      "Content-Security-Policy",
+      csp.replace("script-src", "script-src 'self' solvo.ru")
     );
     ctx.set("X-Frame-Options", "sameorigin");
 

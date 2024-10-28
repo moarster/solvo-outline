@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
-import { CollectionPermission } from "@shared/types";
-import { buildUser, buildTeam, buildCollection } from "@server/test/factories";
 import UserMembership from "./UserMembership";
+import { buildUser, buildTeam, buildCollection } from "@server/test/factories";
+import { CollectionPermission } from "@shared/types";
 
 beforeAll(() => {
   jest.useFakeTimers().setSystemTime(new Date("2018-01-02T00:00:00.000Z"));

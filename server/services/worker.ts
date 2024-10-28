@@ -1,10 +1,3 @@
-import env from "@server/env";
-import Logger from "@server/logging/Logger";
-import { setResource, addTags } from "@server/logging/tracer";
-import { traceFunction } from "@server/logging/tracing";
-import HealthMonitor from "@server/queues/HealthMonitor";
-import { Event } from "@server/types";
-import { initI18n } from "@server/utils/i18n";
 import {
   globalEventQueue,
   processorEventQueue,
@@ -13,6 +6,13 @@ import {
 } from "../queues";
 import processors from "../queues/processors";
 import tasks from "../queues/tasks";
+import env from "@server/env";
+import Logger from "@server/logging/Logger";
+import { setResource, addTags } from "@server/logging/tracer";
+import { traceFunction } from "@server/logging/tracing";
+import HealthMonitor from "@server/queues/HealthMonitor";
+import { Event } from "@server/types";
+import { initI18n } from "@server/utils/i18n";
 
 export default function init() {
   void initI18n();

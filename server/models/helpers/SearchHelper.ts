@@ -4,9 +4,7 @@ import find from "lodash/find";
 import map from "lodash/map";
 import queryParser from "pg-tsquery";
 import { Op, Sequelize, WhereOptions } from "sequelize";
-import { DateFilter, StatusFilter } from "@shared/types";
-import { regexIndexOf, regexLastIndexOf } from "@shared/utils/string";
-import { getUrls } from "@shared/utils/urls";
+import { DocumentHelper } from "./DocumentHelper";
 import { ValidationError } from "@server/errors";
 import Collection from "@server/models/Collection";
 import Document from "@server/models/Document";
@@ -14,7 +12,9 @@ import Share from "@server/models/Share";
 import Team from "@server/models/Team";
 import User from "@server/models/User";
 import { sequelize } from "@server/storage/database";
-import { DocumentHelper } from "./DocumentHelper";
+import { DateFilter, StatusFilter } from "@shared/types";
+import { regexIndexOf, regexLastIndexOf } from "@shared/utils/string";
+import { getUrls } from "@shared/utils/urls";
 
 type SearchResponse = {
   results: {

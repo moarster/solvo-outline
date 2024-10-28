@@ -1,6 +1,6 @@
+import starUpdater from "./starUpdater";
 import { Event, Star } from "@server/models";
 import { buildDocument, buildUser } from "@server/test/factories";
-import starUpdater from "./starUpdater";
 
 describe("starUpdater", () => {
   const ip = "127.0.0.1";

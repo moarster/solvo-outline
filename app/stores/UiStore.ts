@@ -1,11 +1,11 @@
 import { action, autorun, computed, observable } from "mobx";
 import { flushSync } from "react-dom";
+import type RootStore from "./RootStore";
 import { light as defaultTheme } from "@shared/styles/theme";
 import Storage from "@shared/utils/Storage";
 import Document from "~/models/Document";
 import type { ConnectionStatus } from "~/scenes/Document/components/MultiplayerEditor";
 import { startViewTransition } from "~/utils/viewTransition";
-import type RootStore from "./RootStore";
 
 const UI_STORE = "UI_STORE";
 

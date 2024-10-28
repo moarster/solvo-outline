@@ -1,9 +1,9 @@
 import fractionalIndex from "fractional-index";
 import { Sequelize, Op, WhereOptions } from "sequelize";
-import { PinValidation } from "@shared/validations";
 import { ValidationError } from "@server/errors";
 import { Pin, User, Event } from "@server/models";
 import { sequelize } from "@server/storage/database";
+import { PinValidation } from "@shared/validations";
 
 type Props = {
   /** The user creating the pin */

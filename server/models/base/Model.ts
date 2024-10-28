@@ -9,7 +9,7 @@ import { Replace } from "@server/types";
 
 class Model<
   TModelAttributes extends {} = any,
-  TCreationAttributes extends {} = TModelAttributes
+  TCreationAttributes extends {} = TModelAttributes,
 > extends SequelizeModel<TModelAttributes, TCreationAttributes> {
   /**
    * Find all models in batches, calling the callback function for each batch.

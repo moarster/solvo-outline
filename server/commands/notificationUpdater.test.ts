@@ -1,4 +1,4 @@
-import { NotificationEventType } from "@shared/types";
+import notificationUpdater from "./notificationUpdater";
 import { Event } from "@server/models";
 import { sequelize } from "@server/storage/database";
 import {
@@ -7,7 +7,7 @@ import {
   buildDocument,
   buildCollection,
 } from "@server/test/factories";
-import notificationUpdater from "./notificationUpdater";
+import { NotificationEventType } from "@shared/types";
 
 describe("notificationUpdater", () => {
   const ip = "127.0.0.1";

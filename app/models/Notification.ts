@@ -1,12 +1,5 @@
 import { TFunction } from "i18next";
 import { action, computed, observable } from "mobx";
-import { NotificationEventType } from "@shared/types";
-import {
-  collectionPath,
-  commentPath,
-  documentPath,
-  settingsPath,
-} from "~/utils/routeHelpers";
 import Collection from "./Collection";
 import Comment from "./Comment";
 import Document from "./Document";
@@ -14,6 +7,13 @@ import User from "./User";
 import Model from "./base/Model";
 import Field from "./decorators/Field";
 import Relation from "./decorators/Relation";
+import { NotificationEventType } from "@shared/types";
+import {
+  collectionPath,
+  commentPath,
+  documentPath,
+  settingsPath,
+} from "~/utils/routeHelpers";
 
 class Notification extends Model {
   static modelName = "Notification";

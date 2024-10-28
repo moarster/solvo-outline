@@ -2,10 +2,10 @@ import { observer } from "mobx-react";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import styled, { css } from "styled-components";
-import { s } from "@shared/styles";
-import User from "~/models/User";
-import Tooltip from "~/components/Tooltip";
 import Avatar from "./Avatar";
+import { s } from "@shared/styles";
+import Tooltip from "~/components/Tooltip";
+import User from "~/models/User";
 
 type Props = {
   user: User;

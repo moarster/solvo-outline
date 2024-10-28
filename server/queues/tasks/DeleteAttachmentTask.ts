@@ -1,5 +1,5 @@
-import { Attachment } from "@server/models";
 import BaseTask, { TaskPriority } from "./BaseTask";
+import { Attachment } from "@server/models";
 
 type Props = {
   teamId: string;

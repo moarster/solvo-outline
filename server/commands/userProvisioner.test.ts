@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { v4 as uuidv4 } from "uuid";
-import { UserRole } from "@shared/types";
+import userProvisioner from "./userProvisioner";
 import { TeamDomain } from "@server/models";
 import {
   buildUser,
@@ -8,7 +8,7 @@ import {
   buildInvite,
   buildAdmin,
 } from "@server/test/factories";
-import userProvisioner from "./userProvisioner";
+import { UserRole } from "@shared/types";
 
 describe("userProvisioner", () => {
   const ip = "127.0.0.1";

@@ -1,7 +1,7 @@
 import compact from "lodash/compact";
+import { serialize } from "../policies";
 import { traceFunction } from "@server/logging/tracing";
 import { User } from "@server/models";
-import { serialize } from "../policies";
 
 type Policy = {
   id: string;

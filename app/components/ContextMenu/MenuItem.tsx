@@ -6,9 +6,9 @@ import { mergeRefs } from "react-merge-refs";
 import { MenuItem as BaseMenuItem } from "reakit/Menu";
 import styled, { css } from "styled-components";
 import breakpoint from "styled-components-breakpoint";
-import { s } from "@shared/styles";
 import Text from "../Text";
 import MenuIconWrapper from "./MenuIconWrapper";
+import { s } from "@shared/styles";
 
 type Props = {
   id?: string;

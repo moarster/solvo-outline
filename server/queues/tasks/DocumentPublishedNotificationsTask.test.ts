@@ -1,11 +1,11 @@
-import { NotificationEventType } from "@shared/types";
+import DocumentPublishedNotificationsTask from "./DocumentPublishedNotificationsTask";
 import { Notification } from "@server/models";
 import {
   buildDocument,
   buildCollection,
   buildUser,
 } from "@server/test/factories";
-import DocumentPublishedNotificationsTask from "./DocumentPublishedNotificationsTask";
+import { NotificationEventType } from "@shared/types";
 
 const ip = "127.0.0.1";
 

@@ -1,10 +1,10 @@
 import { faker } from "@faker-js/faker";
-import sharedEnv from "@shared/env";
+import TestServer from "./TestServer";
 import env from "@server/env";
 import onerror from "@server/onerror";
 import webService from "@server/services/web";
 import { sequelize } from "@server/storage/database";
-import TestServer from "./TestServer";
+import sharedEnv from "@shared/env";
 
 export function getTestServer() {
   const app = webService();

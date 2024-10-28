@@ -1,4 +1,3 @@
-import { FileOperationState, FileOperationType } from "@shared/types";
 import { Collection, User, Event, FileOperation } from "@server/models";
 import {
   buildAdmin,
@@ -9,6 +8,7 @@ import {
 } from "@server/test/factories";
 
 import { getTestServer } from "@server/test/support";
+import { FileOperationState, FileOperationType } from "@shared/types";
 
 const server = getTestServer();
 

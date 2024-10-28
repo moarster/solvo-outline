@@ -1,8 +1,8 @@
 import { observer } from "mobx-react";
 import * as React from "react";
 import { toast } from "sonner";
-import useStores from "~/hooks/useStores";
 import { CollectionForm, FormData } from "./CollectionForm";
+import useStores from "~/hooks/useStores";
 
 type Props = {
   collectionId: string;

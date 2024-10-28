@@ -3,14 +3,14 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
+import Sidebar from "./SidebarLayout";
 import { RevisionHelper } from "@shared/utils/RevisionHelper";
-import Event from "~/models/Event";
 import Empty from "~/components/Empty";
 import PaginatedEventList from "~/components/PaginatedEventList";
 import useKeyDown from "~/hooks/useKeyDown";
 import useStores from "~/hooks/useStores";
+import Event from "~/models/Event";
 import { documentPath } from "~/utils/routeHelpers";
-import Sidebar from "./SidebarLayout";
 
 const EMPTY_ARRAY: Event[] = [];
 

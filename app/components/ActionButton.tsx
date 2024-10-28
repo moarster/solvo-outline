@@ -1,7 +1,6 @@
- 
 import * as React from "react";
-import Tooltip, { Props as TooltipProps } from "~/components/Tooltip";
 import { performAction } from "~/actions";
+import Tooltip, { Props as TooltipProps } from "~/components/Tooltip";
 import useIsMounted from "~/hooks/useIsMounted";
 import { Action, ActionContext } from "~/types";
 

@@ -1,6 +1,6 @@
 import randomstring from "randomstring";
-import { buildApiKey } from "@server/test/factories";
 import ApiKey from "./ApiKey";
+import { buildApiKey } from "@server/test/factories";
 
 describe("#ApiKey", () => {
   describe("match", () => {

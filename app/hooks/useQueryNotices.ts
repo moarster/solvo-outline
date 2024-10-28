@@ -1,8 +1,8 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
-import { QueryNotices } from "@shared/types";
 import useQuery from "./useQuery";
+import { QueryNotices } from "@shared/types";
 
 /**
  * Display a toast message based on a notice in the query string. This is usually

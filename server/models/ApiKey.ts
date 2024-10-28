@@ -14,11 +14,11 @@ import {
   AfterFind,
   BeforeSave,
 } from "sequelize-typescript";
-import { ApiKeyValidation } from "@shared/validations";
 import User from "./User";
 import ParanoidModel from "./base/ParanoidModel";
 import Fix from "./decorators/Fix";
 import Length from "./validators/Length";
+import { ApiKeyValidation } from "@shared/validations";
 
 @Table({ tableName: "apiKeys", modelName: "apiKey" })
 @Fix

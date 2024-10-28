@@ -6,6 +6,8 @@ import * as React from "react";
 import { useTranslation, Trans } from "react-i18next";
 import { toast } from "sonner";
 import { useTheme } from "styled-components";
+import DomainManagement from "./components/DomainManagement";
+import SettingRow from "./components/SettingRow";
 import { TeamPreference } from "@shared/types";
 import ConfirmationDialog from "~/components/ConfirmationDialog";
 import Flex from "~/components/Flex";
@@ -20,8 +22,6 @@ import useCurrentTeam from "~/hooks/useCurrentTeam";
 import useRequest from "~/hooks/useRequest";
 import useStores from "~/hooks/useStores";
 import isCloudHosted from "~/utils/isCloudHosted";
-import DomainManagement from "./components/DomainManagement";
-import SettingRow from "./components/SettingRow";
 
 function Security() {
   const { authenticationProviders, dialogs } = useStores();

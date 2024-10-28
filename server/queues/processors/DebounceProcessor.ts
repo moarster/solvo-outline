@@ -1,8 +1,8 @@
+import { globalEventQueue } from "..";
+import BaseProcessor from "./BaseProcessor";
 import env from "@server/env";
 import Document from "@server/models/Document";
 import { Event } from "@server/types";
-import { globalEventQueue } from "..";
-import BaseProcessor from "./BaseProcessor";
 
 export default class DebounceProcessor extends BaseProcessor {
   static applicableEvents: Event["name"][] = [

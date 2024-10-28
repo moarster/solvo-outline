@@ -2,14 +2,14 @@ import emojiRegex from "emoji-regex";
 import escapeRegExp from "lodash/escapeRegExp";
 import truncate from "lodash/truncate";
 import { Transaction } from "sequelize";
-import parseTitle from "@shared/utils/parseTitle";
-import { DocumentValidation } from "@shared/validations";
+import { InvalidRequestError } from "../errors";
 import { traceFunction } from "@server/logging/tracing";
 import { User } from "@server/models";
 import { ProsemirrorHelper } from "@server/models/helpers/ProsemirrorHelper";
 import { TextHelper } from "@server/models/helpers/TextHelper";
 import { DocumentConverter } from "@server/utils/DocumentConverter";
-import { InvalidRequestError } from "../errors";
+import parseTitle from "@shared/utils/parseTitle";
+import { DocumentValidation } from "@shared/validations";
 
 type Props = {
   user: User;

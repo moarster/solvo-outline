@@ -57,8 +57,8 @@ interface MermaidOptions extends FontOptions {
   theme?: string;
 }
 interface StructurizrOptions {
-  output?: 'diagram' | 'legend';
-  'view-key'?: string;
+  output?: "diagram" | "legend";
+  "view-key"?: string;
 }
 
 type DiagramOptionsMap = {
@@ -73,6 +73,5 @@ type DiagramOptionsMap = {
   // и так далее для остальных диаграмм...
 };
 
-export type DiagramOptions<T extends DiagramType> = T extends keyof DiagramOptionsMap
-    ? DiagramOptionsMap[T]
-    : BaseOptions;
+export type DiagramOptions<T extends DiagramType> =
+  T extends keyof DiagramOptionsMap ? DiagramOptionsMap[T] : BaseOptions;

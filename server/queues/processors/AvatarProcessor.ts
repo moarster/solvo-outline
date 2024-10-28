@@ -1,8 +1,8 @@
-import { Team, User } from "@server/models";
-import { Event, TeamEvent, UserEvent } from "@server/types";
 import UploadTeamAvatarTask from "../tasks/UploadTeamAvatarTask";
 import UploadUserAvatarTask from "../tasks/UploadUserAvatarTask";
 import BaseProcessor from "./BaseProcessor";
+import { Team, User } from "@server/models";
+import { Event, TeamEvent, UserEvent } from "@server/types";
 
 export default class AvatarProcessor extends BaseProcessor {
   static applicableEvents: Event["name"][] = ["users.create", "teams.create"];

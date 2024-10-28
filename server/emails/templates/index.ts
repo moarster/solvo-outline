@@ -1,6 +1,6 @@
+import BaseEmail from "./BaseEmail";
 import { Hook, PluginManager } from "@server/utils/PluginManager";
 import { requireDirectory } from "@server/utils/fs";
-import BaseEmail from "./BaseEmail";
 
 const emails: Record<string, typeof BaseEmail> = {};
 

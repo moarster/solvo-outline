@@ -1,7 +1,6 @@
 import fs from "fs-extra";
 import truncate from "lodash/truncate";
-import { FileOperationState, NotificationEventType } from "@shared/types";
-import { bytesToHumanReadable } from "@shared/utils/files";
+import BaseTask, { TaskPriority } from "./BaseTask";
 import ExportFailureEmail from "@server/emails/templates/ExportFailureEmail";
 import ExportSuccessEmail from "@server/emails/templates/ExportSuccessEmail";
 import env from "@server/env";
@@ -17,7 +16,8 @@ import {
 } from "@server/models";
 import fileOperationPresenter from "@server/presenters/fileOperation";
 import FileStorage from "@server/storage/files";
-import BaseTask, { TaskPriority } from "./BaseTask";
+import { FileOperationState, NotificationEventType } from "@shared/types";
+import { bytesToHumanReadable } from "@shared/utils/files";
 
 type Props = {
   fileOperationId: string;

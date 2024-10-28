@@ -1,10 +1,10 @@
 import find from "lodash/find";
 import * as React from "react";
+import useStores from "./useStores";
 import embeds from "@shared/editor/embeds";
 import { IntegrationType } from "@shared/types";
 import Integration from "~/models/Integration";
 import Logger from "~/utils/Logger";
-import useStores from "./useStores";
 
 /**
  * Hook to get all embed configuration for the current team

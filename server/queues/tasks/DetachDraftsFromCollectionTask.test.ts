@@ -1,6 +1,6 @@
+import DetachDraftsFromCollectionTask from "./DetachDraftsFromCollectionTask";
 import { Document } from "@server/models";
 import { buildCollection, buildDocument } from "@server/test/factories";
-import DetachDraftsFromCollectionTask from "./DetachDraftsFromCollectionTask";
 
 describe("DetachDraftsFromCollectionTask", () => {
   const ip = "127.0.0.1";

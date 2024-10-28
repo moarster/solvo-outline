@@ -1,7 +1,7 @@
 import { Table, TBody, TR, TD } from "oy-vey";
 import * as React from "react";
-import env from "@server/env";
 import EmptySpace from "./EmptySpace";
+import env from "@server/env";
 
 const url = env.CDN_URL ?? env.URL;
 

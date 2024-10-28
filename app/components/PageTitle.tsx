@@ -1,9 +1,9 @@
 import { observer } from "mobx-react";
 import * as React from "react";
 import { Helmet } from "react-helmet-async";
+import { useTeamContext } from "./TeamContext";
 import env from "~/env";
 import useStores from "~/hooks/useStores";
-import { useTeamContext } from "./TeamContext";
 
 type Props = {
   title: React.ReactNode;

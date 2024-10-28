@@ -1,5 +1,5 @@
-import { buildAdmin, buildUser } from "@server/test/factories";
 import userUnsuspender from "./userUnsuspender";
+import { buildAdmin, buildUser } from "@server/test/factories";
 
 describe("userUnsuspender", () => {
   const ip = "127.0.0.1";

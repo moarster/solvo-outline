@@ -1,7 +1,6 @@
 import invariant from "invariant";
 import { Op, WhereOptions } from "sequelize";
 import isUUID from "validator/lib/isUUID";
-import { UrlHelper } from "@shared/utils/UrlHelper";
 import {
   NotFoundError,
   InvalidRequestError,
@@ -11,6 +10,7 @@ import {
 } from "@server/errors";
 import { Collection, Document, Share, User, Team } from "@server/models";
 import { authorize, can } from "@server/policies";
+import { UrlHelper } from "@shared/utils/UrlHelper";
 
 type Props = {
   id?: string;

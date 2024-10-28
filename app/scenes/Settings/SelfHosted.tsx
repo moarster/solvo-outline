@@ -5,14 +5,14 @@ import * as React from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
+import SettingRow from "./components/SettingRow";
 import { IntegrationService, IntegrationType } from "@shared/types";
-import Integration from "~/models/Integration";
 import Button from "~/components/Button";
 import Heading from "~/components/Heading";
 import Input from "~/components/Input";
 import Scene from "~/components/Scene";
 import useStores from "~/hooks/useStores";
-import SettingRow from "./components/SettingRow";
+import Integration from "~/models/Integration";
 
 type FormData = {
   drawIoUrl: string;

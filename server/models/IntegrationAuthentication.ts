@@ -6,12 +6,12 @@ import {
   BelongsTo,
   Column,
 } from "sequelize-typescript";
-import { IntegrationService } from "@shared/types";
 import Team from "./Team";
 import User from "./User";
 import IdModel from "./base/IdModel";
 import Encrypted from "./decorators/Encrypted";
 import Fix from "./decorators/Fix";
+import { IntegrationService } from "@shared/types";
 
 @Table({ tableName: "authentications", modelName: "authentication" })
 @Fix

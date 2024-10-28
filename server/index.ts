@@ -1,31 +1,29 @@
- 
-/* eslint-disable import/order */
 import env from "./env";
 
 import "./logging/tracer"; // must come before importing any instrumented module
 
 import http from "http";
 import https from "https";
+import { AddressInfo } from "net";
 import Koa from "koa";
 import helmet from "koa-helmet";
 import logger from "koa-logger";
 import Router from "koa-router";
-import { AddressInfo } from "net";
 import stoppable from "stoppable";
 import throng from "throng";
 import Logger from "./logging/Logger";
-import services from "./services";
-import { getArg } from "./utils/args";
-import { getSSLOptions } from "./utils/ssl";
-import { defaultRateLimiter } from "@server/middlewares/rateLimiter";
-import { printEnv, checkPendingMigrations } from "./utils/startup";
-import { checkUpdates } from "./utils/updates";
+import Metrics from "./logging/Metrics";
 import onerror from "./onerror";
-import ShutdownHelper, { ShutdownOrder } from "./utils/ShutdownHelper";
+import services from "./services";
 import { checkConnection, sequelize } from "./storage/database";
 import RedisAdapter from "./storage/redis";
-import Metrics from "./logging/Metrics";
 import { PluginManager } from "./utils/PluginManager";
+import ShutdownHelper, { ShutdownOrder } from "./utils/ShutdownHelper";
+import { getArg } from "./utils/args";
+import { getSSLOptions } from "./utils/ssl";
+import { printEnv, checkPendingMigrations } from "./utils/startup";
+import { checkUpdates } from "./utils/updates";
+import { defaultRateLimiter } from "@server/middlewares/rateLimiter";
 
 // The number of processes to run, defaults to the number of CPU's available
 // for the web service, and 1 for collaboration during the beta period.

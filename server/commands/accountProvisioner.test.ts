@@ -1,12 +1,12 @@
 import { faker } from "@faker-js/faker";
 import { v4 as uuidv4 } from "uuid";
+import accountProvisioner from "./accountProvisioner";
 import WelcomeEmail from "@server/emails/templates/WelcomeEmail";
 import { TeamDomain } from "@server/models";
 import Collection from "@server/models/Collection";
 import UserAuthentication from "@server/models/UserAuthentication";
 import { buildUser, buildTeam, buildAdmin } from "@server/test/factories";
 import { setSelfHosted } from "@server/test/support";
-import accountProvisioner from "./accountProvisioner";
 
 describe("accountProvisioner", () => {
   const ip = "127.0.0.1";

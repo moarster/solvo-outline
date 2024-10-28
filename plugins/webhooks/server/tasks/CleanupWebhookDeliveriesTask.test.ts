@@ -1,7 +1,7 @@
 import { subDays } from "date-fns";
+import CleanupWebhookDeliveriesTask from "./CleanupWebhookDeliveriesTask";
 import { WebhookDelivery } from "@server/models";
 import { buildWebhookDelivery } from "@server/test/factories";
-import CleanupWebhookDeliveriesTask from "./CleanupWebhookDeliveriesTask";
 
 const deliveryExists = async (delivery: WebhookDelivery) => {
   const results = await WebhookDelivery.findOne({ where: { id: delivery.id } });

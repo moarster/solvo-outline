@@ -21,15 +21,6 @@ import {
   AfterCreate,
   DefaultScope,
 } from "sequelize-typescript";
-import { NotificationEventType } from "@shared/types";
-import env from "@server/env";
-import Model from "@server/models/base/Model";
-import {
-  getEmailMessageId,
-  getEmailThreadEventGroup,
-  isEmailThreadSupportedNotification,
-  MaxMessagesInEmailThread,
-} from "@server/utils/emails";
 import Collection from "./Collection";
 import Comment from "./Comment";
 import Document from "./Document";
@@ -38,6 +29,15 @@ import Revision from "./Revision";
 import Team from "./Team";
 import User from "./User";
 import Fix from "./decorators/Fix";
+import env from "@server/env";
+import Model from "@server/models/base/Model";
+import {
+  getEmailMessageId,
+  getEmailThreadEventGroup,
+  isEmailThreadSupportedNotification,
+  MaxMessagesInEmailThread,
+} from "@server/utils/emails";
+import { NotificationEventType } from "@shared/types";
 
 @Scopes(() => ({
   withTeam: {

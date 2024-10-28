@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
-import { UserRole } from "@shared/types";
-import { buildUser } from "@server/test/factories";
 import userInviter from "./userInviter";
+import { buildUser } from "@server/test/factories";
+import { UserRole } from "@shared/types";
 
 describe("userInviter", () => {
   const ip = "127.0.0.1";

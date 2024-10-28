@@ -1,7 +1,7 @@
-import { Notification } from "@server/models";
-import { APIContext } from "@server/types";
 import presentUser from "./user";
 import { presentComment, presentDocument } from ".";
+import { Notification } from "@server/models";
+import { APIContext } from "@server/types";
 
 export default async function presentNotification(
   ctx: APIContext | undefined,

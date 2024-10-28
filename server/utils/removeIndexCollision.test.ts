@@ -1,5 +1,5 @@
-import { buildCollection } from "@server/test/factories";
 import removeIndexCollision from "./removeIndexCollision";
+import { buildCollection } from "@server/test/factories";
 
 describe("removeIndexCollision", () => {
   it("should return the next available index", async () => {

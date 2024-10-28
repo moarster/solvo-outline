@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import WebhookSubscription from "~/models/WebhookSubscription";
 import ConfirmationDialog from "~/components/ConfirmationDialog";
+import WebhookSubscription from "~/models/WebhookSubscription";
 
 type Props = {
   webhook: WebhookSubscription;

@@ -7,6 +7,10 @@ import * as React from "react";
 import { useTranslation, Trans } from "react-i18next";
 import { toast } from "sonner";
 import { ThemeProvider, useTheme } from "styled-components";
+import TeamDelete from "../TeamDelete";
+import { ActionRow } from "./components/ActionRow";
+import ImageInput from "./components/ImageInput";
+import SettingRow from "./components/SettingRow";
 import { buildDarkTheme, buildLightTheme } from "@shared/styles/theme";
 import { CustomTheme, TOCPosition, TeamPreference } from "@shared/types";
 import { getBaseDomain } from "@shared/utils/domains";
@@ -24,10 +28,6 @@ import useCurrentTeam from "~/hooks/useCurrentTeam";
 import usePolicy from "~/hooks/usePolicy";
 import useStores from "~/hooks/useStores";
 import isCloudHosted from "~/utils/isCloudHosted";
-import TeamDelete from "../TeamDelete";
-import { ActionRow } from "./components/ActionRow";
-import ImageInput from "./components/ImageInput";
-import SettingRow from "./components/SettingRow";
 
 function Details() {
   const { dialogs, ui } = useStores();

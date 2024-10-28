@@ -1,7 +1,7 @@
 import invariant from "invariant";
 import JWT from "jsonwebtoken";
-import OAuthClient from "@server/utils/oauth";
 import env from "./env";
+import OAuthClient from "@server/utils/oauth";
 
 type AzurePayload = {
   /** A GUID that represents the Azure AD tenant that the user is from */

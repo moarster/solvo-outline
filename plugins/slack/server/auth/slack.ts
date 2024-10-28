@@ -3,8 +3,9 @@ import type { Context } from "koa";
 import Router from "koa-router";
 import { Profile } from "passport";
 import { Strategy as SlackStrategy } from "passport-slack-oauth2";
-import { IntegrationService, IntegrationType } from "@shared/types";
-import { parseDomain } from "@shared/utils/domains";
+import env from "../env";
+import * as Slack from "../slack";
+import * as T from "./schema";
 import accountProvisioner from "@server/commands/accountProvisioner";
 import { ValidationError } from "@server/errors";
 import auth from "@server/middlewares/authentication";
@@ -25,9 +26,8 @@ import {
   getTeamFromContext,
   StateStore,
 } from "@server/utils/passport";
-import env from "../env";
-import * as Slack from "../slack";
-import * as T from "./schema";
+import { IntegrationService, IntegrationType } from "@shared/types";
+import { parseDomain } from "@shared/utils/domains";
 import { SlackUtils } from "plugins/slack/shared/SlackUtils";
 
 type SlackProfile = Profile & {

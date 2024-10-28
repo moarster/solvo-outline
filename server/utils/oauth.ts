@@ -1,6 +1,6 @@
-import Logger from "@server/logging/Logger";
 import { AuthenticationError, InvalidRequestError } from "../errors";
 import fetch from "./fetch";
+import Logger from "@server/logging/Logger";
 
 export default abstract class OAuthClient {
   private clientId: string;

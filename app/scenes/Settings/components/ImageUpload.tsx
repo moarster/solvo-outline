@@ -8,12 +8,12 @@ import styled from "styled-components";
 import { s } from "@shared/styles";
 import { AttachmentPreset } from "@shared/types";
 import { AttachmentValidation } from "@shared/validations";
-import RootStore from "~/stores/RootStore";
 import Button from "~/components/Button";
 import Flex from "~/components/Flex";
 import LoadingIndicator from "~/components/LoadingIndicator";
 import Modal from "~/components/Modal";
 import withStores from "~/components/withStores";
+import RootStore from "~/stores/RootStore";
 import { compressImage } from "~/utils/compressImage";
 import { uploadFile, dataUrlToBlob } from "~/utils/files";
 

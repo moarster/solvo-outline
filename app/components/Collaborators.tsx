@@ -6,7 +6,6 @@ import { observer } from "mobx-react";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { usePopoverState, PopoverDisclosure } from "reakit/Popover";
-import Document from "~/models/Document";
 import { AvatarWithPresence } from "~/components/Avatar";
 import DocumentViews from "~/components/DocumentViews";
 import Facepile from "~/components/Facepile";
@@ -14,6 +13,7 @@ import NudeButton from "~/components/NudeButton";
 import Popover from "~/components/Popover";
 import useCurrentUser from "~/hooks/useCurrentUser";
 import useStores from "~/hooks/useStores";
+import Document from "~/models/Document";
 
 type Props = {
   /** The document to display live collaborators for */

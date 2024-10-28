@@ -1,8 +1,8 @@
-import { UnfurlResourceType } from "@shared/types";
 import env from "@server/env";
 import { User } from "@server/models";
 import { buildDocument, buildUser } from "@server/test/factories";
 import { getTestServer } from "@server/test/support";
+import { UnfurlResourceType } from "@shared/types";
 import Iframely from "plugins/iframely/server/iframely";
 
 jest.mock("dns", () => ({

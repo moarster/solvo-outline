@@ -1,8 +1,8 @@
 import { subDays } from "date-fns";
-import { FileOperationState, FileOperationType } from "@shared/types";
+import CleanupExpiredFileOperationsTask from "./CleanupExpiredFileOperationsTask";
 import { FileOperation } from "@server/models";
 import { buildFileOperation, buildTeam } from "@server/test/factories";
-import CleanupExpiredFileOperationsTask from "./CleanupExpiredFileOperationsTask";
+import { FileOperationState, FileOperationType } from "@shared/types";
 
 describe("CleanupExpiredFileOperationsTask", () => {
   it("should expire exports older than 15 days ago", async () => {

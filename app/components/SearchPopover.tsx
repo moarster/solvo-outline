@@ -4,6 +4,7 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { usePopoverState, PopoverDisclosure } from "reakit/Popover";
 import styled from "styled-components";
+import SearchListItem from "./SearchListItem";
 import { depths } from "@shared/styles";
 import Empty from "~/components/Empty";
 import { Outline } from "~/components/Input";
@@ -15,7 +16,6 @@ import { id as bodyContentId } from "~/components/SkipNavContent";
 import useKeyDown from "~/hooks/useKeyDown";
 import useStores from "~/hooks/useStores";
 import { SearchResult } from "~/types";
-import SearchListItem from "./SearchListItem";
 
 interface Props extends React.HTMLAttributes<HTMLInputElement> {
   shareId: string;

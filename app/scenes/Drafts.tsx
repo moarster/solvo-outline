@@ -5,8 +5,8 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory, useLocation } from "react-router-dom";
 import styled from "styled-components";
+import DateFilter from "./Search/components/DateFilter";
 import { DateFilter as TDateFilter } from "@shared/types";
-import CollectionFilter from "~/scenes/Search/components/CollectionFilter";
 import { Action } from "~/components/Actions";
 import Empty from "~/components/Empty";
 import Flex from "~/components/Flex";
@@ -17,7 +17,7 @@ import Scene from "~/components/Scene";
 import Subheading from "~/components/Subheading";
 import useStores from "~/hooks/useStores";
 import NewDocumentMenu from "~/menus/NewDocumentMenu";
-import DateFilter from "./Search/components/DateFilter";
+import CollectionFilter from "~/scenes/Search/components/CollectionFilter";
 
 function Drafts() {
   const { t } = useTranslation();

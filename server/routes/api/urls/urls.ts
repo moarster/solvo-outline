@@ -1,10 +1,6 @@
 import dns from "dns";
 import Router from "koa-router";
-import { UnfurlResourceType } from "@shared/types";
-import { getBaseDomain, parseDomain } from "@shared/utils/domains";
-import parseDocumentSlug from "@shared/utils/parseDocumentSlug";
-import parseMentionUrl from "@shared/utils/parseMentionUrl";
-import { isInternalUrl } from "@shared/utils/urls";
+import * as T from "./schema";
 import { NotFoundError, ValidationError } from "@server/errors";
 import auth from "@server/middlewares/authentication";
 import { rateLimiter } from "@server/middlewares/rateLimiter";
@@ -16,7 +12,11 @@ import { APIContext, Unfurl } from "@server/types";
 import { CacheHelper } from "@server/utils/CacheHelper";
 import { Hook, PluginManager } from "@server/utils/PluginManager";
 import { RateLimiterStrategy } from "@server/utils/RateLimiter";
-import * as T from "./schema";
+import { UnfurlResourceType } from "@shared/types";
+import { getBaseDomain, parseDomain } from "@shared/utils/domains";
+import parseDocumentSlug from "@shared/utils/parseDocumentSlug";
+import parseMentionUrl from "@shared/utils/parseMentionUrl";
+import { isInternalUrl } from "@shared/utils/urls";
 
 const router = new Router();
 const plugins = PluginManager.getHooks(Hook.UnfurlProvider);

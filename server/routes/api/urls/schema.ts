@@ -1,10 +1,10 @@
 import isNil from "lodash/isNil";
 import isUUID from "validator/lib/isUUID";
 import { z } from "zod";
+import { BaseSchema } from "../schema";
+import { ValidateURL } from "@server/validation";
 import { UrlHelper } from "@shared/utils/UrlHelper";
 import { isUrl } from "@shared/utils/urls";
-import { ValidateURL } from "@server/validation";
-import { BaseSchema } from "../schema";
 
 export const UrlsUnfurlSchema = BaseSchema.extend({
   body: z

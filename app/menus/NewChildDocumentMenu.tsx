@@ -2,11 +2,11 @@ import { observer } from "mobx-react";
 import * as React from "react";
 import { useTranslation, Trans } from "react-i18next";
 import { useMenuState, MenuButton, MenuButtonHTMLProps } from "reakit/Menu";
-import Document from "~/models/Document";
 import ContextMenu from "~/components/ContextMenu";
 import Template from "~/components/ContextMenu/Template";
 import usePolicy from "~/hooks/usePolicy";
 import useStores from "~/hooks/useStores";
+import Document from "~/models/Document";
 import { MenuItem } from "~/types";
 import { newDocumentPath, newNestedDocumentPath } from "~/utils/routeHelpers";
 

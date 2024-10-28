@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import Button from "~/components/Button";
 import { SlackUtils } from "../../shared/SlackUtils";
+import Button from "~/components/Button";
 
 type Props = {
   scopes?: string[];

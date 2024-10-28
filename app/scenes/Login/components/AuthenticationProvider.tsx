@@ -2,12 +2,12 @@ import { EmailIcon } from "outline-icons";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { getRedirectUrl } from "../urls";
 import ButtonLarge from "~/components/ButtonLarge";
 import InputLarge from "~/components/InputLarge";
 import PluginIcon from "~/components/PluginIcon";
 import { client } from "~/utils/ApiClient";
 import Desktop from "~/utils/Desktop";
-import { getRedirectUrl } from "../urls";
 
 type Props = React.ComponentProps<typeof ButtonLarge> & {
   id: string;

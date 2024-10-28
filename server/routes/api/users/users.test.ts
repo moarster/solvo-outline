@@ -1,4 +1,3 @@
-import { TeamPreference, UserRole } from "@shared/types";
 import {
   buildTeam,
   buildAdmin,
@@ -7,6 +6,7 @@ import {
   buildViewer,
 } from "@server/test/factories";
 import { getTestServer } from "@server/test/support";
+import { TeamPreference, UserRole } from "@shared/types";
 
 const server = getTestServer();
 

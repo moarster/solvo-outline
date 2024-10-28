@@ -1,9 +1,9 @@
 import { Op } from "sequelize";
-import { TeamPreference, UserRole } from "@shared/types";
+import BaseProcessor from "./BaseProcessor";
 import Logger from "@server/logging/Logger";
 import { ApiKey, User } from "@server/models";
 import { Event, TeamEvent } from "@server/types";
-import BaseProcessor from "./BaseProcessor";
+import { TeamPreference, UserRole } from "@shared/types";
 
 export default class ApiKeyCleanupProcessor extends BaseProcessor {
   static applicableEvents: Event["name"][] = ["teams.update"];

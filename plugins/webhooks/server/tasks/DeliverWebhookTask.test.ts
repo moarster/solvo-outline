@@ -1,5 +1,6 @@
 import fetchMock from "jest-fetch-mock";
 import { v4 as uuidv4 } from "uuid";
+import DeliverWebhookTask from "./DeliverWebhookTask";
 import { WebhookDelivery } from "@server/models";
 import {
   buildUser,
@@ -7,7 +8,6 @@ import {
   buildWebhookSubscription,
 } from "@server/test/factories";
 import { UserEvent } from "@server/types";
-import DeliverWebhookTask from "./DeliverWebhookTask";
 
 beforeEach(async () => {
   jest.resetAllMocks();

@@ -1,9 +1,9 @@
 import orderBy from "lodash/orderBy";
 import { computed } from "mobx";
-import { FileOperationType } from "@shared/types";
-import FileOperation from "~/models/FileOperation";
 import RootStore from "./RootStore";
 import Store, { RPCAction } from "./base/Store";
+import { FileOperationType } from "@shared/types";
+import FileOperation from "~/models/FileOperation";
 
 export default class FileOperationsStore extends Store<FileOperation> {
   actions = [RPCAction.List, RPCAction.Info, RPCAction.Delete];

@@ -1,6 +1,6 @@
+import pinCreator from "./pinCreator";
 import { Event } from "@server/models";
 import { buildDocument, buildUser } from "@server/test/factories";
-import pinCreator from "./pinCreator";
 
 describe("pinCreator", () => {
   const ip = "127.0.0.1";

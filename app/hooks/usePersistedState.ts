@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Primitive } from "utility-types";
+import useEventListener from "./useEventListener";
 import Storage from "@shared/utils/Storage";
 import Logger from "~/utils/Logger";
-import useEventListener from "./useEventListener";
 
 type Options = {
   /* Whether to listen and react to changes in the value from other tabs */

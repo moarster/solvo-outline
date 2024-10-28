@@ -1,5 +1,4 @@
 import { Op } from "sequelize";
-import { NotificationEventType } from "@shared/types";
 import Logger from "@server/logging/Logger";
 import {
   User,
@@ -9,6 +8,7 @@ import {
   Comment,
   View,
 } from "@server/models";
+import { NotificationEventType } from "@shared/types";
 
 export default class NotificationHelper {
   /**

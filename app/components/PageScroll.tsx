@@ -1,8 +1,8 @@
 import * as React from "react";
 import styled from "styled-components";
+import ScrollContext from "./ScrollContext";
 import useMediaQuery from "~/hooks/useMediaQuery";
 import useMobile from "~/hooks/useMobile";
-import ScrollContext from "./ScrollContext";
 
 type Props = {
   children: React.ReactNode;

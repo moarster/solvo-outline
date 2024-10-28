@@ -1,5 +1,8 @@
 import invariant from "invariant";
 import { action, computed, observable, runInAction } from "mobx";
+import User from "./User";
+import Field from "./decorators/Field";
+import { AfterChange } from "./decorators/Lifecycle";
 import {
   CollectionPermission,
   FileOperationFormat,
@@ -9,13 +12,10 @@ import {
 } from "@shared/types";
 import { ProsemirrorHelper } from "@shared/utils/ProsemirrorHelper";
 import { sortNavigationNodes } from "@shared/utils/collections";
-import type CollectionsStore from "~/stores/CollectionsStore";
 import Document from "~/models/Document";
 import ParanoidModel from "~/models/base/ParanoidModel";
+import type CollectionsStore from "~/stores/CollectionsStore";
 import { client } from "~/utils/ApiClient";
-import User from "./User";
-import Field from "./decorators/Field";
-import { AfterChange } from "./decorators/Lifecycle";
 
 export default class Collection extends ParanoidModel {
   static modelName = "Collection";

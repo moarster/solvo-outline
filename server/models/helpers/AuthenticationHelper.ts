@@ -1,4 +1,3 @@
- 
 import find from "lodash/find";
 import env from "@server/env";
 import Team from "@server/models/Team";

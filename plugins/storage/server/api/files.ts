@@ -1,6 +1,7 @@
 import JWT from "jsonwebtoken";
 import Router from "koa-router";
 import mime from "mime-types";
+import * as T from "./schema";
 import env from "@server/env";
 import {
   AuthenticationError,
@@ -19,7 +20,6 @@ import LocalStorage from "@server/storage/files/LocalStorage";
 import { APIContext } from "@server/types";
 import { RateLimiterStrategy } from "@server/utils/RateLimiter";
 import { getJWTPayload } from "@server/utils/jwt";
-import * as T from "./schema";
 
 const router = new Router();
 

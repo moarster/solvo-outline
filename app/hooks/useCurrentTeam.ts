@@ -1,6 +1,6 @@
 import invariant from "invariant";
-import Team from "~/models/Team";
 import useStores from "./useStores";
+import Team from "~/models/Team";
 
 /**
  * Returns the current team, or undefined if there is no current team and `rejectOnEmpty` is set to

@@ -4,14 +4,7 @@ import chunk from "lodash/chunk";
 import truncate from "lodash/truncate";
 import { InferCreationAttributes } from "sequelize";
 import tmp from "tmp";
-import {
-  AttachmentPreset,
-  CollectionPermission,
-  CollectionSort,
-  FileOperationState,
-  ProsemirrorData,
-} from "@shared/types";
-import { CollectionValidation } from "@shared/validations";
+import BaseTask, { TaskPriority } from "./BaseTask";
 import attachmentCreator from "@server/commands/attachmentCreator";
 import documentCreator from "@server/commands/documentCreator";
 import { serializer } from "@server/editor";
@@ -28,7 +21,14 @@ import {
 import { sequelize } from "@server/storage/database";
 import ZipHelper from "@server/utils/ZipHelper";
 import { generateUrlId } from "@server/utils/url";
-import BaseTask, { TaskPriority } from "./BaseTask";
+import {
+  AttachmentPreset,
+  CollectionPermission,
+  CollectionSort,
+  FileOperationState,
+  ProsemirrorData,
+} from "@shared/types";
+import { CollectionValidation } from "@shared/validations";
 
 type Props = {
   fileOperationId: string;
@@ -369,7 +369,8 @@ export default abstract class ImportTask extends BaseTask<Props> {
             sort: item.sort,
             createdById: fileOperation.userId,
             permission:
-              item.permission ?? fileOperation.options?.permission !== undefined
+              (item.permission ??
+              fileOperation.options?.permission !== undefined)
                 ? fileOperation.options?.permission
                 : CollectionPermission.ReadWrite,
             importId: fileOperation.id,

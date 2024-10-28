@@ -1,7 +1,7 @@
 import invariant from "invariant";
-import { AttachmentPreset } from "@shared/types";
 import { client } from "./ApiClient";
 import Logger from "./Logger";
+import { AttachmentPreset } from "@shared/types";
 
 type UploadOptions = {
   /** The user facing name of the file */

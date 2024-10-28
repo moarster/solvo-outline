@@ -1,9 +1,9 @@
 import i18n from "i18next";
 import backend from "i18next-http-backend";
 import { initReactI18next } from "react-i18next";
+import Logger from "./Logger";
 import { languages } from "@shared/i18n";
 import { unicodeCLDRtoBCP47, unicodeBCP47toCLDR } from "@shared/utils/date";
-import Logger from "./Logger";
 
 /**
  * Initializes i18n library, loading all available translations from the

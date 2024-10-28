@@ -1,6 +1,7 @@
 import { FetchError } from "node-fetch";
 import { Op } from "sequelize";
-import { colorPalette } from "@shared/utils/collections";
+import presentWebhook, { WebhookPayload } from "../presenters/webhook";
+import presentWebhookSubscription from "../presenters/webhookSubscription";
 import WebhookDisabledEmail from "@server/emails/templates/WebhookDisabledEmail";
 import env from "@server/env";
 import Logger from "@server/logging/Logger";
@@ -67,8 +68,7 @@ import {
   WebhookSubscriptionEvent,
 } from "@server/types";
 import fetch from "@server/utils/fetch";
-import presentWebhook, { WebhookPayload } from "../presenters/webhook";
-import presentWebhookSubscription from "../presenters/webhookSubscription";
+import { colorPalette } from "@shared/utils/collections";
 
 function assertUnreachable(event: never) {
   Logger.warn(`DeliverWebhookTask did not handle ${(event as Event).name}`);

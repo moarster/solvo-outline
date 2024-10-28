@@ -6,16 +6,16 @@ import {
 } from "@octokit/auth-app";
 import { Octokit } from "octokit";
 import pluralize from "pluralize";
+import env from "./env";
+import Logger from "@server/logging/Logger";
+import { Integration, User } from "@server/models";
+import { UnfurlSignature } from "@server/types";
 import {
   IntegrationService,
   IntegrationType,
   JSONObject,
   UnfurlResourceType,
 } from "@shared/types";
-import Logger from "@server/logging/Logger";
-import { Integration, User } from "@server/models";
-import { UnfurlSignature } from "@server/types";
-import env from "./env";
 
 const requestPlugin = (octokit: Octokit) => ({
   requestPR: async (params: ReturnType<typeof GitHub.parseUrl>) =>

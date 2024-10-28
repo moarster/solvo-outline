@@ -7,7 +7,7 @@ import { withTranslation, WithTranslation } from "react-i18next";
 import { io, Socket } from "socket.io-client";
 import { toast } from "sonner";
 import { FileOperationState, FileOperationType } from "@shared/types";
-import RootStore from "~/stores/RootStore";
+import withStores from "~/components/withStores";
 import Collection from "~/models/Collection";
 import Comment from "~/models/Comment";
 import Document from "~/models/Document";
@@ -23,7 +23,7 @@ import Subscription from "~/models/Subscription";
 import Team from "~/models/Team";
 import User from "~/models/User";
 import UserMembership from "~/models/UserMembership";
-import withStores from "~/components/withStores";
+import RootStore from "~/stores/RootStore";
 import {
   PartialExcept,
   WebsocketCollectionUpdateIndexEvent,

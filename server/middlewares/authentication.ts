@@ -1,7 +1,10 @@
 import { Next } from "koa";
 import capitalize from "lodash/capitalize";
-import { UserRole } from "@shared/types";
-import { UserRoleHelper } from "@shared/utils/UserRoleHelper";
+import {
+  AuthenticationError,
+  AuthorizationError,
+  UserSuspendedError,
+} from "../errors";
 import Logger from "@server/logging/Logger";
 import tracer, {
   addTags,
@@ -10,11 +13,8 @@ import tracer, {
 import { User, Team, ApiKey } from "@server/models";
 import { AppContext, AuthenticationType } from "@server/types";
 import { getUserForJWT } from "@server/utils/jwt";
-import {
-  AuthenticationError,
-  AuthorizationError,
-  UserSuspendedError,
-} from "../errors";
+import { UserRole } from "@shared/types";
+import { UserRoleHelper } from "@shared/utils/UserRoleHelper";
 
 type AuthenticationOptions = {
   /** Role requuired to access the route. */

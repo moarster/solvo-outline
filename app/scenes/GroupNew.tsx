@@ -2,14 +2,14 @@ import { observer } from "mobx-react";
 import * as React from "react";
 import { useTranslation, Trans } from "react-i18next";
 import { toast } from "sonner";
-import Group from "~/models/Group";
-import GroupMembers from "~/scenes/GroupMembers";
 import Button from "~/components/Button";
 import Flex from "~/components/Flex";
 import Input from "~/components/Input";
 import Modal from "~/components/Modal";
 import Text from "~/components/Text";
 import useStores from "~/hooks/useStores";
+import Group from "~/models/Group";
+import GroupMembers from "~/scenes/GroupMembers";
 
 type Props = {
   onSubmit: () => void;

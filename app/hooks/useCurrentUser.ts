@@ -1,6 +1,6 @@
 import invariant from "invariant";
-import User from "~/models/User";
 import useStores from "./useStores";
+import User from "~/models/User";
 
 /**
  * Returns the current user, or undefined if there is no current user and `rejectOnEmpty` is set to

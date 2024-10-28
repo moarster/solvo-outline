@@ -1,5 +1,7 @@
 import Router from "koa-router";
 import { Sequelize } from "sequelize";
+import pagination from "../middlewares/pagination";
+import * as T from "./schema";
 import starCreator from "@server/commands/starCreator";
 import starDestroyer from "@server/commands/starDestroyer";
 import starUpdater from "@server/commands/starUpdater";
@@ -15,8 +17,6 @@ import {
 } from "@server/presenters";
 import { APIContext } from "@server/types";
 import { starIndexing } from "@server/utils/indexing";
-import pagination from "../middlewares/pagination";
-import * as T from "./schema";
 
 const router = new Router();
 

@@ -7,15 +7,6 @@ import { Trans, useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import styled, { useTheme } from "styled-components";
-import Squircle from "@shared/components/Squircle";
-import { s } from "@shared/styles";
-import { UrlHelper } from "@shared/utils/UrlHelper";
-import Document from "~/models/Document";
-import Share from "~/models/Share";
-import Input, { NativeInput } from "~/components/Input";
-import Switch from "~/components/Switch";
-import env from "~/env";
-import usePolicy from "~/hooks/usePolicy";
 import { AvatarSize } from "../../Avatar";
 import CopyToClipboard from "../../CopyToClipboard";
 import NudeButton from "../../NudeButton";
@@ -23,6 +14,15 @@ import { ResizingHeightContainer } from "../../ResizingHeightContainer";
 import Text from "../../Text";
 import Tooltip from "../../Tooltip";
 import { ListItem } from "../components/ListItem";
+import Squircle from "@shared/components/Squircle";
+import { s } from "@shared/styles";
+import { UrlHelper } from "@shared/utils/UrlHelper";
+import Input, { NativeInput } from "~/components/Input";
+import Switch from "~/components/Switch";
+import env from "~/env";
+import usePolicy from "~/hooks/usePolicy";
+import Document from "~/models/Document";
+import Share from "~/models/Share";
 
 type Props = {
   /** The document to share. */
@@ -102,7 +102,7 @@ function PublicAccess({ document, share, sharedParent }: Props) {
 
   const shareUrl = sharedParent?.url
     ? `${sharedParent.url}${document.url}`
-    : share?.url ?? "";
+    : (share?.url ?? "");
 
   const copyButton = (
     <Tooltip content={t("Copy public link")} delay={500} placement="top">

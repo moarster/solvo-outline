@@ -1,9 +1,9 @@
 import { computed } from "mobx";
 import { IntegrationService, IntegrationType } from "@shared/types";
 import naturalSort from "@shared/utils/naturalSort";
+import Integration from "~/models/Integration";
 import RootStore from "~/stores/RootStore";
 import Store from "~/stores/base/Store";
-import Integration from "~/models/Integration";
 
 class IntegrationsStore extends Store<Integration> {
   constructor(rootStore: RootStore) {

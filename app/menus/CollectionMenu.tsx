@@ -15,11 +15,6 @@ import { useMenuState, MenuButton, MenuButtonHTMLProps } from "reakit/Menu";
 import { VisuallyHidden } from "reakit/VisuallyHidden";
 import { toast } from "sonner";
 import { getEventFiles } from "@shared/utils/files";
-import Collection from "~/models/Collection";
-import ContextMenu, { Placement } from "~/components/ContextMenu";
-import OverflowMenuButton from "~/components/ContextMenu/OverflowMenuButton";
-import Template from "~/components/ContextMenu/Template";
-import ExportDialog from "~/components/ExportDialog";
 import { actionToMenuItem } from "~/actions";
 import {
   deleteCollection,
@@ -32,10 +27,15 @@ import {
   archiveCollection,
   restoreCollection,
 } from "~/actions/definitions/collections";
+import ContextMenu, { Placement } from "~/components/ContextMenu";
+import OverflowMenuButton from "~/components/ContextMenu/OverflowMenuButton";
+import Template from "~/components/ContextMenu/Template";
+import ExportDialog from "~/components/ExportDialog";
 import useActionContext from "~/hooks/useActionContext";
 import useCurrentTeam from "~/hooks/useCurrentTeam";
 import usePolicy from "~/hooks/usePolicy";
 import useStores from "~/hooks/useStores";
+import Collection from "~/models/Collection";
 import { MenuItem } from "~/types";
 import { newDocumentPath } from "~/utils/routeHelpers";
 

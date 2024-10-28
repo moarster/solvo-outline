@@ -1,12 +1,12 @@
 import { observable } from "mobx";
-import { DocumentPermission } from "@shared/types";
-import type UserMembershipsStore from "~/stores/UserMembershipsStore";
 import Document from "./Document";
 import User from "./User";
 import Model from "./base/Model";
 import Field from "./decorators/Field";
 import { AfterRemove } from "./decorators/Lifecycle";
 import Relation from "./decorators/Relation";
+import { DocumentPermission } from "@shared/types";
+import type UserMembershipsStore from "~/stores/UserMembershipsStore";
 
 class UserMembership extends Model {
   static modelName = "UserMembership";

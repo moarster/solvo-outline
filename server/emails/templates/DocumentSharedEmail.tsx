@@ -1,12 +1,12 @@
 import * as React from "react";
-import { DocumentPermission } from "@shared/types";
-import { Document, UserMembership } from "@server/models";
 import BaseEmail, { EmailProps } from "./BaseEmail";
 import Body from "./components/Body";
 import Button from "./components/Button";
 import EmailTemplate from "./components/EmailLayout";
 import Header from "./components/Header";
 import Heading from "./components/Heading";
+import { Document, UserMembership } from "@server/models";
+import { DocumentPermission } from "@shared/types";
 
 type InputProps = EmailProps & {
   userId: string;

@@ -3,6 +3,13 @@ import { SidebarIcon } from "outline-icons";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { useTeamContext } from "../TeamContext";
+import TeamLogo from "../TeamLogo";
+import Sidebar from "./Sidebar";
+import Section from "./components/Section";
+import DocumentLink from "./components/SharedDocumentLink";
+import SidebarButton from "./components/SidebarButton";
+import ToggleButton from "./components/ToggleButton";
 import { NavigationNode } from "@shared/types";
 import Flex from "~/components/Flex";
 import Scrollable from "~/components/Scrollable";
@@ -14,13 +21,6 @@ import { hover } from "~/styles";
 import history from "~/utils/history";
 import { metaDisplay } from "~/utils/keyboard";
 import { homePath, sharedDocumentPath } from "~/utils/routeHelpers";
-import { useTeamContext } from "../TeamContext";
-import TeamLogo from "../TeamLogo";
-import Sidebar from "./Sidebar";
-import Section from "./components/Section";
-import DocumentLink from "./components/SharedDocumentLink";
-import SidebarButton from "./components/SidebarButton";
-import ToggleButton from "./components/ToggleButton";
 
 type Props = {
   rootNode: NavigationNode;
@@ -122,7 +122,9 @@ const ToggleWrapper = styled.div`
   right: 0;
   opacity: 0;
   transform: translateX(10px);
-  transition: opacity 100ms ease-out, transform 100ms ease-out;
+  transition:
+    opacity 100ms ease-out,
+    transform 100ms ease-out;
 `;
 
 const StyledSidebar = styled(Sidebar)<{ $hoverTransition: boolean }>`

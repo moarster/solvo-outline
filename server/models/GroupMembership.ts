@@ -20,13 +20,13 @@ import {
   AfterUpdate,
   AfterDestroy,
 } from "sequelize-typescript";
-import { CollectionPermission, DocumentPermission } from "@shared/types";
 import Collection from "./Collection";
 import Document from "./Document";
 import Group from "./Group";
 import User from "./User";
 import ParanoidModel from "./base/ParanoidModel";
 import Fix from "./decorators/Fix";
+import { CollectionPermission, DocumentPermission } from "@shared/types";
 
 /**
  * Represents a group's permission to access a collection or document.

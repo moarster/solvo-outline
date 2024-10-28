@@ -2,10 +2,10 @@ import { observer } from "mobx-react";
 import * as React from "react";
 import { Trans } from "react-i18next";
 import styled from "styled-components";
-import Collection from "~/models/Collection";
 import Fade from "~/components/Fade";
 import Flex from "~/components/Flex";
 import Text from "~/components/Text";
+import Collection from "~/models/Collection";
 
 type Props = {
   /** The collection to display the empty state for. */

@@ -1,4 +1,4 @@
-import { DocumentPermission, StatusFilter } from "@shared/types";
+import UserMembership from "../UserMembership";
 import SearchHelper from "@server/models/helpers/SearchHelper";
 import {
   buildDocument,
@@ -8,7 +8,7 @@ import {
   buildUser,
   buildShare,
 } from "@server/test/factories";
-import UserMembership from "../UserMembership";
+import { DocumentPermission, StatusFilter } from "@shared/types";
 
 beforeEach(async () => {
   jest.resetAllMocks();

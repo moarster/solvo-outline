@@ -1,10 +1,10 @@
 import * as React from "react";
 import { Trans } from "react-i18next";
+import DropToImport from "./DropToImport";
+import HelpDisclosure from "./HelpDisclosure";
 import { FileOperationFormat } from "@shared/types";
 import env from "~/env";
 import useStores from "~/hooks/useStores";
-import DropToImport from "./DropToImport";
-import HelpDisclosure from "./HelpDisclosure";
 
 function ImportJSONDialog() {
   const { dialogs } = useStores();

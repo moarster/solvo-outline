@@ -17,9 +17,6 @@ import {
   Unique,
   BeforeUpdate,
 } from "sequelize-typescript";
-import { UrlHelper } from "@shared/utils/UrlHelper";
-import env from "@server/env";
-import { ValidationError } from "@server/errors";
 import Collection from "./Collection";
 import Document from "./Document";
 import Team from "./Team";
@@ -28,6 +25,9 @@ import IdModel from "./base/IdModel";
 import Fix from "./decorators/Fix";
 import IsFQDN from "./validators/IsFQDN";
 import Length from "./validators/Length";
+import env from "@server/env";
+import { ValidationError } from "@server/errors";
+import { UrlHelper } from "@shared/utils/UrlHelper";
 
 @DefaultScope(() => ({
   include: [

@@ -5,12 +5,12 @@ import isUndefined from "lodash/isUndefined";
 import orderBy from "lodash/orderBy";
 import { action, computed } from "mobx";
 import type { Required } from "utility-types";
+import RootStore from "./RootStore";
+import Store, { RPCAction } from "./base/Store";
 import type { JSONObject } from "@shared/types";
 import Share from "~/models/Share";
 import type { Properties } from "~/types";
 import { client } from "~/utils/ApiClient";
-import RootStore from "./RootStore";
-import Store, { RPCAction } from "./base/Store";
 
 export default class SharesStore extends Store<Share> {
   actions = [

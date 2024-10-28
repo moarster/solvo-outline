@@ -1,4 +1,4 @@
-import { NotificationEventType } from "@shared/types";
+import Notification from "./Notification";
 import {
   buildCollection,
   buildComment,
@@ -11,7 +11,7 @@ import {
   getEmailMessageId,
   MaxMessagesInEmailThread,
 } from "@server/utils/emails";
-import Notification from "./Notification";
+import { NotificationEventType } from "@shared/types";
 
 describe("Notification", () => {
   describe("emailReferences", () => {

@@ -1,6 +1,6 @@
-import { Attachment, User, Team } from "@server/models";
 import { allow } from "./cancan";
 import { and, isOwner, isTeamModel, or } from "./utils";
+import { Attachment, User, Team } from "@server/models";
 
 allow(User, "createAttachment", Team, isTeamModel);
 

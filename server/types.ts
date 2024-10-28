@@ -2,17 +2,6 @@ import { ParameterizedContext, DefaultContext } from "koa";
 import { IRouterParamContext } from "koa-router";
 import { InferAttributes, Model, Transaction } from "sequelize";
 import { z } from "zod";
-import {
-  CollectionSort,
-  NavigationNode,
-  Client,
-  CollectionPermission,
-  DocumentPermission,
-  JSONValue,
-  UnfurlResourceType,
-  ProsemirrorData,
-} from "@shared/types";
-import { BaseSchema } from "@server/routes/api/schema";
 import { AccountProvisionerResult } from "./commands/accountProvisioner";
 import type {
   ApiKey,
@@ -37,6 +26,17 @@ import type {
   Share,
   GroupMembership,
 } from "./models";
+import { BaseSchema } from "@server/routes/api/schema";
+import {
+  CollectionSort,
+  NavigationNode,
+  Client,
+  CollectionPermission,
+  DocumentPermission,
+  JSONValue,
+  UnfurlResourceType,
+  ProsemirrorData,
+} from "@shared/types";
 
 export enum AuthenticationType {
   API = "api",

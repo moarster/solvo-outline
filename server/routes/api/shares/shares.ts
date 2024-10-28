@@ -1,6 +1,8 @@
 import Router from "koa-router";
 import isUndefined from "lodash/isUndefined";
 import { Op, WhereOptions } from "sequelize";
+import pagination from "../middlewares/pagination";
+import * as T from "./schema";
 import { NotFoundError } from "@server/errors";
 import auth from "@server/middlewares/authentication";
 import validate from "@server/middlewares/validate";
@@ -8,8 +10,6 @@ import { Document, User, Event, Share, Team, Collection } from "@server/models";
 import { authorize } from "@server/policies";
 import { presentShare, presentPolicies } from "@server/presenters";
 import { APIContext } from "@server/types";
-import pagination from "../middlewares/pagination";
-import * as T from "./schema";
 
 const router = new Router();
 

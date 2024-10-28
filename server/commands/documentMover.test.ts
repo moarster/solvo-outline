@@ -1,3 +1,4 @@
+import documentMover from "./documentMover";
 import Pin from "@server/models/Pin";
 import { sequelize } from "@server/storage/database";
 import {
@@ -6,7 +7,6 @@ import {
   buildTeam,
   buildUser,
 } from "@server/test/factories";
-import documentMover from "./documentMover";
 
 describe("documentMover", () => {
   const ip = "127.0.0.1";

@@ -11,16 +11,10 @@ import { VisuallyHidden } from "reakit/VisuallyHidden";
 import { toast } from "sonner";
 import styled from "styled-components";
 import breakpoint from "styled-components-breakpoint";
+import { MenuContext, useMenuContext } from "./MenuContext";
 import { s } from "@shared/styles";
 import { UserPreference } from "@shared/types";
 import { getEventFiles } from "@shared/utils/files";
-import Document from "~/models/Document";
-import ContextMenu from "~/components/ContextMenu";
-import OverflowMenuButton from "~/components/ContextMenu/OverflowMenuButton";
-import Separator from "~/components/ContextMenu/Separator";
-import Template from "~/components/ContextMenu/Template";
-import CollectionIcon from "~/components/Icons/CollectionIcon";
-import Switch from "~/components/Switch";
 import { actionToMenuItem } from "~/actions";
 import {
   pinDocument,
@@ -49,6 +43,12 @@ import {
   searchInDocument,
   moveTemplate,
 } from "~/actions/definitions/documents";
+import ContextMenu from "~/components/ContextMenu";
+import OverflowMenuButton from "~/components/ContextMenu/OverflowMenuButton";
+import Separator from "~/components/ContextMenu/Separator";
+import Template from "~/components/ContextMenu/Template";
+import CollectionIcon from "~/components/Icons/CollectionIcon";
+import Switch from "~/components/Switch";
 import useActionContext from "~/hooks/useActionContext";
 import useBoolean from "~/hooks/useBoolean";
 import useCurrentUser from "~/hooks/useCurrentUser";
@@ -56,9 +56,9 @@ import useMobile from "~/hooks/useMobile";
 import usePolicy from "~/hooks/usePolicy";
 import useRequest from "~/hooks/useRequest";
 import useStores from "~/hooks/useStores";
+import Document from "~/models/Document";
 import { MenuItem } from "~/types";
 import { documentEditPath } from "~/utils/routeHelpers";
-import { MenuContext, useMenuContext } from "./MenuContext";
 
 type Props = {
   /** Document for which the menu is to be shown */

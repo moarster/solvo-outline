@@ -1,10 +1,10 @@
 import * as React from "react";
 import { StaticContext } from "react-router";
 import { RouteComponentProps } from "react-router-dom";
-import { useLastVisitedPath } from "~/hooks/useLastVisitedPath";
-import useStores from "~/hooks/useStores";
 import DataLoader from "./components/DataLoader";
 import Document from "./components/Document";
+import { useLastVisitedPath } from "~/hooks/useLastVisitedPath";
+import useStores from "~/hooks/useStores";
 
 type Params = {
   documentSlug: string;

@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 import breakpoint from "styled-components-breakpoint";
 import { s, ellipsis } from "@shared/styles";
-import Document from "~/models/Document";
 import Highlight, { Mark } from "~/components/Highlight";
+import Document from "~/models/Document";
 import { hover } from "~/styles";
 import { sharedDocumentPath } from "~/utils/routeHelpers";
 

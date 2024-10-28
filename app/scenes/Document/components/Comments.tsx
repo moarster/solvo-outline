@@ -4,6 +4,10 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
+import CommentForm from "./CommentForm";
+import CommentSortMenu from "./CommentSortMenu";
+import CommentThread from "./CommentThread";
+import Sidebar from "./SidebarLayout";
 import { ProsemirrorData, UserPreference } from "@shared/types";
 import { useDocumentContext } from "~/components/DocumentContext";
 import Empty from "~/components/Empty";
@@ -17,10 +21,6 @@ import usePolicy from "~/hooks/usePolicy";
 import useQuery from "~/hooks/useQuery";
 import useStores from "~/hooks/useStores";
 import { CommentSortOption, CommentSortType } from "~/types";
-import CommentForm from "./CommentForm";
-import CommentSortMenu from "./CommentSortMenu";
-import CommentThread from "./CommentThread";
-import Sidebar from "./SidebarLayout";
 
 function Comments() {
   const { ui, comments, documents } = useStores();

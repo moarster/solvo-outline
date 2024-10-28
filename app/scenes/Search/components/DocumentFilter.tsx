@@ -1,9 +1,9 @@
 import { CloseIcon } from "outline-icons";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import Document from "~/models/Document";
 import { StyledButton } from "~/components/FilterOptions";
 import Tooltip from "~/components/Tooltip";
+import Document from "~/models/Document";
 
 type Props = {
   /** The currently selected document */

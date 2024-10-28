@@ -8,9 +8,9 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { s } from "@shared/styles";
-import type SearchQuery from "~/models/SearchQuery";
 import NudeButton from "~/components/NudeButton";
 import Tooltip from "~/components/Tooltip";
+import type SearchQuery from "~/models/SearchQuery";
 import { hover } from "~/styles";
 import { searchPath } from "~/utils/routeHelpers";
 

@@ -1,14 +1,14 @@
 import Router from "koa-router";
 import { Op, WhereOptions } from "sequelize";
-import { EventHelper } from "@shared/utils/EventHelper";
+import pagination from "../middlewares/pagination";
+import * as T from "./schema";
 import auth from "@server/middlewares/authentication";
 import validate from "@server/middlewares/validate";
 import { Event, User, Collection } from "@server/models";
 import { authorize } from "@server/policies";
 import { presentEvent } from "@server/presenters";
 import { APIContext } from "@server/types";
-import pagination from "../middlewares/pagination";
-import * as T from "./schema";
+import { EventHelper } from "@shared/utils/EventHelper";
 
 const router = new Router();
 

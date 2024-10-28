@@ -1,11 +1,11 @@
 import chalk from "chalk";
 import isEmpty from "lodash/isEmpty";
+import { getArg } from "./args";
 import env from "@server/env";
 import Logger from "@server/logging/Logger";
 import AuthenticationProvider from "@server/models/AuthenticationProvider";
 import Team from "@server/models/Team";
 import { migrations } from "@server/storage/database";
-import { getArg } from "./args";
 
 export async function checkPendingMigrations() {
   try {

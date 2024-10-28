@@ -3,18 +3,18 @@ import { observer } from "mobx-react";
 import { ArchiveIcon } from "outline-icons";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import Flex from "@shared/components/Flex";
-import Collection from "~/models/Collection";
-import PaginatedList from "~/components/PaginatedList";
-import useRequest from "~/hooks/useRequest";
-import useStores from "~/hooks/useStores";
-import { archivePath } from "~/utils/routeHelpers";
 import { useDropToArchive } from "../hooks/useDragAndDrop";
 import { ArchivedCollectionLink } from "./ArchivedCollectionLink";
 import { StyledError } from "./Collections";
 import PlaceholderCollections from "./PlaceholderCollections";
 import Relative from "./Relative";
 import SidebarLink from "./SidebarLink";
+import Flex from "@shared/components/Flex";
+import PaginatedList from "~/components/PaginatedList";
+import useRequest from "~/hooks/useRequest";
+import useStores from "~/hooks/useStores";
+import Collection from "~/models/Collection";
+import { archivePath } from "~/utils/routeHelpers";
 
 function ArchiveLink() {
   const { collections } = useStores();

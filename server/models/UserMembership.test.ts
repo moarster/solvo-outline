@@ -1,5 +1,5 @@
-import { buildCollection, buildUser } from "@server/test/factories";
 import UserMembership from "./UserMembership";
+import { buildCollection, buildUser } from "@server/test/factories";
 
 describe("UserMembership", () => {
   describe("withCollection scope", () => {

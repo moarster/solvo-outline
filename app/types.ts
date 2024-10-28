@@ -1,18 +1,17 @@
- 
 import { Location, LocationDescriptor } from "history";
 import { TFunction } from "i18next";
-import {
-  JSONValue,
-  CollectionPermission,
-  DocumentPermission,
-} from "@shared/types";
-import RootStore from "~/stores/RootStore";
 import { SidebarContextType } from "./components/Sidebar/components/SidebarContext";
 import Document from "./models/Document";
 import FileOperation from "./models/FileOperation";
 import Pin from "./models/Pin";
 import Star from "./models/Star";
 import UserMembership from "./models/UserMembership";
+import {
+  JSONValue,
+  CollectionPermission,
+  DocumentPermission,
+} from "@shared/types";
+import RootStore from "~/stores/RootStore";
 
 export type PartialExcept<T, K extends keyof T> = Partial<Omit<T, K>> &
   Required<Pick<T, K>>;

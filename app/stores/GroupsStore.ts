@@ -1,12 +1,12 @@
 import invariant from "invariant";
 import filter from "lodash/filter";
 import { action, runInAction, computed } from "mobx";
+import RootStore from "./RootStore";
+import Store from "./base/Store";
 import naturalSort from "@shared/utils/naturalSort";
 import Group from "~/models/Group";
 import { PaginationParams } from "~/types";
 import { client } from "~/utils/ApiClient";
-import RootStore from "./RootStore";
-import Store from "./base/Store";
 
 type FetchPageParams = PaginationParams & { query?: string };
 

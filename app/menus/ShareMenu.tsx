@@ -5,13 +5,13 @@ import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 import { useMenuState } from "reakit/Menu";
 import { toast } from "sonner";
-import Share from "~/models/Share";
 import ContextMenu from "~/components/ContextMenu";
 import MenuItem from "~/components/ContextMenu/MenuItem";
 import OverflowMenuButton from "~/components/ContextMenu/OverflowMenuButton";
 import CopyToClipboard from "~/components/CopyToClipboard";
 import usePolicy from "~/hooks/usePolicy";
 import useStores from "~/hooks/useStores";
+import Share from "~/models/Share";
 
 type Props = {
   share: Share;

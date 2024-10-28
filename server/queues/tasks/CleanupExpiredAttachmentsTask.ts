@@ -1,7 +1,7 @@
 import { Op } from "sequelize";
+import BaseTask, { TaskPriority, TaskSchedule } from "./BaseTask";
 import Logger from "@server/logging/Logger";
 import { Attachment } from "@server/models";
-import BaseTask, { TaskPriority, TaskSchedule } from "./BaseTask";
 
 type Props = {
   limit: number;

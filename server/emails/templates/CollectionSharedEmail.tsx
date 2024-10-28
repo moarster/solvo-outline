@@ -1,12 +1,12 @@
 import * as React from "react";
-import { CollectionPermission } from "@shared/types";
-import { Collection, UserMembership } from "@server/models";
 import BaseEmail, { EmailProps } from "./BaseEmail";
 import Body from "./components/Body";
 import Button from "./components/Button";
 import EmailTemplate from "./components/EmailLayout";
 import Header from "./components/Header";
 import Heading from "./components/Heading";
+import { Collection, UserMembership } from "@server/models";
+import { CollectionPermission } from "@shared/types";
 
 type InputProps = EmailProps & {
   userId: string;
@@ -76,8 +76,8 @@ View Document: ${teamUrl}${collection.path}
       membership.permission === CollectionPermission.ReadWrite
         ? "view and edit"
         : membership.permission === CollectionPermission.Admin
-        ? "manage"
-        : "view";
+          ? "manage"
+          : "view";
 
     return (
       <EmailTemplate

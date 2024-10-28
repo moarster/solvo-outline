@@ -2,8 +2,6 @@ import { observer } from "mobx-react";
 import { PlusIcon, GroupIcon } from "outline-icons";
 import * as React from "react";
 import { useTranslation, Trans } from "react-i18next";
-import Group from "~/models/Group";
-import GroupNew from "~/scenes/GroupNew";
 import { Action } from "~/components/Actions";
 import Button from "~/components/Button";
 import Empty from "~/components/Empty";
@@ -18,6 +16,8 @@ import useCurrentTeam from "~/hooks/useCurrentTeam";
 import usePolicy from "~/hooks/usePolicy";
 import useStores from "~/hooks/useStores";
 import GroupMenu from "~/menus/GroupMenu";
+import Group from "~/models/Group";
+import GroupNew from "~/scenes/GroupNew";
 
 function Groups() {
   const { t } = useTranslation();

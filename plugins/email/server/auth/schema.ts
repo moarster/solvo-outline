@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { Client } from "@shared/types";
 import { BaseSchema } from "@server/routes/api/schema";
+import { Client } from "@shared/types";
 
 export const EmailSchema = BaseSchema.extend({
   body: z.object({

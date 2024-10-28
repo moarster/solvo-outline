@@ -3,18 +3,18 @@ import { GroupIcon } from "outline-icons";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import NudeButton from "./NudeButton";
 import { MAX_AVATAR_DISPLAY } from "@shared/constants";
 import { s } from "@shared/styles";
-import Group from "~/models/Group";
-import GroupMembership from "~/models/GroupMembership";
-import GroupMembers from "~/scenes/GroupMembers";
 import Facepile from "~/components/Facepile";
 import Flex from "~/components/Flex";
 import ListItem from "~/components/List/Item";
 import Modal from "~/components/Modal";
 import useBoolean from "~/hooks/useBoolean";
+import Group from "~/models/Group";
+import GroupMembership from "~/models/GroupMembership";
+import GroupMembers from "~/scenes/GroupMembers";
 import { hover } from "~/styles";
-import NudeButton from "./NudeButton";
 
 type Props = {
   group: Group;

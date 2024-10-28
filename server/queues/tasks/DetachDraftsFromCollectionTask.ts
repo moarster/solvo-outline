@@ -1,8 +1,8 @@
 import { Op } from "sequelize";
+import BaseTask from "./BaseTask";
 import documentMover from "@server/commands/documentMover";
 import { Collection, Document, User } from "@server/models";
 import { sequelize } from "@server/storage/database";
-import BaseTask from "./BaseTask";
 
 type Props = {
   collectionId: string;

@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
-import useQuery from "~/hooks/useQuery";
 import useStores from "./useStores";
+import useQuery from "~/hooks/useQuery";
 
 export default function useFocusedComment() {
   const { comments } = useStores();

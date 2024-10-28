@@ -2,17 +2,17 @@ import { observer } from "mobx-react";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { useMenuState } from "reakit/Menu";
-import Document from "~/models/Document";
-import ContextMenu from "~/components/ContextMenu";
-import OverflowMenuButton from "~/components/ContextMenu/OverflowMenuButton";
-import Template from "~/components/ContextMenu/Template";
+import separator from "./separator";
 import { actionToMenuItem } from "~/actions";
 import {
   copyLinkToRevision,
   restoreRevision,
 } from "~/actions/definitions/revisions";
+import ContextMenu from "~/components/ContextMenu";
+import OverflowMenuButton from "~/components/ContextMenu/OverflowMenuButton";
+import Template from "~/components/ContextMenu/Template";
 import useActionContext from "~/hooks/useActionContext";
-import separator from "./separator";
+import Document from "~/models/Document";
 
 type Props = {
   document: Document;

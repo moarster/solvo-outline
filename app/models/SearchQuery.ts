@@ -1,5 +1,5 @@
-import { client } from "~/utils/ApiClient";
 import Model from "./base/Model";
+import { client } from "~/utils/ApiClient";
 
 class SearchQuery extends Model {
   static modelName = "Search";

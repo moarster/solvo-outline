@@ -1,8 +1,4 @@
-import {
-  CollectionPermission,
-  DocumentPermission,
-  UserRole,
-} from "@shared/types";
+import { serialize } from "./index";
 import { Document, UserMembership } from "@server/models";
 import {
   buildUser,
@@ -11,7 +7,11 @@ import {
   buildDraftDocument,
   buildCollection,
 } from "@server/test/factories";
-import { serialize } from "./index";
+import {
+  CollectionPermission,
+  DocumentPermission,
+  UserRole,
+} from "@shared/types";
 
 describe("read_write collection", () => {
   it("should allow read write permissions for member", async () => {

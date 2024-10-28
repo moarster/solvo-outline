@@ -1,9 +1,9 @@
 import { observer } from "mobx-react";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
+import ReferenceListItem from "./ReferenceListItem";
 import { NavigationNode } from "@shared/types";
 import Subheading from "~/components/Subheading";
-import ReferenceListItem from "./ReferenceListItem";
 
 type Props = {
   shareId: string;

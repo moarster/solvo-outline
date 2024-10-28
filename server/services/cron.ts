@@ -1,6 +1,6 @@
-import { Day, Hour, Second } from "@shared/utils/time";
 import tasks from "@server/queues/tasks";
 import { TaskSchedule } from "@server/queues/tasks/BaseTask";
+import { Day, Hour, Second } from "@shared/utils/time";
 
 export default function init() {
   async function run(schedule: TaskSchedule) {

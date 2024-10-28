@@ -2,9 +2,9 @@ import { observer } from "mobx-react";
 import * as React from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { CollectionPermission, NavigationNode } from "@shared/types";
-import type Collection from "~/models/Collection";
 import ConfirmationDialog from "~/components/ConfirmationDialog";
 import useStores from "~/hooks/useStores";
+import type Collection from "~/models/Collection";
 
 type Props = {
   /** The navigation node to move, must represent a document. */

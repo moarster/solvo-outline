@@ -1,8 +1,8 @@
 import isEmpty from "lodash/isEmpty";
 import z from "zod";
-import { FileOperationType } from "@shared/types";
-import { FileOperation } from "@server/models";
 import { BaseSchema } from "../schema";
+import { FileOperation } from "@server/models";
+import { FileOperationType } from "@shared/types";
 
 const CollectionsSortParamsSchema = z.object({
   /** The attribute to sort by */

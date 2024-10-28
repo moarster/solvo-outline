@@ -7,10 +7,10 @@ import fs from "fs-extra";
 import invariant from "invariant";
 import JWT from "jsonwebtoken";
 import safeResolvePath from "resolve-path";
+import BaseStorage from "./BaseStorage";
 import env from "@server/env";
 import { ValidationError } from "@server/errors";
 import Logger from "@server/logging/Logger";
-import BaseStorage from "./BaseStorage";
 
 export default class LocalStorage extends BaseStorage {
   public async getPresignedPost(

@@ -1,7 +1,7 @@
 import { expect } from "@jest/globals";
 import { v4 as uuidv4 } from "uuid";
-import env from "@server/env";
 import parseAttachmentIds from "./parseAttachmentIds";
+import env from "@server/env";
 
 it("should return an empty array with no matches", () => {
   expect(parseAttachmentIds(`some random text`).length).toBe(0);

@@ -1,6 +1,6 @@
+import BacklinksProcessor from "./BacklinksProcessor";
 import { Backlink } from "@server/models";
 import { buildDocument } from "@server/test/factories";
-import BacklinksProcessor from "./BacklinksProcessor";
 
 const ip = "127.0.0.1";
 

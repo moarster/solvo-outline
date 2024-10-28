@@ -1,10 +1,10 @@
-import { FileOperationState, FileOperationType } from "@shared/types";
+import BaseProcessor from "./BaseProcessor";
 import collectionDestroyer from "@server/commands/collectionDestroyer";
 import Logger from "@server/logging/Logger";
 import { Collection, FileOperation, User } from "@server/models";
 import { sequelize } from "@server/storage/database";
 import { Event as TEvent, FileOperationEvent } from "@server/types";
-import BaseProcessor from "./BaseProcessor";
+import { FileOperationState, FileOperationType } from "@shared/types";
 
 export default class FileOperationDeletedProcessor extends BaseProcessor {
   static applicableEvents: TEvent["name"][] = [

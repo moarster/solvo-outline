@@ -28,8 +28,8 @@ export function createAction(definition: Optional<Action, "id">): Action {
               context: context.isButton
                 ? "button"
                 : context.isCommandBar
-                ? "commandbar"
-                : "contextmenu",
+                  ? "commandbar"
+                  : "contextmenu",
             });
           }
 
@@ -100,7 +100,7 @@ export function actionToKBar(
 
   const sectionPriority =
     typeof action.section !== "string" && "priority" in action.section
-      ? (action.section.priority as number) ?? 0
+      ? ((action.section.priority as number) ?? 0)
       : 0;
 
   return [

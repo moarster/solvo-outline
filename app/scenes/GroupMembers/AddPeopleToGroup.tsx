@@ -3,9 +3,7 @@ import { observer } from "mobx-react";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
-import Group from "~/models/Group";
-import User from "~/models/User";
-import Invite from "~/scenes/Invite";
+import GroupMemberListItem from "./components/GroupMemberListItem";
 import { Avatar, AvatarSize } from "~/components/Avatar";
 import ButtonLink from "~/components/ButtonLink";
 import Empty from "~/components/Empty";
@@ -18,7 +16,9 @@ import useBoolean from "~/hooks/useBoolean";
 import useCurrentTeam from "~/hooks/useCurrentTeam";
 import usePolicy from "~/hooks/usePolicy";
 import useStores from "~/hooks/useStores";
-import GroupMemberListItem from "./components/GroupMemberListItem";
+import Group from "~/models/Group";
+import User from "~/models/User";
+import Invite from "~/scenes/Invite";
 
 type Props = {
   group: Group;

@@ -1,8 +1,8 @@
 import { action } from "mobx";
 import * as React from "react";
+import EmojiMenu from "../components/EmojiMenu";
 import { WidgetProps } from "@shared/editor/lib/Extension";
 import Suggestion from "~/editor/extensions/Suggestion";
-import EmojiMenu from "../components/EmojiMenu";
 
 /**
  * Languages using the colon character with a space in front in standard

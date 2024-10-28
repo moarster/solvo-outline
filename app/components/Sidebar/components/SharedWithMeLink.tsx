@@ -3,14 +3,6 @@ import { Location } from "history";
 import { observer } from "mobx-react";
 import * as React from "react";
 import styled from "styled-components";
-import { IconType, NotificationEventType } from "@shared/types";
-import { determineIconType } from "@shared/utils/icon";
-import GroupMembership from "~/models/GroupMembership";
-import UserMembership from "~/models/UserMembership";
-import Fade from "~/components/Fade";
-import useBoolean from "~/hooks/useBoolean";
-import useStores from "~/hooks/useStores";
-import DocumentMenu from "~/menus/DocumentMenu";
 import {
   useDragMembership,
   useDropToReorderUserMembership,
@@ -24,6 +16,14 @@ import Folder from "./Folder";
 import Relative from "./Relative";
 import { useSidebarContext, type SidebarContextType } from "./SidebarContext";
 import SidebarLink from "./SidebarLink";
+import { IconType, NotificationEventType } from "@shared/types";
+import { determineIconType } from "@shared/utils/icon";
+import Fade from "~/components/Fade";
+import useBoolean from "~/hooks/useBoolean";
+import useStores from "~/hooks/useStores";
+import DocumentMenu from "~/menus/DocumentMenu";
+import GroupMembership from "~/models/GroupMembership";
+import UserMembership from "~/models/UserMembership";
 
 type Props = {
   membership: UserMembership | GroupMembership;

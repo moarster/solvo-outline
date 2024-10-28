@@ -1,9 +1,9 @@
 import * as React from "react";
-import { Minute } from "@shared/utils/time";
-import Logger from "~/utils/Logger";
 import useIdle from "./useIdle";
 import useInterval from "./useInterval";
 import usePageVisibility from "./usePageVisibility";
+import { Minute } from "@shared/utils/time";
+import Logger from "~/utils/Logger";
 
 // The case of isReloaded=true should never be hit as the app will reload
 // before the hook is called again, however seems like the only possible

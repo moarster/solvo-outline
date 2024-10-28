@@ -4,8 +4,8 @@ import Router from "koa-router";
 import capitalize from "lodash/capitalize";
 import { Profile } from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth2";
-import { languages } from "@shared/i18n";
-import { slugifyDomain } from "@shared/utils/domains";
+import config from "../../plugin.json";
+import env from "../env";
 import accountProvisioner from "@server/commands/accountProvisioner";
 import {
   GmailAccountCreationError,
@@ -19,8 +19,8 @@ import {
   getTeamFromContext,
   getClientFromContext,
 } from "@server/utils/passport";
-import config from "../../plugin.json";
-import env from "../env";
+import { languages } from "@shared/i18n";
+import { slugifyDomain } from "@shared/utils/domains";
 
 const router = new Router();
 

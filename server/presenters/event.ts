@@ -1,5 +1,5 @@
-import { Event } from "@server/models";
 import presentUser from "./user";
+import { Event } from "@server/models";
 
 export default function presentEvent(event: Event, isAdmin = false) {
   const data = {

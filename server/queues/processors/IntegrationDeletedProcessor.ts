@@ -1,9 +1,9 @@
-import { IntegrationType } from "@shared/types";
 import { Integration } from "@server/models";
 import BaseProcessor from "@server/queues/processors/BaseProcessor";
 import { IntegrationEvent, Event } from "@server/types";
 import { CacheHelper } from "@server/utils/CacheHelper";
 import { Hook, PluginManager } from "@server/utils/PluginManager";
+import { IntegrationType } from "@shared/types";
 
 export default class IntegrationDeletedProcessor extends BaseProcessor {
   static applicableEvents: Event["name"][] = ["integrations.delete"];

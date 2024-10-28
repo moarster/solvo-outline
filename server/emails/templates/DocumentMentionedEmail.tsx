@@ -1,11 +1,5 @@
 import differenceBy from "lodash/differenceBy";
 import * as React from "react";
-import { Day } from "@shared/utils/time";
-import { Document, Revision } from "@server/models";
-import { DocumentHelper } from "@server/models/helpers/DocumentHelper";
-import HTMLHelper from "@server/models/helpers/HTMLHelper";
-import { ProsemirrorHelper } from "@server/models/helpers/ProsemirrorHelper";
-import { TextHelper } from "@server/models/helpers/TextHelper";
 import BaseEmail, { EmailProps } from "./BaseEmail";
 import Body from "./components/Body";
 import Button from "./components/Button";
@@ -14,6 +8,12 @@ import EmailTemplate from "./components/EmailLayout";
 import EmptySpace from "./components/EmptySpace";
 import Header from "./components/Header";
 import Heading from "./components/Heading";
+import { Document, Revision } from "@server/models";
+import { DocumentHelper } from "@server/models/helpers/DocumentHelper";
+import HTMLHelper from "@server/models/helpers/HTMLHelper";
+import { ProsemirrorHelper } from "@server/models/helpers/ProsemirrorHelper";
+import { TextHelper } from "@server/models/helpers/TextHelper";
+import { Day } from "@shared/utils/time";
 
 type InputProps = EmailProps & {
   documentId: string;

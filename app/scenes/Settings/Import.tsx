@@ -2,9 +2,12 @@ import { observer } from "mobx-react";
 import { NewDocumentIcon } from "outline-icons";
 import * as React from "react";
 import { useTranslation, Trans } from "react-i18next";
+import FileOperationListItem from "./components/FileOperationListItem";
+import ImportJSONDialog from "./components/ImportJSONDialog";
+import ImportMarkdownDialog from "./components/ImportMarkdownDialog";
+import ImportNotionDialog from "./components/ImportNotionDialog";
 import { FileOperationType } from "@shared/types";
 import { cdnPath } from "@shared/utils/urls";
-import FileOperation from "~/models/FileOperation";
 import Button from "~/components/Button";
 import Heading from "~/components/Heading";
 import MarkdownIcon from "~/components/Icons/MarkdownIcon";
@@ -15,10 +18,7 @@ import Scene from "~/components/Scene";
 import Text from "~/components/Text";
 import env from "~/env";
 import useStores from "~/hooks/useStores";
-import FileOperationListItem from "./components/FileOperationListItem";
-import ImportJSONDialog from "./components/ImportJSONDialog";
-import ImportMarkdownDialog from "./components/ImportMarkdownDialog";
-import ImportNotionDialog from "./components/ImportNotionDialog";
+import FileOperation from "~/models/FileOperation";
 
 function Import() {
   const { t } = useTranslation();

@@ -1,4 +1,3 @@
- 
 import {
   Locale,
   addSeconds,
@@ -8,10 +7,7 @@ import {
   subWeeks,
   subYears,
 } from "date-fns";
-import {
-  enUS,
-  ru
-} from "date-fns/locale";
+import { enUS, ru } from "date-fns/locale";
 import type { DateFilter } from "../types";
 
 export function subtractDate(date: Date, period: DateFilter) {

@@ -1,9 +1,9 @@
 import * as React from "react";
 import { RouteComponentProps, Switch } from "react-router-dom";
-import DocumentNew from "~/scenes/DocumentNew";
-import Error404 from "~/scenes/Error404";
 import Route from "~/components/ProfiledRoute";
 import useSettingsConfig from "~/hooks/useSettingsConfig";
+import DocumentNew from "~/scenes/DocumentNew";
+import Error404 from "~/scenes/Error404";
 import lazy from "~/utils/lazyWithRetry";
 import { matchDocumentSlug, settingsPath } from "~/utils/routeHelpers";
 

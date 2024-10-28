@@ -1,6 +1,6 @@
+import pinDestroyer from "./pinDestroyer";
 import { Event, Pin } from "@server/models";
 import { buildDocument, buildUser } from "@server/test/factories";
-import pinDestroyer from "./pinDestroyer";
 
 describe("pinCreator", () => {
   const ip = "127.0.0.1";

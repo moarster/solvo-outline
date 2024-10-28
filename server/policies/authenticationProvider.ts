@@ -1,6 +1,6 @@
-import { AuthenticationProvider, User, Team } from "@server/models";
 import { allow } from "./cancan";
 import { isTeamAdmin, isTeamModel } from "./utils";
+import { AuthenticationProvider, User, Team } from "@server/models";
 
 allow(User, "createAuthenticationProvider", Team, isTeamAdmin);
 

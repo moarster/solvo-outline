@@ -4,6 +4,12 @@ import capitalize from "lodash/capitalize";
 import floor from "lodash/floor";
 import { action, autorun, computed, observable, set } from "mobx";
 import { Node, Schema } from "prosemirror-model";
+import Collection from "./Collection";
+import Notification from "./Notification";
+import View from "./View";
+import ArchivableModel from "./base/ArchivableModel";
+import Field from "./decorators/Field";
+import Relation from "./decorators/Relation";
 import ExtensionManager from "@shared/editor/lib/ExtensionManager";
 import { richExtensions, withComments } from "@shared/editor/nodes";
 import type {
@@ -20,17 +26,11 @@ import {
 import Storage from "@shared/utils/Storage";
 import { isRTL } from "@shared/utils/rtl";
 import slugify from "@shared/utils/slugify";
-import DocumentsStore from "~/stores/DocumentsStore";
 import User from "~/models/User";
+import DocumentsStore from "~/stores/DocumentsStore";
 import type { Properties } from "~/types";
 import { client } from "~/utils/ApiClient";
 import { settingsPath } from "~/utils/routeHelpers";
-import Collection from "./Collection";
-import Notification from "./Notification";
-import View from "./View";
-import ArchivableModel from "./base/ArchivableModel";
-import Field from "./decorators/Field";
-import Relation from "./decorators/Relation";
 
 type SaveOptions = JSONObject & {
   publish?: boolean;

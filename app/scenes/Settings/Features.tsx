@@ -3,13 +3,13 @@ import { BeakerIcon } from "outline-icons";
 import * as React from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { toast } from "sonner";
+import SettingRow from "./components/SettingRow";
 import { TeamPreference } from "@shared/types";
 import Heading from "~/components/Heading";
 import Scene from "~/components/Scene";
 import Switch from "~/components/Switch";
 import Text from "~/components/Text";
 import useCurrentTeam from "~/hooks/useCurrentTeam";
-import SettingRow from "./components/SettingRow";
 
 function Features() {
   const team = useCurrentTeam();

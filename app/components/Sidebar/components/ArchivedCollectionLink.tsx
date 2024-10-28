@@ -1,9 +1,9 @@
 import * as React from "react";
-import Collection from "~/models/Collection";
-import useStores from "~/hooks/useStores";
 import CollectionLink from "./CollectionLink";
 import CollectionLinkChildren from "./CollectionLinkChildren";
 import Relative from "./Relative";
+import useStores from "~/hooks/useStores";
+import Collection from "~/models/Collection";
 
 type Props = {
   collection: Collection;

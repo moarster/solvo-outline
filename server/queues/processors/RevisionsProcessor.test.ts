@@ -1,6 +1,6 @@
+import RevisionsProcessor from "./RevisionsProcessor";
 import { Revision } from "@server/models";
 import { buildDocument } from "@server/test/factories";
-import RevisionsProcessor from "./RevisionsProcessor";
 
 const ip = "127.0.0.1";
 

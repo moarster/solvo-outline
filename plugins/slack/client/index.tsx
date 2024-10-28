@@ -1,8 +1,8 @@
 import * as React from "react";
-import { UserRole } from "@shared/types";
-import { Hook, PluginManager } from "~/utils/PluginManager";
 import config from "../plugin.json";
 import Icon from "./Icon";
+import { UserRole } from "@shared/types";
+import { Hook, PluginManager } from "~/utils/PluginManager";
 
 PluginManager.add([
   {

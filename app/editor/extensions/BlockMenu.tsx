@@ -4,10 +4,10 @@ import { Plugin } from "prosemirror-state";
 import { Decoration, DecorationSet } from "prosemirror-view";
 import * as React from "react";
 import ReactDOM from "react-dom";
+import BlockMenu from "../components/BlockMenu";
 import { WidgetProps } from "@shared/editor/lib/Extension";
 import { findParentNode } from "@shared/editor/queries/findParentNode";
 import Suggestion from "~/editor/extensions/Suggestion";
-import BlockMenu from "../components/BlockMenu";
 
 export default class BlockMenuExtension extends Suggestion {
   get defaultOptions() {

@@ -2,13 +2,13 @@ import chunk from "lodash/chunk";
 import compact from "lodash/compact";
 import React from "react";
 import styled from "styled-components";
-import { IconType } from "@shared/types";
-import { IconLibrary } from "@shared/utils/IconLibrary";
-import Text from "~/components/Text";
 import { TRANSLATED_CATEGORIES } from "../utils";
 import { Emoji } from "./Emoji";
 import Grid from "./Grid";
 import { IconButton } from "./IconButton";
+import { IconType } from "@shared/types";
+import { IconLibrary } from "@shared/utils/IconLibrary";
+import Text from "~/components/Text";
 
 /**
  * icon/emoji size is 24px; and we add 4px padding on all sides,
@@ -113,7 +113,9 @@ const CategoryName = styled(Text)`
 `;
 
 const Icon = styled.svg`
-  transition: color 150ms ease-in-out, fill 150ms ease-in-out;
+  transition:
+    color 150ms ease-in-out,
+    fill 150ms ease-in-out;
   transition-delay: var(--delay);
 `;
 

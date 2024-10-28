@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { s } from "@shared/styles";
 import Flex from "./Flex";
 import Text from "./Text";
+import { s } from "@shared/styles";
 
 type Props = {
   children?: React.ReactNode;

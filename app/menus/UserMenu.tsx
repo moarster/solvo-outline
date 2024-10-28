@@ -4,7 +4,11 @@ import { useTranslation } from "react-i18next";
 import { useMenuState } from "reakit/Menu";
 import { toast } from "sonner";
 import { UserRole } from "@shared/types";
-import User from "~/models/User";
+import { actionToMenuItem } from "~/actions";
+import {
+  deleteUserActionFactory,
+  updateUserRoleActionFactory,
+} from "~/actions/definitions/users";
 import ContextMenu from "~/components/ContextMenu";
 import OverflowMenuButton from "~/components/ContextMenu/OverflowMenuButton";
 import Template from "~/components/ContextMenu/Template";
@@ -12,14 +16,10 @@ import {
   UserSuspendDialog,
   UserChangeNameDialog,
 } from "~/components/UserDialogs";
-import { actionToMenuItem } from "~/actions";
-import {
-  deleteUserActionFactory,
-  updateUserRoleActionFactory,
-} from "~/actions/definitions/users";
 import useActionContext from "~/hooks/useActionContext";
 import usePolicy from "~/hooks/usePolicy";
 import useStores from "~/hooks/useStores";
+import User from "~/models/User";
 
 type Props = {
   user: User;

@@ -1,8 +1,8 @@
 import { action, computed, observable } from "mobx";
 import React, { PropsWithChildren } from "react";
 import { Heading } from "@shared/utils/ProsemirrorHelper";
-import Document from "~/models/Document";
 import { Editor } from "~/editor";
+import Document from "~/models/Document";
 
 class DocumentContext {
   /** The current document */

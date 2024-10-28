@@ -3,7 +3,8 @@ import { isNil } from "lodash";
 import isNull from "lodash/isNull";
 import isUndefined from "lodash/isUndefined";
 import { WhereOptions, Op } from "sequelize";
-import { NotificationEventType } from "@shared/types";
+import pagination from "../middlewares/pagination";
+import * as T from "./schema";
 import notificationUpdater from "@server/commands/notificationUpdater";
 import env from "@server/env";
 import { AuthenticationError } from "@server/errors";
@@ -17,8 +18,7 @@ import { presentPolicies } from "@server/presenters";
 import presentNotification from "@server/presenters/notification";
 import { APIContext } from "@server/types";
 import { safeEqual } from "@server/utils/crypto";
-import pagination from "../middlewares/pagination";
-import * as T from "./schema";
+import { NotificationEventType } from "@shared/types";
 
 const router = new Router();
 const pixel = Buffer.from(

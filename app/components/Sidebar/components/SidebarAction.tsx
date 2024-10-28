@@ -1,10 +1,10 @@
 import invariant from "invariant";
 import { observer } from "mobx-react";
 import * as React from "react";
+import SidebarLink from "./SidebarLink";
 import { actionToMenuItem } from "~/actions";
 import useActionContext from "~/hooks/useActionContext";
 import { Action } from "~/types";
-import SidebarLink from "./SidebarLink";
 
 type Props = {
   action: Action;

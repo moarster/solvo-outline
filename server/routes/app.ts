@@ -5,8 +5,6 @@ import { Context, Next } from "koa";
 import escape from "lodash/escape";
 import { Sequelize } from "sequelize";
 import isUUID from "validator/lib/isUUID";
-import { IntegrationType, TeamPreference } from "@shared/types";
-import { unicodeCLDRtoISO639 } from "@shared/utils/date";
 import documentLoader from "@server/commands/documentLoader";
 import env from "@server/env";
 import { Integration } from "@server/models";
@@ -14,6 +12,8 @@ import presentEnv from "@server/presenters/env";
 import { getTeamFromContext } from "@server/utils/passport";
 import prefetchTags from "@server/utils/prefetchTags";
 import readManifestFile from "@server/utils/readManifestFile";
+import { IntegrationType, TeamPreference } from "@shared/types";
+import { unicodeCLDRtoISO639 } from "@shared/utils/date";
 
 const readFile = util.promisify(fs.readFile);
 const entry = "app/index.tsx";
@@ -79,7 +79,6 @@ export const renderApp = async (
       }
     });
   }
-
 
   const { shareId } = ctx.params;
   const page = await readIndexFile();

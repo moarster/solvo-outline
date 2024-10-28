@@ -2,10 +2,10 @@ import { AnimatePresence } from "framer-motion";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { mergeRefs } from "react-merge-refs";
-import Flex from "~/components/Flex";
-import useMobile from "~/hooks/useMobile";
 import Input, { NativeInput } from "../../Input";
 import { HeaderInput } from "../components";
+import Flex from "~/components/Flex";
+import useMobile from "~/hooks/useMobile";
 
 type Props = {
   query: string;

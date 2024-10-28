@@ -1,10 +1,10 @@
 import randomstring from "randomstring";
-import { IntegrationService } from "@shared/types";
+import env from "../env";
+import * as Slack from "../slack";
 import { IntegrationAuthentication, SearchQuery } from "@server/models";
 import { buildDocument, buildTeam, buildUser } from "@server/test/factories";
 import { getTestServer } from "@server/test/support";
-import env from "../env";
-import * as Slack from "../slack";
+import { IntegrationService } from "@shared/types";
 
 jest.mock("../slack", () => ({
   post: jest.fn(),

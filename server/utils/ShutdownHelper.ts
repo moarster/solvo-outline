@@ -1,6 +1,6 @@
 import groupBy from "lodash/groupBy";
-import Logger from "@server/logging/Logger";
 import { sleep } from "./timers";
+import Logger from "@server/logging/Logger";
 
 export enum ShutdownOrder {
   first = 0,

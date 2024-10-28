@@ -1,3 +1,4 @@
+import RevisionCreatedNotificationsTask from "./RevisionCreatedNotificationsTask";
 import { parser } from "@server/editor";
 import {
   View,
@@ -8,7 +9,6 @@ import {
   Document,
 } from "@server/models";
 import { buildDocument, buildUser } from "@server/test/factories";
-import RevisionCreatedNotificationsTask from "./RevisionCreatedNotificationsTask";
 
 const ip = "127.0.0.1";
 

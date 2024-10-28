@@ -3,11 +3,11 @@ import {
   onDisconnectPayload,
   onChangePayload,
 } from "@hocuspocus/server";
-import { Minute } from "@shared/utils/time";
+import { withContext } from "./types";
 import Logger from "@server/logging/Logger";
 import { trace } from "@server/logging/tracing";
 import { View } from "@server/models";
-import { withContext } from "./types";
+import { Minute } from "@shared/utils/time";
 
 @trace()
 export class ViewsExtension implements Extension {

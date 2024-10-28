@@ -1,8 +1,8 @@
 import has from "lodash/has";
 import { Transaction } from "sequelize";
-import { TeamPreference } from "@shared/types";
 import env from "@server/env";
 import { Event, Team, TeamDomain, User } from "@server/models";
+import { TeamPreference } from "@shared/types";
 
 type Props = {
   params: Partial<Omit<Team, "allowedDomains">> & { allowedDomains?: string[] };

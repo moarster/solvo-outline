@@ -1,5 +1,5 @@
-import RootStore from "~/stores/RootStore";
 import env from "~/env";
+import RootStore from "~/stores/RootStore";
 
 const stores = new RootStore();
 

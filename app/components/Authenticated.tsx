@@ -2,10 +2,10 @@ import { observer } from "mobx-react";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { Redirect } from "react-router-dom";
+import LoadingIndicator from "./LoadingIndicator";
 import useCurrentUser from "~/hooks/useCurrentUser";
 import useStores from "~/hooks/useStores";
 import { changeLanguage } from "~/utils/language";
-import LoadingIndicator from "./LoadingIndicator";
 
 type Props = {
   children: JSX.Element;

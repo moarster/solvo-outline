@@ -1,43 +1,53 @@
-import root from "../eslint.config.mjs";
 import globals from "globals";
+import root from "../eslint.config.mjs";
 
 export default [
-    root,
-    {
+  root,
+  {
     languageOptions: {
-        globals: {
-            ...globals.jest,
-            ...globals.node,
-        },
+      globals: {
+        ...globals.jest,
+        ...globals.node,
+      },
 
-        ecmaVersion: 5,
-        sourceType: "commonjs",
+      ecmaVersion: 5,
+      sourceType: "commonjs",
 
-        parserOptions: {
-            project: "./tsconfig.json",
-        },
+      parserOptions: {
+        project: "./tsconfig.json",
+      },
     },
 
     rules: {
-        "@typescript-eslint/no-misused-promises": ["error", {
-            checksVoidReturn: true,
-        }],
+      "@typescript-eslint/no-misused-promises": [
+        "error",
+        {
+          checksVoidReturn: true,
+        },
+      ],
 
-        "no-restricted-imports": ["error", {
-            name: "fetch-with-proxy",
-            message: "Use `@server/utils/fetch` instead",
-        }, {
-            name: "node-fetch",
-            message: "Use `@server/utils/fetch` instead",
-        }, {
-            name: "passport",
-            message: "Use the `@outlinewiki/koa-passport` package",
-        }],
+      "no-restricted-imports": [
+        "error",
+        {
+          name: "fetch-with-proxy",
+          message: "Use `@server/utils/fetch` instead",
+        },
+        {
+          name: "node-fetch",
+          message: "Use `@server/utils/fetch` instead",
+        },
+        {
+          name: "passport",
+          message: "Use the `@outlinewiki/koa-passport` package",
+        },
+      ],
     },
-}, {
+  },
+  {
     files: ["scripts/*"],
 
     rules: {
-        "root/no-console": "off",
+      "root/no-console": "off",
     },
-}];
+  },
+];

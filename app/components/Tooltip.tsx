@@ -48,7 +48,12 @@ const Shortcut = styled.kbd`
 
   display: inline-block;
   padding: 2px 4px;
-  font: 10px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,
+  font:
+    10px "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    Menlo,
+    Courier,
     monospace;
   line-height: 10px;
   color: ${s("tooltipBackground")};

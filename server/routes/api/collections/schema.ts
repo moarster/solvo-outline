@@ -1,14 +1,14 @@
 import isUndefined from "lodash/isUndefined";
 import { z } from "zod";
+import { BaseSchema, ProsemirrorSchema } from "../schema";
+import { Collection } from "@server/models";
+import { zodIconType } from "@server/utils/zod";
+import { ValidateColor, ValidateIndex } from "@server/validation";
 import {
   CollectionPermission,
   CollectionStatusFilter,
   FileOperationFormat,
 } from "@shared/types";
-import { Collection } from "@server/models";
-import { zodIconType } from "@server/utils/zod";
-import { ValidateColor, ValidateIndex } from "@server/validation";
-import { BaseSchema, ProsemirrorSchema } from "../schema";
 
 const BaseIdSchema = z.object({
   /** Id of the collection to be updated */

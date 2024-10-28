@@ -3,9 +3,10 @@ import { SettingsIcon } from "outline-icons";
 import * as React from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { toast } from "sonner";
+import UserDelete from "../UserDelete";
+import SettingRow from "./components/SettingRow";
 import { languageOptions } from "@shared/i18n";
 import { TeamPreference, UserPreference } from "@shared/types";
-import { Theme } from "~/stores/UiStore";
 import Button from "~/components/Button";
 import Heading from "~/components/Heading";
 import InputSelect from "~/components/InputSelect";
@@ -16,8 +17,7 @@ import useCurrentTeam from "~/hooks/useCurrentTeam";
 import useCurrentUser from "~/hooks/useCurrentUser";
 import usePolicy from "~/hooks/usePolicy";
 import useStores from "~/hooks/useStores";
-import UserDelete from "../UserDelete";
-import SettingRow from "./components/SettingRow";
+import { Theme } from "~/stores/UiStore";
 
 function Preferences() {
   const { t } = useTranslation();

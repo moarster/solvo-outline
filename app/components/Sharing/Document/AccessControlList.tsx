@@ -3,13 +3,19 @@ import { MoreIcon, QuestionMarkIcon, UserIcon } from "outline-icons";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import styled, { useTheme } from "styled-components";
+import { Avatar, AvatarSize } from "../../Avatar";
+import CollectionIcon from "../../Icons/CollectionIcon";
+import Tooltip from "../../Tooltip";
+import { Separator } from "../components";
+import { ListItem } from "../components/ListItem";
+import { Placeholder } from "../components/Placeholder";
+import DocumentMemberList from "./DocumentMemberList";
+import PublicAccess from "./PublicAccess";
 import Squircle from "@shared/components/Squircle";
 import { Pagination } from "@shared/constants";
 import { s } from "@shared/styles";
 import { CollectionPermission, IconType } from "@shared/types";
 import { determineIconType } from "@shared/utils/icon";
-import type Collection from "~/models/Collection";
-import type Document from "~/models/Document";
 import Share from "~/models/Share";
 import Flex from "~/components/Flex";
 import Scrollable from "~/components/Scrollable";
@@ -20,14 +26,8 @@ import useMaxHeight from "~/hooks/useMaxHeight";
 import usePolicy from "~/hooks/usePolicy";
 import useRequest from "~/hooks/useRequest";
 import useStores from "~/hooks/useStores";
-import { Avatar, AvatarSize } from "../../Avatar";
-import CollectionIcon from "../../Icons/CollectionIcon";
-import Tooltip from "../../Tooltip";
-import { Separator } from "../components";
-import { ListItem } from "../components/ListItem";
-import { Placeholder } from "../components/Placeholder";
-import DocumentMemberList from "./DocumentMemberList";
-import PublicAccess from "./PublicAccess";
+import type Collection from "~/models/Collection";
+import type Document from "~/models/Document";
 
 type Props = {
   /** The document being shared. */

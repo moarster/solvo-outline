@@ -1,9 +1,9 @@
 import isEmpty from "lodash/isEmpty";
 import isUUID from "validator/lib/isUUID";
 import { z } from "zod";
-import { UrlHelper } from "@shared/utils/UrlHelper";
-import { Share } from "@server/models";
 import { BaseSchema } from "../schema";
+import { Share } from "@server/models";
+import { UrlHelper } from "@shared/utils/UrlHelper";
 
 export const SharesInfoSchema = BaseSchema.extend({
   body: z

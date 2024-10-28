@@ -4,9 +4,9 @@ import { DoneIcon } from "outline-icons";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import styled, { useTheme } from "styled-components";
-import Document from "~/models/Document";
 import CircularProgressBar from "~/components/CircularProgressBar";
 import usePrevious from "~/hooks/usePrevious";
+import Document from "~/models/Document";
 import { bounceIn } from "~/styles/animations";
 
 type Props = {

@@ -19,15 +19,15 @@ import {
   BeforeCreate,
   BeforeUpdate,
 } from "sequelize-typescript";
-import { ValidationError } from "@server/errors";
-import FileStorage from "@server/storage/files";
-import { ValidateKey } from "@server/validation";
 import Document from "./Document";
 import Team from "./Team";
 import User from "./User";
 import IdModel from "./base/IdModel";
 import Fix from "./decorators/Fix";
 import Length from "./validators/Length";
+import { ValidationError } from "@server/errors";
+import FileStorage from "@server/storage/files";
+import { ValidateKey } from "@server/validation";
 
 @Table({ tableName: "attachments", modelName: "attachment" })
 @Fix

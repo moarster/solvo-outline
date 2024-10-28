@@ -17,16 +17,16 @@ import {
 } from "outline-icons";
 import React, { ComponentProps } from "react";
 import { useTranslation } from "react-i18next";
+import { useComputed } from "./useComputed";
+import useCurrentTeam from "./useCurrentTeam";
+import useCurrentUser from "./useCurrentUser";
+import usePolicy from "./usePolicy";
 import { integrationSettingsPath } from "@shared/utils/routeHelpers";
 import ZapierIcon from "~/components/Icons/ZapierIcon";
 import { Hook, PluginManager } from "~/utils/PluginManager";
 import isCloudHosted from "~/utils/isCloudHosted";
 import lazy from "~/utils/lazyWithRetry";
 import { settingsPath } from "~/utils/routeHelpers";
-import { useComputed } from "./useComputed";
-import useCurrentTeam from "./useCurrentTeam";
-import useCurrentUser from "./useCurrentUser";
-import usePolicy from "./usePolicy";
 
 const ApiKeys = lazy(() => import("~/scenes/Settings/ApiKeys"));
 const Details = lazy(() => import("~/scenes/Settings/Details"));

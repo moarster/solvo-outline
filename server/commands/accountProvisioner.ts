@@ -1,7 +1,8 @@
 import path from "path";
 import { readFile } from "fs-extra";
 import invariant from "invariant";
-import { CollectionPermission, UserRole } from "@shared/types";
+import teamProvisioner from "./teamProvisioner";
+import userProvisioner from "./userProvisioner";
 import WelcomeEmail from "@server/emails/templates/WelcomeEmail";
 import env from "@server/env";
 import {
@@ -18,8 +19,7 @@ import {
 } from "@server/models";
 import { DocumentHelper } from "@server/models/helpers/DocumentHelper";
 import { sequelize } from "@server/storage/database";
-import teamProvisioner from "./teamProvisioner";
-import userProvisioner from "./userProvisioner";
+import { CollectionPermission, UserRole } from "@shared/types";
 
 type Props = {
   /** The IP address of the incoming request */

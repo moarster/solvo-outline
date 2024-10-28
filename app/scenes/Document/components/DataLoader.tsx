@@ -1,19 +1,20 @@
 import { observer } from "mobx-react";
 import * as React from "react";
 import { useLocation, RouteComponentProps, StaticContext } from "react-router";
+import Loading from "./Loading";
 import { NavigationNode, TeamPreference } from "@shared/types";
 import { ProsemirrorHelper } from "@shared/utils/ProsemirrorHelper";
 import { RevisionHelper } from "@shared/utils/RevisionHelper";
-import Document from "~/models/Document";
-import Revision from "~/models/Revision";
-import Error402 from "~/scenes/Error402";
-import Error404 from "~/scenes/Error404";
-import ErrorOffline from "~/scenes/ErrorOffline";
 import { useDocumentContext } from "~/components/DocumentContext";
 import useCurrentTeam from "~/hooks/useCurrentTeam";
 import useCurrentUser from "~/hooks/useCurrentUser";
 import usePolicy from "~/hooks/usePolicy";
 import useStores from "~/hooks/useStores";
+import Document from "~/models/Document";
+import Revision from "~/models/Revision";
+import Error402 from "~/scenes/Error402";
+import Error404 from "~/scenes/Error404";
+import ErrorOffline from "~/scenes/ErrorOffline";
 import Logger from "~/utils/Logger";
 import {
   NotFoundError,
@@ -22,7 +23,6 @@ import {
 } from "~/utils/errors";
 import history from "~/utils/history";
 import { matchDocumentEdit, settingsPath } from "~/utils/routeHelpers";
-import Loading from "./Loading";
 
 type Params = {
   /** The document urlId + slugified title  */

@@ -4,8 +4,8 @@ import jwt from "jsonwebtoken";
 import type { Context } from "koa";
 import Router from "koa-router";
 import { Profile } from "passport";
-import { slugifyDomain } from "@shared/utils/domains";
-import { parseEmail } from "@shared/utils/email";
+import config from "../../plugin.json";
+import env from "../env";
 import accountProvisioner from "@server/commands/accountProvisioner";
 import { MicrosoftGraphError } from "@server/errors";
 import passportMiddleware from "@server/middlewares/passport";
@@ -17,8 +17,8 @@ import {
   getTeamFromContext,
   getClientFromContext,
 } from "@server/utils/passport";
-import config from "../../plugin.json";
-import env from "../env";
+import { slugifyDomain } from "@shared/utils/domains";
+import { parseEmail } from "@shared/utils/email";
 
 const router = new Router();
 const scopes: string[] = [];

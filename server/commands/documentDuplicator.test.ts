@@ -1,6 +1,6 @@
+import documentDuplicator from "./documentDuplicator";
 import { sequelize } from "@server/storage/database";
 import { buildDocument, buildUser } from "@server/test/factories";
-import documentDuplicator from "./documentDuplicator";
 
 describe("documentDuplicator", () => {
   const ip = "127.0.0.1";

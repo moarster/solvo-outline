@@ -1,5 +1,5 @@
-import { User } from "@server/models";
 import presentUser from "./user";
+import { User } from "@server/models";
 
 it("presents a user", async () => {
   const user = presentUser(

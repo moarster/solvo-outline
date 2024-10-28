@@ -1,15 +1,15 @@
 import { ArrowIcon, PlusIcon } from "outline-icons";
 import * as React from "react";
 import styled from "styled-components";
+import { TeamSection } from "../sections";
 import { stringToColor } from "@shared/utils/color";
-import RootStore from "~/stores/RootStore";
+import { createAction } from "~/actions";
+import TeamLogo from "~/components/TeamLogo";
 import { LoginDialog } from "~/scenes/Login/components/LoginDialog";
 import TeamNew from "~/scenes/TeamNew";
-import TeamLogo from "~/components/TeamLogo";
-import { createAction } from "~/actions";
+import RootStore from "~/stores/RootStore";
 import { ActionContext } from "~/types";
 import Desktop from "~/utils/Desktop";
-import { TeamSection } from "../sections";
 
 export const createTeamsList = ({ stores }: { stores: RootStore }) =>
   stores.auth.availableTeams?.map((session) => ({

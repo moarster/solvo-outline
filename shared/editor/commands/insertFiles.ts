@@ -2,11 +2,11 @@ import * as Sentry from "@sentry/react";
 import { EditorView } from "prosemirror-view";
 import { toast } from "sonner";
 import { v4 as uuidv4 } from "uuid";
-import type { Dictionary } from "~/hooks/useDictionary";
 import FileHelper from "../lib/FileHelper";
 import uploadPlaceholderPlugin, {
   findPlaceholder,
 } from "../lib/uploadPlaceholder";
+import type { Dictionary } from "~/hooks/useDictionary";
 
 export type Options = {
   /** Dictionary object containing translation strings */
@@ -68,8 +68,8 @@ const insertFiles = async function (
       const getDimensions = isImage
         ? FileHelper.getImageDimensions
         : isVideo
-        ? FileHelper.getVideoDimensions
-        : undefined;
+          ? FileHelper.getVideoDimensions
+          : undefined;
 
       return {
         id: `upload-${uuidv4()}`,

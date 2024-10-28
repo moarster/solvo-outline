@@ -1,6 +1,6 @@
+import commentCreator from "./commentCreator";
 import { Event } from "@server/models";
 import { buildDocument, buildUser } from "@server/test/factories";
-import commentCreator from "./commentCreator";
 
 describe("commentCreator", () => {
   const ip = "127.0.0.1";

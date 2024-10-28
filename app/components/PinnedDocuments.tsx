@@ -20,10 +20,10 @@ import { observer } from "mobx-react";
 import * as React from "react";
 import styled from "styled-components";
 import breakpoint from "styled-components-breakpoint";
-import Pin from "~/models/Pin";
+import { ResizingHeightContainer } from "./ResizingHeightContainer";
 import DocumentCard from "~/components/DocumentCard";
 import useStores from "~/hooks/useStores";
-import { ResizingHeightContainer } from "./ResizingHeightContainer";
+import Pin from "~/models/Pin";
 
 type Props = {
   /** Pins to display */
@@ -86,8 +86,8 @@ function PinnedDocuments({
                 overPos === 0
                   ? fractionalIndex(null, overIndex)
                   : activePos > overPos
-                  ? fractionalIndex(prevIndex, overIndex)
-                  : fractionalIndex(overIndex, nextIndex),
+                    ? fractionalIndex(prevIndex, overIndex)
+                    : fractionalIndex(overIndex, nextIndex),
             })
             .catch(() => setItems(existing));
 

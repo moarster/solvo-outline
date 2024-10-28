@@ -13,18 +13,18 @@ import {
   Table,
   DataType,
 } from "sequelize-typescript";
+import Collection from "./Collection";
+import Team from "./Team";
+import User from "./User";
+import ParanoidModel from "./base/ParanoidModel";
+import Fix from "./decorators/Fix";
+import FileStorage from "@server/storage/files";
 import {
   CollectionPermission,
   FileOperationFormat,
   FileOperationState,
   FileOperationType,
 } from "@shared/types";
-import FileStorage from "@server/storage/files";
-import Collection from "./Collection";
-import Team from "./Team";
-import User from "./User";
-import ParanoidModel from "./base/ParanoidModel";
-import Fix from "./decorators/Fix";
 
 export type FileOperationOptions = {
   includeAttachments?: boolean;

@@ -2,9 +2,9 @@ import { runInAction } from "mobx";
 import { observer } from "mobx-react";
 import * as React from "react";
 import { toast } from "sonner";
+import { CollectionForm, FormData } from "./CollectionForm";
 import useStores from "~/hooks/useStores";
 import history from "~/utils/history";
-import { CollectionForm, FormData } from "./CollectionForm";
 
 type Props = {
   onSubmit: () => void;

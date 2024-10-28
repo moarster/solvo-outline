@@ -1,7 +1,7 @@
 import uniqBy from "lodash/uniqBy";
 import * as React from "react";
-import { PaginationParams } from "~/types";
 import useRequest from "./useRequest";
+import { PaginationParams } from "~/types";
 
 type RequestResponse<T> = {
   /** The return value of the paginated request function. */

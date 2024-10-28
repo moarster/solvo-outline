@@ -6,16 +6,6 @@ import randomstring from "randomstring";
 import { InferCreationAttributes } from "sequelize";
 import { DeepPartial } from "utility-types";
 import { v4 as uuidv4 } from "uuid";
-import {
-  CollectionPermission,
-  FileOperationState,
-  FileOperationType,
-  IntegrationService,
-  IntegrationType,
-  NotificationEventType,
-  ProsemirrorData,
-  UserRole,
-} from "@shared/types";
 import { parser, schema } from "@server/editor";
 import {
   Share,
@@ -41,6 +31,16 @@ import {
   Comment,
 } from "@server/models";
 import AttachmentHelper from "@server/models/helpers/AttachmentHelper";
+import {
+  CollectionPermission,
+  FileOperationState,
+  FileOperationType,
+  IntegrationService,
+  IntegrationType,
+  NotificationEventType,
+  ProsemirrorData,
+  UserRole,
+} from "@shared/types";
 
 export async function buildApiKey(overrides: Partial<ApiKey> = {}) {
   if (!overrides.userId) {

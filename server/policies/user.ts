@@ -1,5 +1,3 @@
-import { TeamPreference } from "@shared/types";
-import { User, Team } from "@server/models";
 import { allow } from "./cancan";
 import {
   and,
@@ -9,6 +7,8 @@ import {
   isTeamMutable,
   or,
 } from "./utils";
+import { User, Team } from "@server/models";
+import { TeamPreference } from "@shared/types";
 
 allow(User, "read", User, isTeamModel);
 

@@ -3,8 +3,11 @@ import Router from "koa-router";
 import escapeRegExp from "lodash/escapeRegExp";
 import queryString from "query-string";
 import { z } from "zod";
-import { IntegrationService, IntegrationType } from "@shared/types";
-import parseDocumentSlug from "@shared/utils/parseDocumentSlug";
+import env from "../env";
+import { presentMessageAttachment } from "../presenters/messageAttachment";
+import { presentUserNotLinkedBlocks } from "../presenters/userNotLinkedBlocks";
+import * as Slack from "../slack";
+import * as T from "./schema";
 import {
   AuthenticationError,
   InvalidRequestError,
@@ -28,11 +31,8 @@ import { can } from "@server/policies";
 import { APIContext } from "@server/types";
 import { safeEqual } from "@server/utils/crypto";
 import { opts } from "@server/utils/i18n";
-import env from "../env";
-import { presentMessageAttachment } from "../presenters/messageAttachment";
-import { presentUserNotLinkedBlocks } from "../presenters/userNotLinkedBlocks";
-import * as Slack from "../slack";
-import * as T from "./schema";
+import { IntegrationService, IntegrationType } from "@shared/types";
+import parseDocumentSlug from "@shared/utils/parseDocumentSlug";
 
 const router = new Router();
 
@@ -164,9 +164,8 @@ router.post(
     verifySlackToken(token);
 
     // we find the document based on the users teamId to ensure access
-    const document = await Document.scope("withCollection").findByPk(
-      callback_id
-    );
+    const document =
+      await Document.scope("withCollection").findByPk(callback_id);
 
     if (!document) {
       throw InvalidRequestError("Invalid callback_id");

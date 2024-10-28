@@ -1,11 +1,11 @@
 import { z } from "zod";
+import { BaseSchema } from "../schema";
+import { Integration } from "@server/models";
 import {
   IntegrationService,
   IntegrationType,
   UserCreatableIntegrationService,
 } from "@shared/types";
-import { Integration } from "@server/models";
-import { BaseSchema } from "../schema";
 
 export const IntegrationsListSchema = BaseSchema.extend({
   body: z.object({

@@ -1,15 +1,15 @@
 import Router from "koa-router";
 import compact from "lodash/compact";
 import isEmpty from "lodash/isEmpty";
-import { UserRole } from "@shared/types";
+import presentWebhookSubscription from "../presenters/webhookSubscription";
+import * as T from "./schema";
 import auth from "@server/middlewares/authentication";
 import validate from "@server/middlewares/validate";
 import { WebhookSubscription, Event } from "@server/models";
 import { authorize } from "@server/policies";
 import pagination from "@server/routes/api/middlewares/pagination";
 import { WebhookSubscriptionEvent, APIContext } from "@server/types";
-import presentWebhookSubscription from "../presenters/webhookSubscription";
-import * as T from "./schema";
+import { UserRole } from "@shared/types";
 
 const router = new Router();
 

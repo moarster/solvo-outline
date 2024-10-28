@@ -4,12 +4,12 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import type { NavigationNode } from "@shared/types";
-import Document from "~/models/Document";
 import Breadcrumb from "~/components/Breadcrumb";
 import Icon from "~/components/Icon";
 import CollectionIcon from "~/components/Icons/CollectionIcon";
 import usePolicy from "~/hooks/usePolicy";
 import useStores from "~/hooks/useStores";
+import Document from "~/models/Document";
 import { MenuInternalLink } from "~/types";
 import {
   archivePath,

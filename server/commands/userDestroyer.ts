@@ -1,7 +1,7 @@
 import { Op, Transaction } from "sequelize";
-import { UserRole } from "@shared/types";
-import { Event, User } from "@server/models";
 import { ValidationError } from "../errors";
+import { Event, User } from "@server/models";
+import { UserRole } from "@shared/types";
 
 export default async function userDestroyer({
   user,

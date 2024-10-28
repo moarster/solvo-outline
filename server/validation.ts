@@ -4,14 +4,14 @@ import { Primitive } from "utility-types";
 import validator from "validator";
 import isIn from "validator/lib/isIn";
 import isUUID from "validator/lib/isUUID";
+import { ParamRequiredError, ValidationError } from "./errors";
+import { Buckets } from "./models/helpers/AttachmentHelper";
 import { CollectionPermission } from "@shared/types";
 import { UrlHelper } from "@shared/utils/UrlHelper";
 import { validateColorHex } from "@shared/utils/color";
 import { validateIndexCharacters } from "@shared/utils/indexCharacters";
 import parseMentionUrl from "@shared/utils/parseMentionUrl";
 import { isUrl } from "@shared/utils/urls";
-import { ParamRequiredError, ValidationError } from "./errors";
-import { Buckets } from "./models/helpers/AttachmentHelper";
 
 type IncomingValue = Primitive | string[];
 

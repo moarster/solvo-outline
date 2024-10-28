@@ -2,11 +2,6 @@ import concat from "lodash/concat";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { EmojiCategory, EmojiSkinTone, IconType } from "@shared/types";
-import { getEmojis, getEmojisWithCategory, search } from "@shared/utils/emoji";
-import Flex from "~/components/Flex";
-import InputSearch from "~/components/InputSearch";
-import usePersistedState from "~/hooks/usePersistedState";
 import {
   FREQUENTLY_USED_COUNT,
   DisplayCategory,
@@ -17,6 +12,11 @@ import {
 } from "../utils";
 import GridTemplate, { DataNode } from "./GridTemplate";
 import SkinTonePicker from "./SkinTonePicker";
+import { EmojiCategory, EmojiSkinTone, IconType } from "@shared/types";
+import { getEmojis, getEmojisWithCategory, search } from "@shared/utils/emoji";
+import Flex from "~/components/Flex";
+import InputSearch from "~/components/InputSearch";
+import usePersistedState from "~/hooks/usePersistedState";
 
 /**
  * This is needed as a constant for react-window.

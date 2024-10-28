@@ -1,4 +1,3 @@
-import { CollectionPermission } from "@shared/types";
 import { UserMembership, Share } from "@server/models";
 import {
   buildUser,
@@ -10,6 +9,7 @@ import {
 } from "@server/test/factories";
 
 import { getTestServer } from "@server/test/support";
+import { CollectionPermission } from "@shared/types";
 
 const server = getTestServer();
 

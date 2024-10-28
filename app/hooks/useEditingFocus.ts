@@ -1,5 +1,5 @@
-import { useDocumentContext } from "~/components/DocumentContext";
 import useIdle from "./useIdle";
+import { useDocumentContext } from "~/components/DocumentContext";
 
 const activityEvents = [
   "click",

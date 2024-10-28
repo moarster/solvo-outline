@@ -1,6 +1,4 @@
 import { InferCreationAttributes } from "sequelize";
-import { UserRole } from "@shared/types";
-import { parseEmail } from "@shared/utils/email";
 import InviteAcceptedEmail from "@server/emails/templates/InviteAcceptedEmail";
 import {
   DomainNotAllowedError,
@@ -10,6 +8,8 @@ import {
 import Logger from "@server/logging/Logger";
 import { Event, Team, User, UserAuthentication } from "@server/models";
 import { sequelize } from "@server/storage/database";
+import { UserRole } from "@shared/types";
+import { parseEmail } from "@shared/utils/email";
 
 type UserProvisionerResult = {
   user: User;

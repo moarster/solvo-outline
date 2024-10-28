@@ -1,10 +1,10 @@
-import { SourceMetadata } from "@shared/types";
+import BaseTask, { TaskPriority } from "./BaseTask";
 import documentCreator from "@server/commands/documentCreator";
 import documentImporter from "@server/commands/documentImporter";
 import { User } from "@server/models";
 import { sequelize } from "@server/storage/database";
 import FileStorage from "@server/storage/files";
-import BaseTask, { TaskPriority } from "./BaseTask";
+import { SourceMetadata } from "@shared/types";
 
 type Props = {
   userId: string;

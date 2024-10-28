@@ -2,12 +2,8 @@ import fractionalIndex from "fractional-index";
 import invariant from "invariant";
 import Router from "koa-router";
 import { Sequelize, Op, WhereOptions } from "sequelize";
-import {
-  CollectionPermission,
-  CollectionStatusFilter,
-  FileOperationState,
-  FileOperationType,
-} from "@shared/types";
+import pagination from "../middlewares/pagination";
+import * as T from "./schema";
 import collectionDestroyer from "@server/commands/collectionDestroyer";
 import collectionExporter from "@server/commands/collectionExporter";
 import teamUpdater from "@server/commands/teamUpdater";
@@ -43,8 +39,12 @@ import { APIContext } from "@server/types";
 import { RateLimiterStrategy } from "@server/utils/RateLimiter";
 import { collectionIndexing } from "@server/utils/indexing";
 import removeIndexCollision from "@server/utils/removeIndexCollision";
-import pagination from "../middlewares/pagination";
-import * as T from "./schema";
+import {
+  CollectionPermission,
+  CollectionStatusFilter,
+  FileOperationState,
+  FileOperationType,
+} from "@shared/types";
 
 const router = new Router();
 

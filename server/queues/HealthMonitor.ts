@@ -1,8 +1,7 @@
 import { Queue } from "bull";
-import { Second } from "@shared/utils/time";
 import Logger from "@server/logging/Logger";
+import { Second } from "@shared/utils/time";
 
- 
 export default class HealthMonitor {
   /**
    * Starts a health monitor for the given queue. If the queue stops processing jobs then the

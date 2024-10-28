@@ -1,7 +1,7 @@
-import { TeamPreference } from "@shared/types";
-import { ApiKey, User, Team } from "@server/models";
 import { allow } from "./cancan";
 import { and, isOwner, isTeamModel, isTeamMutable } from "./utils";
+import { ApiKey, User, Team } from "@server/models";
+import { TeamPreference } from "@shared/types";
 
 allow(User, "createApiKey", Team, (actor, team) =>
   and(

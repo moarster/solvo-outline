@@ -4,11 +4,11 @@ import compact from "lodash/compact";
 import escapeRegExp from "lodash/escapeRegExp";
 import mime from "mime-types";
 import { v4 as uuidv4 } from "uuid";
+import ImportTask, { StructuredImportData } from "./ImportTask";
 import documentImporter from "@server/commands/documentImporter";
 import Logger from "@server/logging/Logger";
 import { FileOperation, User } from "@server/models";
 import ImportHelper, { FileTreeNode } from "@server/utils/ImportHelper";
-import ImportTask, { StructuredImportData } from "./ImportTask";
 
 export default class ImportNotionTask extends ImportTask {
   public async parseData(

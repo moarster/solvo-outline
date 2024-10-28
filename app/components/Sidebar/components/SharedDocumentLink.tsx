@@ -2,14 +2,14 @@ import includes from "lodash/includes";
 import { observer } from "mobx-react";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
+import SidebarLink from "./SidebarLink";
 import { NavigationNode } from "@shared/types";
-import Collection from "~/models/Collection";
-import Document from "~/models/Document";
 import Icon from "~/components/Icon";
 import useStores from "~/hooks/useStores";
+import Collection from "~/models/Collection";
+import Document from "~/models/Document";
 import { sharedDocumentPath } from "~/utils/routeHelpers";
 import { descendants } from "~/utils/tree";
-import SidebarLink from "./SidebarLink";
 
 type Props = {
   node: NavigationNode;

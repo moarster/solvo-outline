@@ -1,5 +1,4 @@
 import * as React from "react";
-import env from "@server/env";
 import BaseEmail, { EmailProps } from "./BaseEmail";
 import Body from "./components/Body";
 import CopyableCode from "./components/CopyableCode";
@@ -8,6 +7,7 @@ import EmptySpace from "./components/EmptySpace";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Heading from "./components/Heading";
+import env from "@server/env";
 
 type Props = EmailProps & {
   deleteConfirmationCode: string;

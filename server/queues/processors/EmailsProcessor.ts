@@ -1,5 +1,4 @@
-import { NotificationEventType } from "@shared/types";
-import { Minute } from "@shared/utils/time";
+import BaseProcessor from "./BaseProcessor";
 import CollectionCreatedEmail from "@server/emails/templates/CollectionCreatedEmail";
 import CollectionSharedEmail from "@server/emails/templates/CollectionSharedEmail";
 import CommentCreatedEmail from "@server/emails/templates/CommentCreatedEmail";
@@ -9,7 +8,8 @@ import DocumentPublishedOrUpdatedEmail from "@server/emails/templates/DocumentPu
 import DocumentSharedEmail from "@server/emails/templates/DocumentSharedEmail";
 import { Notification } from "@server/models";
 import { Event, NotificationEvent } from "@server/types";
-import BaseProcessor from "./BaseProcessor";
+import { NotificationEventType } from "@shared/types";
+import { Minute } from "@shared/utils/time";
 
 export default class EmailsProcessor extends BaseProcessor {
   static applicableEvents: Event["name"][] = ["notifications.create"];

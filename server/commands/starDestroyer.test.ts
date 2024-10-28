@@ -1,6 +1,6 @@
+import starDestroyer from "./starDestroyer";
 import { Event, Star } from "@server/models";
 import { buildDocument, buildUser } from "@server/test/factories";
-import starDestroyer from "./starDestroyer";
 
 describe("starDestroyer", () => {
   const ip = "127.0.0.1";

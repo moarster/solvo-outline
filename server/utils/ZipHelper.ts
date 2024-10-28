@@ -3,10 +3,10 @@ import fs from "fs-extra";
 import JSZip from "jszip";
 import tmp from "tmp";
 import yauzl, { Entry, validateFileName } from "yauzl";
-import { bytesToHumanReadable } from "@shared/utils/files";
+import { trimFileAndExt } from "./fs";
 import Logger from "@server/logging/Logger";
 import { trace } from "@server/logging/tracing";
-import { trimFileAndExt } from "./fs";
+import { bytesToHumanReadable } from "@shared/utils/files";
 
 const MAX_FILE_NAME_LENGTH = 255;
 const MAX_PATH_LENGTH = 4096;

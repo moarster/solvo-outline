@@ -1,7 +1,5 @@
- 
 import { Tracer } from "dd-trace";
 
- 
 const emptyFn = function () {};
 
 const callableHandlers = {

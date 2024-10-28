@@ -52,7 +52,6 @@ export function addTags(tags: Record<string, any>, span?: Span | null): void {
 export function getRootSpanFromRequestContext(
   context: PrivateDatadogContext
 ): Span | null {
-   
   return context?.req?._datadog?.span ?? null;
 }
 

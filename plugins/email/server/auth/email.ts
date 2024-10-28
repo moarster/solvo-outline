@@ -1,6 +1,5 @@
 import Router from "koa-router";
-import { NotificationEventType } from "@shared/types";
-import { parseDomain } from "@shared/utils/domains";
+import * as T from "./schema";
 import InviteAcceptedEmail from "@server/emails/templates/InviteAcceptedEmail";
 import SigninEmail from "@server/emails/templates/SigninEmail";
 import WelcomeEmail from "@server/emails/templates/WelcomeEmail";
@@ -13,7 +12,8 @@ import { APIContext } from "@server/types";
 import { RateLimiterStrategy } from "@server/utils/RateLimiter";
 import { signIn } from "@server/utils/authentication";
 import { getUserForEmailSigninToken } from "@server/utils/jwt";
-import * as T from "./schema";
+import { NotificationEventType } from "@shared/types";
+import { parseDomain } from "@shared/utils/domains";
 
 const router = new Router();
 

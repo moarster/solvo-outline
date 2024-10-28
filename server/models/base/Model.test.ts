@@ -1,8 +1,8 @@
 import { faker } from "@faker-js/faker";
 import { v4 as uuid } from "uuid";
-import { TeamPreference } from "@shared/types";
-import { buildDocument, buildTeam } from "@server/test/factories";
 import User from "../User";
+import { buildDocument, buildTeam } from "@server/test/factories";
+import { TeamPreference } from "@shared/types";
 
 describe("Model", () => {
   describe("changeset", () => {

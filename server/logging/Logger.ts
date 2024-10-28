@@ -5,11 +5,11 @@ import isArray from "lodash/isArray";
 import isEmpty from "lodash/isEmpty";
 import isObject from "lodash/isObject";
 import winston from "winston";
+import * as Tracing from "./tracer";
 import env from "@server/env";
 import Metrics from "@server/logging/Metrics";
 import Sentry from "@server/logging/sentry";
 import ShutdownHelper from "@server/utils/ShutdownHelper";
-import * as Tracing from "./tracer";
 
 type LogCategory =
   | "lifecycle"

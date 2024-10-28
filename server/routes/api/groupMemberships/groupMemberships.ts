@@ -1,6 +1,8 @@
 import Router from "koa-router";
 import uniqBy from "lodash/uniqBy";
 import { Op } from "sequelize";
+import pagination from "../middlewares/pagination";
+import * as T from "./schema";
 import auth from "@server/middlewares/authentication";
 import validate from "@server/middlewares/validate";
 import { Document, GroupMembership } from "@server/models";
@@ -11,8 +13,6 @@ import {
   presentPolicies,
 } from "@server/presenters";
 import { APIContext } from "@server/types";
-import pagination from "../middlewares/pagination";
-import * as T from "./schema";
 
 const router = new Router();
 

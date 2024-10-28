@@ -1,7 +1,7 @@
 import path from "path";
+import ImportJSONTask from "./ImportJSONTask";
 import { FileOperation } from "@server/models";
 import { buildFileOperation } from "@server/test/factories";
-import ImportJSONTask from "./ImportJSONTask";
 
 describe("ImportJSONTask", () => {
   it("should import the documents, attachments", async () => {

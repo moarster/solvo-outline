@@ -1,7 +1,7 @@
 import { subHours } from "date-fns";
 import differenceBy from "lodash/differenceBy";
 import { Op } from "sequelize";
-import { NotificationEventType } from "@shared/types";
+import BaseTask, { TaskPriority } from "./BaseTask";
 import { createSubscriptionsForDocument } from "@server/commands/subscriptionCreator";
 import env from "@server/env";
 import Logger from "@server/logging/Logger";
@@ -10,7 +10,7 @@ import { DocumentHelper } from "@server/models/helpers/DocumentHelper";
 import NotificationHelper from "@server/models/helpers/NotificationHelper";
 import { RevisionEvent } from "@server/types";
 import { canUserAccessDocument } from "@server/utils/policies";
-import BaseTask, { TaskPriority } from "./BaseTask";
+import { NotificationEventType } from "@shared/types";
 
 export default class RevisionCreatedNotificationsTask extends BaseTask<RevisionEvent> {
   public async perform(event: RevisionEvent) {

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 
 const Deprecated =
-  (message?: string) => (target: Object, propertyKey: string) => {
+  (message?: string) => (target: object, propertyKey: string) => {
     if (process.env[propertyKey]) {
       // eslint-disable-next-line no-console
       console.warn(

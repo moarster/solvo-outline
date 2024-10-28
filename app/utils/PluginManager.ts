@@ -1,11 +1,11 @@
 import isArray from "lodash/isArray";
 import sortBy from "lodash/sortBy";
 import { action, observable } from "mobx";
-import Team from "~/models/Team";
-import User from "~/models/User";
-import { useComputed } from "~/hooks/useComputed";
 import Logger from "./Logger";
 import isCloudHosted from "./isCloudHosted";
+import { useComputed } from "~/hooks/useComputed";
+import Team from "~/models/Team";
+import User from "~/models/User";
 
 /**
  * The different types of client plugins that can be registered.

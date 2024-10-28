@@ -1,9 +1,9 @@
 import { onAuthenticatePayload, Extension } from "@hocuspocus/server";
+import { AuthenticationError } from "../errors";
 import { trace } from "@server/logging/tracing";
 import Document from "@server/models/Document";
 import { can } from "@server/policies";
 import { getUserForJWT } from "@server/utils/jwt";
-import { AuthenticationError } from "../errors";
 
 @trace()
 export default class AuthenticationExtension implements Extension {

@@ -1,9 +1,9 @@
 import { Location } from "history";
 import * as React from "react";
+import Container from "./Container";
 import CenteredContent from "~/components/CenteredContent";
 import PageTitle from "~/components/PageTitle";
 import PlaceholderDocument from "~/components/PlaceholderDocument";
-import Container from "./Container";
 
 type Props = {
   location: Location<{ title?: string }>;

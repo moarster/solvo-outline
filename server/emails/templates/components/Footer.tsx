@@ -1,8 +1,8 @@
 import { Table, TBody, TR, TD } from "oy-vey";
 import * as React from "react";
+import env from "@server/env";
 import theme from "@shared/styles/theme";
 import { UrlHelper } from "@shared/utils/UrlHelper";
-import env from "@server/env";
 
 type Props = {
   unsubscribeUrl?: string;

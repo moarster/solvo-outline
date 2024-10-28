@@ -2,7 +2,8 @@ import { observer } from "mobx-react";
 import { WebhooksIcon } from "outline-icons";
 import * as React from "react";
 import { useTranslation, Trans } from "react-i18next";
-import WebhookSubscription from "~/models/WebhookSubscription";
+import WebhookSubscriptionListItem from "./components/WebhookSubscriptionListItem";
+import WebhookSubscriptionNew from "./components/WebhookSubscriptionNew";
 import { Action } from "~/components/Actions";
 import Button from "~/components/Button";
 import Heading from "~/components/Heading";
@@ -15,8 +16,7 @@ import useBoolean from "~/hooks/useBoolean";
 import useCurrentTeam from "~/hooks/useCurrentTeam";
 import usePolicy from "~/hooks/usePolicy";
 import useStores from "~/hooks/useStores";
-import WebhookSubscriptionListItem from "./components/WebhookSubscriptionListItem";
-import WebhookSubscriptionNew from "./components/WebhookSubscriptionNew";
+import WebhookSubscription from "~/models/WebhookSubscription";
 
 function Webhooks() {
   const team = useCurrentTeam();

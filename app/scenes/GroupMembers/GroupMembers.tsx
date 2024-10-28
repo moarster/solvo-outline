@@ -3,8 +3,8 @@ import { PlusIcon } from "outline-icons";
 import * as React from "react";
 import { useTranslation, Trans } from "react-i18next";
 import { toast } from "sonner";
-import Group from "~/models/Group";
-import User from "~/models/User";
+import AddPeopleToGroup from "./AddPeopleToGroup";
+import GroupMemberListItem from "./components/GroupMemberListItem";
 import Button from "~/components/Button";
 import Empty from "~/components/Empty";
 import Flex from "~/components/Flex";
@@ -14,8 +14,8 @@ import Subheading from "~/components/Subheading";
 import Text from "~/components/Text";
 import usePolicy from "~/hooks/usePolicy";
 import useStores from "~/hooks/useStores";
-import AddPeopleToGroup from "./AddPeopleToGroup";
-import GroupMemberListItem from "./components/GroupMemberListItem";
+import Group from "~/models/Group";
+import User from "~/models/User";
 
 type Props = {
   group: Group;

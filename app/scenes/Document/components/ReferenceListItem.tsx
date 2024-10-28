@@ -6,9 +6,9 @@ import styled from "styled-components";
 import { s, ellipsis } from "@shared/styles";
 import { IconType, NavigationNode } from "@shared/types";
 import { determineIconType } from "@shared/utils/icon";
-import Document from "~/models/Document";
 import Flex from "~/components/Flex";
 import Icon from "~/components/Icon";
+import Document from "~/models/Document";
 import { hover } from "~/styles";
 import { sharedDocumentPath } from "~/utils/routeHelpers";
 

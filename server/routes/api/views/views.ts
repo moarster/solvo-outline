@@ -1,4 +1,5 @@
 import Router from "koa-router";
+import * as T from "./schema";
 import { ValidationError } from "@server/errors";
 import auth from "@server/middlewares/authentication";
 import { rateLimiter } from "@server/middlewares/rateLimiter";
@@ -8,7 +9,6 @@ import { authorize } from "@server/policies";
 import { presentView } from "@server/presenters";
 import { APIContext } from "@server/types";
 import { RateLimiterStrategy } from "@server/utils/RateLimiter";
-import * as T from "./schema";
 
 const router = new Router();
 

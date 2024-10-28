@@ -9,6 +9,13 @@ import { renderToString } from "react-dom/server";
 import styled, { ServerStyleSheet, ThemeProvider } from "styled-components";
 import { prosemirrorToYDoc } from "y-prosemirror";
 import * as Y from "yjs";
+import { TextHelper } from "./TextHelper";
+import { schema, parser } from "@server/editor";
+import Logger from "@server/logging/Logger";
+import { trace } from "@server/logging/tracing";
+import Attachment from "@server/models/Attachment";
+import User from "@server/models/User";
+import FileStorage from "@server/storage/files";
 import EditorContainer from "@shared/editor/components/Styles";
 import embeds from "@shared/editor/embeds";
 import GlobalStyles from "@shared/styles/globals";
@@ -17,13 +24,6 @@ import { ProsemirrorData } from "@shared/types";
 import { attachmentRedirectRegex } from "@shared/utils/ProsemirrorHelper";
 import { isRTL } from "@shared/utils/rtl";
 import { isInternalUrl } from "@shared/utils/urls";
-import { schema, parser } from "@server/editor";
-import Logger from "@server/logging/Logger";
-import { trace } from "@server/logging/tracing";
-import Attachment from "@server/models/Attachment";
-import User from "@server/models/User";
-import FileStorage from "@server/storage/files";
-import { TextHelper } from "./TextHelper";
 
 export type HTMLOptions = {
   /** A title, if it should be included */
@@ -534,7 +534,7 @@ export class ProsemirrorHelper {
       }
     }
 
-    /*// Inject mermaidjs scripts if the document contains mermaid diagrams
+    /* // Inject mermaidjs scripts if the document contains mermaid diagrams
     if (options?.includeKroki) {
       const krokiElements = dom.window.document.querySelectorAll(
         `[isKroki=true] pre code`

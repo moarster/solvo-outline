@@ -3,21 +3,21 @@ import invariant from "invariant";
 import isNil from "lodash/isNil";
 import { observable, action, computed, autorun, runInAction } from "mobx";
 import { getCookie, setCookie } from "tiny-cookie";
+import Store from "./base/Store";
 import { CustomTheme } from "@shared/types";
 import Storage from "@shared/utils/Storage";
 import { getCookieDomain, parseDomain } from "@shared/utils/domains";
-import RootStore from "~/stores/RootStore";
+import env from "~/env";
+import { setPostLoginPath } from "~/hooks/useLastVisitedPath";
 import Policy from "~/models/Policy";
 import Team from "~/models/Team";
 import User from "~/models/User";
-import env from "~/env";
-import { setPostLoginPath } from "~/hooks/useLastVisitedPath";
+import RootStore from "~/stores/RootStore";
 import { PartialExcept } from "~/types";
 import { client } from "~/utils/ApiClient";
 import Desktop from "~/utils/Desktop";
 import Logger from "~/utils/Logger";
 import isCloudHosted from "~/utils/isCloudHosted";
-import Store from "./base/Store";
 
 type PersistedData = {
   user?: PartialExcept<User, "id">;

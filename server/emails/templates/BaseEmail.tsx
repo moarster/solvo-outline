@@ -15,7 +15,7 @@ export interface EmailProps {
 
 export default abstract class BaseEmail<
   T extends EmailProps,
-  S extends Record<string, any> | void = void
+  S extends Record<string, any> | void = void,
 > {
   private props: T;
   private metadata?: NotificationMetadata;

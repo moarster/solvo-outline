@@ -1,8 +1,7 @@
 import { subHours, subMinutes } from "date-fns";
 import Router from "koa-router";
 import uniqBy from "lodash/uniqBy";
-import { TeamPreference } from "@shared/types";
-import { parseDomain } from "@shared/utils/domains";
+import * as T from "./schema";
 import env from "@server/env";
 import auth from "@server/middlewares/authentication";
 import { transaction } from "@server/middlewares/transaction";
@@ -20,7 +19,8 @@ import {
 import ValidateSSOAccessTask from "@server/queues/tasks/ValidateSSOAccessTask";
 import { APIContext } from "@server/types";
 import { getSessionsInCookie } from "@server/utils/authentication";
-import * as T from "./schema";
+import { TeamPreference } from "@shared/types";
+import { parseDomain } from "@shared/utils/domains";
 
 const router = new Router();
 

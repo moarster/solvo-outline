@@ -2,11 +2,11 @@ import { observer } from "mobx-react";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import RecentSearchListItem from "./RecentSearchListItem";
 import { s } from "@shared/styles";
 import ArrowKeyNavigation from "~/components/ArrowKeyNavigation";
 import Fade from "~/components/Fade";
 import useStores from "~/hooks/useStores";
-import RecentSearchListItem from "./RecentSearchListItem";
 
 type Props = {
   /** Callback when the Escape key is pressed while navigating the list */

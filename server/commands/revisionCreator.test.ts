@@ -1,6 +1,6 @@
+import revisionCreator from "./revisionCreator";
 import { Event } from "@server/models";
 import { buildDocument, buildUser } from "@server/test/factories";
-import revisionCreator from "./revisionCreator";
 
 describe("revisionCreator", () => {
   const ip = "127.0.0.1";

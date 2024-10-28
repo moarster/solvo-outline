@@ -1,7 +1,7 @@
 import { subHours } from "date-fns";
+import InviteReminderTask from "./InviteReminderTask";
 import InviteReminderEmail from "@server/emails/templates/InviteReminderEmail";
 import { buildInvite } from "@server/test/factories";
-import InviteReminderTask from "./InviteReminderTask";
 
 describe("InviteReminderTask", () => {
   it("should send reminder emails", async () => {

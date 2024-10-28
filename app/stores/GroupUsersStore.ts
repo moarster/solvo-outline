@@ -1,11 +1,11 @@
 import invariant from "invariant";
 import filter from "lodash/filter";
 import { action, runInAction } from "mobx";
+import RootStore from "./RootStore";
+import Store, { RPCAction } from "./base/Store";
 import GroupUser from "~/models/GroupUser";
 import { PaginationParams } from "~/types";
 import { client } from "~/utils/ApiClient";
-import RootStore from "./RootStore";
-import Store, { RPCAction } from "./base/Store";
 
 export default class GroupUsersStore extends Store<GroupUser> {
   actions = [RPCAction.Create, RPCAction.Delete];

@@ -1,13 +1,13 @@
 import { Transaction } from "sequelize";
 import { v4 as uuidv4 } from "uuid";
+import { traceFunction } from "@server/logging/tracing";
+import { Collection, Event, Team, User, FileOperation } from "@server/models";
+import { Buckets } from "@server/models/helpers/AttachmentHelper";
 import {
   FileOperationFormat,
   FileOperationType,
   FileOperationState,
 } from "@shared/types";
-import { traceFunction } from "@server/logging/tracing";
-import { Collection, Event, Team, User, FileOperation } from "@server/models";
-import { Buckets } from "@server/models/helpers/AttachmentHelper";
 
 type Props = {
   collection?: Collection;

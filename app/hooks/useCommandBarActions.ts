@@ -1,9 +1,9 @@
 import { useRegisterActions } from "kbar";
 import flattenDeep from "lodash/flattenDeep";
 import { useLocation } from "react-router-dom";
+import useActionContext from "./useActionContext";
 import { actionToKBar } from "~/actions";
 import { Action } from "~/types";
-import useActionContext from "./useActionContext";
 
 /**
  * Hook to add actions to the command bar while the hook is inside a mounted

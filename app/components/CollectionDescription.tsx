@@ -7,7 +7,6 @@ import { toast } from "sonner";
 import styled from "styled-components";
 import { richExtensions } from "@shared/editor/nodes";
 import { s } from "@shared/styles";
-import Collection from "~/models/Collection";
 import Arrow from "~/components/Arrow";
 import ButtonLink from "~/components/ButtonLink";
 import Editor from "~/components/Editor";
@@ -18,6 +17,7 @@ import EmojiMenuExtension from "~/editor/extensions/EmojiMenu";
 import HoverPreviewsExtension from "~/editor/extensions/HoverPreviews";
 import usePolicy from "~/hooks/usePolicy";
 import useStores from "~/hooks/useStores";
+import Collection from "~/models/Collection";
 
 const extensions = [
   ...richExtensions,

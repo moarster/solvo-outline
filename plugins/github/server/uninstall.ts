@@ -1,6 +1,6 @@
-import { IntegrationService, IntegrationType } from "@shared/types";
-import { Integration } from "@server/models";
 import { GitHub } from "./github";
+import { Integration } from "@server/models";
+import { IntegrationService, IntegrationType } from "@shared/types";
 
 export async function uninstall(
   integration: Integration<IntegrationType.Embed>

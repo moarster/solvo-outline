@@ -1,9 +1,9 @@
 import invariant from "invariant";
 import filter from "lodash/filter";
-import { CollectionPermission } from "@shared/types";
-import { Collection, User, Team } from "@server/models";
 import { allow, can } from "./cancan";
 import { and, isTeamAdmin, isTeamModel, isTeamMutable, or } from "./utils";
+import { Collection, User, Team } from "@server/models";
+import { CollectionPermission } from "@shared/types";
 
 allow(User, "createCollection", Team, (actor, team) =>
   and(

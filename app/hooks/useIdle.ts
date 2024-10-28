@@ -1,7 +1,7 @@
 import throttle from "lodash/throttle";
 import * as React from "react";
-import { Minute } from "@shared/utils/time";
 import useIsMounted from "./useIsMounted";
+import { Minute } from "@shared/utils/time";
 
 const activityEvents = [
   "click",

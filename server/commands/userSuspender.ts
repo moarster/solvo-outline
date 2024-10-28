@@ -1,7 +1,7 @@
 import { Transaction } from "sequelize";
+import { ValidationError } from "../errors";
 import { User, Event, GroupUser } from "@server/models";
 import CleanupDemotedUserTask from "@server/queues/tasks/CleanupDemotedUserTask";
-import { ValidationError } from "../errors";
 
 type Props = {
   user: User;

@@ -1,6 +1,6 @@
+import UserDeletedProcessor from "./UserDeletedProcessor";
 import UserAuthentication from "@server/models/UserAuthentication";
 import { buildUser } from "@server/test/factories";
-import UserDeletedProcessor from "./UserDeletedProcessor";
 
 const ip = "127.0.0.1";
 

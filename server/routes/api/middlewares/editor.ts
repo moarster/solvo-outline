@@ -1,7 +1,7 @@
 import { Context, Next } from "koa";
 import semver from "semver";
-import EDITOR_VERSION from "@shared/editor/version";
 import { EditorUpdateError } from "@server/errors";
+import EDITOR_VERSION from "@shared/editor/version";
 
 export default function editor() {
   return async function editorMiddleware(ctx: Context, next: Next) {

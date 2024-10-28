@@ -2,8 +2,8 @@ import { observer } from "mobx-react";
 import * as React from "react";
 import { useTranslation, Trans } from "react-i18next";
 import { useHistory } from "react-router-dom";
-import Group from "~/models/Group";
 import ConfirmationDialog from "~/components/ConfirmationDialog";
+import Group from "~/models/Group";
 import { settingsPath } from "~/utils/routeHelpers";
 
 type Props = {

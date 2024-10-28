@@ -2,17 +2,17 @@ import { JSDOM } from "jsdom";
 import { Node } from "prosemirror-model";
 import { updateYFragment, yDocToProsemirrorJSON } from "y-prosemirror";
 import * as Y from "yjs";
-import textBetween from "@shared/editor/lib/textBetween";
-import { EditorStyleHelper } from "@shared/editor/styles/EditorStyleHelper";
-import { IconType, ProsemirrorData } from "@shared/types";
-import { determineIconType } from "@shared/utils/icon";
+import { MentionAttrs, ProsemirrorHelper } from "./ProsemirrorHelper";
+import { TextHelper } from "./TextHelper";
 import { parser, serializer, schema } from "@server/editor";
 import { addTags } from "@server/logging/tracer";
 import { trace } from "@server/logging/tracing";
 import { Collection, Document, Revision } from "@server/models";
 import diff from "@server/utils/diff";
-import { MentionAttrs, ProsemirrorHelper } from "./ProsemirrorHelper";
-import { TextHelper } from "./TextHelper";
+import textBetween from "@shared/editor/lib/textBetween";
+import { EditorStyleHelper } from "@shared/editor/styles/EditorStyleHelper";
+import { IconType, ProsemirrorData } from "@shared/types";
+import { determineIconType } from "@shared/utils/icon";
 
 type HTMLOptions = {
   /** Whether to include the document title in the generated HTML (defaults to true) */

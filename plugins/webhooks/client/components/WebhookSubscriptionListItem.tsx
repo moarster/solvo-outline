@@ -2,15 +2,15 @@ import { EditIcon, TrashIcon } from "outline-icons";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import WebhookSubscription from "~/models/WebhookSubscription";
+import WebhookSubscriptionRevokeDialog from "./WebhookSubscriptionDeleteDialog";
+import WebhookSubscriptionEdit from "./WebhookSubscriptionEdit";
 import Badge from "~/components/Badge";
 import Button from "~/components/Button";
 import ListItem from "~/components/List/Item";
 import Modal from "~/components/Modal";
 import useBoolean from "~/hooks/useBoolean";
 import useStores from "~/hooks/useStores";
-import WebhookSubscriptionRevokeDialog from "./WebhookSubscriptionDeleteDialog";
-import WebhookSubscriptionEdit from "./WebhookSubscriptionEdit";
+import WebhookSubscription from "~/models/WebhookSubscription";
 
 type Props = {
   webhook: WebhookSubscription;

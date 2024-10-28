@@ -1,5 +1,5 @@
-import { TOCPosition, TeamPreference } from "@shared/types";
 import { Team } from "@server/models";
+import { TOCPosition, TeamPreference } from "@shared/types";
 
 export default function presentPublicTeam(
   /** The team to present */

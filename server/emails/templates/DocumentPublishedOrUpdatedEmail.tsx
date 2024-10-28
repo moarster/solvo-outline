@@ -1,11 +1,4 @@
 import * as React from "react";
-import { NotificationEventType } from "@shared/types";
-import { Day } from "@shared/utils/time";
-import { Document, Collection, Revision } from "@server/models";
-import { DocumentHelper } from "@server/models/helpers/DocumentHelper";
-import HTMLHelper from "@server/models/helpers/HTMLHelper";
-import NotificationSettingsHelper from "@server/models/helpers/NotificationSettingsHelper";
-import SubscriptionHelper from "@server/models/helpers/SubscriptionHelper";
 import BaseEmail, { EmailProps } from "./BaseEmail";
 import Body from "./components/Body";
 import Button from "./components/Button";
@@ -15,6 +8,13 @@ import EmptySpace from "./components/EmptySpace";
 import Footer, { Link } from "./components/Footer";
 import Header from "./components/Header";
 import Heading from "./components/Heading";
+import { Document, Collection, Revision } from "@server/models";
+import { DocumentHelper } from "@server/models/helpers/DocumentHelper";
+import HTMLHelper from "@server/models/helpers/HTMLHelper";
+import NotificationSettingsHelper from "@server/models/helpers/NotificationSettingsHelper";
+import SubscriptionHelper from "@server/models/helpers/SubscriptionHelper";
+import { NotificationEventType } from "@shared/types";
+import { Day } from "@shared/utils/time";
 
 type InputProps = EmailProps & {
   userId: string;

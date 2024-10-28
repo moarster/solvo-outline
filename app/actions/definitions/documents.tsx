@@ -37,11 +37,12 @@ import {
   NavigationNode,
 } from "@shared/types";
 import { getEventFiles } from "@shared/utils/files";
-import DocumentDelete from "~/scenes/DocumentDelete";
-import DocumentMove from "~/scenes/DocumentMove";
-import DocumentPermanentDelete from "~/scenes/DocumentPermanentDelete";
-import DocumentPublish from "~/scenes/DocumentPublish";
-import DeleteDocumentsInTrash from "~/scenes/Trash/components/DeleteDocumentsInTrash";
+import { createAction } from "~/actions";
+import {
+  ActiveDocumentSection,
+  DocumentSection,
+  TrashSection,
+} from "~/actions/sections";
 import ConfirmationDialog from "~/components/ConfirmationDialog";
 import DuplicateDialog from "~/components/DuplicateDialog";
 import Icon from "~/components/Icon";
@@ -49,14 +50,13 @@ import MarkdownIcon from "~/components/Icons/MarkdownIcon";
 import SharePopover from "~/components/Sharing/Document";
 import { getHeaderExpandedKey } from "~/components/Sidebar/components/Header";
 import DocumentTemplatizeDialog from "~/components/TemplatizeDialog";
-import { createAction } from "~/actions";
-import {
-  ActiveDocumentSection,
-  DocumentSection,
-  TrashSection,
-} from "~/actions/sections";
 import env from "~/env";
 import { setPersistedState } from "~/hooks/usePersistedState";
+import DocumentDelete from "~/scenes/DocumentDelete";
+import DocumentMove from "~/scenes/DocumentMove";
+import DocumentPermanentDelete from "~/scenes/DocumentPermanentDelete";
+import DocumentPublish from "~/scenes/DocumentPublish";
+import DeleteDocumentsInTrash from "~/scenes/Trash/components/DeleteDocumentsInTrash";
 import history from "~/utils/history";
 import {
   documentInsightsPath,

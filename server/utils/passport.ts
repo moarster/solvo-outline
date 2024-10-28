@@ -2,17 +2,17 @@ import crypto from "crypto";
 import { addMinutes, subMinutes } from "date-fns";
 import type { Context } from "koa";
 // Allowed for trusted server<->server connections
- 
+
 import fetch from "node-fetch";
 import {
   StateStoreStoreCallback,
   StateStoreVerifyCallback,
 } from "passport-oauth2";
-import { Client } from "@shared/types";
-import { getCookieDomain, parseDomain } from "@shared/utils/domains";
+import { InternalError, OAuthStateMismatchError } from "../errors";
 import env from "@server/env";
 import { Team } from "@server/models";
-import { InternalError, OAuthStateMismatchError } from "../errors";
+import { Client } from "@shared/types";
+import { getCookieDomain, parseDomain } from "@shared/utils/domains";
 
 export class StateStore {
   key = "state";

@@ -1,16 +1,16 @@
 import Router from "koa-router";
 import find from "lodash/find";
-import { IntegrationService, IntegrationType } from "@shared/types";
-import { parseDomain } from "@shared/utils/domains";
+import { GitHubUtils } from "../../shared/GitHubUtils";
+import { GitHub } from "../github";
+import * as T from "./schema";
 import Logger from "@server/logging/Logger";
 import auth from "@server/middlewares/authentication";
 import { transaction } from "@server/middlewares/transaction";
 import validate from "@server/middlewares/validate";
 import { IntegrationAuthentication, Integration, Team } from "@server/models";
 import { APIContext } from "@server/types";
-import { GitHubUtils } from "../../shared/GitHubUtils";
-import { GitHub } from "../github";
-import * as T from "./schema";
+import { IntegrationService, IntegrationType } from "@shared/types";
+import { parseDomain } from "@shared/utils/domains";
 
 const router = new Router();
 
@@ -101,9 +101,8 @@ router.get(
               id: installationId!,
               account: {
                 id: installation.account?.id,
-                name:
-                  // @ts-expect-error Property 'login' does not exist on type
-                  installation.account?.login,
+                // @ts-expect-error Property 'login' does not exist on type
+                name: installation.account?.login,
                 avatarUrl: installation.account?.avatar_url,
               },
             },

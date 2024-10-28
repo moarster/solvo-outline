@@ -3,12 +3,12 @@ import * as React from "react";
 import { Trans } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
-import Document from "~/models/Document";
+import ReferenceListItem from "./ReferenceListItem";
 import Fade from "~/components/Fade";
 import Tab from "~/components/Tab";
 import Tabs from "~/components/Tabs";
 import useStores from "~/hooks/useStores";
-import ReferenceListItem from "./ReferenceListItem";
+import Document from "~/models/Document";
 
 type Props = {
   document: Document;

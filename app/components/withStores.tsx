@@ -1,7 +1,7 @@
 import hoistNonReactStatics from "hoist-non-react-statics";
 import * as React from "react";
-import RootStore from "~/stores/RootStore";
 import useStores from "~/hooks/useStores";
+import RootStore from "~/stores/RootStore";
 
 type StoreProps = keyof RootStore;
 
@@ -10,7 +10,7 @@ function withStores<
   ResolvedProps = JSX.LibraryManagedAttributes<
     P,
     Omit<React.ComponentProps<P>, StoreProps>
-  >
+  >,
 >(WrappedComponent: P): React.FC<ResolvedProps> {
   const ComponentWithStore = (props: ResolvedProps) => {
     const stores = useStores();

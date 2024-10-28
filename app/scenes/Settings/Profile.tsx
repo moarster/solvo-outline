@@ -3,14 +3,14 @@ import { ProfileIcon } from "outline-icons";
 import * as React from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { toast } from "sonner";
+import ImageInput from "./components/ImageInput";
+import SettingRow from "./components/SettingRow";
 import Button from "~/components/Button";
 import Heading from "~/components/Heading";
 import Input from "~/components/Input";
 import Scene from "~/components/Scene";
 import Text from "~/components/Text";
 import useCurrentUser from "~/hooks/useCurrentUser";
-import ImageInput from "./components/ImageInput";
-import SettingRow from "./components/SettingRow";
 
 const Profile = () => {
   const user = useCurrentUser();

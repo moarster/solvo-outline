@@ -1,6 +1,6 @@
-import { Comment, User, Team } from "@server/models";
 import { allow } from "./cancan";
 import { and, isTeamModel, or } from "./utils";
+import { Comment, User, Team } from "@server/models";
 
 allow(User, "createComment", Team, isTeamModel);
 

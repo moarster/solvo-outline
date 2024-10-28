@@ -1,8 +1,8 @@
 import querystring from "querystring";
 import { Next } from "koa";
-import { Pagination } from "@shared/constants";
 import { InvalidRequestError } from "@server/errors";
 import { AppContext } from "@server/types";
+import { Pagination } from "@shared/constants";
 
 export default function pagination() {
   return async function paginationMiddleware(ctx: AppContext, next: Next) {

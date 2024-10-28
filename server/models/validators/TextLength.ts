@@ -1,9 +1,9 @@
 import size from "lodash/size";
 import { Node } from "prosemirror-model";
 import { addAttributeOptions } from "sequelize-typescript";
+import { schema } from "@server/editor";
 import { ProsemirrorData } from "@shared/types";
 import { ProsemirrorHelper } from "@shared/utils/ProsemirrorHelper";
-import { schema } from "@server/editor";
 
 /**
  * A decorator that validates the size of the text within a prosemirror data

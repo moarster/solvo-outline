@@ -1,7 +1,7 @@
 import fractionalIndex from "fractional-index";
 import { FindOptions } from "sequelize";
-import naturalSort from "@shared/utils/naturalSort";
 import { Collection, Document, Star } from "@server/models";
+import naturalSort from "@shared/utils/naturalSort";
 
 export async function collectionIndexing(
   teamId: string,

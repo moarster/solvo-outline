@@ -1,12 +1,12 @@
 import { computed, observable } from "mobx";
+import User from "./User";
+import Model from "./base/Model";
 import {
   FileOperationFormat,
   FileOperationState,
   FileOperationType,
 } from "@shared/types";
 import { bytesToHumanReadable } from "@shared/utils/files";
-import User from "./User";
-import Model from "./base/Model";
 
 class FileOperation extends Model {
   static modelName = "FileOperation";

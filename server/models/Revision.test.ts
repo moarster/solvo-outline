@@ -1,5 +1,5 @@
-import { buildDocument } from "@server/test/factories";
 import Revision from "./Revision";
+import { buildDocument } from "@server/test/factories";
 
 describe("#findLatest", () => {
   test("should return latest revision", async () => {

@@ -2,8 +2,8 @@ import * as React from "react";
 import { useDragLayer, XYCoord } from "react-dnd";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import useStores from "~/hooks/useStores";
 import SidebarLink from "./SidebarLink";
+import useStores from "~/hooks/useStores";
 
 const layerStyles: React.CSSProperties = {
   position: "fixed",

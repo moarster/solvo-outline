@@ -1,7 +1,7 @@
 import { differenceInMilliseconds } from "date-fns";
 import { Op } from "sequelize";
-import { IntegrationService, IntegrationType } from "@shared/types";
-import { Minute } from "@shared/utils/time";
+import env from "../env";
+import { presentMessageAttachment } from "../presenters/messageAttachment";
 import { Document, Integration, Collection, Team } from "@server/models";
 import BaseProcessor from "@server/queues/processors/BaseProcessor";
 import {
@@ -12,8 +12,8 @@ import {
 } from "@server/types";
 import fetch from "@server/utils/fetch";
 import { sleep } from "@server/utils/timers";
-import env from "../env";
-import { presentMessageAttachment } from "../presenters/messageAttachment";
+import { IntegrationService, IntegrationType } from "@shared/types";
+import { Minute } from "@shared/utils/time";
 
 export default class SlackProcessor extends BaseProcessor {
   static applicableEvents: Event["name"][] = [

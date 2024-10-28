@@ -1,4 +1,4 @@
-import { CollectionPermission, UserRole } from "@shared/types";
+import { serialize } from "./index";
 import { UserMembership, Collection } from "@server/models";
 import {
   buildUser,
@@ -6,7 +6,7 @@ import {
   buildCollection,
   buildAdmin,
 } from "@server/test/factories";
-import { serialize } from "./index";
+import { CollectionPermission, UserRole } from "@shared/types";
 
 describe("admin", () => {
   it("should allow team admin to archive collection", async () => {

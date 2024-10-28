@@ -1,9 +1,9 @@
 import { PlusIcon } from "outline-icons";
 import * as React from "react";
 import stores from "~/stores";
-import ApiKeyNew from "~/scenes/ApiKeyNew";
 import { createAction } from "..";
 import { SettingsSection } from "../sections";
+import ApiKeyNew from "~/scenes/ApiKeyNew";
 
 export const createApiKey = createAction({
   name: ({ t }) => t("New API key"),

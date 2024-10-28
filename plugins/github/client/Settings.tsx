@@ -2,8 +2,9 @@ import { observer } from "mobx-react";
 import { PlusIcon } from "outline-icons";
 import * as React from "react";
 import { useTranslation, Trans } from "react-i18next";
+import GitHubIcon from "./Icon";
+import { GitHubConnectButton } from "./components/GitHubButton";
 import { IntegrationService } from "@shared/types";
-import { ConnectedButton } from "~/scenes/Settings/components/ConnectedButton";
 import { AvatarSize } from "~/components/Avatar";
 import Flex from "~/components/Flex";
 import Heading from "~/components/Heading";
@@ -18,8 +19,7 @@ import Time from "~/components/Time";
 import env from "~/env";
 import useQuery from "~/hooks/useQuery";
 import useStores from "~/hooks/useStores";
-import GitHubIcon from "./Icon";
-import { GitHubConnectButton } from "./components/GitHubButton";
+import { ConnectedButton } from "~/scenes/Settings/components/ConnectedButton";
 
 function GitHub() {
   const { integrations } = useStores();

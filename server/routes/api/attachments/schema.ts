@@ -1,7 +1,7 @@
 import isEmpty from "lodash/isEmpty";
 import { z } from "zod";
-import { AttachmentPreset } from "@shared/types";
 import { BaseSchema } from "@server/routes/api/schema";
+import { AttachmentPreset } from "@shared/types";
 
 export const AttachmentsCreateSchema = BaseSchema.extend({
   body: z.object({

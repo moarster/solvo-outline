@@ -17,9 +17,9 @@ import fs from "fs-extra";
 import invariant from "invariant";
 import compact from "lodash/compact";
 import tmp from "tmp";
+import BaseStorage from "./BaseStorage";
 import env from "@server/env";
 import Logger from "@server/logging/Logger";
-import BaseStorage from "./BaseStorage";
 
 export default class S3Storage extends BaseStorage {
   constructor() {

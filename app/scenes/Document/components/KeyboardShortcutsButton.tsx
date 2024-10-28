@@ -4,11 +4,11 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import breakpoint from "styled-components-breakpoint";
-import KeyboardShortcuts from "~/scenes/KeyboardShortcuts";
 import NudeButton from "~/components/NudeButton";
 import Tooltip from "~/components/Tooltip";
 import useEditingFocus from "~/hooks/useEditingFocus";
 import useStores from "~/hooks/useStores";
+import KeyboardShortcuts from "~/scenes/KeyboardShortcuts";
 
 function KeyboardShortcutsButton() {
   const { t } = useTranslation();

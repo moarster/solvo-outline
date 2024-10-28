@@ -1,7 +1,7 @@
 import JSZip from "jszip";
-import { FileOperationFormat } from "@shared/types";
-import { Collection, FileOperation } from "@server/models";
 import ExportDocumentTreeTask from "./ExportDocumentTreeTask";
+import { Collection, FileOperation } from "@server/models";
+import { FileOperationFormat } from "@shared/types";
 
 export default class ExportHTMLZipTask extends ExportDocumentTreeTask {
   public async export(collections: Collection[], fileOperation: FileOperation) {

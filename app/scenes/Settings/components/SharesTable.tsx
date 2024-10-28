@@ -2,13 +2,13 @@ import { observer } from "mobx-react";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { unicodeCLDRtoBCP47 } from "@shared/utils/date";
-import Share from "~/models/Share";
 import { Avatar } from "~/components/Avatar";
 import Flex from "~/components/Flex";
 import TableFromParams from "~/components/TableFromParams";
 import Time from "~/components/Time";
 import useUserLocale from "~/hooks/useUserLocale";
 import ShareMenu from "~/menus/ShareMenu";
+import Share from "~/models/Share";
 import { formatNumber } from "~/utils/language";
 
 type Props = Omit<React.ComponentProps<typeof TableFromParams>, "columns"> & {

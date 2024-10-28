@@ -1,4 +1,3 @@
-/* eslint-disable lines-between-class-members */
 import compact from "lodash/compact";
 import isNil from "lodash/isNil";
 import uniq from "lodash/uniq";
@@ -41,17 +40,6 @@ import {
   Unique,
 } from "sequelize-typescript";
 import isUUID from "validator/lib/isUUID";
-import type {
-  NavigationNode,
-  ProsemirrorData,
-  SourceMetadata,
-} from "@shared/types";
-import { ProsemirrorHelper } from "@shared/utils/ProsemirrorHelper";
-import { UrlHelper } from "@shared/utils/UrlHelper";
-import slugify from "@shared/utils/slugify";
-import { DocumentValidation } from "@shared/validations";
-import { ValidationError } from "@server/errors";
-import { generateUrlId } from "@server/utils/url";
 import Backlink from "./Backlink";
 import Collection from "./Collection";
 import FileOperation from "./FileOperation";
@@ -69,6 +57,17 @@ import Fix from "./decorators/Fix";
 import { DocumentHelper } from "./helpers/DocumentHelper";
 import IsHexColor from "./validators/IsHexColor";
 import Length from "./validators/Length";
+import { ValidationError } from "@server/errors";
+import { generateUrlId } from "@server/utils/url";
+import type {
+  NavigationNode,
+  ProsemirrorData,
+  SourceMetadata,
+} from "@shared/types";
+import { ProsemirrorHelper } from "@shared/utils/ProsemirrorHelper";
+import { UrlHelper } from "@shared/utils/UrlHelper";
+import slugify from "@shared/utils/slugify";
+import { DocumentValidation } from "@shared/validations";
 
 export const DOCUMENT_VERSION = 2;
 

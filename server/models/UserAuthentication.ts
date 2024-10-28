@@ -14,12 +14,12 @@ import {
   Table,
   Unique,
 } from "sequelize-typescript";
-import Logger from "@server/logging/Logger";
 import AuthenticationProvider from "./AuthenticationProvider";
 import User from "./User";
 import IdModel from "./base/IdModel";
 import Encrypted from "./decorators/Encrypted";
 import Fix from "./decorators/Fix";
+import Logger from "@server/logging/Logger";
 
 @Table({ tableName: "user_authentications", modelName: "user_authentication" })
 @Fix

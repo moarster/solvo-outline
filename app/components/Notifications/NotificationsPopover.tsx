@@ -3,9 +3,9 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { usePopoverState, PopoverDisclosure } from "reakit/Popover";
 import styled from "styled-components";
+import Notifications from "./Notifications";
 import { depths } from "@shared/styles";
 import Popover from "~/components/Popover";
-import Notifications from "./Notifications";
 
 type Props = {
   children?: React.ReactNode;

@@ -1,5 +1,3 @@
-import { IntegrationType } from "@shared/types";
-import { Integration, User, Team } from "@server/models";
 import { allow } from "./cancan";
 import {
   and,
@@ -9,6 +7,8 @@ import {
   isTeamMutable,
   or,
 } from "./utils";
+import { Integration, User, Team } from "@server/models";
+import { IntegrationType } from "@shared/types";
 
 allow(User, "createIntegration", Team, (actor, team) =>
   and(isTeamAdmin(actor, team), isTeamMutable(actor))

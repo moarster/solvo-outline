@@ -1,7 +1,7 @@
 import { t } from "i18next";
+import env from "../env";
 import { Team } from "@server/models";
 import { opts } from "@server/utils/i18n";
-import env from "../env";
 
 export function presentUserNotLinkedBlocks(team?: Team) {
   const appName = env.APP_NAME;

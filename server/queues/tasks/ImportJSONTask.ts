@@ -4,7 +4,7 @@ import find from "lodash/find";
 import mime from "mime-types";
 import { Fragment, Node } from "prosemirror-model";
 import { v4 as uuidv4 } from "uuid";
-import { ProsemirrorData } from "@shared/types";
+import ImportTask, { StructuredImportData } from "./ImportTask";
 import { schema, serializer } from "@server/editor";
 import Logger from "@server/logging/Logger";
 import { Attachment, FileOperation } from "@server/models";
@@ -15,7 +15,7 @@ import {
   JSONExportMetadata,
 } from "@server/types";
 import ImportHelper, { FileTreeNode } from "@server/utils/ImportHelper";
-import ImportTask, { StructuredImportData } from "./ImportTask";
+import { ProsemirrorData } from "@shared/types";
 
 export default class ImportJSONTask extends ImportTask {
   public async parseData(

@@ -1,6 +1,6 @@
+import userSuspender from "./userSuspender";
 import GroupUser from "@server/models/GroupUser";
 import { buildGroup, buildAdmin, buildUser } from "@server/test/factories";
-import userSuspender from "./userSuspender";
 
 describe("userSuspender", () => {
   const ip = "127.0.0.1";

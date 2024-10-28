@@ -4,12 +4,6 @@ import * as React from "react";
 import { useDrop } from "react-dnd";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import Collection from "~/models/Collection";
-import Flex from "~/components/Flex";
-import Error from "~/components/List/Error";
-import PaginatedList from "~/components/PaginatedList";
-import { createCollection } from "~/actions/definitions/collections";
-import useStores from "~/hooks/useStores";
 import DraggableCollectionLink from "./DraggableCollectionLink";
 import DropCursor from "./DropCursor";
 import Header from "./Header";
@@ -17,6 +11,12 @@ import PlaceholderCollections from "./PlaceholderCollections";
 import Relative from "./Relative";
 import SidebarAction from "./SidebarAction";
 import { DragObject } from "./SidebarLink";
+import { createCollection } from "~/actions/definitions/collections";
+import Flex from "~/components/Flex";
+import Error from "~/components/List/Error";
+import PaginatedList from "~/components/PaginatedList";
+import useStores from "~/hooks/useStores";
+import Collection from "~/models/Collection";
 
 function Collections() {
   const { documents, collections } = useStores();

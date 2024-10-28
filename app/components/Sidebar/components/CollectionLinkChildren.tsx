@@ -4,21 +4,21 @@ import { useDrop } from "react-dnd";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import styled from "styled-components";
-import Collection from "~/models/Collection";
-import Document from "~/models/Document";
-import ConfirmMoveDialog from "~/components/ConfirmMoveDialog";
-import DocumentsLoader from "~/components/DocumentsLoader";
-import { ResizingHeightContainer } from "~/components/ResizingHeightContainer";
-import Text from "~/components/Text";
-import usePolicy from "~/hooks/usePolicy";
-import useStores from "~/hooks/useStores";
-import history from "~/utils/history";
 import useCollectionDocuments from "../hooks/useCollectionDocuments";
 import DocumentLink from "./DocumentLink";
 import DropCursor from "./DropCursor";
 import Folder from "./Folder";
 import PlaceholderCollections from "./PlaceholderCollections";
 import SidebarLink, { DragObject } from "./SidebarLink";
+import ConfirmMoveDialog from "~/components/ConfirmMoveDialog";
+import DocumentsLoader from "~/components/DocumentsLoader";
+import { ResizingHeightContainer } from "~/components/ResizingHeightContainer";
+import Text from "~/components/Text";
+import usePolicy from "~/hooks/usePolicy";
+import useStores from "~/hooks/useStores";
+import Collection from "~/models/Collection";
+import Document from "~/models/Document";
+import history from "~/utils/history";
 
 type Props = {
   /** The collection to render the children of. */

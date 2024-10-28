@@ -1,8 +1,8 @@
 import { subDays } from "date-fns";
-import { FileOperationState, FileOperationType } from "@shared/types";
+import ErrorTimedOutFileOperationsTask from "./ErrorTimedOutFileOperationsTask";
 import { FileOperation } from "@server/models";
 import { buildFileOperation, buildTeam } from "@server/test/factories";
-import ErrorTimedOutFileOperationsTask from "./ErrorTimedOutFileOperationsTask";
+import { FileOperationState, FileOperationType } from "@shared/types";
 
 describe("ErrorTimedOutFileOperationsTask", () => {
   it("should error exports older than 12 hours", async () => {

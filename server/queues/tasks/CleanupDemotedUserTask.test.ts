@@ -1,3 +1,4 @@
+import CleanupDemotedUserTask from "./CleanupDemotedUserTask";
 import { ApiKey } from "@server/models";
 import {
   buildUser,
@@ -6,7 +7,6 @@ import {
   buildWebhookSubscription,
   buildViewer,
 } from "@server/test/factories";
-import CleanupDemotedUserTask from "./CleanupDemotedUserTask";
 
 describe("CleanupDemotedUserTask", () => {
   it("should delete api keys for suspended user", async () => {

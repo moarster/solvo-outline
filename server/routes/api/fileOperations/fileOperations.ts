@@ -1,6 +1,7 @@
 import Router from "koa-router";
 import { WhereOptions } from "sequelize";
-import { UserRole } from "@shared/types";
+import pagination from "../middlewares/pagination";
+import * as T from "./schema";
 import fileOperationDeleter from "@server/commands/fileOperationDeleter";
 import { ValidationError } from "@server/errors";
 import auth from "@server/middlewares/authentication";
@@ -11,8 +12,7 @@ import { authorize } from "@server/policies";
 import { presentFileOperation } from "@server/presenters";
 import FileStorage from "@server/storage/files";
 import { APIContext } from "@server/types";
-import pagination from "../middlewares/pagination";
-import * as T from "./schema";
+import { UserRole } from "@shared/types";
 
 const router = new Router();
 

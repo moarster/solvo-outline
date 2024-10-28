@@ -10,7 +10,6 @@ import styled, { css } from "styled-components";
 import breakpoint from "styled-components-breakpoint";
 import EventBoundary from "@shared/components/EventBoundary";
 import { s } from "@shared/styles";
-import Document from "~/models/Document";
 import Badge from "~/components/Badge";
 import DocumentMeta from "~/components/DocumentMeta";
 import Flex from "~/components/Flex";
@@ -22,6 +21,7 @@ import Tooltip from "~/components/Tooltip";
 import useBoolean from "~/hooks/useBoolean";
 import useCurrentUser from "~/hooks/useCurrentUser";
 import DocumentMenu from "~/menus/DocumentMenu";
+import Document from "~/models/Document";
 import { hover } from "~/styles";
 import { documentPath } from "~/utils/routeHelpers";
 
@@ -172,7 +172,9 @@ const Actions = styled(EventBoundary)`
   color: ${s("textSecondary")};
 
   ${NudeButton} {
-    &: ${hover}, &[aria-expanded= "true"] {
+    &:
+      ${hover},
+      &[aria-expanded= "true"] {
       background: ${s("sidebarControlHoverBackground")};
     }
   }

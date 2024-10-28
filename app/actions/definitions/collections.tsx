@@ -14,7 +14,8 @@ import {
 import * as React from "react";
 import { toast } from "sonner";
 import stores from "~/stores";
-import Collection from "~/models/Collection";
+import { createAction } from "~/actions";
+import { ActiveCollectionSection, CollectionSection } from "~/actions/sections";
 import { CollectionEdit } from "~/components/Collection/CollectionEdit";
 import { CollectionNew } from "~/components/Collection/CollectionNew";
 import CollectionDeleteDialog from "~/components/CollectionDeleteDialog";
@@ -22,9 +23,8 @@ import ConfirmationDialog from "~/components/ConfirmationDialog";
 import DynamicCollectionIcon from "~/components/Icons/CollectionIcon";
 import SharePopover from "~/components/Sharing/Collection/SharePopover";
 import { getHeaderExpandedKey } from "~/components/Sidebar/components/Header";
-import { createAction } from "~/actions";
-import { ActiveCollectionSection, CollectionSection } from "~/actions/sections";
 import { setPersistedState } from "~/hooks/usePersistedState";
+import Collection from "~/models/Collection";
 import history from "~/utils/history";
 import { newTemplatePath, searchPath } from "~/utils/routeHelpers";
 

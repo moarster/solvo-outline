@@ -1,8 +1,8 @@
 import path from "path";
 import fs from "fs-extra";
+import documentImporter from "./documentImporter";
 import Attachment from "@server/models/Attachment";
 import { buildUser } from "@server/test/factories";
-import documentImporter from "./documentImporter";
 
 jest.mock("@server/storage/files");
 

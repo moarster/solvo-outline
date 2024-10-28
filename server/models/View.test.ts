@@ -1,5 +1,5 @@
-import { buildTeam, buildDocument, buildUser } from "@server/test/factories";
 import View from "./View";
+import { buildTeam, buildDocument, buildUser } from "@server/test/factories";
 
 describe("View", () => {
   describe("findByDocument", () => {

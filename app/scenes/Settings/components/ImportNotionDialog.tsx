@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Trans, useTranslation } from "react-i18next";
-import { FileOperationFormat } from "@shared/types";
-import useStores from "~/hooks/useStores";
 import DropToImport from "./DropToImport";
 import HelpDisclosure from "./HelpDisclosure";
+import { FileOperationFormat } from "@shared/types";
+import useStores from "~/hooks/useStores";
 
 function ImportNotionDialog() {
   const { t } = useTranslation();

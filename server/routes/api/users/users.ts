@@ -1,8 +1,7 @@
 import Router from "koa-router";
 import { Op, Sequelize, WhereOptions } from "sequelize";
-import { UserPreference, UserRole } from "@shared/types";
-import { UserRoleHelper } from "@shared/utils/UserRoleHelper";
-import { UserValidation } from "@shared/validations";
+import pagination from "../middlewares/pagination";
+import * as T from "./schema";
 import userDestroyer from "@server/commands/userDestroyer";
 import userInviter from "@server/commands/userInviter";
 import userSuspender from "@server/commands/userSuspender";
@@ -23,8 +22,9 @@ import { presentUser, presentPolicies } from "@server/presenters";
 import { APIContext } from "@server/types";
 import { RateLimiterStrategy } from "@server/utils/RateLimiter";
 import { safeEqual } from "@server/utils/crypto";
-import pagination from "../middlewares/pagination";
-import * as T from "./schema";
+import { UserPreference, UserRole } from "@shared/types";
+import { UserRoleHelper } from "@shared/utils/UserRoleHelper";
+import { UserValidation } from "@shared/validations";
 
 const router = new Router();
 const emailEnabled = !!(env.SMTP_HOST || env.isDevelopment);

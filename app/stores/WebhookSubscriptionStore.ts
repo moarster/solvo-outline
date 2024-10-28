@@ -1,7 +1,7 @@
 import { computed } from "mobx";
-import WebhookSubscription from "~/models/WebhookSubscription";
 import RootStore from "./RootStore";
 import Store from "./base/Store";
+import WebhookSubscription from "~/models/WebhookSubscription";
 
 export default class WebhookSubscriptionsStore extends Store<WebhookSubscription> {
   constructor(rootStore: RootStore) {

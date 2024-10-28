@@ -1,6 +1,6 @@
 import path from "path";
-import { FileOperation } from "@server/models";
 import { presentUser } from ".";
+import { FileOperation } from "@server/models";
 
 export default function presentFileOperation(data: FileOperation) {
   return {

@@ -1,7 +1,7 @@
-import { FileOperationState, FileOperationType } from "@shared/types";
-import { User, Team, FileOperation } from "@server/models";
 import { allow } from "./cancan";
 import { and, isTeamAdmin, isTeamMutable, or } from "./utils";
+import { User, Team, FileOperation } from "@server/models";
+import { FileOperationState, FileOperationType } from "@shared/types";
 
 allow(
   User,

@@ -1,3 +1,4 @@
+import BaseProcessor from "./BaseProcessor";
 import {
   ApiKey,
   GroupUser,
@@ -8,7 +9,6 @@ import {
 } from "@server/models";
 import { sequelize } from "@server/storage/database";
 import { Event as TEvent, UserEvent } from "@server/types";
-import BaseProcessor from "./BaseProcessor";
 
 export default class UserDeletedProcessor extends BaseProcessor {
   static applicableEvents: TEvent["name"][] = ["users.delete"];

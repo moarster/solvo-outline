@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { Dialog, DialogBackdrop, useDialogState } from "reakit/Dialog";
 import styled, { DefaultTheme } from "styled-components";
 import breakpoint from "styled-components-breakpoint";
+import ErrorBoundary from "./ErrorBoundary";
 import { depths, s } from "@shared/styles";
 import Flex from "~/components/Flex";
 import NudeButton from "~/components/NudeButton";
@@ -16,7 +17,6 @@ import usePrevious from "~/hooks/usePrevious";
 import useUnmount from "~/hooks/useUnmount";
 import { fadeAndScaleIn } from "~/styles/animations";
 import Desktop from "~/utils/Desktop";
-import ErrorBoundary from "./ErrorBoundary";
 
 let openModals = 0;
 

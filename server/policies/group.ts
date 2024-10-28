@@ -1,6 +1,6 @@
-import { Group, User, Team } from "@server/models";
 import { allow } from "./cancan";
 import { and, isTeamAdmin, isTeamModel, isTeamMutable } from "./utils";
+import { Group, User, Team } from "@server/models";
 
 allow(User, "createGroup", Team, (actor, team) =>
   and(

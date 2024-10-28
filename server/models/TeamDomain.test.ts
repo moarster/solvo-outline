@@ -1,5 +1,5 @@
-import { buildAdmin, buildTeam } from "@server/test/factories";
 import TeamDomain from "./TeamDomain";
+import { buildAdmin, buildTeam } from "@server/test/factories";
 
 describe("team domain model", () => {
   describe("create", () => {

@@ -1,6 +1,3 @@
-import { FileOperationFormat, FileOperationType } from "@shared/types";
-import { FileOperation } from "@server/models";
-import { Event as TEvent, FileOperationEvent } from "@server/types";
 import ExportHTMLZipTask from "../tasks/ExportHTMLZipTask";
 import ExportJSONTask from "../tasks/ExportJSONTask";
 import ExportMarkdownZipTask from "../tasks/ExportMarkdownZipTask";
@@ -8,6 +5,9 @@ import ImportJSONTask from "../tasks/ImportJSONTask";
 import ImportMarkdownZipTask from "../tasks/ImportMarkdownZipTask";
 import ImportNotionTask from "../tasks/ImportNotionTask";
 import BaseProcessor from "./BaseProcessor";
+import { FileOperation } from "@server/models";
+import { Event as TEvent, FileOperationEvent } from "@server/types";
+import { FileOperationFormat, FileOperationType } from "@shared/types";
 
 export default class FileOperationCreatedProcessor extends BaseProcessor {
   static applicableEvents: TEvent["name"][] = ["fileOperations.create"];

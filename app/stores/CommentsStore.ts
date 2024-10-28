@@ -5,11 +5,11 @@ import keyBy from "lodash/keyBy";
 import orderBy from "lodash/orderBy";
 import uniq from "lodash/uniq";
 import { action, computed } from "mobx";
+import RootStore from "./RootStore";
+import Store from "./base/Store";
 import Comment from "~/models/Comment";
 import { CommentSortOption, CommentSortType } from "~/types";
 import { client } from "~/utils/ApiClient";
-import RootStore from "./RootStore";
-import Store from "./base/Store";
 
 export default class CommentsStore extends Store<Comment> {
   constructor(rootStore: RootStore) {

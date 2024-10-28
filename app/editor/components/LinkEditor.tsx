@@ -11,6 +11,10 @@ import { EditorView } from "prosemirror-view";
 import * as React from "react";
 import { toast } from "sonner";
 import styled from "styled-components";
+import Input from "./Input";
+import LinkSearchResult from "./LinkSearchResult";
+import ToolbarButton from "./ToolbarButton";
+import Tooltip from "./Tooltip";
 import { s, hideScrollbars } from "@shared/styles";
 import { isInternalUrl, sanitizeUrl } from "@shared/utils/urls";
 import Flex from "~/components/Flex";
@@ -18,10 +22,6 @@ import { ResizingHeightContainer } from "~/components/ResizingHeightContainer";
 import Scrollable from "~/components/Scrollable";
 import { Dictionary } from "~/hooks/useDictionary";
 import Logger from "~/utils/Logger";
-import Input from "./Input";
-import LinkSearchResult from "./LinkSearchResult";
-import ToolbarButton from "./ToolbarButton";
-import Tooltip from "./Tooltip";
 
 export type SearchResult = {
   title: string;

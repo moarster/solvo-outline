@@ -1,11 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { IconType } from "@shared/types";
-import { IconLibrary } from "@shared/utils/IconLibrary";
-import Flex from "~/components/Flex";
-import InputSearch from "~/components/InputSearch";
-import usePersistedState from "~/hooks/usePersistedState";
 import {
   FREQUENTLY_USED_COUNT,
   DisplayCategory,
@@ -15,6 +10,11 @@ import {
 } from "../utils";
 import ColorPicker from "./ColorPicker";
 import GridTemplate, { DataNode } from "./GridTemplate";
+import { IconType } from "@shared/types";
+import { IconLibrary } from "@shared/utils/IconLibrary";
+import Flex from "~/components/Flex";
+import InputSearch from "~/components/InputSearch";
+import usePersistedState from "~/hooks/usePersistedState";
 
 const IconNames = Object.keys(IconLibrary.mapping);
 const TotalIcons = IconNames.length;

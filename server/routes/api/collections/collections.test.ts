@@ -1,4 +1,3 @@
-import { CollectionPermission, CollectionStatusFilter } from "@shared/types";
 import { Document, UserMembership, GroupMembership } from "@server/models";
 import {
   buildUser,
@@ -9,6 +8,7 @@ import {
   buildTeam,
 } from "@server/test/factories";
 import { getTestServer } from "@server/test/support";
+import { CollectionPermission, CollectionStatusFilter } from "@shared/types";
 
 const server = getTestServer();
 

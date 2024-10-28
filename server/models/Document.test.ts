@@ -1,6 +1,5 @@
 import { EmptyResultError } from "sequelize";
-import { CollectionPermission } from "@shared/types";
-import slugify from "@shared/utils/slugify";
+import UserMembership from "./UserMembership";
 import { parser } from "@server/editor";
 import Document from "@server/models/Document";
 import {
@@ -11,7 +10,8 @@ import {
   buildUser,
   buildGuestUser,
 } from "@server/test/factories";
-import UserMembership from "./UserMembership";
+import { CollectionPermission } from "@shared/types";
+import slugify from "@shared/utils/slugify";
 
 beforeEach(() => {
   jest.resetAllMocks();

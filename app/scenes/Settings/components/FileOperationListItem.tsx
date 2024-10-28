@@ -9,7 +9,6 @@ import {
   FileOperationState,
   FileOperationType,
 } from "@shared/types";
-import FileOperation from "~/models/FileOperation";
 import { Action } from "~/components/Actions";
 import ConfirmationDialog from "~/components/ConfirmationDialog";
 import ListItem from "~/components/List/Item";
@@ -18,6 +17,7 @@ import Time from "~/components/Time";
 import useCurrentUser from "~/hooks/useCurrentUser";
 import useStores from "~/hooks/useStores";
 import FileOperationMenu from "~/menus/FileOperationMenu";
+import FileOperation from "~/models/FileOperation";
 import isCloudHosted from "~/utils/isCloudHosted";
 
 type Props = {

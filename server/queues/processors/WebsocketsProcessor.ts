@@ -2,6 +2,7 @@ import concat from "lodash/concat";
 import uniq from "lodash/uniq";
 import uniqBy from "lodash/uniqBy";
 import { Server } from "socket.io";
+import { Event } from "../../types";
 import {
   Comment,
   Document,
@@ -35,7 +36,6 @@ import {
   presentGroupUser,
 } from "@server/presenters";
 import presentNotification from "@server/presenters/notification";
-import { Event } from "../../types";
 
 export default class WebsocketsProcessor {
   public async perform(event: Event, socketio: Server) {

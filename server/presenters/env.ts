@@ -1,6 +1,6 @@
-import { IntegrationType, PublicEnv } from "@shared/types";
 import { Environment } from "@server/env";
 import { Integration } from "@server/models";
+import { IntegrationType, PublicEnv } from "@shared/types";
 
 // Note: This entire object is stringified in the HTML exposed to the client
 // do not add anything here that should be a secret or password

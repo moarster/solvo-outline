@@ -1,4 +1,3 @@
-import { AttachmentPreset, CollectionPermission } from "@shared/types";
 import { UserMembership } from "@server/models";
 import Attachment from "@server/models/Attachment";
 import {
@@ -10,6 +9,7 @@ import {
   buildViewer,
 } from "@server/test/factories";
 import { getTestServer } from "@server/test/support";
+import { AttachmentPreset, CollectionPermission } from "@shared/types";
 
 jest.mock("@server/storage/files");
 

@@ -6,10 +6,10 @@ import { useHistory, useLocation } from "react-router-dom";
 import scrollIntoView from "scroll-into-view-if-needed";
 import styled, { css } from "styled-components";
 import breakpoint from "styled-components-breakpoint";
+import CommentForm from "./CommentForm";
+import CommentThreadItem from "./CommentThreadItem";
 import { s } from "@shared/styles";
 import { ProsemirrorData } from "@shared/types";
-import Comment from "~/models/Comment";
-import Document from "~/models/Document";
 import { Avatar } from "~/components/Avatar";
 import { useDocumentContext } from "~/components/DocumentContext";
 import Fade from "~/components/Fade";
@@ -22,10 +22,10 @@ import useOnClickOutside from "~/hooks/useOnClickOutside";
 import usePersistedState from "~/hooks/usePersistedState";
 import usePolicy from "~/hooks/usePolicy";
 import useStores from "~/hooks/useStores";
+import Comment from "~/models/Comment";
+import Document from "~/models/Document";
 import { hover } from "~/styles";
 import { sidebarAppearDuration } from "~/styles/animations";
-import CommentForm from "./CommentForm";
-import CommentThreadItem from "./CommentThreadItem";
 
 type Props = {
   /** The document that this comment thread belongs to */

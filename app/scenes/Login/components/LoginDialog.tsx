@@ -3,11 +3,11 @@ import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import styled from "styled-components";
+import { navigateToSubdomain } from "../urls";
 import { s } from "@shared/styles";
 import ButtonLarge from "~/components/ButtonLarge";
 import Input from "~/components/Input";
 import Text from "~/components/Text";
-import { navigateToSubdomain } from "../urls";
 
 type FormData = {
   subdomain: string;

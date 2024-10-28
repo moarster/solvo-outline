@@ -24,6 +24,13 @@ import {
 import { Decoration, EditorView, NodeViewConstructor } from "prosemirror-view";
 import * as React from "react";
 import styled, { css, DefaultTheme, ThemeProps } from "styled-components";
+import ComponentView from "./components/ComponentView";
+import EditorContext from "./components/EditorContext";
+import { SearchResult } from "./components/LinkEditor";
+import LinkToolbar from "./components/LinkToolbar";
+import { NodeViewRenderer } from "./components/NodeViewRenderer";
+import SelectionToolbar from "./components/SelectionToolbar";
+import WithTheme from "./components/WithTheme";
 import insertFiles from "@shared/editor/commands/insertFiles";
 import Styles from "@shared/editor/components/Styles";
 import { EmbedDescriptor } from "@shared/editor/embeds";
@@ -46,13 +53,6 @@ import Flex from "~/components/Flex";
 import { PortalContext } from "~/components/Portal";
 import { Dictionary } from "~/hooks/useDictionary";
 import Logger from "~/utils/Logger";
-import ComponentView from "./components/ComponentView";
-import EditorContext from "./components/EditorContext";
-import { SearchResult } from "./components/LinkEditor";
-import LinkToolbar from "./components/LinkToolbar";
-import { NodeViewRenderer } from "./components/NodeViewRenderer";
-import SelectionToolbar from "./components/SelectionToolbar";
-import WithTheme from "./components/WithTheme";
 
 export type Props = {
   /** An optional identifier for the editor context. It is used to persist local settings */

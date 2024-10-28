@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { s } from "@shared/styles";
 import { Avatar } from "./Avatar";
+import { s } from "@shared/styles";
 
 const TeamLogo = styled(Avatar)`
   border-radius: 4px;

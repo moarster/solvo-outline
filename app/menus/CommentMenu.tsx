@@ -6,19 +6,19 @@ import { useTranslation } from "react-i18next";
 import { useMenuState } from "reakit/Menu";
 import { toast } from "sonner";
 import EventBoundary from "@shared/components/EventBoundary";
-import Comment from "~/models/Comment";
-import ContextMenu from "~/components/ContextMenu";
-import OverflowMenuButton from "~/components/ContextMenu/OverflowMenuButton";
-import Template from "~/components/ContextMenu/Template";
 import { actionToMenuItem } from "~/actions";
 import {
   deleteCommentFactory,
   resolveCommentFactory,
   unresolveCommentFactory,
 } from "~/actions/definitions/comments";
+import ContextMenu from "~/components/ContextMenu";
+import OverflowMenuButton from "~/components/ContextMenu/OverflowMenuButton";
+import Template from "~/components/ContextMenu/Template";
 import useActionContext from "~/hooks/useActionContext";
 import usePolicy from "~/hooks/usePolicy";
 import useStores from "~/hooks/useStores";
+import Comment from "~/models/Comment";
 import { commentPath, urlify } from "~/utils/routeHelpers";
 
 type Props = {

@@ -1,7 +1,4 @@
 import * as React from "react";
-import { NotificationEventType } from "@shared/types";
-import env from "@server/env";
-import NotificationSettingsHelper from "@server/models/helpers/NotificationSettingsHelper";
 import BaseEmail, { EmailProps } from "./BaseEmail";
 import Body from "./components/Body";
 import Button from "./components/Button";
@@ -10,6 +7,9 @@ import EmptySpace from "./components/EmptySpace";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Heading from "./components/Heading";
+import env from "@server/env";
+import NotificationSettingsHelper from "@server/models/helpers/NotificationSettingsHelper";
+import { NotificationEventType } from "@shared/types";
 
 type InputProps = EmailProps & {
   userId: string;

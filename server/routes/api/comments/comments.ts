@@ -1,6 +1,7 @@
 import Router from "koa-router";
 import { FindOptions, Op, WhereOptions } from "sequelize";
-import { CommentStatusFilter, TeamPreference } from "@shared/types";
+import pagination from "../middlewares/pagination";
+import * as T from "./schema";
 import commentCreator from "@server/commands/commentCreator";
 import commentDestroyer from "@server/commands/commentDestroyer";
 import commentUpdater from "@server/commands/commentUpdater";
@@ -14,8 +15,7 @@ import { authorize } from "@server/policies";
 import { presentComment, presentPolicies } from "@server/presenters";
 import { APIContext } from "@server/types";
 import { RateLimiterStrategy } from "@server/utils/RateLimiter";
-import pagination from "../middlewares/pagination";
-import * as T from "./schema";
+import { CommentStatusFilter, TeamPreference } from "@shared/types";
 
 const router = new Router();
 

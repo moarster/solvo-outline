@@ -1,11 +1,11 @@
 import { ArchiveIcon } from "outline-icons";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import Collection from "~/models/Collection";
+import Breadcrumb from "./Breadcrumb";
 import CollectionIcon from "~/components/Icons/CollectionIcon";
+import Collection from "~/models/Collection";
 import { MenuInternalLink } from "~/types";
 import { archivePath, collectionPath } from "~/utils/routeHelpers";
-import Breadcrumb from "./Breadcrumb";
 
 type Props = {
   collection: Collection;

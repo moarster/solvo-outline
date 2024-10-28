@@ -8,10 +8,12 @@ import { VisuallyHidden } from "reakit";
 import { toast } from "sonner";
 import { useTheme } from "styled-components";
 import { v4 as uuidv4 } from "uuid";
+import CommentEditor from "./CommentEditor";
+import { Bubble } from "./CommentThreadItem";
+import { HighlightedText } from "./HighlightText";
 import { ProsemirrorData } from "@shared/types";
 import { getEventFiles } from "@shared/utils/files";
 import { AttachmentValidation, CommentValidation } from "@shared/validations";
-import Comment from "~/models/Comment";
 import { Avatar } from "~/components/Avatar";
 import ButtonSmall from "~/components/ButtonSmall";
 import { useDocumentContext } from "~/components/DocumentContext";
@@ -22,9 +24,7 @@ import type { Editor as SharedEditor } from "~/editor";
 import useCurrentUser from "~/hooks/useCurrentUser";
 import useOnClickOutside from "~/hooks/useOnClickOutside";
 import useStores from "~/hooks/useStores";
-import CommentEditor from "./CommentEditor";
-import { Bubble } from "./CommentThreadItem";
-import { HighlightedText } from "./HighlightText";
+import Comment from "~/models/Comment";
 
 type Props = {
   /** Callback when the draft should be saved. */

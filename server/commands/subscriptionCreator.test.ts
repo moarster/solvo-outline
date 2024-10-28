@@ -1,8 +1,8 @@
+import subscriptionCreator from "./subscriptionCreator";
+import subscriptionDestroyer from "./subscriptionDestroyer";
 import { Subscription, Event } from "@server/models";
 import { sequelize } from "@server/storage/database";
 import { buildDocument, buildUser } from "@server/test/factories";
-import subscriptionCreator from "./subscriptionCreator";
-import subscriptionDestroyer from "./subscriptionDestroyer";
 
 describe("subscriptionCreator", () => {
   const ip = "127.0.0.1";

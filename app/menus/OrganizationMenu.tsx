@@ -2,14 +2,14 @@ import { observer } from "mobx-react";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { MenuButton, useMenuState } from "reakit/Menu";
-import ContextMenu from "~/components/ContextMenu";
-import Template from "~/components/ContextMenu/Template";
 import { navigateToSettings, logout } from "~/actions/definitions/navigation";
 import {
   createTeam,
   createTeamsList,
   desktopLoginTeam,
 } from "~/actions/definitions/teams";
+import ContextMenu from "~/components/ContextMenu";
+import Template from "~/components/ContextMenu/Template";
 import useActionContext from "~/hooks/useActionContext";
 import usePrevious from "~/hooks/usePrevious";
 import useStores from "~/hooks/useStores";

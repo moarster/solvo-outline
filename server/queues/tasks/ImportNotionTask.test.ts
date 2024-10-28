@@ -1,8 +1,7 @@
- 
 import path from "path";
+import ImportNotionTask from "./ImportNotionTask";
 import { FileOperation } from "@server/models";
 import { buildFileOperation } from "@server/test/factories";
-import ImportNotionTask from "./ImportNotionTask";
 
 describe("ImportNotionTask", () => {
   it("should import successfully from a Markdown export", async () => {

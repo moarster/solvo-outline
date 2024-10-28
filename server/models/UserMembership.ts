@@ -19,12 +19,12 @@ import {
   AfterUpdate,
   Length,
 } from "sequelize-typescript";
-import { CollectionPermission, DocumentPermission } from "@shared/types";
 import Collection from "./Collection";
 import Document from "./Document";
 import User from "./User";
 import IdModel from "./base/IdModel";
 import Fix from "./decorators/Fix";
+import { CollectionPermission, DocumentPermission } from "@shared/types";
 
 /**
  * Represents a users's permission to access a collection or document.

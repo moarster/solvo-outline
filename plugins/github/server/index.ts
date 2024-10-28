@@ -1,10 +1,10 @@
-import { Minute } from "@shared/utils/time";
-import { PluginManager, Hook } from "@server/utils/PluginManager";
 import config from "../plugin.json";
 import router from "./api/github";
 import env from "./env";
 import { GitHub } from "./github";
 import { uninstall } from "./uninstall";
+import { PluginManager, Hook } from "@server/utils/PluginManager";
+import { Minute } from "@shared/utils/time";
 
 const enabled =
   !!env.GITHUB_CLIENT_ID &&

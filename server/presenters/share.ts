@@ -1,5 +1,5 @@
-import { Share } from "@server/models";
 import { presentUser } from ".";
+import { Share } from "@server/models";
 
 export default function presentShare(share: Share, isAdmin = false) {
   const data = {

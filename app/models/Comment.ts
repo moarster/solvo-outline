@@ -1,12 +1,12 @@
 import { subSeconds } from "date-fns";
 import { computed, observable } from "mobx";
 import { now } from "mobx-utils";
-import type { ProsemirrorData } from "@shared/types";
-import User from "~/models/User";
 import Document from "./Document";
 import Model from "./base/Model";
 import Field from "./decorators/Field";
 import Relation from "./decorators/Relation";
+import type { ProsemirrorData } from "@shared/types";
+import User from "~/models/User";
 
 class Comment extends Model {
   static modelName = "Comment";

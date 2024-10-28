@@ -5,11 +5,11 @@ import * as React from "react";
 import { withTranslation, WithTranslation } from "react-i18next";
 import { Waypoint } from "react-waypoint";
 import { Pagination } from "@shared/constants";
-import RootStore from "~/stores/RootStore";
 import ArrowKeyNavigation from "~/components/ArrowKeyNavigation";
 import DelayedMount from "~/components/DelayedMount";
 import PlaceholderList from "~/components/List/Placeholder";
 import withStores from "~/components/withStores";
+import RootStore from "~/stores/RootStore";
 import { dateToHeading } from "~/utils/date";
 
 export interface PaginatedItem {
@@ -217,8 +217,8 @@ class PaginatedList<T extends PaginatedItem> extends React.PureComponent<
                 "updatedAt" in item && item.updatedAt
                   ? item.updatedAt
                   : "createdAt" in item && item.createdAt
-                  ? item.createdAt
-                  : previousHeading;
+                    ? item.createdAt
+                    : previousHeading;
               const currentHeading = dateToHeading(
                 currentDate,
                 this.props.t,

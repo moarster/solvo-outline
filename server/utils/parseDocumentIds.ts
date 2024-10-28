@@ -1,6 +1,6 @@
 import { Node } from "prosemirror-model";
-import parseDocumentSlug from "@shared/utils/parseDocumentSlug";
 import { parser } from "@server/editor";
+import parseDocumentSlug from "@shared/utils/parseDocumentSlug";
 
 /**
  * Parse a list of unique document identifiers contained in links in markdown

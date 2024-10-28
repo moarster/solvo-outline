@@ -3,9 +3,10 @@ import { UserIcon } from "outline-icons";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import styled, { useTheme } from "styled-components";
+import { ListItem } from "../components/ListItem";
+import { Placeholder } from "../components/Placeholder";
 import Squircle from "@shared/components/Squircle";
 import { CollectionPermission } from "@shared/types";
-import Collection from "~/models/Collection";
 import { Avatar, GroupAvatar, AvatarSize } from "~/components/Avatar";
 import InputMemberPermissionSelect from "~/components/InputMemberPermissionSelect";
 import InputSelectPermission from "~/components/InputSelectPermission";
@@ -14,9 +15,8 @@ import useMaxHeight from "~/hooks/useMaxHeight";
 import usePolicy from "~/hooks/usePolicy";
 import useRequest from "~/hooks/useRequest";
 import useStores from "~/hooks/useStores";
+import Collection from "~/models/Collection";
 import { EmptySelectValue, Permission } from "~/types";
-import { ListItem } from "../components/ListItem";
-import { Placeholder } from "../components/Placeholder";
 
 type Props = {
   /** Collection to which team members are supposed to be invited */

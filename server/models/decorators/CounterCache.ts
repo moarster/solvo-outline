@@ -1,9 +1,9 @@
 import isNil from "lodash/isNil";
 import { InferAttributes } from "sequelize";
 import { ModelClassGetter } from "sequelize-typescript";
+import type Model from "../base/Model";
 import env from "@server/env";
 import { CacheHelper } from "@server/utils/CacheHelper";
-import type Model from "../base/Model";
 
 type RelationOptions = {
   /** Reference name used in cache key. */
@@ -19,7 +19,7 @@ type RelationOptions = {
 export function CounterCache<
   TCreationAttributes extends InferAttributes<Model>,
   TModelAttributes extends InferAttributes<Model>,
-  T extends typeof Model
+  T extends typeof Model,
 >(
   classResolver: ModelClassGetter<TCreationAttributes, TModelAttributes>,
   options: RelationOptions

@@ -4,12 +4,12 @@ import * as React from "react";
 import { useTranslation, Trans } from "react-i18next";
 import { useHistory } from "react-router-dom";
 import { toast } from "sonner";
+import SelectLocation from "./SelectLocation";
 import ConfirmationDialog from "~/components/ConfirmationDialog";
 import Flex from "~/components/Flex";
 import Switch from "~/components/Switch";
 import useStores from "~/hooks/useStores";
 import { documentPath } from "~/utils/routeHelpers";
-import SelectLocation from "./SelectLocation";
 
 type Props = {
   documentId: string;

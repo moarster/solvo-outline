@@ -26,13 +26,6 @@ import {
   BeforeUpdate,
   BeforeCreate,
 } from "sequelize-typescript";
-import { TeamPreferenceDefaults } from "@shared/constants";
-import { TeamPreference, TeamPreferences, UserRole } from "@shared/types";
-import { getBaseDomain, RESERVED_SUBDOMAINS } from "@shared/utils/domains";
-import env from "@server/env";
-import { ValidationError } from "@server/errors";
-import DeleteAttachmentTask from "@server/queues/tasks/DeleteAttachmentTask";
-import parseAttachmentIds from "@server/utils/parseAttachmentIds";
 import Attachment from "./Attachment";
 import AuthenticationProvider from "./AuthenticationProvider";
 import Collection from "./Collection";
@@ -46,6 +39,13 @@ import IsFQDN from "./validators/IsFQDN";
 import IsUrlOrRelativePath from "./validators/IsUrlOrRelativePath";
 import Length from "./validators/Length";
 import NotContainsUrl from "./validators/NotContainsUrl";
+import env from "@server/env";
+import { ValidationError } from "@server/errors";
+import DeleteAttachmentTask from "@server/queues/tasks/DeleteAttachmentTask";
+import parseAttachmentIds from "@server/utils/parseAttachmentIds";
+import { TeamPreferenceDefaults } from "@shared/constants";
+import { TeamPreference, TeamPreferences, UserRole } from "@shared/types";
+import { getBaseDomain, RESERVED_SUBDOMAINS } from "@shared/utils/domains";
 
 @Scopes(() => ({
   withDomains: {

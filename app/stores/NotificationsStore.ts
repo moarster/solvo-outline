@@ -2,11 +2,11 @@ import invariant from "invariant";
 import orderBy from "lodash/orderBy";
 import sortBy from "lodash/sortBy";
 import { action, computed, runInAction } from "mobx";
+import RootStore from "./RootStore";
+import Store, { RPCAction } from "./base/Store";
 import Notification from "~/models/Notification";
 import { PaginationParams } from "~/types";
 import { client } from "~/utils/ApiClient";
-import RootStore from "./RootStore";
-import Store, { RPCAction } from "./base/Store";
 
 export default class NotificationsStore extends Store<Notification> {
   actions = [RPCAction.List, RPCAction.Update];

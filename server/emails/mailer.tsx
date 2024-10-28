@@ -3,10 +3,10 @@ import invariant from "invariant";
 import nodemailer, { Transporter } from "nodemailer";
 import SMTPTransport from "nodemailer/lib/smtp-transport";
 import Oy from "oy-vey";
+import { baseStyles } from "./templates/components/EmailLayout";
 import env from "@server/env";
 import Logger from "@server/logging/Logger";
 import { trace } from "@server/logging/tracing";
-import { baseStyles } from "./templates/components/EmailLayout";
 
 const useTestEmailService = env.isDevelopment && !env.SMTP_USERNAME;
 

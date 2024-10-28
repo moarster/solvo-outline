@@ -1,8 +1,8 @@
 import { action } from "mobx";
-import Policy from "~/models/Policy";
-import Logger from "~/utils/Logger";
 import RootStore from "./RootStore";
 import Store from "./base/Store";
+import Policy from "~/models/Policy";
+import Logger from "~/utils/Logger";
 
 export default class PoliciesStore extends Store<Policy> {
   actions = [];

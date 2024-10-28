@@ -1,4 +1,3 @@
-import { Team, User } from "@server/models";
 import { allow } from "./cancan";
 import {
   and,
@@ -8,6 +7,7 @@ import {
   isTeamMutable,
   or,
 } from "./utils";
+import { Team, User } from "@server/models";
 
 allow(User, "read", Team, isTeamModel);
 

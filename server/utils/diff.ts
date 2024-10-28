@@ -425,7 +425,6 @@ MatchBinarySearchTree.prototype = {
 
     let current = this._root;
     if (current) {
-       
       while (true) {
         // Determine if the match value should go to the left or right of the current
         // node.

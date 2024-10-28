@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
-import useBoolean from "~/hooks/useBoolean";
 import Initials from "./Initials";
+import useBoolean from "~/hooks/useBoolean";
 
 export enum AvatarSize {
   Small = 16,

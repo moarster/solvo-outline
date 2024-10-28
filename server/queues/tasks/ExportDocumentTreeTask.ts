@@ -1,7 +1,7 @@
 import path from "path";
 import JSZip from "jszip";
 import escapeRegExp from "lodash/escapeRegExp";
-import { FileOperationFormat, NavigationNode } from "@shared/types";
+import ExportTask from "./ExportTask";
 import Logger from "@server/logging/Logger";
 import { Collection } from "@server/models";
 import Attachment from "@server/models/Attachment";
@@ -10,7 +10,7 @@ import { DocumentHelper } from "@server/models/helpers/DocumentHelper";
 import { ProsemirrorHelper } from "@server/models/helpers/ProsemirrorHelper";
 import ZipHelper from "@server/utils/ZipHelper";
 import { serializeFilename } from "@server/utils/fs";
-import ExportTask from "./ExportTask";
+import { FileOperationFormat, NavigationNode } from "@shared/types";
 
 export default abstract class ExportDocumentTreeTask extends ExportTask {
   /**

@@ -1,6 +1,7 @@
 import randomstring from "randomstring";
 import { v4 as uuidv4 } from "uuid";
-import slugify from "@shared/utils/slugify";
+import Collection from "./Collection";
+import Document from "./Document";
 import {
   buildUser,
   buildGroup,
@@ -8,8 +9,7 @@ import {
   buildTeam,
   buildDocument,
 } from "@server/test/factories";
-import Collection from "./Collection";
-import Document from "./Document";
+import slugify from "@shared/utils/slugify";
 
 beforeEach(() => {
   jest.resetAllMocks();

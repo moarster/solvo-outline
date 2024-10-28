@@ -1,10 +1,10 @@
 import "./bootstrap";
-import { UserRole } from "@shared/types";
-import { parseEmail } from "@shared/utils/email";
 import teamCreator from "@server/commands/teamCreator";
 import env from "@server/env";
 import { Team, User } from "@server/models";
 import { sequelize } from "@server/storage/database";
+import { UserRole } from "@shared/types";
+import { parseEmail } from "@shared/utils/email";
 
 const email = process.argv[2];
 

@@ -16,7 +16,7 @@ export default function codeMenuItems(
 
   const allLanguages = Object.entries(LANGUAGES) as [
     keyof typeof LANGUAGES,
-    string
+    string,
   ][];
   const frequentLanguages = getFrequentCodeLanguages();
 

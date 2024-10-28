@@ -1,9 +1,9 @@
 import { differenceInMinutes, formatDistanceToNowStrict } from "date-fns";
 import { t } from "i18next";
-import { UnfurlResourceType, UnfurlResponse } from "@shared/types";
-import { dateLocale } from "@shared/utils/date";
 import { Document, User, View } from "@server/models";
 import { opts } from "@server/utils/i18n";
+import { UnfurlResourceType, UnfurlResponse } from "@shared/types";
+import { dateLocale } from "@shared/utils/date";
 import { GitHubUtils } from "plugins/github/shared/GitHubUtils";
 
 async function presentUnfurl(

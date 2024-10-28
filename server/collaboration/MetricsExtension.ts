@@ -5,8 +5,8 @@ import {
   Extension,
   connectedPayload,
 } from "@hocuspocus/server";
-import Metrics from "@server/logging/Metrics";
 import { withContext } from "./types";
+import Metrics from "@server/logging/Metrics";
 
 export default class MetricsExtension implements Extension {
   async onLoadDocument({

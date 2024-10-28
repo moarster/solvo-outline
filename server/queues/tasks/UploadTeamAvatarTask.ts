@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from "uuid";
+import BaseTask, { TaskPriority } from "./BaseTask";
 import { Team } from "@server/models";
 import { Buckets } from "@server/models/helpers/AttachmentHelper";
 import FileStorage from "@server/storage/files";
-import BaseTask, { TaskPriority } from "./BaseTask";
 
 type Props = {
   /** The teamId to operate on */

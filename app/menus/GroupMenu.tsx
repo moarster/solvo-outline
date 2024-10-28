@@ -3,14 +3,14 @@ import { EditIcon, GroupIcon, TrashIcon } from "outline-icons";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { useMenuState } from "reakit/Menu";
-import Group from "~/models/Group";
-import GroupDelete from "~/scenes/GroupDelete";
-import GroupEdit from "~/scenes/GroupEdit";
 import ContextMenu from "~/components/ContextMenu";
 import OverflowMenuButton from "~/components/ContextMenu/OverflowMenuButton";
 import Template from "~/components/ContextMenu/Template";
 import Modal from "~/components/Modal";
 import usePolicy from "~/hooks/usePolicy";
+import Group from "~/models/Group";
+import GroupDelete from "~/scenes/GroupDelete";
+import GroupEdit from "~/scenes/GroupEdit";
 
 type Props = {
   group: Group;

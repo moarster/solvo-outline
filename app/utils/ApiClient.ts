@@ -1,8 +1,6 @@
 import retry from "fetch-retry";
 import trim from "lodash/trim";
 import queryString from "query-string";
-import EDITOR_VERSION from "@shared/editor/version";
-import { JSONObject } from "@shared/types";
 import stores from "~/stores";
 import Logger from "./Logger";
 import download from "./download";
@@ -19,6 +17,8 @@ import {
   ServiceUnavailableError,
   UpdateRequiredError,
 } from "./errors";
+import EDITOR_VERSION from "@shared/editor/version";
+import { JSONObject } from "@shared/types";
 
 type Options = {
   baseUrl?: string;

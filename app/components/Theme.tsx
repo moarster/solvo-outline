@@ -1,11 +1,11 @@
 import { observer } from "mobx-react";
 import * as React from "react";
 import { ThemeProvider } from "styled-components";
+import { TooltipStyles } from "./Tooltip";
 import GlobalStyles from "@shared/styles/globals";
 import { TeamPreference, UserPreference } from "@shared/types";
 import useBuildTheme from "~/hooks/useBuildTheme";
 import useStores from "~/hooks/useStores";
-import { TooltipStyles } from "./Tooltip";
 
 type Props = {
   children?: React.ReactNode;

@@ -21,8 +21,8 @@ const CommentSortMenu = () => {
   const value = viewingResolved
     ? "resolved"
     : user.getPreference(UserPreference.SortCommentsByOrderInDocument)
-    ? CommentSortType.OrderInDocument
-    : CommentSortType.MostRecent;
+      ? CommentSortType.OrderInDocument
+      : CommentSortType.MostRecent;
 
   const handleSortTypeChange = (type: CommentSortType) => {
     user.setPreference(

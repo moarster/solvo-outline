@@ -8,7 +8,6 @@ import { CollectionPermission } from "@shared/types";
 import { IconLibrary } from "@shared/utils/IconLibrary";
 import { colorPalette } from "@shared/utils/collections";
 import { CollectionValidation } from "@shared/validations";
-import Collection from "~/models/Collection";
 import Button from "~/components/Button";
 import Flex from "~/components/Flex";
 import Icon from "~/components/Icon";
@@ -18,6 +17,7 @@ import Switch from "~/components/Switch";
 import Text from "~/components/Text";
 import useBoolean from "~/hooks/useBoolean";
 import useCurrentTeam from "~/hooks/useCurrentTeam";
+import Collection from "~/models/Collection";
 import { EmptySelectValue } from "~/types";
 
 const IconPicker = React.lazy(() => import("~/components/IconPicker"));
@@ -176,8 +176,8 @@ export const CollectionForm = observer(function CollectionForm_({
               ? `${t("Saving")}…`
               : t("Save")
             : formState.isSubmitting
-            ? `${t("Creating")}…`
-            : t("Create")}
+              ? `${t("Creating")}…`
+              : t("Create")}
         </Button>
       </Flex>
     </form>

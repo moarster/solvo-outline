@@ -1,9 +1,9 @@
 import { computed, observable } from "mobx";
+import Model from "./base/Model";
+import Field from "./decorators/Field";
 import { TeamPreferenceDefaults } from "@shared/constants";
 import { TeamPreference, TeamPreferences, UserRole } from "@shared/types";
 import { stringToColor } from "@shared/utils/color";
-import Model from "./base/Model";
-import Field from "./decorators/Field";
 
 class Team extends Model {
   static modelName = "Team";

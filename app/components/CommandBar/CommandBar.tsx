@@ -5,14 +5,14 @@ import { useTranslation } from "react-i18next";
 import { Portal } from "react-portal";
 import styled from "styled-components";
 import breakpoint from "styled-components-breakpoint";
-import { depths, s } from "@shared/styles";
-import SearchActions from "~/components/SearchActions";
-import rootActions from "~/actions/root";
-import useCommandBarActions from "~/hooks/useCommandBarActions";
 import CommandBarResults from "./CommandBarResults";
 import useRecentDocumentActions from "./useRecentDocumentActions";
 import useSettingsAction from "./useSettingsAction";
 import useTemplatesAction from "./useTemplatesAction";
+import { depths, s } from "@shared/styles";
+import rootActions from "~/actions/root";
+import SearchActions from "~/components/SearchActions";
+import useCommandBarActions from "~/hooks/useCommandBarActions";
 
 function CommandBar() {
   const { t } = useTranslation();

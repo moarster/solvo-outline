@@ -1,8 +1,8 @@
 import { subDays } from "date-fns";
+import documentPermanentDeleter from "./documentPermanentDeleter";
 import { Attachment, Document } from "@server/models";
 import DeleteAttachmentTask from "@server/queues/tasks/DeleteAttachmentTask";
 import { buildAttachment, buildDocument } from "@server/test/factories";
-import documentPermanentDeleter from "./documentPermanentDeleter";
 
 jest.mock("@server/queues/tasks/DeleteAttachmentTask", () => ({
   schedule: jest.fn(),

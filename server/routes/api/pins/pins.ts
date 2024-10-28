@@ -1,5 +1,7 @@
 import Router from "koa-router";
 import { Sequelize, Op } from "sequelize";
+import pagination from "../middlewares/pagination";
+import * as T from "./schema";
 import pinCreator from "@server/commands/pinCreator";
 import pinDestroyer from "@server/commands/pinDestroyer";
 import pinUpdater from "@server/commands/pinUpdater";
@@ -13,8 +15,6 @@ import {
   presentPolicies,
 } from "@server/presenters";
 import { APIContext } from "@server/types";
-import pagination from "../middlewares/pagination";
-import * as T from "./schema";
 
 const router = new Router();
 

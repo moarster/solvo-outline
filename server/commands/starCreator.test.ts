@@ -1,7 +1,7 @@
+import starCreator from "./starCreator";
 import { Star, Event } from "@server/models";
 import { sequelize } from "@server/storage/database";
 import { buildDocument, buildUser } from "@server/test/factories";
-import starCreator from "./starCreator";
 
 describe("starCreator", () => {
   const ip = "127.0.0.1";

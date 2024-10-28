@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { TOCPosition, UserRole } from "@shared/types";
 import { BaseSchema } from "@server/routes/api/schema";
+import { TOCPosition, UserRole } from "@shared/types";
 
 export const TeamsUpdateSchema = BaseSchema.extend({
   body: z.object({

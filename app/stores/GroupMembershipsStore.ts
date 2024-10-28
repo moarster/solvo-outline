@@ -1,15 +1,15 @@
 import invariant from "invariant";
 import { action, runInAction } from "mobx";
-import { CollectionPermission, DocumentPermission } from "@shared/types";
-import GroupMembership from "~/models/GroupMembership";
-import { PaginationParams } from "~/types";
-import { client } from "~/utils/ApiClient";
 import RootStore from "./RootStore";
 import Store, {
   PAGINATION_SYMBOL,
   PaginatedResponse,
   RPCAction,
 } from "./base/Store";
+import { CollectionPermission, DocumentPermission } from "@shared/types";
+import GroupMembership from "~/models/GroupMembership";
+import { PaginationParams } from "~/types";
+import { client } from "~/utils/ApiClient";
 
 export default class GroupMembershipsStore extends Store<GroupMembership> {
   actions = [RPCAction.Create, RPCAction.Delete];
@@ -23,12 +23,11 @@ export default class GroupMembershipsStore extends Store<GroupMembership> {
     collectionId,
     documentId,
     ...params
-  }:
-    | PaginationParams & {
-        documentId?: string;
-        collectionId?: string;
-        groupId?: string;
-      }): Promise<PaginatedResponse<GroupMembership>> => {
+  }: PaginationParams & {
+    documentId?: string;
+    collectionId?: string;
+    groupId?: string;
+  }): Promise<PaginatedResponse<GroupMembership>> => {
     this.isFetching = true;
 
     try {
@@ -38,11 +37,11 @@ export default class GroupMembershipsStore extends Store<GroupMembership> {
             ...params,
           })
         : documentId
-        ? await client.post(`/documents.group_memberships`, {
-            id: documentId,
-            ...params,
-          })
-        : await client.post(`/groupMemberships.list`, params);
+          ? await client.post(`/documents.group_memberships`, {
+              id: documentId,
+              ...params,
+            })
+          : await client.post(`/groupMemberships.list`, params);
       invariant(res?.data, "Data not available");
 
       let response: PaginatedResponse<GroupMembership> = [];

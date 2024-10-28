@@ -1,7 +1,7 @@
 import { DeepPartial } from "utility-types";
-import { ProsemirrorData } from "@shared/types";
-import { buildProseMirrorDoc } from "@server/test/factories";
 import { MentionAttrs, ProsemirrorHelper } from "./ProsemirrorHelper";
+import { buildProseMirrorDoc } from "@server/test/factories";
+import { ProsemirrorData } from "@shared/types";
 
 describe("ProseMirrorHelper", () => {
   describe("getNodeForMentionEmail", () => {

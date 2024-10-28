@@ -14,14 +14,14 @@ import {
   IsNumeric,
   Length as SimpleLength,
 } from "sequelize-typescript";
-import type { ProsemirrorData } from "@shared/types";
-import { DocumentValidation } from "@shared/validations";
 import Document from "./Document";
 import User from "./User";
 import IdModel from "./base/IdModel";
 import Fix from "./decorators/Fix";
 import IsHexColor from "./validators/IsHexColor";
 import Length from "./validators/Length";
+import type { ProsemirrorData } from "@shared/types";
+import { DocumentValidation } from "@shared/validations";
 
 @DefaultScope(() => ({
   include: [

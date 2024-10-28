@@ -1,8 +1,8 @@
 import querystring from "querystring";
-import { InvalidRequestError } from "@server/errors";
-import fetch from "@server/utils/fetch";
 import { SlackUtils } from "../shared/SlackUtils";
 import env from "./env";
+import { InvalidRequestError } from "@server/errors";
+import fetch from "@server/utils/fetch";
 
 const SLACK_API_URL = "https://slack.com/api";
 

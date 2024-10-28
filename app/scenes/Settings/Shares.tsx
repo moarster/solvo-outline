@@ -4,8 +4,7 @@ import { GlobeIcon, WarningIcon } from "outline-icons";
 import * as React from "react";
 import { useTranslation, Trans } from "react-i18next";
 import { Link } from "react-router-dom";
-import { PAGINATION_SYMBOL } from "~/stores/base/Store";
-import Share from "~/models/Share";
+import SharesTable from "./components/SharesTable";
 import Fade from "~/components/Fade";
 import Heading from "~/components/Heading";
 import Notice from "~/components/Notice";
@@ -15,7 +14,8 @@ import useCurrentTeam from "~/hooks/useCurrentTeam";
 import usePolicy from "~/hooks/usePolicy";
 import useQuery from "~/hooks/useQuery";
 import useStores from "~/hooks/useStores";
-import SharesTable from "./components/SharesTable";
+import Share from "~/models/Share";
+import { PAGINATION_SYMBOL } from "~/stores/base/Store";
 
 function Shares() {
   const team = useCurrentTeam();

@@ -1,12 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { addMinutes, subDays } from "date-fns";
 import {
-  CollectionPermission,
-  DocumentPermission,
-  StatusFilter,
-  UserRole,
-} from "@shared/types";
-import {
   Document,
   View,
   Revision,
@@ -30,6 +24,12 @@ import {
   buildAdmin,
 } from "@server/test/factories";
 import { getTestServer } from "@server/test/support";
+import {
+  CollectionPermission,
+  DocumentPermission,
+  StatusFilter,
+  UserRole,
+} from "@shared/types";
 
 const server = getTestServer();
 

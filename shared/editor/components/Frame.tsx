@@ -87,7 +87,7 @@ class Frame extends React.Component<PropsWithRef> {
       >
         {this.isLoaded && (
           <Iframe
-              id={id}
+            id={id}
             ref={forwardedRef}
             $withBar={withBar}
             sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-downloads allow-storage-access-by-user-activation"

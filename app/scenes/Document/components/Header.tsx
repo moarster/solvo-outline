@@ -11,10 +11,13 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import styled, { useTheme } from "styled-components";
+import ObservingBanner from "./ObservingBanner";
+import PublicBreadcrumb from "./PublicBreadcrumb";
+import ShareButton from "./ShareButton";
 import { NavigationNode } from "@shared/types";
-import { Theme } from "~/stores/UiStore";
-import Document from "~/models/Document";
-import Revision from "~/models/Revision";
+import { publishDocument } from "~/actions/definitions/documents";
+import { navigateToTemplateSettings } from "~/actions/definitions/navigation";
+import { restoreRevision } from "~/actions/definitions/revisions";
 import { Action, Separator } from "~/components/Actions";
 import Badge from "~/components/Badge";
 import Button from "~/components/Button";
@@ -26,9 +29,6 @@ import Header from "~/components/Header";
 import Icon from "~/components/Icon";
 import Star from "~/components/Star";
 import Tooltip from "~/components/Tooltip";
-import { publishDocument } from "~/actions/definitions/documents";
-import { navigateToTemplateSettings } from "~/actions/definitions/navigation";
-import { restoreRevision } from "~/actions/definitions/revisions";
 import useActionContext from "~/hooks/useActionContext";
 import useCurrentTeam from "~/hooks/useCurrentTeam";
 import useCurrentUser from "~/hooks/useCurrentUser";
@@ -41,11 +41,11 @@ import DocumentMenu from "~/menus/DocumentMenu";
 import NewChildDocumentMenu from "~/menus/NewChildDocumentMenu";
 import TableOfContentsMenu from "~/menus/TableOfContentsMenu";
 import TemplatesMenu from "~/menus/TemplatesMenu";
+import Document from "~/models/Document";
+import Revision from "~/models/Revision";
+import { Theme } from "~/stores/UiStore";
 import { altDisplay, metaDisplay } from "~/utils/keyboard";
 import { documentEditPath } from "~/utils/routeHelpers";
-import ObservingBanner from "./ObservingBanner";
-import PublicBreadcrumb from "./PublicBreadcrumb";
-import ShareButton from "./ShareButton";
 
 type Props = {
   document: Document;
@@ -121,8 +121,8 @@ function DocumentHeader({
         showContents
           ? t("Hide contents")
           : hasHeadings
-          ? t("Show contents")
-          : `${t("Show contents")} (${t("available when headings are added")})`
+            ? t("Show contents")
+            : `${t("Show contents")} (${t("available when headings are added")})`
       }
       shortcut={`ctrl+${altDisplay}+h`}
       delay={250}

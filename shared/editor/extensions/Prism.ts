@@ -6,7 +6,7 @@ import { Decoration, DecorationSet } from "prosemirror-view";
 import refractor from "refractor/core";
 import { isRemoteTransaction } from "../lib/multiplayer";
 import { findBlockNodes } from "../queries/findChildren";
-import {krokiDiagrams} from "@shared/editor/extensions/kroki/types";
+import { krokiDiagrams } from "@shared/editor/extensions/kroki/types";
 
 export const LANGUAGES = {
   none: "Plain text", // additional entry to disable highlighting
@@ -57,7 +57,7 @@ export const LANGUAGES = {
   vhdl: "VHDL",
   yaml: "YAML",
   zig: "Zig",
-  ...krokiDiagrams
+  ...krokiDiagrams,
 };
 
 type ParsedNode = {

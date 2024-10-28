@@ -1,4 +1,3 @@
-import { IntegrationService, IntegrationType } from "@shared/types";
 import { User } from "@server/models";
 import Integration from "@server/models/Integration";
 import {
@@ -8,6 +7,7 @@ import {
   buildIntegration,
 } from "@server/test/factories";
 import { getTestServer } from "@server/test/support";
+import { IntegrationService, IntegrationType } from "@shared/types";
 
 const server = getTestServer();
 

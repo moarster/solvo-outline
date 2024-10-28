@@ -22,9 +22,9 @@
 
 import { SpanOptions } from "dd-trace";
 import DDTags from "dd-trace/ext/tags";
-import env from "@server/env";
 import tracer from "./tracer";
 import * as Tracing from "./tracer";
+import env from "@server/env";
 
 type DDTag = (typeof DDTags)[keyof typeof DDTags];
 
@@ -60,7 +60,7 @@ export const traceFunction =
   <
     F extends (...args: any[]) => any,
     P extends Parameters<F>,
-    R extends ReturnType<F>
+    R extends ReturnType<F>,
   >(
     target: F
   ): F =>
@@ -156,7 +156,6 @@ const traceClass = (config?: TraceConfig) =>
         key
       );
 
-       
       if (typeof key === "string" && typeof descriptor?.value === "function") {
         Object.defineProperty(
           constructor.prototype,
@@ -170,7 +169,6 @@ const traceClass = (config?: TraceConfig) =>
     staticKeys.forEach((key) => {
       const descriptor = Object.getOwnPropertyDescriptor(constructor, key);
 
-       
       if (typeof key === "string" && typeof descriptor?.value === "function") {
         Object.defineProperty(
           constructor,
@@ -187,7 +185,7 @@ const traceClass = (config?: TraceConfig) =>
  * @param config Optional configuration for the span that will be created for this trace.
  */
 // Going to rely on inferrence do its thing for this function
- 
+
 export function trace(config?: TraceConfig) {
   function traceDecorator(target: Constructor): void;
   function traceDecorator<T>(

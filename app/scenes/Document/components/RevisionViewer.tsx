@@ -1,14 +1,14 @@
 import { observer } from "mobx-react";
 import * as React from "react";
-import EditorContainer from "@shared/editor/components/Styles";
-import { colorPalette } from "@shared/utils/collections";
-import Document from "~/models/Document";
-import Revision from "~/models/Revision";
-import { Props as EditorProps } from "~/components/Editor";
-import Flex from "~/components/Flex";
-import { documentPath } from "~/utils/routeHelpers";
 import { Meta as DocumentMeta } from "./DocumentMeta";
 import DocumentTitle from "./DocumentTitle";
+import EditorContainer from "@shared/editor/components/Styles";
+import { colorPalette } from "@shared/utils/collections";
+import { Props as EditorProps } from "~/components/Editor";
+import Flex from "~/components/Flex";
+import Document from "~/models/Document";
+import Revision from "~/models/Revision";
+import { documentPath } from "~/utils/routeHelpers";
 
 type Props = Omit<EditorProps, "extensions"> & {
   /** The ID of the revision */

@@ -5,16 +5,16 @@ import { Throttle } from "@hocuspocus/extension-throttle";
 import { Server } from "@hocuspocus/server";
 import Koa from "koa";
 import WebSocket from "ws";
-import { DocumentValidation } from "@shared/validations";
+import AuthenticationExtension from "../collaboration/AuthenticationExtension";
+import LoggerExtension from "../collaboration/LoggerExtension";
+import MetricsExtension from "../collaboration/MetricsExtension";
+import PersistenceExtension from "../collaboration/PersistenceExtension";
 import { ConnectionLimitExtension } from "@server/collaboration/ConnectionLimitExtension";
 import { ViewsExtension } from "@server/collaboration/ViewsExtension";
 import env from "@server/env";
 import Logger from "@server/logging/Logger";
 import ShutdownHelper, { ShutdownOrder } from "@server/utils/ShutdownHelper";
-import AuthenticationExtension from "../collaboration/AuthenticationExtension";
-import LoggerExtension from "../collaboration/LoggerExtension";
-import MetricsExtension from "../collaboration/MetricsExtension";
-import PersistenceExtension from "../collaboration/PersistenceExtension";
+import { DocumentValidation } from "@shared/validations";
 
 export default function init(
   app: Koa,

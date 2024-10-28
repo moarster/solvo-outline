@@ -1,11 +1,11 @@
 import { observable } from "mobx";
-import { CollectionPermission, DocumentPermission } from "@shared/types";
 import Collection from "./Collection";
 import Document from "./Document";
 import Group from "./Group";
 import Model from "./base/Model";
 import { AfterRemove } from "./decorators/Lifecycle";
 import Relation from "./decorators/Relation";
+import { CollectionPermission, DocumentPermission } from "@shared/types";
 
 /**
  * Represents a groups's membership to a collection or document.

@@ -5,11 +5,6 @@ import { StarredIcon } from "outline-icons";
 import * as React from "react";
 import { useEffect, useState } from "react";
 import styled, { useTheme } from "styled-components";
-import Star from "~/models/Star";
-import Fade from "~/components/Fade";
-import useBoolean from "~/hooks/useBoolean";
-import useStores from "~/hooks/useStores";
-import DocumentMenu from "~/menus/DocumentMenu";
 import {
   useDragStar,
   useDropToCreateStar,
@@ -28,6 +23,11 @@ import SidebarContext, {
   useSidebarContext,
 } from "./SidebarContext";
 import SidebarLink from "./SidebarLink";
+import Fade from "~/components/Fade";
+import useBoolean from "~/hooks/useBoolean";
+import useStores from "~/hooks/useStores";
+import DocumentMenu from "~/menus/DocumentMenu";
+import Star from "~/models/Star";
 
 type Props = {
   star: Star;
