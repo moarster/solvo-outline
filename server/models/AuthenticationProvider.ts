@@ -25,8 +25,6 @@ import Length from "./validators/Length";
 import Model from "@server/models/base/Model";
 
 // TODO: Avoid this hardcoding of plugins
-import AzureClient from "plugins/azure/server/azure";
-import GoogleClient from "plugins/google/server/google";
 import OIDCClient from "plugins/oidc/server/oidc";
 
 @Scopes(() => ({
@@ -101,10 +99,6 @@ class AuthenticationProvider extends Model<
    */
   get oauthClient() {
     switch (this.name) {
-      case "google":
-        return new GoogleClient();
-      case "azure":
-        return new AzureClient();
       case "oidc":
         return new OIDCClient();
       default:
