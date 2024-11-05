@@ -224,6 +224,7 @@ router.post(
     }
 
     const options = {
+      query: text,
       limit: 5,
     };
 
@@ -237,11 +238,7 @@ router.post(
       return;
     }
 
-    const { results, total } = await SearchHelper.searchForUser(
-      user,
-      text,
-      options
-    );
+    const { results, total } = await SearchHelper.searchForUser(user, options);
 
     await SearchQuery.create({
       userId: user ? user.id : null,

@@ -2,14 +2,14 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Menu, MenuButton, MenuItem, useMenuState } from "reakit";
 import styled from "styled-components";
-import { Emoji } from "./Emoji";
-import { IconButton } from "./IconButton";
 import { depths, s } from "@shared/styles";
 import { EmojiSkinTone } from "@shared/types";
 import { getEmojiVariants } from "@shared/utils/emoji";
+import { Emoji } from "~/components/Emoji";
 import Flex from "~/components/Flex";
 import NudeButton from "~/components/NudeButton";
 import { hover } from "~/styles";
+import { IconButton } from "./IconButton";
 
 const SkinTonePicker = ({
   skinTone,
@@ -26,7 +26,7 @@ const SkinTonePicker = ({
   );
 
   const menu = useMenuState({
-    placement: "bottom",
+    placement: "bottom-end",
   });
 
   const handleSkinClick = React.useCallback(
@@ -43,7 +43,9 @@ const SkinTonePicker = ({
         <MenuItem {...menu} key={emoji.value}>
           {(menuprops) => (
             <IconButton {...menuprops} onClick={() => handleSkinClick(eskin)}>
-              <Emoji>{emoji.value}</Emoji>
+              <Emoji width={24} height={24}>
+                {emoji.value}
+              </Emoji>
             </IconButton>
           )}
         </MenuItem>

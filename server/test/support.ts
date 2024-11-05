@@ -1,10 +1,13 @@
 import { faker } from "@faker-js/faker";
-import TestServer from "./TestServer";
+import { Transaction } from "sequelize";
+import sharedEnv from "@shared/env";
 import env from "@server/env";
+import { User } from "@server/models";
 import onerror from "@server/onerror";
 import webService from "@server/services/web";
 import { sequelize } from "@server/storage/database";
-import sharedEnv from "@shared/env";
+import { APIContext, AuthenticationType } from "@server/types";
+import TestServer from "./TestServer";
 
 export function getTestServer() {
   const app = webService();
@@ -26,4 +29,26 @@ export function getTestServer() {
  */
 export function setSelfHosted() {
   env.URL = sharedEnv.URL = `https://${faker.internet.domainName()}`;
+}
+
+export function withAPIContext<T>(
+  user: User,
+  fn: (ctx: APIContext) => T
+): Promise<T> {
+  return sequelize.transaction(async (transaction: Transaction) => {
+    const state = {
+      auth: {
+        user,
+        type: AuthenticationType.APP,
+        token: user.getJwtToken(),
+      },
+      transaction,
+    };
+    return fn({
+      state,
+      request: {
+        ip: faker.internet.ip(),
+      },
+    } as APIContext);
+  });
 }

@@ -9,16 +9,16 @@ import {
   Length,
   DefaultScope,
 } from "sequelize-typescript";
+import type { ProsemirrorData, ReactionSummary } from "@shared/types";
+import { ProsemirrorHelper } from "@shared/utils/ProsemirrorHelper";
+import { CommentValidation } from "@shared/validations";
+import { schema } from "@server/editor";
+import { ValidationError } from "@server/errors";
 import Document from "./Document";
 import User from "./User";
 import ParanoidModel from "./base/ParanoidModel";
 import Fix from "./decorators/Fix";
 import TextLength from "./validators/TextLength";
-import { schema } from "@server/editor";
-import { ValidationError } from "@server/errors";
-import type { ProsemirrorData } from "@shared/types";
-import { ProsemirrorHelper } from "@shared/utils/ProsemirrorHelper";
-import { CommentValidation } from "@shared/validations";
 
 @DefaultScope(() => ({
   include: [
@@ -50,6 +50,9 @@ class Comment extends ParanoidModel<
   })
   @Column(DataType.JSONB)
   data: ProsemirrorData;
+
+  @Column(DataType.JSONB)
+  reactions: ReactionSummary[] | null;
 
   // associations
 

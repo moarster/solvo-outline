@@ -6,7 +6,7 @@ import { TeamPreference } from "@shared/types";
 
 type Props = {
   params: Partial<Omit<Team, "allowedDomains">> & { allowedDomains?: string[] };
-  ip?: string;
+  ip?: string | null;
   user: User;
   team: Team;
   transaction: Transaction;
