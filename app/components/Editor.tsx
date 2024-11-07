@@ -255,6 +255,7 @@ function Editor(props: Props, ref: React.RefObject<SharedEditor> | null) {
     <ErrorBoundary component="div" reloadOnChunkMissing>
       <>
         <LazyLoadedEditor
+          key={props.extensions?.length || 0}
           ref={mergeRefs([ref, localRef, handleRefChanged])}
           uploadFile={handleUploadFile}
           embeds={embeds}
@@ -267,11 +268,11 @@ function Editor(props: Props, ref: React.RefObject<SharedEditor> | null) {
           placeholder={props.placeholder || ""}
           defaultValue={props.defaultValue || ""}
         />
-        {props.editorStyle?.paddingBottom && !props.readOnly && (
+        {props.editorStyle?.paddingBottom && (
           <ClickablePadding
-            onClick={focusAtEnd}
-            onDrop={handleDrop}
-            onDragOver={handleDragOver}
+            onClick={props.readOnly ? undefined : focusAtEnd}
+            onDrop={props.readOnly ? undefined : handleDrop}
+            onDragOver={props.readOnly ? undefined : handleDragOver}
             minHeight={props.editorStyle.paddingBottom}
           />
         )}

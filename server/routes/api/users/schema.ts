@@ -1,9 +1,9 @@
 import { z } from "zod";
-import { BaseSchema } from "../schema";
-import User from "@server/models/User";
-import { zodEnumFromObjectKeys } from "@server/utils/zod";
 import { NotificationEventType, UserPreference, UserRole } from "@shared/types";
 import { locales } from "@shared/utils/date";
+import User from "@server/models/User";
+import { zodEnumFromObjectKeys, zodTimezone } from "@server/utils/zod";
+import { BaseSchema } from "../schema";
 
 const BaseIdSchema = z.object({
   id: z.string().uuid(),
@@ -84,6 +84,7 @@ export const UsersUpdateSchema = BaseSchema.extend({
     avatarUrl: z.string().nullish(),
     language: zodEnumFromObjectKeys(locales).optional(),
     preferences: z.record(z.nativeEnum(UserPreference), z.boolean()).optional(),
+    timezone: zodTimezone().optional(),
   }),
 });
 
