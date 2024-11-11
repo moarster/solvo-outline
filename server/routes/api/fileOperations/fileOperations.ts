@@ -1,8 +1,6 @@
 import Router from "koa-router";
 import { WhereOptions } from "sequelize";
-import pagination from "../middlewares/pagination";
-import * as T from "./schema";
-import fileOperationDeleter from "@server/commands/fileOperationDeleter";
+import { UserRole } from "@shared/types";
 import { ValidationError } from "@server/errors";
 import auth from "@server/middlewares/authentication";
 import { transaction } from "@server/middlewares/transaction";
@@ -12,7 +10,8 @@ import { authorize } from "@server/policies";
 import { presentFileOperation } from "@server/presenters";
 import FileStorage from "@server/storage/files";
 import { APIContext } from "@server/types";
-import { UserRole } from "@shared/types";
+import pagination from "../middlewares/pagination";
+import * as T from "./schema";
 
 const router = new Router();
 
@@ -116,15 +115,11 @@ router.post(
     const fileOperation = await FileOperation.unscoped().findByPk(id, {
       rejectOnEmpty: true,
       transaction,
+      lock: transaction.LOCK.UPDATE,
     });
     authorize(user, "delete", fileOperation);
 
-    await fileOperationDeleter({
-      fileOperation,
-      user,
-      ip: ctx.request.ip,
-      transaction,
-    });
+    await fileOperation.destroyWithCtx(ctx);
 
     ctx.body = {
       success: true,

@@ -5,8 +5,11 @@ import { Team, User } from "@server/models";
 import { sequelize } from "@server/storage/database";
 import { Event as TEvent, CollectionEvent } from "@server/types";
 
-export default class CollectionDeletedProcessor extends BaseProcessor {
-  static applicableEvents: TEvent["name"][] = ["collections.delete"];
+export default class CollectionsProcessor extends BaseProcessor {
+  static applicableEvents: TEvent["name"][] = [
+    "collections.delete",
+    "collections.archive",
+  ];
 
   async perform(event: CollectionEvent) {
     await DetachDraftsFromCollectionTask.schedule({

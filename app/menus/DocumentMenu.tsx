@@ -41,6 +41,7 @@ import {
   shareDocument,
   copyDocument,
   searchInDocument,
+  leaveDocument,
   moveTemplate,
 } from "~/actions/definitions/documents";
 import ContextMenu from "~/components/ContextMenu";
@@ -298,6 +299,7 @@ const MenuContent: React.FC<MenuContentProps> = ({
           },
           actionToMenuItem(deleteDocument, context),
           actionToMenuItem(permanentlyDeleteDocument, context),
+          actionToMenuItem(leaveDocument, context),
         ]}
       />
       {(showDisplayOptions || showToggleEmbeds) && can.update && (
@@ -407,6 +409,8 @@ function DocumentMenu({
       } catch (err) {
         toast.error(err.message);
         throw err;
+      } finally {
+        ev.target.value = "";
       }
     },
     [history, collection, documents, document.id]
