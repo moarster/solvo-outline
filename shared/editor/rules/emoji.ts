@@ -1,5 +1,5 @@
 import MarkdownIt from "markdown-it";
-import emojiPlugin from "markdown-it-emoji";
+import { full as emojiPlugin } from "markdown-it-emoji"; // Change here
 import { nameToEmoji } from "../lib/emoji";
 
 type Options = MarkdownIt.Options & {
@@ -16,7 +16,7 @@ export default function emoji(md: MarkdownIt) {
   };
 
   return emojiPlugin(md, {
-    defs: (md.options as Options).emoji === false ? noMapping : nameToEmoji,
+    defs: !(md.options as Options).emoji ? noMapping : nameToEmoji,
     shortcuts: {},
   });
 }

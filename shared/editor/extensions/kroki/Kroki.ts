@@ -1,4 +1,3 @@
-import pako from "pako";
 import env from "../../../env";
 import { DiagramOptions, DiagramType } from "./types";
 
@@ -9,22 +8,6 @@ export class Kroki {
     this.serverUrl = serverUrl;
   }
 
-  /**
-   * Encodes the diagram text by compressing and converting it to base64.
-   * @param {string} diagramSource - The text of the diagram.
-   * @returns {string} - The encoded diagram.
-   */
-  encodeDiagram(diagramSource: string): string {
-    try {
-      const data: Uint8Array = this.textEncode(diagramSource);
-      const compressed: string = pako.deflate(data, { level: 9, to: "string" });
-      return btoa(compressed).replace(/\+/g, "-").replace(/\//g, "_");
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error("Error encoding diagram:", error);
-      throw new Error("Failed to encode diagram.");
-    }
-  }
 
   /**
    * Converts the diagram text to SVG by making a request to the Kroki server.
