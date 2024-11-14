@@ -14,6 +14,7 @@ import GitLabSnippet from "./GitLabSnippet";
 import InVision from "./InVision";
 import JSFiddle from "./JSFiddle";
 import Linkedin from "./Linkedin";
+import Pinterest from "./Pinterest";
 import Spotify from "./Spotify";
 import Structurizr from "./Structurizr";
 import Trello from "./Trello";
@@ -618,6 +619,18 @@ const embeds: EmbedDescriptor[] = [
     ],
     icon: <Img src="/images/vimeo.png" alt="Vimeo" />,
     component: Vimeo,
+  }),
+  new EmbedDescriptor({
+    title: "Pinterest",
+    keywords: "board moodboard pins",
+    regexMatch: [
+      // Match board URLs but exclude pins
+      /^(?:https?:\/\/)?(?:(?:www\.|[a-z]{2}\.)?pinterest\.(?:com|[a-z]{2,3}))\/(?!pin\/)([^/]+)\/([^/]+)\/?$/,
+      // Match profile URLs but exclude pins
+      /^(?:https?:\/\/)?(?:(?:www\.|[a-z]{2}\.)?pinterest\.(?:com|[a-z]{2,3}))\/(?!pin\/)([^/]+)\/?$/,
+    ],
+    icon: <Img src="/images/pinterest.png" alt="Pinterest" />,
+    component: Pinterest,
   }),
   new EmbedDescriptor({
     title: "Whimsical",
