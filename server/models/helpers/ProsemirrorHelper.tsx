@@ -30,8 +30,6 @@ export type HTMLOptions = {
   title?: string;
   /** Whether to include style tags in the generated HTML (defaults to true) */
   includeStyles?: boolean;
-  /** Whether to include mermaidjs scripts in the generated HTML (defaults to false) */
-  includeKroki?: boolean;
   /** Whether to include styles to center diff (defaults to true) */
   centered?: boolean;
   /** The base URL to use for relative links */
@@ -535,7 +533,7 @@ export class ProsemirrorHelper {
     }
 
     /* // TODO: Reuse for strucurizr embeds
-    if (options?.includeKroki) {
+    if (true) {
       const krokiElements = dom.window.document.querySelectorAll(
         `[isKroki=true] pre code`
       );
