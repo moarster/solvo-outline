@@ -534,7 +534,7 @@ export class ProsemirrorHelper {
       }
     }
 
-    /* // Inject mermaidjs scripts if the document contains mermaid diagrams
+    /* // TODO: Reuse for strucurizr embeds
     if (options?.includeKroki) {
       const krokiElements = dom.window.document.querySelectorAll(
         `[isKroki=true] pre code`

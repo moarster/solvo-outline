@@ -191,7 +191,7 @@ export default class CodeFence extends Node {
             this.showLineNumbers ? "with-line-numbers" : ""
           }`,
           "data-language": node.attrs.language,
-          isKroki: node.attrs.language in krokiDiagrams,
+          "is-kroki": node.attrs.language in krokiDiagrams,
         },
         ["pre", ["code", { spellCheck: "false" }, 0]],
       ],
