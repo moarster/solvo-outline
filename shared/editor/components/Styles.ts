@@ -1861,12 +1861,12 @@ const krokiStyle = (props: Props) => css`
       }
     `}
     &:not(.code-active) {
-      height: ${props.staticHTML ? "auto" : "0"};
+      height: ${props.staticHTML || props.readOnly ? "auto" : "0"};
       margin: -0.75em 0;
       overflow: hidden;
 
       // Allows the margin to collapse correctly by moving div out of the flow
-      position: ${props.staticHTML ? "relative" : "absolute"};
+      position: ${props.staticHTML || props.readOnly ? "relative" : "absolute"};
     }
   }
 
