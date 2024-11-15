@@ -14,7 +14,7 @@ import { isCode } from "../lib/isCode";
 import { isRemoteTransaction } from "../lib/multiplayer";
 import { findBlockNodes, NodeWithPos } from "../queries/findChildren";
 import { Kroki } from "@shared/editor/extensions/kroki/Kroki";
-import { DiagramType } from "@shared/editor/extensions/kroki/types";
+import {DiagramType, krokiDiagrams} from "@shared/editor/extensions/kroki/types";
 
 type DiagramState = {
   decorationSet: DecorationSet;
@@ -155,7 +155,7 @@ function getNewState({
   const blocks = findBlockNodes(doc).filter(
     (item) =>
       item.node.type.name === name &&
-      (item.node.attrs.language satisfies DiagramType)
+        Object.keys(krokiDiagrams).includes(item.node.attrs.language)
   );
 
   blocks.forEach((block) => {

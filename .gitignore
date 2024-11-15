@@ -1,7 +1,7 @@
 dist
 build
 node_modules/*
-.env*
+.env.production
 .env.local
 .log
 yarn-error.log
@@ -15,7 +15,7 @@ data/*
 *.pem
 *.key
 *.cert
-.github/workflows/main.yaml
+.github
 .yarn*
 !/.eslintignore
-!/.eslintrc
+**/.eslintrc
