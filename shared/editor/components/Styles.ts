@@ -1908,8 +1908,11 @@ const krokiStyle = (props: Props) => css`
         `.ProseMirror[contenteditable="false"] .code-block[data-language=${key}]`
     )
     .join(", ")} {
+    /* To test
     height: ${props.staticHTML ? "auto" : "0"};
-    margin: -0.5em 0;
+     */
+    height: 0;
+    margin: -0.5em 0 0 0;
     overflow: hidden;
   }
 `;
