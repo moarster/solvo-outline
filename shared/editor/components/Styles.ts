@@ -1284,6 +1284,38 @@ mark {
   position: relative;
 }
 
+.code-block[data-language=mermaidjs] {
+  margin: 0.75em 0;
+
+  ${
+    !props.staticHTML &&
+    css`
+      pre {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        margin-bottom: -20px;
+        overflow: hidden;
+      }
+    `
+  }
+
+  // Hide code without display none so toolbar can still be positioned against it
+  &:not(.code-active) {
+    height: ${props.staticHTML || props.readOnly ? "auto" : "0"};
+    margin: -0.75em 0;
+    overflow: hidden;
+
+    // Allows the margin to collapse correctly by moving div out of the flow
+    position: ${props.staticHTML || props.readOnly ? "relative" : "absolute"};
+  }
+}
+
+.ProseMirror[contenteditable="false"] .code-block[data-language=mermaidjs] {
+    height: 0;
+    overflow: hidden;
+    margin: -0.5em 0 0 0;
+}
+
 .code-block.with-line-numbers {
   pre {
     padding-left: calc(var(--line-number-gutter-width, 0) * 1em + 1.5em);

@@ -557,7 +557,7 @@ export class ProsemirrorHelper {
       // Inject Mermaid script
       if (krokiElements.length) {
         element.innerHTML = `
-          import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs';
+          import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
           mermaid.initialize({
             startOnLoad: true,
             fontFamily: "inherit",
