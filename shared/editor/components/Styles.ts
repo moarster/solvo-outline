@@ -1819,7 +1819,7 @@ table {
 
 del {
   color: ${props.theme.slate};
-  text-decoration: strikethrough;
+  text-decoration: line-through;
 }
 
 ins[data-operation-index] {
