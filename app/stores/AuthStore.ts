@@ -3,35 +3,23 @@ import invariant from "invariant";
 import isNil from "lodash/isNil";
 import { observable, action, computed, autorun, runInAction } from "mobx";
 import { getCookie, setCookie } from "tiny-cookie";
-import Store from "./base/Store";
 import { CustomTheme } from "@shared/types";
 import Storage from "@shared/utils/Storage";
 import { getCookieDomain, parseDomain } from "@shared/utils/domains";
+import RootStore from "~/stores/RootStore";
+import Team from "~/models/Team";
 import env from "~/env";
 import { setPostLoginPath } from "~/hooks/useLastVisitedPath";
-import Policy from "~/models/Policy";
-import Team from "~/models/Team";
-import User from "~/models/User";
-import RootStore from "~/stores/RootStore";
-import { PartialExcept } from "~/types";
 import { client } from "~/utils/ApiClient";
 import Desktop from "~/utils/Desktop";
 import Logger from "~/utils/Logger";
 import isCloudHosted from "~/utils/isCloudHosted";
+import Store from "./base/Store";
 
-type PersistedData = {
-  user?: PartialExcept<User, "id">;
-  team?: PartialExcept<Team, "id">;
-  collaborationToken?: string;
-  availableTeams?: {
-    id: string;
-    name: string;
-    avatarUrl: string;
-    url: string;
-    isSignedIn: boolean;
-  }[];
-  policies?: Policy[];
-};
+type PersistedData = Pick<
+  AuthStore,
+  "user" | "team" | "collaborationToken" | "availableTeams" | "policies"
+>;
 
 type Provider = {
   id: string;
@@ -165,9 +153,10 @@ export default class AuthStore extends Store<Team> {
   /** The current team's policies */
   @computed
   get policies() {
-    return this.currentTeamId
-      ? [this.rootStore.policies.get(this.currentTeamId)]
-      : [];
+    const policy = this.currentTeamId
+      ? this.rootStore.policies.get(this.currentTeamId)
+      : undefined;
+    return policy ? [policy] : [];
   }
 
   /** Whether the user is signed in */
@@ -177,7 +166,7 @@ export default class AuthStore extends Store<Team> {
   }
 
   @computed
-  get asJson() {
+  get asJson(): PersistedData {
     return {
       user: this.user,
       team: this.team,
