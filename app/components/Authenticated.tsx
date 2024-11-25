@@ -2,10 +2,11 @@ import { observer } from "mobx-react";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { Redirect } from "react-router-dom";
-import LoadingIndicator from "./LoadingIndicator";
 import useCurrentUser from "~/hooks/useCurrentUser";
 import useStores from "~/hooks/useStores";
 import { changeLanguage } from "~/utils/language";
+import { logoutPath } from "~/utils/routeHelpers";
+import LoadingIndicator from "./LoadingIndicator";
 
 type Props = {
   children: JSX.Element;
@@ -32,7 +33,7 @@ const Authenticated = ({ children }: Props) => {
   }
 
   void auth.logout(true);
-  return <Redirect to="/" />;
+  return <Redirect to={logoutPath()} />;
 };
 
 export default observer(Authenticated);

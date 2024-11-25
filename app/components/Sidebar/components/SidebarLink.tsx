@@ -2,8 +2,6 @@ import { LocationDescriptor } from "history";
 import * as React from "react";
 import styled, { useTheme, css } from "styled-components";
 import breakpoint from "styled-components-breakpoint";
-import Disclosure from "./Disclosure";
-import NavLink, { Props as NavLinkProps } from "./NavLink";
 import EventBoundary from "@shared/components/EventBoundary";
 import { s } from "@shared/styles";
 import { NavigationNode } from "@shared/types";
@@ -11,6 +9,8 @@ import NudeButton from "~/components/NudeButton";
 import { UnreadBadge } from "~/components/UnreadBadge";
 import useUnmount from "~/hooks/useUnmount";
 import { undraggableOnDesktop } from "~/styles";
+import Disclosure from "./Disclosure";
+import NavLink, { Props as NavLinkProps } from "./NavLink";
 
 export type DragObject = NavigationNode & {
   depth: number;
@@ -78,7 +78,6 @@ function SidebarLink(
 
   const activeStyle = React.useMemo(
     () => ({
-      fontWeight: 600,
       color: theme.text,
       background: theme.sidebarActiveBackground,
       ...style,
@@ -202,12 +201,10 @@ const Link = styled(NavLink)<{
   display: flex;
   position: relative;
   text-overflow: ellipsis;
+  font-weight: 475;
   padding: 6px 16px;
   border-radius: 4px;
   min-height: 32px;
-  transition:
-    background 50ms,
-    color 50ms;
   user-select: none;
   background: ${(props) =>
     props.$isActiveDrop ? props.theme.slateDark : "inherit"};

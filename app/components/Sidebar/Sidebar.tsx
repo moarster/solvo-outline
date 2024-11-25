@@ -3,11 +3,6 @@ import * as React from "react";
 import { useLocation } from "react-router-dom";
 import styled, { css, useTheme } from "styled-components";
 import breakpoint from "styled-components-breakpoint";
-import NotificationIcon from "../Notifications/NotificationIcon";
-import NotificationsPopover from "../Notifications/NotificationsPopover";
-import ResizeBorder from "./components/ResizeBorder";
-import SidebarButton, { SidebarButtonProps } from "./components/SidebarButton";
-import ToggleButton from "./components/ToggleButton";
 import { depths, s } from "@shared/styles";
 import { Avatar } from "~/components/Avatar";
 import Flex from "~/components/Flex";
@@ -20,6 +15,11 @@ import AccountMenu from "~/menus/AccountMenu";
 import { fadeOnDesktopBackgrounded } from "~/styles";
 import { fadeIn } from "~/styles/animations";
 import Desktop from "~/utils/Desktop";
+import NotificationIcon from "../Notifications/NotificationIcon";
+import NotificationsPopover from "../Notifications/NotificationsPopover";
+import ResizeBorder from "./components/ResizeBorder";
+import SidebarButton, { SidebarButtonProps } from "./components/SidebarButton";
+import ToggleButton from "./components/ToggleButton";
 
 const ANIMATION_MS = 250;
 
@@ -282,8 +282,8 @@ const hoverStyles = (props: ContainerProps) => `
     props.$collapsed
       ? "rgba(0, 0, 0, 0.2) 1px 0 4px"
       : props.$isSmallerThanMinimum
-        ? "rgba(0, 0, 0, 0.1) inset -1px 0 2px"
-        : "none"
+      ? "rgba(0, 0, 0, 0.1) inset -1px 0 2px"
+      : "none"
   };
 
   ${ToggleButton} {
@@ -297,12 +297,9 @@ const Container = styled(Flex)<ContainerProps>`
   bottom: 0;
   width: 100%;
   background: ${s("sidebarBackground")};
-  transition:
-    box-shadow 150ms ease-in-out,
-    transform 150ms ease-out,
-    ${s("backgroundTransition")}
-      ${(props: ContainerProps) =>
-        props.$isAnimating ? `,width ${ANIMATION_MS}ms ease-out` : ""};
+  transition: box-shadow 150ms ease-in-out, transform 150ms ease-out,
+    ${(props: ContainerProps) =>
+      props.$isAnimating ? `,width ${ANIMATION_MS}ms ease-out` : ""};
   transform: translateX(
     ${(props) => (props.$mobileSidebarVisible ? 0 : "-100%")}
   );
