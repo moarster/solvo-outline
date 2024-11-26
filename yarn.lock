@@ -5457,7 +5457,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/readable-stream@^4.0.16":
+"@types/readable-stream@^4.0.18":
   version "4.0.18"
   resolved "https://registry.yarnpkg.com/@types/readable-stream/-/readable-stream-4.0.18.tgz#5d8d15d26c776500ce573cae580787d149823bfc"
   integrity sha512-21jK/1j+Wg+7jVw1xnSwy/2Q1VgVjWuFssbYGTREPUBeZ+rqVFl2udq0IkxzPC0ZhOzVceUbyIACFZKLqKEBlA==
