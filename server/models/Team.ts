@@ -25,6 +25,7 @@ import {
   AfterUpdate,
   BeforeUpdate,
   BeforeCreate,
+  IsNumeric,
 } from "sequelize-typescript";
 import Attachment from "./Attachment";
 import AuthenticationProvider from "./AuthenticationProvider";
@@ -150,6 +151,11 @@ class Team extends ParanoidModel<
   @IsIn([[UserRole.Viewer, UserRole.Member]])
   @Column(DataType.STRING)
   defaultUserRole: UserRole;
+
+  /** Approximate size in bytes of all attachments in the team. */
+  @IsNumeric
+  @Column(DataType.BIGINT)
+  approximateTotalAttachmentsSize: number;
 
   @AllowNull
   @Column(DataType.JSONB)
