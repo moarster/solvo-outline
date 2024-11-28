@@ -1,7 +1,6 @@
 dist
 build
 node_modules/*
-.env.production
 .env.local
 .log
 yarn-error.log

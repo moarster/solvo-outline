@@ -362,6 +362,6 @@
     "rollup": "4.21.3",
     "eslint": "^9"
   },
-  "version": "0.81.0-solvo",
+  "version": "0.81.0-solvo2",
   "packageManager": "yarn@1.22.22"
 }
