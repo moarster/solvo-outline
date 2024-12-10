@@ -11,6 +11,7 @@ import DocumentLink from "./components/SharedDocumentLink";
 import SidebarButton from "./components/SidebarButton";
 import ToggleButton from "./components/ToggleButton";
 import { NavigationNode } from "@shared/types";
+import { metaDisplay } from "@shared/utils/keyboard";
 import Flex from "~/components/Flex";
 import Scrollable from "~/components/Scrollable";
 import SearchPopover from "~/components/SearchPopover";
@@ -19,7 +20,6 @@ import useCurrentUser from "~/hooks/useCurrentUser";
 import useStores from "~/hooks/useStores";
 import { hover } from "~/styles";
 import history from "~/utils/history";
-import { metaDisplay } from "~/utils/keyboard";
 import { homePath, sharedDocumentPath } from "~/utils/routeHelpers";
 
 type Props = {
@@ -81,11 +81,7 @@ const ToggleSidebar = () => {
   const { ui } = useStores();
 
   return (
-    <Tooltip
-      content={t("Toggle sidebar")}
-      shortcut={`${metaDisplay}+.`}
-      delay={500}
-    >
+    <Tooltip content={t("Toggle sidebar")} shortcut={`${metaDisplay}+.`}>
       <ToggleButton
         position="bottom"
         image={<SidebarIcon />}

@@ -27,8 +27,8 @@ import styled from "styled-components";
 import Image from "@shared/editor/components/Img";
 import { krokiDiagrams } from "@shared/editor/extensions/kroki/types";
 import { MenuItem } from "@shared/editor/types";
+import { metaDisplay } from "@shared/utils/keyboard";
 import { Dictionary } from "~/hooks/useDictionary";
-import { metaDisplay } from "~/utils/keyboard";
 
 const Img = styled(Image)`
   border-radius: 2px;

@@ -4,17 +4,17 @@ import * as React from "react";
 import { useDrop, useDrag, DropTargetMonitor } from "react-dnd";
 import { getEmptyImage } from "react-dnd-html5-backend";
 import styled from "styled-components";
-import { useLocationState } from "../hooks/useLocationState";
+import Collection from "~/models/Collection";
+import Document from "~/models/Document";
+import CollectionIcon from "~/components/Icons/CollectionIcon";
+import { useLocationSidebarContext } from "~/hooks/useLocationSidebarContext";
+import useStores from "~/hooks/useStores";
 import CollectionLink from "./CollectionLink";
 import CollectionLinkChildren from "./CollectionLinkChildren";
 import DropCursor from "./DropCursor";
 import Relative from "./Relative";
 import { useSidebarContext } from "./SidebarContext";
 import { DragObject } from "./SidebarLink";
-import CollectionIcon from "~/components/Icons/CollectionIcon";
-import useStores from "~/hooks/useStores";
-import Collection from "~/models/Collection";
-import Document from "~/models/Document";
 
 type Props = {
   collection: Collection;
@@ -29,7 +29,7 @@ function DraggableCollectionLink({
   prefetchDocument,
   belowCollection,
 }: Props) {
-  const locationSidebarContext = useLocationState();
+  const locationSidebarContext = useLocationSidebarContext();
   const sidebarContext = useSidebarContext();
   const { ui, policies, collections } = useStores();
   const [expanded, setExpanded] = React.useState(

@@ -65,7 +65,6 @@ export class ProsemirrorHelper {
     //  the server we need to mimic this behavior.
     function urlsToEmbeds(node: Node): Node {
       if (node.type.name === "paragraph") {
-        // @ts-expect-error content
         for (const textNode of node.content.content) {
           for (const embed of embeds) {
             if (
@@ -87,8 +86,7 @@ export class ProsemirrorHelper {
       if (node.content) {
         const contentAsArray =
           node.content instanceof Fragment
-            ? // @ts-expect-error content
-              node.content.content
+            ? node.content.content
             : node.content;
         // @ts-expect-error content
         node.content = Fragment.fromArray(contentAsArray.map(urlsToEmbeds));
