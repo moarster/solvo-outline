@@ -3,12 +3,20 @@ import { Location } from "history";
 import { observer } from "mobx-react";
 import * as React from "react";
 import styled from "styled-components";
+import { IconType, NotificationEventType } from "@shared/types";
+import { determineIconType } from "@shared/utils/icon";
+import GroupMembership from "~/models/GroupMembership";
+import UserMembership from "~/models/UserMembership";
+import Fade from "~/components/Fade";
+import useBoolean from "~/hooks/useBoolean";
+import { useLocationSidebarContext } from "~/hooks/useLocationSidebarContext";
+import useStores from "~/hooks/useStores";
+import DocumentMenu from "~/menus/DocumentMenu";
 import {
   useDragMembership,
   useDropToReorderUserMembership,
   useDropToReparentDocument,
 } from "../hooks/useDragAndDrop";
-import { useLocationState } from "../hooks/useLocationState";
 import { useSidebarLabelAndIcon } from "../hooks/useSidebarLabelAndIcon";
 import DocumentLink from "./DocumentLink";
 import DropCursor from "./DropCursor";
@@ -16,14 +24,6 @@ import Folder from "./Folder";
 import Relative from "./Relative";
 import { useSidebarContext, type SidebarContextType } from "./SidebarContext";
 import SidebarLink from "./SidebarLink";
-import { IconType, NotificationEventType } from "@shared/types";
-import { determineIconType } from "@shared/utils/icon";
-import Fade from "~/components/Fade";
-import useBoolean from "~/hooks/useBoolean";
-import useStores from "~/hooks/useStores";
-import DocumentMenu from "~/menus/DocumentMenu";
-import GroupMembership from "~/models/GroupMembership";
-import UserMembership from "~/models/UserMembership";
 
 type Props = {
   membership: UserMembership | GroupMembership;
@@ -36,7 +36,7 @@ function SharedWithMeLink({ membership, depth = 0 }: Props) {
   const [menuOpen, handleMenuOpen, handleMenuClose] = useBoolean();
   const { documentId } = membership;
   const isActiveDocument = documentId === ui.activeDocumentId;
-  const locationSidebarContext = useLocationState();
+  const locationSidebarContext = useLocationSidebarContext();
   const sidebarContext = useSidebarContext();
   const document = documentId ? documents.get(documentId) : undefined;
 

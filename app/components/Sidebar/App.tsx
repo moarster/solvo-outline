@@ -5,6 +5,16 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { metaDisplay } from "@shared/utils/keyboard";
+import Flex from "~/components/Flex";
+import Scrollable from "~/components/Scrollable";
+import Text from "~/components/Text";
+import { inviteUser } from "~/actions/definitions/users";
+import useCurrentTeam from "~/hooks/useCurrentTeam";
+import useCurrentUser from "~/hooks/useCurrentUser";
+import usePolicy from "~/hooks/usePolicy";
+import useStores from "~/hooks/useStores";
+import OrganizationMenu from "~/menus/OrganizationMenu";
 import { homePath, draftsPath, searchPath } from "~/utils/routeHelpers";
 import TeamLogo from "../TeamLogo";
 import Tooltip from "../Tooltip";
@@ -21,16 +31,6 @@ import SidebarLink from "./components/SidebarLink";
 import Starred from "./components/Starred";
 import ToggleButton from "./components/ToggleButton";
 import TrashLink from "./components/TrashLink";
-import { inviteUser } from "~/actions/definitions/users";
-import Flex from "~/components/Flex";
-import Scrollable from "~/components/Scrollable";
-import Text from "~/components/Text";
-import useCurrentTeam from "~/hooks/useCurrentTeam";
-import useCurrentUser from "~/hooks/useCurrentUser";
-import usePolicy from "~/hooks/usePolicy";
-import useStores from "~/hooks/useStores";
-import OrganizationMenu from "~/menus/OrganizationMenu";
-import { metaDisplay } from "~/utils/keyboard";
 
 function AppSidebar() {
   const { t } = useTranslation();
@@ -80,7 +80,6 @@ function AppSidebar() {
                 <Tooltip
                   content={t("Toggle sidebar")}
                   shortcut={`${metaDisplay}+.`}
-                  delay={500}
                 >
                   <ToggleButton
                     position="bottom"
