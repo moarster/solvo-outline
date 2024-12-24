@@ -1,4 +1,4 @@
-FROM node:20-slim AS base
+FROM dockerreg.solvo.ru/solvo/reg/node:20-slim AS base
 
 ARG APP_PATH
 ARG HTTP_PROXY
