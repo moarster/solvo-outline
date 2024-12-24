@@ -1,0 +1,41 @@
+include:
+  - project: $CI_TEMPLATES_PATH
+    ref: $CI_TEMPLATE_RELEASE
+    file:
+      - 'templates/build-docker.gitlab-ci.yml'
+      - 'templates/SwarmDeployment.gitlab-ci.yml'
+
+stages:
+  - Build
+  - Deploy
+
+.default_rule:
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+build_outline_image:
+  stage: Build
+  extends:
+    - .build_base_docker
+  variables:
+    VERSION: "test"
+    IMAGE_NAME: "solvo-outline"
+  rules:
+    - !reference [.default_rule, rules]
+
+deploy_outline_at_test:
+  stage: Deploy
+  variables:
+    STACK_NAME: "wiki"
+    COMPOSE_PATH: "./"
+    COMPOSE_FILENAME: "docker-compose-prod.yml"
+    MANAGER_HOST: "kvm-el8-porp.solvo.ru"
+    MANAGER_USER: "solvo"
+    TMP_DIR: "~/swarm_deploy"
+    CHECK_APP_PORT: "3000"
+    CHECK_APP_HOSTNAME: "kvm-el8-porp.solvo.ru"
+  extends:
+    - .deploy_manager_node
+  rules:
+   - !reference [.default_rule, rules]
+
