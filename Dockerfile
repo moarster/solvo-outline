@@ -33,7 +33,7 @@ RUN yarn install --production=true --frozen-lockfile --network-timeout 1000000 &
   yarn cache clean
 
 # ---
-FROM node:20-slim AS runner
+FROM dockerreg.solvo.ru/solvo/reg/node:20-slim AS runner
 
 LABEL org.opencontainers.image.source="https://gitlab.solvo.ru/solvo/tool-forks/outline"
 
