@@ -1,6 +1,6 @@
 include:
   - project: $CI_TEMPLATES_PATH
-    ref: $CI_TEMPLATE_RELEASE
+    ref: main
     file:
       - 'templates/build-docker.gitlab-ci.yml'
       - 'templates/SwarmDeployment.gitlab-ci.yml'
@@ -18,8 +18,9 @@ build_outline_image:
   extends:
     - .build_base_docker
   variables:
-    VERSION: "test"
+    VERSION: "latest"
     IMAGE_NAME: "solvo-outline"
+    BUILD_ARGS: "HTTP_PROXY=http://cache.solvo.ru:3128"
   rules:
     - !reference [.default_rule, rules]
 
