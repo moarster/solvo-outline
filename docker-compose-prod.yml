@@ -10,7 +10,7 @@ services:
     environment:
       - TZ=Europe/Moscow
         # db settings
-      - DATABASE_URL=postgres://outline_user:outline@postgres.solvo.ru:5432/outline_db?sslmode=disable&connect_timeout=10
+      - DATABASE_URL=postgres://outline_user:outline@postgres:5432/outline_db?sslmode=disable&connect_timeout=10
       - DATABASE_CONNECTION_POOL_MAX=5
       - PGSSLMODE=disable
       - REDIS_URL=redis://redis:6379
@@ -30,13 +30,13 @@ services:
         # identity
       - OIDC_CLIENT_ID=outline
       - OIDC_CLIENT_SECRET=iymZgQB0yTvGcG9pD6MiOXp40DUVgSHL
-      - OIDC_AUTH_URI=http://keycloak.solvo.ru/realms/solvo/protocol/openid-connect/auth
-      - OIDC_TOKEN_URI=http://keycloak.solvo.ru/realms/solvo/protocol/openid-connect/token
-      - OIDC_USERINFO_URI=http://keycloak.solvo.ru/realms/solvo/protocol/openid-connect/userinfo
-      - OIDC_LOGOUT_URI=http://keycloak.solvo.ru/realms/solvo/protocol/openid-connect/logout
+      - OIDC_AUTH_URI=https://keycloak.solvo.ru/realms/solvo/protocol/openid-connect/auth
+      - OIDC_TOKEN_URI=https://keycloak.solvo.ru/realms/solvo/protocol/openid-connect/token
+      - OIDC_USERINFO_URI=https://keycloak.solvo.ru/realms/solvo/protocol/openid-connect/userinfo
+      - OIDC_LOGOUT_URI=https://keycloak.solvo.ru/realms/solvo/protocol/openid-connect/logout
       - OIDC_USERNAME_CLAIM=email
       - OIDC_DISPLAY_NAME=Keycloak
-      - OIDC_SCOPES="openid profile email"
+      - OIDC_SCOPES=openid profile email
       - OIDC_DISABLE_REDIRECT=false
         # ssl settings
       - FORCE_HTTPS=false
@@ -54,8 +54,9 @@ services:
       - NODE_ENV=production
       - SECRET_KEY=00703eaa1fedbb92d903c439feac11e4268c76f6eecc097ba6cc714431b5cb08
       - UTILS_SECRET=7eee2571836979d3724f9900a55b1291aa3cdfbc32c42056aacfaaa5b9978649
-      - URL=http://outline.solvo.ru
+      - URL=https://outline.solvo.ru
       - PORT=3000
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
     networks:
       - redis-net
       - solvo_db_net
