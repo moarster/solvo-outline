@@ -4,19 +4,19 @@ import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import { toast } from "sonner";
 import { v4 } from "uuid";
-import MentionMenuItem from "./MentionMenuItem";
-import SuggestionsMenu, {
-  Props as SuggestionsMenuProps,
-} from "./SuggestionsMenu";
 import { MenuItem } from "@shared/editor/types";
 import { MentionType } from "@shared/types";
 import parseDocumentSlug from "@shared/utils/parseDocumentSlug";
+import User from "~/models/User";
 import { Avatar, AvatarSize } from "~/components/Avatar";
 import Flex from "~/components/Flex";
 import useRequest from "~/hooks/useRequest";
 import useStores from "~/hooks/useStores";
-import User from "~/models/User";
 import { client } from "~/utils/ApiClient";
+import SuggestionsMenu, {
+  Props as SuggestionsMenuProps,
+} from "./SuggestionsMenu";
+import SuggestionsMenuItem from "./SuggestionsMenuItem";
 
 interface MentionItem extends MenuItem {
   name: string;
@@ -122,11 +122,10 @@ function MentionMenu({ search, isActive, ...rest }: Props) {
       search={search}
       onSelect={handleSelect}
       renderMenuItem={(item, _index, options) => (
-        <MentionMenuItem
+        <SuggestionsMenuItem
           onClick={options.onClick}
           selected={options.selected}
           title={item.title}
-          label={item.attrs.label}
           icon={
             <Flex
               align="center"

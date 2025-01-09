@@ -31,7 +31,7 @@ router.post(
   pagination(),
   validate(T.GroupsListSchema),
   async (ctx: APIContext<T.GroupsListReq>) => {
-    const { sort, direction, query, userId, name } = ctx.input.body;
+    const { sort, direction, query, userId, externalId, name } = ctx.input.body;
     const { user } = ctx.state.auth;
     authorize(user, "listGroups", user.team);
 
@@ -52,6 +52,13 @@ router.post(
         name: {
           [Op.iLike]: `%${query}%`,
         },
+      };
+    }
+
+    if (externalId) {
+      where = {
+        ...where,
+        externalId,
       };
     }
 
@@ -95,10 +102,14 @@ router.post(
   auth(),
   validate(T.GroupsInfoSchema),
   async (ctx: APIContext<T.GroupsInfoReq>) => {
-    const { id } = ctx.input.body;
+    const { id, externalId } = ctx.input.body;
     const { user } = ctx.state.auth;
 
-    const group = await Group.findByPk(id);
+    const group = id
+      ? await Group.findByPk(id)
+      : externalId
+      ? await Group.findOne({ where: { externalId } })
+      : null;
     authorize(user, "read", group);
 
     ctx.body = {
@@ -110,18 +121,19 @@ router.post(
 
 router.post(
   "groups.create",
-  rateLimiter(RateLimiterStrategy.TenPerHour),
+  rateLimiter(RateLimiterStrategy.TenPerMinute),
   auth(),
   validate(T.GroupsCreateSchema),
   transaction(),
   async (ctx: APIContext<T.GroupsCreateReq>) => {
-    const { name } = ctx.input.body;
+    const { name, externalId } = ctx.input.body;
     const { user } = ctx.state.auth;
     const { transaction } = ctx.state;
     authorize(user, "createGroup", user.team);
 
     const group = await groupCreator({
       name,
+      externalId,
       actor: user,
       ip: ctx.request.ip,
       transaction,
@@ -140,7 +152,7 @@ router.post(
   validate(T.GroupsUpdateSchema),
   transaction(),
   async (ctx: APIContext<T.GroupsUpdateReq>) => {
-    const { id, name } = ctx.input.body;
+    const { id, name, externalId } = ctx.input.body;
     const { user } = ctx.state.auth;
     const { transaction } = ctx.state;
 
@@ -150,6 +162,7 @@ router.post(
     group = await groupUpdater({
       group,
       name,
+      externalId,
       actor: user,
       ip: ctx.request.ip,
       transaction,

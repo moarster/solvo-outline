@@ -1,17 +1,47 @@
-ARG APP_PATH=/opt/outline
-FROM solvo/reg/solvo-outline-base AS base
+FROM dockerreg.solvo.ru/solvo/reg/node:20-slim AS base
 
 ARG APP_PATH
+ARG HTTP_PROXY
+ARG CDN_URL
+ARG APP_PATH=/opt/outline
+
+ENV PORT=3000
+
 WORKDIR $APP_PATH
 
+COPY ./package.json ./yarn.lock ./
+COPY ./patches ./patches
+
+RUN if [ -n "$HTTP_PROXY" ]; then \
+    yarn config set https-proxy $HTTP_PROXY -g && \
+    yarn config set http-proxy $HTTP_PROXY -g && \
+    echo "Acquire::http::Proxy \"$HTTP_PROXY\";" > /etc/apt/apt.conf.d/80_proxy && \
+    echo "Acquire::https::Proxy \"$HTTP_PROXY\";" >> /etc/apt/apt.conf.d/80_proxy && \
+    echo "Acquire::ftp::Proxy \"$HTTP_PROXY\";" >> /etc/apt/apt.conf.d/80_proxy \
+; fi
+
+RUN yarn install --no-optional --frozen-lockfile --network-timeout 1000000 && \
+  yarn cache clean
+
+COPY . .
+
+RUN yarn build
+
+RUN rm -rf node_modules
+
+RUN yarn install --production=true --frozen-lockfile --network-timeout 1000000 && \
+  yarn cache clean
+
 # ---
-FROM node:20-slim AS runner
+FROM dockerreg.solvo.ru/solvo/reg/node:20-slim AS runner
 
 LABEL org.opencontainers.image.source="https://gitlab.solvo.ru/solvo/tool-forks/outline"
 
-ARG APP_PATH
-WORKDIR $APP_PATH
+ARG APP_PATH=/opt/outline
 ENV NODE_ENV=production
+ENV FILE_STORAGE_LOCAL_ROOT_DIR=/var/lib/outline/data
+
+WORKDIR $APP_PATH
 
 COPY --from=base $APP_PATH/build ./build
 COPY --from=base $APP_PATH/server ./server
@@ -19,8 +49,6 @@ COPY --from=base $APP_PATH/public ./public
 COPY --from=base $APP_PATH/.sequelizerc ./.sequelizerc
 COPY --from=base $APP_PATH/node_modules ./node_modules
 COPY --from=base $APP_PATH/package.json ./package.json
-
-COPY --from=base /etc/apt/apt.conf.d/80_proxy /etc/apt/apt.conf.d/80_proxy
 
 # Install wget to healthcheck the server
 RUN  apt-get update \
@@ -34,7 +62,6 @@ RUN addgroup --gid 1001 nodejs && \
   mkdir -p /var/lib/outline && \
 	chown -R nodejs:nodejs /var/lib/outline
 
-ENV FILE_STORAGE_LOCAL_ROOT_DIR=/var/lib/outline/data
 RUN mkdir -p "$FILE_STORAGE_LOCAL_ROOT_DIR" && \
   chown -R nodejs:nodejs "$FILE_STORAGE_LOCAL_ROOT_DIR" && \
   chmod 1777 "$FILE_STORAGE_LOCAL_ROOT_DIR"

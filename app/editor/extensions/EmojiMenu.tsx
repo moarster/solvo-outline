@@ -2,6 +2,7 @@ import { action } from "mobx";
 import * as React from "react";
 import EmojiMenu from "../components/EmojiMenu";
 import { WidgetProps } from "@shared/editor/lib/Extension";
+import { isBrowser } from "@shared/utils/browser";
 import Suggestion from "~/editor/extensions/Suggestion";
 
 /**
@@ -13,10 +14,9 @@ const languagesUsingColon = ["fr"];
 
 export default class EmojiMenuExtension extends Suggestion {
   get defaultOptions() {
-    const languageIsUsingColon =
-      typeof window === "undefined"
-        ? false
-        : languagesUsingColon.includes(window.navigator.language.slice(0, 2));
+    const languageIsUsingColon = isBrowser
+      ? languagesUsingColon.includes(window.navigator.language.slice(0, 2))
+      : false;
 
     return {
       openRegex: new RegExp(
