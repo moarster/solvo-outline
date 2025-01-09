@@ -475,7 +475,7 @@ export default abstract class ImportTask extends BaseTask<Props> {
               parentDocumentId: item.parentDocumentId,
               importId: fileOperation.id,
               user,
-              ctx: createContext(user, transaction),
+              ctx: createContext({ user, transaction }),
             });
             documents.set(item.id, document);
 
@@ -509,7 +509,7 @@ export default abstract class ImportTask extends BaseTask<Props> {
                 type: item.mimeType,
                 buffer: await item.buffer(),
                 user,
-                ctx: createContext(user, transaction),
+                ctx: createContext({ user, transaction }),
               });
               if (attachment) {
                 attachments.set(item.id, attachment);

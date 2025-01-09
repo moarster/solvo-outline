@@ -1,6 +1,13 @@
 import { faker } from "@faker-js/faker";
 import { addMinutes, subDays } from "date-fns";
 import {
+  CollectionPermission,
+  DocumentPermission,
+  StatusFilter,
+  UserRole,
+} from "@shared/types";
+import { createContext } from "@server/context";
+import {
   Document,
   View,
   Revision,
@@ -24,12 +31,6 @@ import {
   buildAdmin,
 } from "@server/test/factories";
 import { getTestServer } from "@server/test/support";
-import {
-  CollectionPermission,
-  DocumentPermission,
-  StatusFilter,
-  UserRole,
-} from "@shared/types";
 
 const server = getTestServer();
 
@@ -416,7 +417,7 @@ describe("#documents.info", () => {
       teamId: document.teamId,
       userId: user.id,
     });
-    await share.revoke(user.id);
+    await share.revoke(createContext({ user }));
     const res = await server.post("/api/documents.info", {
       body: {
         shareId: share.id,

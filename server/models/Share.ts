@@ -17,6 +17,10 @@ import {
   Unique,
   BeforeUpdate,
 } from "sequelize-typescript";
+import { UrlHelper } from "@shared/utils/UrlHelper";
+import env from "@server/env";
+import { ValidationError } from "@server/errors";
+import { APIContext } from "@server/types";
 import Collection from "./Collection";
 import Document from "./Document";
 import Team from "./Team";
@@ -25,9 +29,6 @@ import IdModel from "./base/IdModel";
 import Fix from "./decorators/Fix";
 import IsFQDN from "./validators/IsFQDN";
 import Length from "./validators/Length";
-import env from "@server/env";
-import { ValidationError } from "@server/errors";
-import { UrlHelper } from "@shared/utils/UrlHelper";
 
 @DefaultScope(() => ({
   include: [
@@ -82,6 +83,8 @@ class Share extends IdModel<
   InferAttributes<Share>,
   Partial<InferCreationAttributes<Share>>
 > {
+  static eventNamespace = "shares";
+
   @Column
   published: boolean;
 
@@ -188,10 +191,11 @@ class Share extends IdModel<
   @Column
   allowIndexing: boolean;
 
-  revoke(userId: string) {
+  revoke(ctx: APIContext) {
+    const { user } = ctx.context.auth;
     this.revokedAt = new Date();
-    this.revokedById = userId;
-    return this.save();
+    this.revokedById = user.id;
+    return this.saveWithCtx(ctx, { name: "revoke" });
   }
 }
 

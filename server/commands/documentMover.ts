@@ -1,6 +1,6 @@
 import invariant from "invariant";
 import { Transaction } from "sequelize";
-import pinDestroyer from "./pinDestroyer";
+import { createContext } from "@server/context";
 import { traceFunction } from "@server/logging/tracing";
 import {
   User,
@@ -213,14 +213,13 @@ async function documentMover({
         lock: Transaction.LOCK.UPDATE,
       });
 
-      if (pin) {
-        await pinDestroyer({
+      await pin?.destroyWithCtx(
+        createContext({
           user,
-          pin,
           ip,
           transaction,
-        });
-      }
+        })
+      );
     }
   }
 
