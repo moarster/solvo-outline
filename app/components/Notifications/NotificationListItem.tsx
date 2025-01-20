@@ -4,16 +4,15 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { s, hover, truncateMultiline } from "@shared/styles";
+import Notification from "~/models/Notification";
+import CommentEditor from "~/scenes/Document/components/CommentEditor";
+import useStores from "~/hooks/useStores";
 import { Avatar, AvatarSize } from "../Avatar";
 import Flex from "../Flex";
 import Text from "../Text";
 import Time from "../Time";
 import { UnreadBadge } from "../UnreadBadge";
-import { s } from "@shared/styles";
-import useStores from "~/hooks/useStores";
-import Notification from "~/models/Notification";
-import CommentEditor from "~/scenes/Document/components/CommentEditor";
-import { hover, truncateMultiline } from "~/styles";
 
 type Props = {
   notification: Notification;

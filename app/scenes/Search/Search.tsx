@@ -15,7 +15,7 @@ import RecentSearches from "./components/RecentSearches";
 import SearchInput from "./components/SearchInput";
 import UserFilter from "./components/UserFilter";
 import { Pagination } from "@shared/constants";
-import { hideScrollbars } from "@shared/styles";
+import { hover, hideScrollbars } from "@shared/styles";
 import {
   DateFilter as TDateFilter,
   StatusFilter as TStatusFilter,
@@ -34,7 +34,6 @@ import env from "~/env";
 import usePaginatedRequest from "~/hooks/usePaginatedRequest";
 import useQuery from "~/hooks/useQuery";
 import useStores from "~/hooks/useStores";
-import { hover } from "~/styles";
 import { SearchResult } from "~/types";
 import { searchPath } from "~/utils/routeHelpers";
 import { decodeURIComponentSafe } from "~/utils/urls";

@@ -1,17 +1,18 @@
 import { toggleMark } from "prosemirror-commands";
 import { Slice } from "prosemirror-model";
 import { Plugin } from "prosemirror-state";
-import stores from "~/stores";
+import { v4 } from "uuid";
 import { LANGUAGES } from "@shared/editor/extensions/Prism";
 import Extension from "@shared/editor/lib/Extension";
 import isMarkdown from "@shared/editor/lib/isMarkdown";
 import normalizePastedMarkdown from "@shared/editor/lib/markdown/normalize";
 import { isInCode } from "@shared/editor/queries/isInCode";
 import { isInList } from "@shared/editor/queries/isInList";
-import { IconType } from "@shared/types";
+import { IconType, MentionType } from "@shared/types";
 import { determineIconType } from "@shared/utils/icon";
 import parseDocumentSlug from "@shared/utils/parseDocumentSlug";
 import { isDocumentUrl, isUrl } from "@shared/utils/urls";
+import stores from "~/stores";
 
 /**
  * Checks if the HTML string is likely coming from Dropbox Paper.
@@ -185,15 +186,31 @@ export default class PasteHandler extends Extension {
                           return;
                         }
                         if (document) {
-                          const { hash } = new URL(text);
+                          if (state.schema.nodes.mention) {
+                            view.dispatch(
+                              view.state.tr.replaceWith(
+                                state.selection.from,
+                                state.selection.to,
+                                state.schema.nodes.mention.create({
+                                  type: MentionType.Document,
+                                  modelId: document.id,
+                                  label: document.titleWithDefault,
+                                  id: v4(),
+                                })
+                              )
+                            );
+                          } else {
+                            const { hash } = new URL(text);
+                            const hasEmoji =
+                              determineIconType(document.icon) ===
+                              IconType.Emoji;
 
-                          const hasEmoji =
-                            determineIconType(document.icon) === IconType.Emoji;
+                            const title = `${
+                              hasEmoji ? document.icon + " " : ""
+                            }${document.titleWithDefault}`;
 
-                          const title = `${
-                            hasEmoji ? document.icon + " " : ""
-                          }${document.titleWithDefault}`;
-                          insertLink(`${document.path}${hash}`, title);
+                            insertLink(`${document.path}${hash}`, title);
+                          }
                         }
                       })
                       .catch(() => {

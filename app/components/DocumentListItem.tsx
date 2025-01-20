@@ -9,12 +9,13 @@ import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 import breakpoint from "styled-components-breakpoint";
 import EventBoundary from "@shared/components/EventBoundary";
-import { s } from "@shared/styles";
+import Icon from "@shared/components/Icon";
+import { s, hover } from "@shared/styles";
+import Document from "~/models/Document";
 import Badge from "~/components/Badge";
 import DocumentMeta from "~/components/DocumentMeta";
 import Flex from "~/components/Flex";
 import Highlight from "~/components/Highlight";
-import Icon from "~/components/Icon";
 import NudeButton from "~/components/NudeButton";
 import StarButton, { AnimatedStar } from "~/components/Star";
 import Tooltip from "~/components/Tooltip";
@@ -22,8 +23,6 @@ import useBoolean from "~/hooks/useBoolean";
 import useCurrentUser from "~/hooks/useCurrentUser";
 import { useLocationSidebarContext } from "~/hooks/useLocationSidebarContext";
 import DocumentMenu from "~/menus/DocumentMenu";
-import Document from "~/models/Document";
-import { hover } from "~/styles";
 import { documentPath } from "~/utils/routeHelpers";
 import { determineSidebarContext } from "./Sidebar/components/SidebarContext";
 
@@ -178,9 +177,7 @@ const Actions = styled(EventBoundary)`
   color: ${s("textSecondary")};
 
   ${NudeButton} {
-    &:
-      ${hover},
-      &[aria-expanded= "true"] {
+    &: ${hover}, &[aria-expanded= "true"] {
       background: ${s("sidebarControlHoverBackground")};
     }
   }
