@@ -30,13 +30,13 @@ services:
         # identity
       - OIDC_CLIENT_ID=outline
       - OIDC_CLIENT_SECRET=iymZgQB0yTvGcG9pD6MiOXp40DUVgSHL
-      - OIDC_AUTH_URI=https://keycloak.solvo.ru:8080/realms/solvo/protocol/openid-connect/auth
-      - OIDC_TOKEN_URI=https://keycloak.solvo.ru:8080/realms/solvo/protocol/openid-connect/token
-      - OIDC_USERINFO_URI=https://keycloak.solvo.ru:8080/realms/solvo/protocol/openid-connect/userinfo
-      - OIDC_LOGOUT_URI=https://keycloak.solvo.ru:8080/realms/solvo/protocol/openid-connect/logout
+      - OIDC_AUTH_URI=https://keycloak.solvo.ru/realms/solvo/protocol/openid-connect/auth
+      - OIDC_TOKEN_URI=https://keycloak.solvo.ru/realms/solvo/protocol/openid-connect/token
+      - OIDC_USERINFO_URI=https://keycloak.solvo.ru/realms/solvo/protocol/openid-connect/userinfo
+      - OIDC_LOGOUT_URI=https://keycloak.solvo.ru/realms/solvo/protocol/openid-connect/logout
       - OIDC_USERNAME_CLAIM=email
       - OIDC_DISPLAY_NAME=Keycloak
-      - OIDC_SCOPES=openid profile email
+      - OIDC_SCOPES='openid profile email'
       - OIDC_DISABLE_REDIRECT=false
         # ssl settings
       - FORCE_HTTPS=false
@@ -56,14 +56,23 @@ services:
       - UTILS_SECRET=7eee2571836979d3724f9900a55b1291aa3cdfbc32c42056aacfaaa5b9978649
       - URL=https://outline.solvo.ru
       - PORT=3000
-      - NODE_TLS_REJECT_UNAUTHORIZED=0
+#      - NODE_TLS_REJECT_UNAUTHORIZED=0
     networks:
       - redis-net
       - solvo_db_net
       - outline-net
+      - traefik
     volumes:
       - outline_data:/var/lib/outline/data
+    labels:
+      - "traefik.swarm.network: traefik"
     deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.keycloak.rule=Host(`outline.solvo.ru`)"
+        - "traefik.http.routers.keycloak.entrypoints=websecure"
+        - "traefik.http.services.keycloak.loadbalancer.server.port=3000"
+        - "traefik.http.routers.keycloak.tls={}"
       placement:
         constraints:
           - "node.labels.TAG==manager"
@@ -78,4 +87,6 @@ networks:
   redis-net:
     external: true
   solvo_db_net:
+    external: true
+  traefik:
     external: true
