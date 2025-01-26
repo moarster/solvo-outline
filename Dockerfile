@@ -6,6 +6,7 @@ ARG CDN_URL
 ARG APP_PATH=/opt/outline
 
 ENV PORT=3000
+ENV URL=https://outline.solvo.ru
 
 WORKDIR $APP_PATH
 
