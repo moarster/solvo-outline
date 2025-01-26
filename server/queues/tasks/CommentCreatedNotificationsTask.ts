@@ -1,4 +1,4 @@
-import BaseTask, { TaskPriority } from "./BaseTask";
+import { MentionType, NotificationEventType } from "@shared/types";
 import subscriptionCreator from "@server/commands/subscriptionCreator";
 import { createContext } from "@server/context";
 import { Comment, Document, Notification, User } from "@server/models";
@@ -7,7 +7,7 @@ import { ProsemirrorHelper } from "@server/models/helpers/ProsemirrorHelper";
 import { sequelize } from "@server/storage/database";
 import { CommentEvent } from "@server/types";
 import { canUserAccessDocument } from "@server/utils/policies";
-import { NotificationEventType } from "@shared/types";
+import BaseTask, { TaskPriority } from "./BaseTask";
 
 export default class CommentCreatedNotificationsTask extends BaseTask<CommentEvent> {
   public async perform(event: CommentEvent) {
@@ -40,7 +40,8 @@ export default class CommentCreatedNotificationsTask extends BaseTask<CommentEve
     });
 
     const mentions = ProsemirrorHelper.parseMentions(
-      ProsemirrorHelper.toProsemirror(comment.data)
+      ProsemirrorHelper.toProsemirror(comment.data),
+      { type: MentionType.User }
     );
     const userIdsMentioned: string[] = [];
 

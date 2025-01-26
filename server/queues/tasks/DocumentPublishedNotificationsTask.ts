@@ -1,11 +1,11 @@
-import BaseTask, { TaskPriority } from "./BaseTask";
+import { MentionType, NotificationEventType } from "@shared/types";
 import { createSubscriptionsForDocument } from "@server/commands/subscriptionCreator";
 import { Document, Notification, User } from "@server/models";
 import { DocumentHelper } from "@server/models/helpers/DocumentHelper";
 import NotificationHelper from "@server/models/helpers/NotificationHelper";
 import { DocumentEvent } from "@server/types";
 import { canUserAccessDocument } from "@server/utils/policies";
-import { NotificationEventType } from "@shared/types";
+import BaseTask, { TaskPriority } from "./BaseTask";
 
 export default class DocumentPublishedNotificationsTask extends BaseTask<DocumentEvent> {
   public async perform(event: DocumentEvent) {
@@ -19,7 +19,9 @@ export default class DocumentPublishedNotificationsTask extends BaseTask<Documen
     await createSubscriptionsForDocument(document, event);
 
     // Send notifications to mentioned users first
-    const mentions = DocumentHelper.parseMentions(document);
+    const mentions = DocumentHelper.parseMentions(document, {
+      type: MentionType.User,
+    });
     const userIdsMentioned: string[] = [];
 
     for (const mention of mentions) {

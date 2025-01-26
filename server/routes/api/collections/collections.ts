@@ -211,7 +211,7 @@ router.post(
     authorize(user, "update", collection);
     authorize(user, "read", group);
 
-    const [membership] = await GroupMembership.findOrCreate({
+    const [membership, created] = await GroupMembership.findOrCreate({
       where: {
         collectionId: id,
         groupId,
@@ -220,29 +220,19 @@ router.post(
         permission,
         createdById: user.id,
       },
-      transaction,
       lock: transaction.LOCK.UPDATE,
+      ...ctx.context,
     });
 
-    membership.permission = permission;
-    await membership.save({ transaction });
-
-    await Event.createFromContext(ctx, {
-      name: "collections.add_group",
-      collectionId: collection.id,
-      modelId: groupId,
-      data: {
-        name: group.name,
-        membershipId: membership.id,
-      },
-    });
+    if (!created) {
+      membership.permission = permission;
+      await membership.save(ctx.context);
+    }
 
     const groupMemberships = [presentGroupMembership(membership)];
 
     ctx.body = {
       data: {
-        // `collectionGroupMemberships` retained for backwards compatibility – remove after version v0.79.0
-        collectionGroupMemberships: groupMemberships,
         groupMemberships,
       },
     };
@@ -281,22 +271,7 @@ router.post(
       ctx.throw(400, "This Group is not a part of the collection");
     }
 
-    await GroupMembership.destroy({
-      where: {
-        collectionId: id,
-        groupId,
-      },
-      transaction,
-    });
-    await Event.createFromContext(ctx, {
-      name: "collections.remove_group",
-      collectionId: collection.id,
-      modelId: groupId,
-      data: {
-        name: group.name,
-        membershipId: membership.id,
-      },
-    });
+    await membership.destroy(ctx.context);
 
     ctx.body = {
       success: true,
@@ -362,8 +337,6 @@ router.post(
     ctx.body = {
       pagination: { ...ctx.state.pagination, total },
       data: {
-        // `collectionGroupMemberships` retained for backwards compatibility – remove after version v0.79.0
-        collectionGroupMemberships: groupMemberships,
         groupMemberships,
         groups: await Promise.all(
           memberships.map((membership) => presentGroup(membership.group))

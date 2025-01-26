@@ -2,6 +2,7 @@ import compact from "lodash/compact";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import User from "~/models/User";
 import { Avatar } from "~/components/Avatar";
 import Badge from "~/components/Badge";
 import Flex from "~/components/Flex";
@@ -14,10 +15,10 @@ import { type Column as TableColumn } from "~/components/Table";
 import Time from "~/components/Time";
 import useCurrentUser from "~/hooks/useCurrentUser";
 import UserMenu from "~/menus/UserMenu";
-import User from "~/models/User";
+import { FILTER_HEIGHT } from "./StickyFilters";
 
 const ROW_HEIGHT = 60;
-const STICKY_OFFSET = HEADER_HEIGHT + 40; // filter height
+const STICKY_OFFSET = HEADER_HEIGHT + FILTER_HEIGHT;
 
 type Props = Omit<TableProps<User>, "columns" | "rowHeight"> & {
   canManage: boolean;

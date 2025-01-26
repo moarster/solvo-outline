@@ -4,12 +4,6 @@ import capitalize from "lodash/capitalize";
 import floor from "lodash/floor";
 import { action, autorun, computed, observable, set } from "mobx";
 import { Node, Schema } from "prosemirror-model";
-import Collection from "./Collection";
-import Notification from "./Notification";
-import View from "./View";
-import ArchivableModel from "./base/ArchivableModel";
-import Field from "./decorators/Field";
-import Relation from "./decorators/Relation";
 import ExtensionManager from "@shared/editor/lib/ExtensionManager";
 import { richExtensions, withComments } from "@shared/editor/nodes";
 import type {
@@ -26,11 +20,18 @@ import {
 import Storage from "@shared/utils/Storage";
 import { isRTL } from "@shared/utils/rtl";
 import slugify from "@shared/utils/slugify";
-import User from "~/models/User";
 import DocumentsStore from "~/stores/DocumentsStore";
+import User from "~/models/User";
 import type { Properties } from "~/types";
 import { client } from "~/utils/ApiClient";
 import { settingsPath } from "~/utils/routeHelpers";
+import Collection from "./Collection";
+import Notification from "./Notification";
+import View from "./View";
+import ArchivableModel from "./base/ArchivableModel";
+import Field from "./decorators/Field";
+import Relation from "./decorators/Relation";
+import { Searchable } from "./interfaces/Searchable";
 
 type SaveOptions = JSONObject & {
   publish?: boolean;
@@ -38,7 +39,7 @@ type SaveOptions = JSONObject & {
   autosave?: boolean;
 };
 
-export default class Document extends ArchivableModel {
+export default class Document extends ArchivableModel implements Searchable {
   static modelName = "Document";
 
   constructor(fields: Record<string, any>, store: DocumentsStore) {
@@ -84,6 +85,11 @@ export default class Document extends ArchivableModel {
     /** The name of the file this document was imported from. */
     fileName?: string;
   };
+
+  @computed
+  get searchContent(): string {
+    return this.title;
+  }
 
   /**
    * The name of the original data source, if imported.

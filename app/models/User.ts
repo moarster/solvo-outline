@@ -1,11 +1,6 @@
 import { subMinutes } from "date-fns";
 import { computed, action, observable } from "mobx";
 import { now } from "mobx-utils";
-import Document from "./Document";
-import Group from "./Group";
-import UserMembership from "./UserMembership";
-import ParanoidModel from "./base/ParanoidModel";
-import Field from "./decorators/Field";
 import { UserPreferenceDefaults } from "@shared/constants";
 import {
   NotificationEventDefaults,
@@ -18,8 +13,14 @@ import {
 import type { NotificationSettings } from "@shared/types";
 import { locales } from "@shared/utils/date";
 import { client } from "~/utils/ApiClient";
+import Document from "./Document";
+import Group from "./Group";
+import UserMembership from "./UserMembership";
+import ParanoidModel from "./base/ParanoidModel";
+import Field from "./decorators/Field";
+import { Searchable } from "./interfaces/Searchable";
 
-class User extends ParanoidModel {
+class User extends ParanoidModel implements Searchable {
   static modelName = "User";
 
   @Field
@@ -61,6 +62,11 @@ class User extends ParanoidModel {
 
   @observable
   isSuspended: boolean;
+
+  @computed
+  get searchContent(): string[] {
+    return [this.name, this.email].filter(Boolean);
+  }
 
   @computed
   get initial(): string {

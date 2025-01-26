@@ -1,6 +1,7 @@
 import crypto from "crypto";
 import { Server } from "https";
 import Koa from "koa";
+import compress from "koa-compress";
 import {
   contentSecurityPolicy,
   dnsPrefetchControl,
@@ -71,6 +72,7 @@ export default function init(app: Koa = new Koa(), server?: Server) {
     app.proxy = true;
   }
 
+  app.use(compress());
   app.use(mount("/auth", auth));
   app.use(mount("/api", api));
 

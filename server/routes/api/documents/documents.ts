@@ -6,6 +6,7 @@ import JSZip from "jszip";
 import Router from "koa-router";
 import escapeRegExp from "lodash/escapeRegExp";
 import has from "lodash/has";
+import isNil from "lodash/isNil";
 import remove from "lodash/remove";
 import uniq from "lodash/uniq";
 import mime from "mime-types";
@@ -1574,6 +1575,7 @@ router.post(
   transaction(),
   async (ctx: APIContext<T.DocumentsCreateReq>) => {
     const {
+      id,
       title,
       text,
       icon,
@@ -1641,8 +1643,11 @@ router.post(
     }
 
     const document = await documentCreator({
+      id,
       title,
-      text: await TextHelper.replaceImagesWithAttachments(ctx, text, user),
+      text: !isNil(text)
+        ? await TextHelper.replaceImagesWithAttachments(ctx, text, user)
+        : text,
       icon,
       color,
       createdAt,
@@ -1839,7 +1844,7 @@ router.post(
     authorize(user, "update", document);
     authorize(user, "read", group);
 
-    const [membership, isNew] = await GroupMembership.findOrCreate({
+    const [membership, created] = await GroupMembership.findOrCreate({
       where: {
         documentId: id,
         groupId,
@@ -1849,29 +1854,17 @@ router.post(
         createdById: user.id,
       },
       lock: transaction.LOCK.UPDATE,
-      transaction,
+      ...ctx.context,
     });
 
-    if (permission) {
+    if (!created && permission) {
       membership.permission = permission;
 
       // disconnect from the source if the permission is manually updated
       membership.sourceId = null;
 
-      await membership.save({ transaction });
+      await membership.save(ctx.context);
     }
-
-    await Event.createFromContext(ctx, {
-      name: "documents.add_group",
-      documentId: document.id,
-      modelId: groupId,
-      data: {
-        name: group.name,
-        isNew,
-        permission: membership.permission,
-        membershipId: membership.id,
-      },
-    });
 
     ctx.body = {
       data: {
@@ -1915,17 +1908,7 @@ router.post(
       rejectOnEmpty: true,
     });
 
-    await membership.destroy({ transaction });
-
-    await Event.createFromContext(ctx, {
-      name: "documents.remove_group",
-      documentId: document.id,
-      modelId: groupId,
-      data: {
-        name: group.name,
-        membershipId: membership.id,
-      },
-    });
+    await membership.destroy(ctx.context);
 
     ctx.body = {
       success: true,

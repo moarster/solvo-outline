@@ -11,6 +11,7 @@ import {
   FindOrCreateOptions,
   ModelStatic,
   NonAttribute,
+  SaveOptions,
 } from "sequelize";
 import {
   AfterCreate,
@@ -18,7 +19,7 @@ import {
   AfterRestore,
   AfterUpdate,
   AfterUpsert,
-  BeforeCreate,
+  BeforeSave,
   Model as SequelizeModel,
 } from "sequelize-typescript";
 import Logger from "@server/logging/Logger";
@@ -28,6 +29,8 @@ import { getChangsetSkipped } from "../decorators/Changeset";
 type EventOverrideOptions = {
   /** Override the default event name. */
   name?: string;
+  /** Additional data to publish in the event. */
+  data?: Record<string, unknown>;
 };
 
 type EventOptions = EventOverrideOptions & {
@@ -44,15 +47,18 @@ class Model<
   TCreationAttributes extends {} = TModelAttributes,
 > extends SequelizeModel<TModelAttributes, TCreationAttributes> {
   /**
-   * The namespace to use for events, if none is provided an event will not be created
-   * during the migration period. In the future this may default to the table name.
+   * The namespace to use for events - defaults to the table name if none is provided.
    */
   static eventNamespace: string | undefined;
 
   /**
    * Validates this instance, and if the validation passes, persists it to the database.
    */
-  public saveWithCtx(ctx: APIContext, eventOpts?: EventOverrideOptions) {
+  public saveWithCtx<M extends Model>(
+    ctx: APIContext,
+    options?: SaveOptions<Attributes<M>>,
+    eventOpts?: EventOverrideOptions
+  ) {
     const hookContext: HookContext = {
       ...ctx.context,
       event: {
@@ -60,8 +66,7 @@ class Model<
         create: true,
       },
     };
-    this.cacheChangeset();
-    return this.save(hookContext);
+    return this.save({ ...options, ...hookContext });
   }
 
   /**
@@ -80,7 +85,6 @@ class Model<
       },
     };
     this.set(keys);
-    this.cacheChangeset();
     return this.save(hookContext);
   }
 
@@ -155,8 +159,8 @@ class Model<
     return this.create(values, hookContext);
   }
 
-  @BeforeCreate
-  static async beforeCreateEvent<T extends Model>(model: T) {
+  @BeforeSave
+  static async beforeSaveEvent<T extends Model>(model: T) {
     model.cacheChangeset();
   }
 
@@ -212,11 +216,10 @@ class Model<
     model: T,
     context: HookContext
   ) {
-    const namespace = this.eventNamespace;
+    const namespace = this.eventNamespace ?? this.tableName;
     const models = this.sequelize!.models;
 
-    // If no namespace is defined, don't create an event
-    if (!namespace || !context.event?.create) {
+    if (!context.event?.create) {
       return;
     }
 
@@ -264,6 +267,7 @@ class Model<
         authType: context.auth?.type,
         ip: context.ip,
         changes: model.previousChangeset,
+        data: context.event.data,
       },
       {
         transaction: context.transaction,

@@ -3,6 +3,13 @@ import { MarkAsReadIcon } from "outline-icons";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { s, hover } from "@shared/styles";
+import Notification from "~/models/Notification";
+import { markNotificationsAsRead } from "~/actions/definitions/notifications";
+import useActionContext from "~/hooks/useActionContext";
+import useStores from "~/hooks/useStores";
+import NotificationMenu from "~/menus/NotificationMenu";
+import Desktop from "~/utils/Desktop";
 import Empty from "../Empty";
 import ErrorBoundary from "../ErrorBoundary";
 import Flex from "../Flex";
@@ -12,14 +19,6 @@ import Scrollable from "../Scrollable";
 import Text from "../Text";
 import Tooltip from "../Tooltip";
 import NotificationListItem from "./NotificationListItem";
-import { s } from "@shared/styles";
-import { markNotificationsAsRead } from "~/actions/definitions/notifications";
-import useActionContext from "~/hooks/useActionContext";
-import useStores from "~/hooks/useStores";
-import NotificationMenu from "~/menus/NotificationMenu";
-import Notification from "~/models/Notification";
-import { hover } from "~/styles";
-import Desktop from "~/utils/Desktop";
 
 type Props = {
   /** Callback when the notification panel wants to close. */

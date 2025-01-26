@@ -83,8 +83,6 @@ class Share extends IdModel<
   InferAttributes<Share>,
   Partial<InferCreationAttributes<Share>>
 > {
-  static eventNamespace = "shares";
-
   @Column
   published: boolean;
 
@@ -195,7 +193,7 @@ class Share extends IdModel<
     const { user } = ctx.context.auth;
     this.revokedAt = new Date();
     this.revokedById = user.id;
-    return this.saveWithCtx(ctx, { name: "revoke" });
+    return this.saveWithCtx(ctx, undefined, { name: "revoke" });
   }
 }
 

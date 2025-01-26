@@ -5,11 +5,12 @@ import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import { RouteComponentProps, useLocation } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
-import Login from "../Login";
-import Document from "./components/Document";
-import Loading from "./components/Loading";
 import { s } from "@shared/styles";
 import { NavigationNode, PublicTeam, TOCPosition } from "@shared/types";
+import type { Theme } from "~/stores/UiStore";
+import DocumentModel from "~/models/Document";
+import Error404 from "~/scenes/Error404";
+import ErrorOffline from "~/scenes/ErrorOffline";
 import ClickablePadding from "~/components/ClickablePadding";
 import {
   DocumentContextProvider,
@@ -24,13 +25,13 @@ import useBuildTheme from "~/hooks/useBuildTheme";
 import useCurrentUser from "~/hooks/useCurrentUser";
 import { usePostLoginPath } from "~/hooks/useLastVisitedPath";
 import useStores from "~/hooks/useStores";
-import DocumentModel from "~/models/Document";
-import Error404 from "~/scenes/Error404";
-import ErrorOffline from "~/scenes/ErrorOffline";
-import type { Theme } from "~/stores/UiStore";
+import { client } from "~/utils/ApiClient";
 import { AuthorizationError, OfflineError } from "~/utils/errors";
 import isCloudHosted from "~/utils/isCloudHosted";
 import { changeLanguage, detectLanguage } from "~/utils/language";
+import Login from "../Login";
+import Document from "./components/Document";
+import Loading from "./components/Loading";
 
 const EMPTY_OBJECT = {};
 
@@ -108,6 +109,16 @@ function SharedDocumentScene(props: Props) {
     ? (searchParams.get("theme") as Theme)
     : undefined;
   const theme = useBuildTheme(response?.team?.customTheme, themeOverride);
+
+  React.useEffect(() => {
+    if (shareId) {
+      client.setShareId(shareId);
+    }
+
+    return () => {
+      client.setShareId(undefined);
+    };
+  }, [shareId]);
 
   React.useEffect(() => {
     if (!user) {
@@ -206,33 +217,31 @@ function SharedDocumentScene(props: Props) {
   );
 }
 
-const SharedDocument = ({
-  shareId,
-  response,
-}: {
-  shareId?: string;
-  response: Response;
-}) => {
-  const { setDocument } = useDocumentContext();
+const SharedDocument = observer(
+  ({ shareId, response }: { shareId?: string; response: Response }) => {
+    const { hasHeadings, setDocument } = useDocumentContext();
 
-  if (!response.document) {
-    return null;
+    if (!response.document) {
+      return null;
+    }
+
+    const tocPosition = hasHeadings
+      ? response.team?.tocPosition ?? TOCPosition.Left
+      : false;
+    setDocument(response.document);
+
+    return (
+      <Document
+        abilities={EMPTY_OBJECT}
+        document={response.document}
+        sharedTree={response.sharedTree}
+        shareId={shareId}
+        tocPosition={tocPosition}
+        readOnly
+      />
+    );
   }
-
-  const tocPosition = response.team?.tocPosition ?? TOCPosition.Left;
-  setDocument(response.document);
-
-  return (
-    <Document
-      abilities={EMPTY_OBJECT}
-      document={response.document}
-      sharedTree={response.sharedTree}
-      shareId={shareId}
-      tocPosition={tocPosition}
-      readOnly
-    />
-  );
-};
+);
 
 const Content = styled(Text)`
   color: ${s("textSecondary")};
