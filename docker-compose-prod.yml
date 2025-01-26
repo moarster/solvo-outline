@@ -76,12 +76,7 @@ services:
       placement:
         constraints:
           - "node.labels.TAG==manager"
-      labels:
-        - traefik.http.routers.outline.rule=Host(`outline.solvo.ru`)
-        - traefik.enable=true
-        - traefik.http.routers.outline.entrypoints=websecure
-        - traefik.http.services.outline.loadbalancer.server.port=3000
-        - traefik.http.routers.outline.tls=true
+
 volumes:
   outline_data:
 
