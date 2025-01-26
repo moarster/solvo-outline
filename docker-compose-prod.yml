@@ -36,7 +36,7 @@ services:
       - OIDC_LOGOUT_URI=https://keycloak.solvo.ru/realms/solvo/protocol/openid-connect/logout
       - OIDC_USERNAME_CLAIM=email
       - OIDC_DISPLAY_NAME=Keycloak
-      - OIDC_SCOPES=openid profile email
+      - OIDC_SCOPES='openid profile email'
       - OIDC_DISABLE_REDIRECT=false
         # ssl settings
       - FORCE_HTTPS=false
@@ -64,7 +64,15 @@ services:
       - traefik
     volumes:
       - outline_data:/var/lib/outline/data
+    labels:
+      - traefik.swarm.network=traefik
     deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.keycloak.rule=Host(`outline.solvo.ru`)
+        - traefik.http.routers.keycloak.entrypoints=websecure
+        - traefik.http.services.keycloak.loadbalancer.server.port=3000
+        - traefik.http.routers.keycloak.tls={}
       placement:
         constraints:
           - "node.labels.TAG==manager"
