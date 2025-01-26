@@ -128,7 +128,7 @@
     "jsonwebtoken": "^9.0.0",
     "jszip": "^3.10.1",
     "katex": "^0.16.21",
-    "kbar": "0.1.0-beta.41",
+    "kbar": "0.1.0-beta.45",
     "koa": "^2.15.3",
     "koa-body": "^6.0.1",
     "koa-compress": "^5.1.1",
@@ -246,7 +246,7 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.26.4",
-    "@babel/eslint-parser": "^8.0.0-alpha.12",
+    "@babel/eslint-parser": "^8.0.0-alpha.15",
     "@babel/preset-typescript": "^7.26.0",
     "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.14.0",
@@ -331,7 +331,7 @@
     "eslint-plugin-n": "^17.13.1",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.3",
-    "eslint-plugin-react-hooks": "^5.1.0-rc-5d19e1c8-20240923",
+    "eslint-plugin-react-hooks": "^5.1.0",
     "globals": "^15.12.0",
     "husky": "^9.1.6",
     "i18next-parser": "^7.9.0",
@@ -351,7 +351,7 @@
     "yarn-deduplicate": "^6.0.2"
   },
   "resolutions": {
-    "prosemirror-transform": "1.10.0",
+    "prosemirror-model": "^1.24.0",
     "body-scroll-lock": "^4.0.0-beta.0",
     "d3": "^7.0.0",
     "debug": "4.3.4",
