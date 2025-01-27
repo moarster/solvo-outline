@@ -20,11 +20,11 @@ services:
       - FILE_STORAGE_IMPORT_MAX_SIZE=262144000
       - FILE_STORAGE_WORKSPACE_IMPORT_MAX_SIZE=262144000000
       - AWS_ACCESS_KEY_ID=uFippVu6lwwaQXylIEFc
-      - AWS_S3_ACCELERATE_URL=http://s3.solvo.ru/outline
+      - AWS_S3_ACCELERATE_URL=https://s3.solvo.ru/outline
       - AWS_S3_ACL=private
       - AWS_S3_FORCE_PATH_STYLE=false
       - AWS_S3_UPLOAD_BUCKET_NAME=outline
-      - AWS_S3_UPLOAD_BUCKET_URL=http://s3.solvo.ru/outline
+      - AWS_S3_UPLOAD_BUCKET_URL=https://s3.solvo.ru/outline
       - AWS_SECRET_ACCESS_KEY=mNp1r4GdIR6SY1Xm3q5l0qLwMgXug4bm459pdSsV
       - AWS_REGION=eu-east-1
         # identity
@@ -36,7 +36,7 @@ services:
       - OIDC_LOGOUT_URI=https://keycloak.solvo.ru/realms/solvo/protocol/openid-connect/logout
       - OIDC_USERNAME_CLAIM=email
       - OIDC_DISPLAY_NAME=Keycloak
-      - OIDC_SCOPES='openid profile email'
+      - OIDC_SCOPES=openid profile email
       - OIDC_DISABLE_REDIRECT=false
         # ssl settings
       - FORCE_HTTPS=false
@@ -69,13 +69,13 @@ services:
     deploy:
       labels:
         - traefik.enable=true
-        - traefik.http.routers.keycloak.rule=Host(`outline.solvo.ru`)
-        - traefik.http.routers.keycloak.entrypoints=websecure
-        - traefik.http.services.keycloak.loadbalancer.server.port=3000
-        - traefik.http.routers.keycloak.tls={}
+        - traefik.http.routers.outline.rule=Host(`outline.solvo.ru`)
+        - traefik.http.routers.outline.entrypoints=websecure
+        - traefik.http.services.outline.loadbalancer.server.port=3000
+        - traefik.http.routers.outline.tls=true
       placement:
         constraints:
-          - "node.labels.TAG==manager"
+          - "node.role!=manager"
 
 volumes:
   outline_data:
