@@ -18,7 +18,7 @@ build_outline_image:
   extends:
     - .build_base_docker
   variables:
-    VERSION: "0.81.0-solvo3"
+    VERSION: "latest"
     IMAGE_NAME: "solvo-outline"
     BUILD_ARGS: "HTTP_PROXY=http://cache.solvo.ru:3128"
   rules:
