@@ -70,7 +70,7 @@ services:
       labels:
         - traefik.enable=true
         - traefik.http.routers.outline.rule=Host(`outline.solvo.ru`)
-        - traefik.http.routers.outline.entrypoints=websecure
+        - traefik.http.routers.outline.entrypoints=websecure,web
         - traefik.http.services.outline.loadbalancer.server.port=3000
         - traefik.http.routers.outline.tls=true
       placement:
@@ -79,11 +79,13 @@ services:
 
 volumes:
   outline_data:
+    driver: local
 
 networks:
   outline-net:
     attachable: true
     name: outline-net
+    driver: overlay
   redis-net:
     external: true
   solvo_db_net:

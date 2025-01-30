@@ -34,7 +34,7 @@ deploy_outline_at_test:
     MANAGER_USER: "solvo"
     TMP_DIR: "~/swarm_deploy"
     CHECK_APP_PORT: "3000"
-    CHECK_APP_HOSTNAME: "kvm-el8-porp.solvo.ru"
+    CHECK_APP_HOSTNAME: "outline.solvo.ru"
   extends:
     - .deploy_manager_node
   rules:
