@@ -4,13 +4,13 @@ import { observer } from "mobx-react";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { dateLocale, dateToRelative } from "@shared/utils/date";
-import { Avatar } from "~/components/Avatar";
+import Document from "~/models/Document";
+import User from "~/models/User";
+import { Avatar, AvatarSize } from "~/components/Avatar";
 import ListItem from "~/components/List/Item";
 import PaginatedList from "~/components/PaginatedList";
 import useCurrentUser from "~/hooks/useCurrentUser";
 import useStores from "~/hooks/useStores";
-import Document from "~/models/Document";
-import User from "~/models/User";
 
 type Props = {
   document: Document;
@@ -71,7 +71,13 @@ function DocumentViews({ document, isOpen }: Props) {
                 key={model.id}
                 title={model.name}
                 subtitle={subtitle}
-                image={<Avatar key={model.id} model={model} size={32} />}
+                image={
+                  <Avatar
+                    key={model.id}
+                    model={model}
+                    size={AvatarSize.Large}
+                  />
+                }
                 border={false}
                 small
               />

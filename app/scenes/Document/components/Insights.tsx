@@ -3,10 +3,10 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
-import Sidebar from "./SidebarLayout";
 import { s } from "@shared/styles";
 import { stringToColor } from "@shared/utils/color";
-import { Avatar } from "~/components/Avatar";
+import User from "~/models/User";
+import { Avatar, AvatarSize } from "~/components/Avatar";
 import { useDocumentContext } from "~/components/DocumentContext";
 import DocumentViews from "~/components/DocumentViews";
 import Flex from "~/components/Flex";
@@ -21,8 +21,8 @@ import useStores from "~/hooks/useStores";
 import useTextSelection from "~/hooks/useTextSelection";
 import { useTextStats } from "~/hooks/useTextStats";
 import InsightsMenu from "~/menus/InsightsMenu";
-import User from "~/models/User";
 import { documentPath } from "~/utils/routeHelpers";
+import Sidebar from "./SidebarLayout";
 
 function Insights() {
   const { views, documents } = useStores();
@@ -136,7 +136,7 @@ function Insights() {
                           avatarUrl: null,
                           initial: document.sourceMetadata.createdByName[0],
                         }}
-                        size={32}
+                        size={AvatarSize.Large}
                       />
                     }
                     subtitle={t("Creator")}
@@ -158,8 +158,8 @@ function Insights() {
                             ? t("Imported")
                             : t("Creator")
                           : model.id === document.updatedBy?.id
-                            ? t("Last edited")
-                            : t("Previously edited")
+                          ? t("Last edited")
+                          : t("Previously edited")
                       }
                       border={false}
                       small
