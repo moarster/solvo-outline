@@ -3,10 +3,11 @@ import { TrashIcon } from "outline-icons";
 import * as React from "react";
 import { useDrop } from "react-dnd";
 import { useTranslation } from "react-i18next";
-import SidebarLink, { DragObject } from "./SidebarLink";
-import useStores from "~/hooks/useStores";
 import DocumentDelete from "~/scenes/DocumentDelete";
+import useStores from "~/hooks/useStores";
 import { trashPath } from "~/utils/routeHelpers";
+import { DragObject } from "../hooks/useDragAndDrop";
+import SidebarLink from "./SidebarLink";
 
 function TrashLink() {
   const { policies, dialogs, documents } = useStores();
