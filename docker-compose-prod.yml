@@ -48,7 +48,7 @@ services:
       - RATE_LIMITER_ENABLED=true
       - RATE_LIMITER_REQUESTS=1000
       - RATE_LIMITER_DURATION_WINDOW=60
-      - KROKI_SERVER_URL=http://outline.solvo.ru:8000
+      - KROKI_SERVER_URL=https://kroki.solvo.ru
       - FILE_STORAGE_LOCAL_ROOT_DIR=/var/lib/outline/data
       - DEVELOPMENT_UNSAFE_INLINE_CSP=true
       - NODE_ENV=production
@@ -76,7 +76,7 @@ services:
         - traefik.http.routers.outline.tls.certresolver=default
       placement:
         constraints:
-          - "node.role!=manager"
+          - node.role!=manager
 
 volumes:
   outline_data:
@@ -84,9 +84,7 @@ volumes:
 
 networks:
   outline-net:
-    attachable: true
-    name: outline-net
-    driver: overlay
+    external: true
   redis-net:
     external: true
   solvo_db_net:
