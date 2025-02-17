@@ -170,10 +170,10 @@ const embeds: EmbedDescriptor[] = [
     keywords: "bpmn process cawemo",
     defaultHidden: true,
     regexMatch: [
-      new RegExp("^https?://modeler.cloud.camunda.io/(?:share|embed)/(.*)$"),
+      new RegExp("^https?://modeler.solvo.ru/(?:share|embed)/(.*)$"),
     ],
     transformMatch: (matches: RegExpMatchArray) =>
-      `https://modeler.cloud.camunda.io/embed/${matches[1]}`,
+      `https://modeler.solvo.ru/embed/${matches[1]}`,
     icon: <Img src="/images/camunda.png" alt="Camunda" />,
   }),
   new EmbedDescriptor({
