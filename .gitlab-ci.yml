@@ -20,7 +20,7 @@ build_outline_image:
   variables:
     VERSION: "latest"
     IMAGE_NAME: "solvo-outline"
-    BUILD_ARGS: "HTTP_PROXY=http://cache.solvo.ru:3128"
+    BUILD_OPTS: "--build-arg HTTP_PROXY=http://cache.solvo.ru:3128"
   rules:
     - !reference [.default_rule, rules]
 
@@ -33,7 +33,7 @@ deploy_outline_at_test:
     MANAGER_HOST: "kvm-el8-porp.solvo.ru"
     MANAGER_USER: "solvo"
     TMP_DIR: "~/swarm_deploy"
-    CHECK_APP_PORT: "3000"
+    CHECK_APP_PORT: "443"
     CHECK_APP_HOSTNAME: "outline.solvo.ru"
   extends:
     - .deploy_manager_node
