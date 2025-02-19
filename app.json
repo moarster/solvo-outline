@@ -1,7 +1,7 @@
 {
   "name": "Outline",
   "description": "Open source wiki and knowledge base for growing teams",
-  "website": "http://outline.solvo.ru/",
+  "website": "https://outline.solvo.ru/",
   "repository": "https://gitlab.solvo.ru/solvo/tool-forks/outline",
   "keywords": [
     "wiki",
@@ -197,7 +197,7 @@
       "required": false
     },
     "KROKI_SERVER_URL": {
-      "value": "https://kroki.moarse.ru",
+      "value": "https://kroki.solvo.ru",
       "required": false
     }
   }
