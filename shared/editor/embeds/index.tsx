@@ -1,10 +1,10 @@
 import * as React from "react";
 import styled from "styled-components";
-import { Primitive } from "utility-types";
+import {Primitive} from "utility-types";
 import env from "../../env";
-import { IntegrationService, IntegrationType } from "../../types";
-import type { IntegrationSettings } from "../../types";
-import { urlRegex } from "../../utils/urls";
+import type {IntegrationSettings} from "../../types";
+import {IntegrationService, IntegrationType} from "../../types";
+import {urlRegex} from "../../utils/urls";
 import Image from "../components/Img";
 import Berrycast from "./Berrycast";
 import Diagrams from "./Diagrams";
@@ -159,7 +159,7 @@ const embeds: EmbedDescriptor[] = [
     keywords: "video",
     defaultHidden: true,
     regexMatch: [
-      /(?:https?:\/\/)?(www\.bilibili\.com)\/video\/([\w\d]+)?(\?\S+)?/i,
+      /(?:https?:\/\/)?(www\.bilibili\.com)\/video\/(\w+)?(\?\S+)?/i,
     ],
     transformMatch: (matches: RegExpMatchArray) =>
       `https://player.bilibili.com/player.html?bvid=${matches[2]}&page=1&high_quality=1&autoplay=0`,
@@ -572,7 +572,7 @@ const embeds: EmbedDescriptor[] = [
   new EmbedDescriptor({
     title: "SmartSuite",
     regexMatch: [
-      new RegExp("^https?://app\\.smartsuite\\.com/shared/(.*)(?:\\?)?(?:.*)$"),
+      new RegExp("^https?://app\\.smartsuite\\.com/shared/(.*)\\??.*$"),
     ],
     icon: <Img src="/images/smartsuite.png" alt="SmartSuite" />,
     defaultHidden: true,
@@ -636,7 +636,7 @@ const embeds: EmbedDescriptor[] = [
     title: "Vimeo",
     keywords: "video",
     regexMatch: [
-      /(http|https)?:\/\/(www\.)?vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|)(\d+)[\/?]?([\d\w]+)?/,
+      /(http|https)?:\/\/(www\.)?vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|)(\d+)[\/?]?(\w+)?/,
     ],
     icon: <Img src="/images/vimeo.png" alt="Vimeo" />,
     component: Vimeo,

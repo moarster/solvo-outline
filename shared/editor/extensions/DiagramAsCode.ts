@@ -81,9 +81,10 @@ class DiagramRenderer {
       .codeDiagramToSvg(this.krokiType, text)
       .then((svg) => {
         this.currentTextContent = text;
-        Cache.set(cacheKey, svg);
+        svg.id = `code-diagram-${this.diagramId}`;
+        Cache.set(cacheKey, svg.outerHTML);
         element.classList.remove("parse-error", "empty");
-        element.innerHTML = svg;
+        element.innerHTML = svg.outerHTML;
       })
       .catch((error) => {
         const isEmpty = block.node.textContent.trim().length === 0;

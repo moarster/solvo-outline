@@ -69,6 +69,7 @@ type DiagramOptionsMap = {
   erd: ErdOptions;
   graphviz: GraphvizOptions;
   mermaid: MermaidOptions;
+  nwdiag: NwdiagOptions;
   structurizr: StructurizrOptions;
   // и так далее для остальных диаграмм...
 };

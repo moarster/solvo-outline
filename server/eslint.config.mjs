@@ -47,7 +47,7 @@ export default [
     files: ["scripts/*"],
 
     rules: {
-      "root/no-console": "off",
+      "no-console": "off",
     },
   },
 ];

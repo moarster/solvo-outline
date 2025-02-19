@@ -14,13 +14,13 @@ export class Kroki {
    * @param {T} diagramType - The type of the diagram.
    * @param {string} diagramText - The diagram text to convert.
    * @param {DiagramOptions<T>} diagramOptions - Additional options for the diagram.
-   * @returns {Promise<string>} - The SVG representation of the diagram.
+   * @returns {Promise<SVGElement>} - The SVG representation of the diagram.
    */
   public async codeDiagramToSvg<T extends DiagramType>(
     diagramType: T,
     diagramText: string,
     diagramOptions?: DiagramOptions<T>
-  ): Promise<string> {
+  ): Promise<HTMLElement> {
     try {
       const response = await fetch(this.serverUrl, {
         method: "POST",
@@ -39,23 +39,25 @@ export class Kroki {
         throw new Error(`Server responded with status ${response.status}`);
       }
 
-      return await response.text();
+      const text = await response.text();
+      const parser = new DOMParser();
+      const svgDoc = parser.parseFromString(text, "image/svg+xml");
+      const svgElement = svgDoc.documentElement;
+
+      svgElement.removeAttribute('height');
+      svgElement.removeAttribute('style');
+      svgElement.setAttribute('width', '100%');
+      svgElement.setAttribute('preserveAspectRatio', 'true');
+
+      if (svgElement.tagName !== 'svg') {
+        throw new Error('Invalid SVG content received');
+      }
+
+      return svgElement;
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error("Error converting diagram to SVG:", error);
       throw new Error("Failed to convert diagram to SVG.");
     }
-  }
-
-  textEncode(str: string) {
-    if (window.TextEncoder) {
-      return new TextEncoder().encode(str);
-    }
-    const utf8 = unescape(encodeURIComponent(str));
-    const result = new Uint8Array(utf8.length);
-    for (let i = 0; i < utf8.length; i++) {
-      result[i] = utf8.charCodeAt(i);
-    }
-    return result;
   }
 }
