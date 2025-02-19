@@ -9,7 +9,7 @@ import { sequelize } from "@server/storage/database";
 type Props = Record<string, never>;
 
 export default class InviteReminderTask extends BaseTask<Props> {
-  static cron = TaskSchedule.Daily;
+  static cron = TaskSchedule.Day;
 
   public async perform() {
     const users = await User.scope("invited").findAll({

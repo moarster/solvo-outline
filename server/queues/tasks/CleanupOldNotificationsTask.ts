@@ -7,7 +7,7 @@ import { Notification } from "@server/models";
 type Props = Record<string, never>;
 
 export default class CleanupOldNotificationsTask extends BaseTask<Props> {
-  static cron = TaskSchedule.Daily;
+  static cron = TaskSchedule.Hour;
 
   public async perform() {
     Logger.info("task", `Permanently destroying old notifications…`);

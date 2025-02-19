@@ -14,52 +14,6 @@ import parseDocumentSlug from "@shared/utils/parseDocumentSlug";
 import { isDocumentUrl, isUrl } from "@shared/utils/urls";
 import stores from "~/stores";
 
-/**
- * Checks if the HTML string is likely coming from Dropbox Paper.
- *
- * @param html The HTML string to check.
- * @returns True if the HTML string is likely coming from Dropbox Paper.
- */
-function isDropboxPaper(html: string): boolean {
-  return html?.includes("usually-unique-id");
-}
-
-function sliceSingleNode(slice: Slice) {
-  return slice.openStart === 0 &&
-    slice.openEnd === 0 &&
-    slice.content.childCount === 1
-    ? slice.content.firstChild
-    : null;
-}
-
-/**
- * Parses the text contents of an HTML string and returns the src of the first
- * iframe if it exists.
- *
- * @param text The HTML string to parse.
- * @returns The src of the first iframe if it exists, or undefined.
- */
-function parseSingleIframeSrc(html: string) {
-  try {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, "text/html");
-
-    if (
-      doc.body.children.length === 1 &&
-      doc.body.firstElementChild?.tagName === "IFRAME"
-    ) {
-      const iframe = doc.body.firstElementChild;
-      const src = iframe.getAttribute("src");
-      if (src) {
-        return src;
-      }
-    }
-  } catch (e) {
-    // Ignore the million ways parsing could fail.
-  }
-  return undefined;
-}
-
 export default class PasteHandler extends Extension {
   get name() {
     return "paste-handler";
@@ -276,9 +230,12 @@ export default class PasteHandler extends Extension {
             // If the text on the clipboard looks like Markdown OR there is no
             // html on the clipboard then try to parse content as Markdown
             if (
-              (isMarkdown(text) && !isDropboxPaper(html)) ||
+              (isMarkdown(text) &&
+                !isDropboxPaper(html) &&
+                !isContainingImage(html)) ||
               pasteCodeLanguage === "markdown" ||
-              this.shiftKey
+              this.shiftKey ||
+              !html
             ) {
               event.preventDefault();
 
@@ -329,4 +286,60 @@ export default class PasteHandler extends Extension {
 
   /** Tracks whether the Shift key is currently held down */
   private shiftKey = false;
+}
+
+/**
+ * Checks if the HTML string is likely coming from Dropbox Paper.
+ *
+ * @param html The HTML string to check.
+ * @returns True if the HTML string is likely coming from Dropbox Paper.
+ */
+function isDropboxPaper(html: string): boolean {
+  return html?.includes("usually-unique-id");
+}
+
+/**
+ * Checks if the HTML string contains an image.
+ *
+ * @param html The HTML string to check.
+ * @returns True if the HTML string contains an image.
+ */
+function isContainingImage(html: string): boolean {
+  return html?.includes("<img");
+}
+
+function sliceSingleNode(slice: Slice) {
+  return slice.openStart === 0 &&
+    slice.openEnd === 0 &&
+    slice.content.childCount === 1
+    ? slice.content.firstChild
+    : null;
+}
+
+/**
+ * Parses the text contents of an HTML string and returns the src of the first
+ * iframe if it exists.
+ *
+ * @param text The HTML string to parse.
+ * @returns The src of the first iframe if it exists, or undefined.
+ */
+function parseSingleIframeSrc(html: string) {
+  try {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, "text/html");
+
+    if (
+      doc.body.children.length === 1 &&
+      doc.body.firstElementChild?.tagName === "IFRAME"
+    ) {
+      const iframe = doc.body.firstElementChild;
+      const src = iframe.getAttribute("src");
+      if (src) {
+        return src;
+      }
+    }
+  } catch (e) {
+    // Ignore the million ways parsing could fail.
+  }
+  return undefined;
 }

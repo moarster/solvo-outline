@@ -1,7 +1,7 @@
 import TeamDomain from "./TeamDomain";
 import { buildAdmin, buildTeam } from "@server/test/factories";
 
-describe("team domain model", () => {
+describe("TeamDomain", () => {
   describe("create", () => {
     it("should allow creation of domains", async () => {
       const team = await buildTeam();
