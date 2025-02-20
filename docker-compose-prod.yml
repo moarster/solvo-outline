@@ -72,6 +72,7 @@ services:
         - traefik.http.routers.outline.rule=Host(`outline.solvo.ru`)
         - traefik.http.routers.outline.entrypoints=websecure
         - traefik.http.routers.outline.tls.certresolver=default
+        - traefik.http.routers.outline.middlewares=internal-header@file
         - traefik.http.services.outline.loadbalancer.server.port=3000
       placement:
         constraints:
