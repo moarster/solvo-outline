@@ -9,8 +9,6 @@ import { CollectionPermission } from "@shared/types";
 class Membership extends Model {
   static modelName = "Membership";
 
-  id: string;
-
   userId: string;
 
   @Relation(() => User, { onDelete: "cascade" })

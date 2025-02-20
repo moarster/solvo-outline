@@ -11,8 +11,6 @@ import { bytesToHumanReadable } from "@shared/utils/files";
 class FileOperation extends Model {
   static modelName = "FileOperation";
 
-  id: string;
-
   @observable
   state: FileOperationState;
 
