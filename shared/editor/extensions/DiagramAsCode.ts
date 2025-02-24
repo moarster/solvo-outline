@@ -81,10 +81,19 @@ class DiagramRenderer {
       .codeDiagramToSvg(this.krokiType, text)
       .then((svg) => {
         this.currentTextContent = text;
-        svg.id = `code-diagram-${this.diagramId}`;
+        const newId = `code-diagram-${this.diagramId}`;
+        const oldId = svg.id || "container";
+        svg.id = newId;
+
+        const styleElement = svg.querySelector("style");
+        if (styleElement?.textContent) {
+          styleElement.textContent = styleElement.textContent.replace(new RegExp(`#${oldId}`, "g"), `#${newId}`);
+        }
+
         Cache.set(cacheKey, svg.outerHTML);
         element.classList.remove("parse-error", "empty");
-        element.innerHTML = svg.outerHTML;
+        element.innerHTML = ""; // Очищаем перед вставкой
+        element.appendChild(svg); // Вставляем обновленный SVG
       })
       .catch((error) => {
         const isEmpty = block.node.textContent.trim().length === 0;
