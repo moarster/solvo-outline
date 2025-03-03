@@ -1,8 +1,9 @@
 import isEqual from "fast-deep-equal";
-import BaseProcessor from "./BaseProcessor";
 import revisionCreator from "@server/commands/revisionCreator";
 import { Revision, Document, User } from "@server/models";
 import { DocumentEvent, RevisionEvent, Event } from "@server/types";
+import DocumentUpdateTextTask from "../tasks/DocumentUpdateTextTask";
+import BaseProcessor from "./BaseProcessor";
 
 export default class RevisionsProcessor extends BaseProcessor {
   static applicableEvents: Event["name"][] = [
@@ -35,6 +36,8 @@ export default class RevisionsProcessor extends BaseProcessor {
         ) {
           return;
         }
+
+        await DocumentUpdateTextTask.schedule(event);
 
         const user = await User.findByPk(event.actorId, {
           paranoid: false,

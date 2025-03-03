@@ -2,7 +2,8 @@ import compact from "lodash/compact";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { unicodeCLDRtoBCP47 } from "@shared/utils/date";
-import { Avatar } from "~/components/Avatar";
+import Share from "~/models/Share";
+import { Avatar, AvatarSize } from "~/components/Avatar";
 import Flex from "~/components/Flex";
 import { HEADER_HEIGHT } from "~/components/Header";
 import {
@@ -13,7 +14,6 @@ import { type Column as TableColumn } from "~/components/Table";
 import Time from "~/components/Time";
 import useUserLocale from "~/hooks/useUserLocale";
 import ShareMenu from "~/menus/ShareMenu";
-import Share from "~/models/Share";
 import { formatNumber } from "~/utils/language";
 
 const ROW_HEIGHT = 50;
@@ -46,10 +46,10 @@ export function SharesTable({ data, canManage, ...rest }: Props) {
           accessor: (share) => share.createdBy,
           sortable: false,
           component: (share) => (
-            <Flex align="center" gap={4}>
+            <Flex align="center" gap={8}>
               {share.createdBy && (
                 <>
-                  <Avatar model={share.createdBy} />
+                  <Avatar model={share.createdBy} size={AvatarSize.Small} />
                   {share.createdBy.name}
                 </>
               )}
