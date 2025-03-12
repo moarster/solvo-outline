@@ -174,8 +174,6 @@ export default class CodeFence extends Node {
       defining: true,
       draggable: false,
       parseDOM: [
-        { tag: "code" },
-        { tag: "pre", preserveWhitespace: "full" },
         {
           tag: ".code-block",
           preserveWhitespace: "full",
@@ -184,6 +182,18 @@ export default class CodeFence extends Node {
           getAttrs: (dom: HTMLDivElement) => ({
             language: dom.dataset.language,
           }),
+        },
+        {
+          tag: "code",
+          preserveWhitespace: "full",
+          getAttrs: (dom) => {
+            // Only parse code blocks that contain newlines for code fences,
+            // otherwise the code mark rule will be applied.
+            if (!dom.textContent?.includes("\n")) {
+              return false;
+            }
+            return { language: dom.dataset.language };
+          },
         },
       ],
       toDOM: (node) => [

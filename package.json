@@ -358,6 +358,7 @@
     "js-yaml": "^3.14.1",
     "qs": "6.9.7",
     "rollup": "4.21.3",
+    "prismjs": "1.30.0",
     "eslint": "^9"
   },
   "version": "0.82.0-solvo",
