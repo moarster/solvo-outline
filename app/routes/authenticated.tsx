@@ -1,6 +1,8 @@
 import { observer } from "mobx-react";
 import * as React from "react";
 import { Switch, Redirect, RouteComponentProps } from "react-router-dom";
+import DocumentNew from "~/scenes/DocumentNew";
+import Error404 from "~/scenes/Errors/Error404";
 import AuthenticatedLayout from "~/components/AuthenticatedLayout";
 import CenteredContent from "~/components/CenteredContent";
 import PlaceholderDocument from "~/components/PlaceholderDocument";
@@ -8,8 +10,6 @@ import Route from "~/components/ProfiledRoute";
 import WebsocketProvider from "~/components/WebsocketProvider";
 import useCurrentTeam from "~/hooks/useCurrentTeam";
 import usePolicy from "~/hooks/usePolicy";
-import DocumentNew from "~/scenes/DocumentNew";
-import Error404 from "~/scenes/Error404";
 import lazy from "~/utils/lazyWithRetry";
 import {
   archivePath,
@@ -83,7 +83,7 @@ function AuthenticatedRoutes() {
             <Route exact path={`/doc/${slug}/insights`} component={Document} />
             <Route exact path={`/doc/${slug}/edit`} component={Document} />
             <Route path={`/doc/${slug}`} component={Document} />
-            <Route exact path={`${searchPath()}/:term?`} component={Search} />
+            <Route exact path={`${searchPath()}/:query?`} component={Search} />
             <Route path="/404" component={Error404} />
             <SettingsRoutes />
             <Route component={Error404} />

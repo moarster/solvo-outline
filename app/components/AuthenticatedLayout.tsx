@@ -2,10 +2,8 @@ import { AnimatePresence } from "framer-motion";
 import { observer } from "mobx-react";
 import * as React from "react";
 import { Switch, Route, useLocation, matchPath } from "react-router-dom";
-import { DocumentContextProvider } from "./DocumentContext";
-import Fade from "./Fade";
-import { PortalContext } from "./Portal";
 import { TeamPreference } from "@shared/types";
+import ErrorSuspended from "~/scenes/Errors/ErrorSuspended";
 import Layout from "~/components/Layout";
 import RegisterKeyDown from "~/components/RegisterKeyDown";
 import Sidebar from "~/components/Sidebar";
@@ -14,7 +12,6 @@ import SettingsSidebar from "~/components/Sidebar/Settings";
 import useCurrentTeam from "~/hooks/useCurrentTeam";
 import usePolicy from "~/hooks/usePolicy";
 import useStores from "~/hooks/useStores";
-import ErrorSuspended from "~/scenes/ErrorSuspended";
 import history from "~/utils/history";
 import lazyWithRetry from "~/utils/lazyWithRetry";
 import {
@@ -25,6 +22,9 @@ import {
   matchDocumentSlug as slug,
   matchDocumentInsights,
 } from "~/utils/routeHelpers";
+import { DocumentContextProvider } from "./DocumentContext";
+import Fade from "./Fade";
+import { PortalContext } from "./Portal";
 
 const DocumentComments = lazyWithRetry(
   () => import("~/scenes/Document/components/Comments")
