@@ -38,6 +38,7 @@ import FileOperation from "./FileOperation";
 import Group from "./Group";
 import GroupMembership from "./GroupMembership";
 import GroupUser from "./GroupUser";
+import Import from "./Import";
 import Team from "./Team";
 import User from "./User";
 import UserMembership from "./UserMembership";
@@ -349,6 +350,13 @@ class Collection extends ParanoidModel<
   @ForeignKey(() => FileOperation)
   @Column(DataType.UUID)
   importId: string | null;
+
+  @BelongsTo(() => Import, "apiImportId")
+  apiImport: Import<any> | null;
+
+  @ForeignKey(() => Import)
+  @Column(DataType.UUID)
+  apiImportId: string | null;
 
   @BelongsTo(() => User, "archivedById")
   archivedBy?: User | null;
@@ -711,6 +719,7 @@ class Collection extends ParanoidModel<
     index?: number,
     options: FindOptions & {
       save?: boolean;
+      silent?: boolean;
       documentJson?: NavigationNode;
       includeArchived?: boolean;
     } = {}

@@ -15,6 +15,7 @@ import {
   RateLimitExceededError,
   RequestError,
   ServiceUnavailableError,
+  UnprocessableEntityError,
   UpdateRequiredError,
 } from "./errors";
 import EDITOR_VERSION from "@shared/editor/version";
@@ -212,6 +213,10 @@ class ApiClient {
 
     if (response.status === 503) {
       throw new ServiceUnavailableError(error.message);
+    }
+
+    if (response.status === 422) {
+      throw new UnprocessableEntityError(error.message);
     }
 
     if (response.status === 429) {
