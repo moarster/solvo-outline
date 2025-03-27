@@ -505,7 +505,7 @@ export class Environment {
    * The name of the AWS S3 region to use.
    */
   @IsOptional()
-  public AWS_REGION = this.toOptionalString(environment.AWS_REGION);
+  public AWS_REGION = this.toOptionalString(environment.AWS_REGION) ?? "eu-east-1";
 
   /**
    * Optional AWS S3 endpoint URL for file attachments.
@@ -622,6 +622,18 @@ export class Environment {
    */
   @Public
   public APP_NAME = "Outline";
+
+  /**
+   * The Kroki server url.
+   */
+  @Public
+  @IsNotEmpty()
+  @IsUrl({
+    require_tld: false,
+    allow_underscores: true,
+  })
+  public KROKI_SERVER_URL =
+    environment.KROKI_SERVER_URL ?? "https://www.kroki.com";
 
   /**
    * Returns true if the current installation is the cloud hosted version at
