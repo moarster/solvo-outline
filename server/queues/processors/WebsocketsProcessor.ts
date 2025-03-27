@@ -18,6 +18,7 @@ import {
   Notification,
   UserMembership,
   User,
+  Import,
 } from "@server/models";
 import { cannot } from "@server/policies";
 import {
@@ -34,6 +35,7 @@ import {
   presentUser,
   presentGroupMembership,
   presentGroupUser,
+  presentImport,
 } from "@server/presenters";
 import presentNotification from "@server/presenters/notification";
 
@@ -49,7 +51,10 @@ export default class WebsocketsProcessor {
         if (!document) {
           return;
         }
-        if (event.name === "documents.create" && document.importId) {
+        if (
+          event.name === "documents.create" &&
+          event.data.source === "import"
+        ) {
           return;
         }
 
@@ -451,6 +456,18 @@ export default class WebsocketsProcessor {
         return socketio
           .to(`user-${event.actorId}`)
           .emit(event.name, presentFileOperation(fileOperation));
+      }
+
+      case "imports.create":
+      case "imports.update": {
+        const importModel = await Import.findByPk(event.modelId);
+        if (!importModel) {
+          return;
+        }
+
+        return socketio
+          .to(`user-${event.actorId}`)
+          .emit(event.name, presentImport(importModel));
       }
 
       case "pins.create":

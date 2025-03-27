@@ -4,9 +4,11 @@ import { requireDirectory } from "@server/utils/fs";
 
 const processors: Record<string, typeof BaseProcessor> = {};
 
+const AbstractProcessors = ["ImportsProcessor"];
+
 requireDirectory<{ default: typeof BaseProcessor }>(__dirname).forEach(
   ([module, id]) => {
-    if (id === "index") {
+    if (id === "index" || AbstractProcessors.includes(id)) {
       return;
     }
     processors[id] = module.default;

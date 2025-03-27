@@ -1,3 +1,5 @@
+/* eslint-disable lines-between-class-members */
+import fractionalIndex from "fractional-index";
 import find from "lodash/find";
 import findIndex from "lodash/findIndex";
 import remove from "lodash/remove";
@@ -10,6 +12,8 @@ import {
   InferAttributes,
   InferCreationAttributes,
   EmptyResultError,
+  type CreateOptions,
+  type UpdateOptions,
 } from "sequelize";
 import {
   Sequelize,
@@ -31,13 +35,26 @@ import {
   BeforeDestroy,
   IsDate,
   AllowNull,
+  BeforeCreate,
+  BeforeUpdate,
 } from "sequelize-typescript";
 import isUUID from "validator/lib/isUUID";
+import type { CollectionSort, ProsemirrorData } from "@shared/types";
+import { CollectionPermission, NavigationNode } from "@shared/types";
+import { UrlHelper } from "@shared/utils/UrlHelper";
+import { sortNavigationNodes } from "@shared/utils/collections";
+import slugify from "@shared/utils/slugify";
+import { CollectionValidation } from "@shared/validations";
+import { ValidationError } from "@server/errors";
+import removeIndexCollision from "@server/utils/removeIndexCollision";
+import { generateUrlId } from "@server/utils/url";
+import { ValidateIndex } from "@server/validation";
 import Document from "./Document";
 import FileOperation from "./FileOperation";
 import Group from "./Group";
 import GroupMembership from "./GroupMembership";
 import GroupUser from "./GroupUser";
+import Import from "./Import";
 import Team from "./Team";
 import User from "./User";
 import UserMembership from "./UserMembership";
@@ -47,14 +64,6 @@ import { DocumentHelper } from "./helpers/DocumentHelper";
 import IsHexColor from "./validators/IsHexColor";
 import Length from "./validators/Length";
 import NotContainsUrl from "./validators/NotContainsUrl";
-import { ValidationError } from "@server/errors";
-import { generateUrlId } from "@server/utils/url";
-import { CollectionPermission, NavigationNode } from "@shared/types";
-import type { CollectionSort, ProsemirrorData } from "@shared/types";
-import { UrlHelper } from "@shared/utils/UrlHelper";
-import { sortNavigationNodes } from "@shared/utils/collections";
-import slugify from "@shared/utils/slugify";
-import { CollectionValidation } from "@shared/validations";
 
 type AdditionalFindOptions = {
   rejectOnEmpty?: boolean | Error;
@@ -215,8 +224,8 @@ class Collection extends ParanoidModel<
   color: string | null;
 
   @Length({
-    max: 256,
-    msg: `index must be 256 characters or less`,
+    max: ValidateIndex.maxLength,
+    msg: `index must be ${ValidateIndex.maxLength} characters or less`,
   })
   @Column
   index: string | null;
@@ -322,6 +331,30 @@ class Collection extends ParanoidModel<
     }
   }
 
+  @BeforeCreate
+  static async setIndex(model: Collection, options: CreateOptions<Collection>) {
+    if (model.index) {
+      model.index = await removeIndexCollision(model.teamId, model.index, {
+        transaction: options.transaction,
+      });
+      return;
+    }
+
+    const firstCollectionForTeam = await this.findOne({
+      where: {
+        teamId: model.teamId,
+      },
+      order: [
+        // using LC_COLLATE:"C" because we need byte order to drive the sorting
+        Sequelize.literal('"collection"."index" collate "C"'),
+        ["updatedAt", "DESC"],
+      ],
+      ...options,
+    });
+
+    model.index = fractionalIndex(null, firstCollectionForTeam?.index ?? null);
+  }
+
   @AfterCreate
   static async onAfterCreate(
     model: Collection,
@@ -341,6 +374,18 @@ class Collection extends ParanoidModel<
     });
   }
 
+  @BeforeUpdate
+  static async checkIndex(
+    model: Collection,
+    options: UpdateOptions<Collection>
+  ) {
+    if (model.index && model.changed("index")) {
+      model.index = await removeIndexCollision(model.teamId, model.index, {
+        transaction: options.transaction,
+      });
+    }
+  }
+
   // associations
 
   @BelongsTo(() => FileOperation, "importId")
@@ -349,6 +394,13 @@ class Collection extends ParanoidModel<
   @ForeignKey(() => FileOperation)
   @Column(DataType.UUID)
   importId: string | null;
+
+  @BelongsTo(() => Import, "apiImportId")
+  apiImport: Import<any> | null;
+
+  @ForeignKey(() => Import)
+  @Column(DataType.UUID)
+  apiImportId: string | null;
 
   @BelongsTo(() => User, "archivedById")
   archivedBy?: User | null;
@@ -401,8 +453,9 @@ class Collection extends ParanoidModel<
    * @returns userIds
    */
   static async membershipUserIds(collectionId: string) {
-    const collection =
-      await this.scope("withAllMemberships").findByPk(collectionId);
+    const collection = await this.scope("withAllMemberships").findByPk(
+      collectionId
+    );
     if (!collection) {
       return [];
     }
@@ -711,6 +764,7 @@ class Collection extends ParanoidModel<
     index?: number,
     options: FindOptions & {
       save?: boolean;
+      silent?: boolean;
       documentJson?: NavigationNode;
       includeArchived?: boolean;
     } = {}
