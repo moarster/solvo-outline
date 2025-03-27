@@ -1,4 +1,5 @@
 import Storage from "../../utils/Storage";
+import {krokiDiagrams} from "@shared/editor/extensions/kroki/types";
 
 const RecentStorageKey = "rme-code-language";
 const StorageKey = "frequent-code-languages";
@@ -36,7 +37,6 @@ export const codeLanguages = {
   kotlin: { lang: "kotlin", label: "Kotlin" },
   lisp: { lang: "lisp", label: "Lisp" },
   lua: { lang: "lua", label: "Lua" },
-  mermaidjs: { lang: "mermaid", label: "Mermaid Diagram" },
   nginx: { lang: "nginx", label: "Nginx" },
   nix: { lang: "nix", label: "Nix" },
   objectivec: { lang: "objectivec", label: "Objective-C" },
@@ -64,6 +64,7 @@ export const codeLanguages = {
   yaml: { lang: "yaml", label: "YAML" },
   xml: { lang: "markup", label: "XML" },
   zig: { lang: "zig", label: "Zig" },
+  ...krokiDiagrams,
 };
 
 /**

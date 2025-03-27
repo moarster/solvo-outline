@@ -1,31 +1,31 @@
-export const krokiDiagrams: Record<string, string> = {
-  actdiag: "Actdiag Diagram",
-  blockdiag: "Blockdiag Diagram",
-  bpmn: "BPMN Diagram",
-  bytefield: "Bytefield Diagram",
-  c4plantuml: "C4PlantUML Diagram",
-  d2: "D2 Diagram",
-  dbml: "DBML Diagram",
-  ditaa: "Ditaa Diagram",
-  erd: "ERD Diagram",
-  excalidraw: "Excalidraw Diagram",
-  graphviz: "Graphviz Diagram",
-  mermaid: "Mermaid Diagram",
-  nomnoml: "Nomnoml Diagram",
-  nwdiag: "Nwdiag Diagram",
-  packetdiag: "Packetdiag Diagram",
-  pikchr: "Pikchr Diagram",
-  plantuml: "PlantUML Diagram",
-  rackdiag: "Rackdiag Diagram",
-  seqdiag: "Seqdiag Diagram",
-  svgbob: "Svgbob Diagram",
-  symbolator: "Symbolator Diagram",
-  umlet: "Umlet Diagram",
-  vega: "Vega Diagram",
-  vegalite: "Vegalite Diagram",
-  wavedrom: "Wavedrom Diagram",
-  structurizr: "Structurizr Diagram",
-  diagramsnet: "Diagrams.net Diagram",
+export const krokiDiagrams = {
+  actdiag: { lang: "actdiag", label: "Actdiag Diagram" },
+  blockdiag: { lang: "blockdiag", label: "Blockdiag Diagram" },
+  bpmn: { lang: "bpmn", label: "BPMN Diagram" },
+  bytefield: { lang: "bytefield", label: "Bytefield Diagram" },
+  c4plantuml: { lang: "c4plantuml", label: "C4PlantUML Diagram" },
+  d2: { lang: "d2", label: "D2 Diagram" },
+  dbml: { lang: "dbml", label: "DBML Diagram" },
+  ditaa: { lang: "ditaa", label: "Ditaa Diagram" },
+  erd: { lang: "erd", label: "ERD Diagram" },
+  excalidraw: { lang: "excalidraw", label: "Excalidraw Diagram" },
+  graphviz: { lang: "graphviz", label: "Graphviz Diagram" },
+  mermaid: { lang: "mermaid", label: "Mermaid Diagram" },
+  nomnoml: { lang: "nomnoml", label: "Nomnoml Diagram" },
+  nwdiag: { lang: "nwdiag", label: "Nwdiag Diagram" },
+  packetdiag: { lang: "packetdiag", label: "Packetdiag Diagram" },
+  pikchr: { lang: "pikchr", label: "Pikchr Diagram" },
+  plantuml: { lang: "plantuml", label: "PlantUML Diagram" },
+  rackdiag: { lang: "rackdiag", label: "Rackdiag Diagram" },
+  seqdiag: { lang: "seqdiag", label: "Seqdiag Diagram" },
+  svgbob: { lang: "svgbob", label: "Svgbob Diagram" },
+  symbolator: { lang: "symbolator", label: "Symbolator Diagram" },
+  umlet: { lang: "umlet", label: "Umlet Diagram" },
+  vega: { lang: "vega", label: "Vega Diagram" },
+  vegalite: { lang: "vegalite", label: "Vegalite Diagram" },
+  wavedrom: { lang: "wavedrom", label: "Wavedrom Diagram" },
+  structurizr: { lang: "structurizr", label: "Structurizr Diagram" },
+  diagramsnet: { lang: "diagramsnet", label: "Diagrams.net Diagram" },
 };
 
 export type DiagramType = keyof typeof krokiDiagrams;
@@ -71,7 +71,7 @@ type DiagramOptionsMap = {
   mermaid: MermaidOptions;
   nwdiag: NwdiagOptions;
   structurizr: StructurizrOptions;
-  // и так далее для остальных диаграмм...
+  // TODO: other diagrams
 };
 
 export type DiagramOptions<T extends DiagramType> =
