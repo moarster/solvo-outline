@@ -2,9 +2,8 @@ import passport from "@outlinewiki/koa-passport";
 import type { Context } from "koa";
 import Router from "koa-router";
 import get from "lodash/get";
-import { Strategy } from "passport-oauth2";
-import config from "../../plugin.json";
-import env from "../env";
+import { slugifyDomain } from "@shared/utils/domains";
+import { parseEmail } from "@shared/utils/email";
 import accountProvisioner from "@server/commands/accountProvisioner";
 import {
   OIDCMalformedUserInfoError,
@@ -19,25 +18,12 @@ import {
   getClientFromContext,
   request,
 } from "@server/utils/passport";
-import { slugifyDomain } from "@shared/utils/domains";
-import { parseEmail } from "@shared/utils/email";
+import config from "../../plugin.json";
+import env from "../env";
+import { OIDCStrategy } from "./OIDCStrategy";
 
 const router = new Router();
 const scopes = env.OIDC_SCOPES.split(" ");
-
-const authorizationParams = Strategy.prototype.authorizationParams;
-Strategy.prototype.authorizationParams = function (options) {
-  return {
-    ...(options.originalQuery || {}),
-    ...(authorizationParams.bind(this)(options) || {}),
-  };
-};
-
-const authenticate = Strategy.prototype.authenticate;
-Strategy.prototype.authenticate = function (req, options) {
-  options.originalQuery = req.query;
-  authenticate.bind(this)(req, options);
-};
 
 if (
   env.OIDC_CLIENT_ID &&
@@ -48,7 +34,7 @@ if (
 ) {
   passport.use(
     config.id,
-    new Strategy(
+    new OIDCStrategy(
       {
         authorizationURL: env.OIDC_AUTH_URI,
         tokenURL: env.OIDC_TOKEN_URI,
@@ -103,7 +89,7 @@ if (
 
           // Only a single OIDC provider is supported – find the existing, if any.
           const authenticationProvider = team
-            ? ((await AuthenticationProvider.findOne({
+            ? (await AuthenticationProvider.findOne({
                 where: {
                   name: "oidc",
                   teamId: team.id,
@@ -115,7 +101,7 @@ if (
                   name: "oidc",
                   teamId: team.id,
                 },
-              })))
+              }))
             : undefined;
 
           // Derive a providerId from the OIDC location if there is no existing provider.

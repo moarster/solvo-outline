@@ -94,6 +94,7 @@ class DiagramRenderer {
         element.classList.remove("parse-error", "empty");
         element.innerHTML = ""; // Очищаем перед вставкой
         element.appendChild(svg); // Вставляем обновленный SVG
+        console.log("Rendering diagram", this.krokiType, text);
       })
       .catch((error) => {
         const isEmpty = block.node.textContent.trim().length === 0;
@@ -104,6 +105,7 @@ class DiagramRenderer {
         } else {
           element.innerText = error;
           element.classList.add("parse-error");
+          console.error("Error rendering diagram", this.krokiType, text, error);
         }
       });
   };

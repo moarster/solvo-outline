@@ -314,6 +314,10 @@ width: 100%;
     background: ${props.theme.mentionHoverBackground};
   }
 
+  &[data-type="user"] {
+    gap: 0;
+  }
+
   &.mention-user::before {
     content: "@";
   }

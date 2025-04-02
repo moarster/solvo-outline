@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
-
+// eslint-disable-next-line import/order
+import environment from "./utils/environment";
 import os from "os";
 import {
   validate,
@@ -13,12 +14,11 @@ import {
   IsBoolean,
 } from "class-validator";
 import uniq from "lodash/uniq";
+import { languages } from "@shared/i18n";
+import { CannotUseWith, CannotUseWithout } from "@server/utils/validators";
 import Deprecated from "./models/decorators/Deprecated";
 import { getArg } from "./utils/args";
 import { Public, PublicEnvironmentRegister } from "./utils/decorators/Public";
-import environment from "./utils/environment";
-import { CannotUseWithout } from "@server/utils/validators";
-import { languages } from "@shared/i18n";
 
 export class Environment {
   constructor() {
@@ -291,10 +291,19 @@ export class Environment {
   /**
    * The host of your SMTP server for enabling emails.
    */
-  public SMTP_HOST = environment.SMTP_HOST;
+  @CannotUseWith("SMTP_SERVICE")
+  public SMTP_HOST = this.toOptionalString(environment.SMTP_HOST);
+
+  /**
+   * The service name of a well-known SMTP service for nodemailer.
+   * See https://community.nodemailer.com/2-0-0-beta/setup-smtp/well-known-services/
+   */
+  @CannotUseWith("SMTP_HOST")
+  public SMTP_SERVICE = this.toOptionalString(environment.SMTP_SERVICE);
 
   @Public
-  public EMAIL_ENABLED = !!this.SMTP_HOST || this.isDevelopment;
+  public EMAIL_ENABLED =
+    !!(this.SMTP_HOST || this.SMTP_SERVICE) || this.isDevelopment;
 
   /**
    * Optional hostname of the client, used for identifying to the server
@@ -307,6 +316,7 @@ export class Environment {
    */
   @IsNumber()
   @IsOptional()
+  @CannotUseWith("SMTP_SERVICE")
   public SMTP_PORT = this.toOptionalNumber(environment.SMTP_PORT);
 
   /**
@@ -495,7 +505,7 @@ export class Environment {
    * The name of the AWS S3 region to use.
    */
   @IsOptional()
-  public AWS_REGION = environment.AWS_REGION ?? "eu-east-1";
+  public AWS_REGION = this.toOptionalString(environment.AWS_REGION) ?? "eu-east-1";
 
   /**
    * Optional AWS S3 endpoint URL for file attachments.
@@ -685,7 +695,7 @@ export class Environment {
   protected toBoolean(value: string) {
     try {
       return value ? !!JSON.parse(value) : false;
-    } catch {
+    } catch (err) {
       throw new Error(
         `"${value}" could not be parsed as a boolean, must be "true" or "false"`
       );
@@ -707,7 +717,7 @@ export class Environment {
   protected toOptionalBoolean(value: string | undefined) {
     try {
       return value ? !!JSON.parse(value) : undefined;
-    } catch {
+    } catch (err) {
       return undefined;
     }
   }

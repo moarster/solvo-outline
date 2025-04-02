@@ -35,6 +35,9 @@ export class Kroki {
         }),
       });
 
+      // eslint-disable-next-line no-console
+      console.log('Received response from Kroki server:', response);
+
       if (!response.ok) {
         throw new Error(`Server responded with status ${response.status}`);
       }
@@ -48,6 +51,9 @@ export class Kroki {
       svgElement.removeAttribute('style');
       svgElement.setAttribute('width', '100%');
       svgElement.setAttribute('preserveAspectRatio', 'true');
+
+      // eslint-disable-next-line no-console
+      console.log('Parsed SVG element:', svgElement);
 
       if (svgElement.tagName !== 'svg') {
         throw new Error('Invalid SVG content received');
