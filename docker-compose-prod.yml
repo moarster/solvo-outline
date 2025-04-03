@@ -29,11 +29,11 @@ services:
       - AWS_REGION=eu-east-1
         # identity
       - OIDC_CLIENT_ID=outline
-      - OIDC_CLIENT_SECRET=iymZgQB0yTvGcG9pD6MiOXp40DUVgSHL
-      - OIDC_AUTH_URI=https://keycloak.solvo.ru/realms/solvo/protocol/openid-connect/auth
-      - OIDC_TOKEN_URI=https://keycloak.solvo.ru/realms/solvo/protocol/openid-connect/token
-      - OIDC_USERINFO_URI=https://keycloak.solvo.ru/realms/solvo/protocol/openid-connect/userinfo
-      - OIDC_LOGOUT_URI=https://keycloak.solvo.ru/realms/solvo/protocol/openid-connect/logout
+      - OIDC_CLIENT_SECRET=KEdV8UiSt3m4C6flSKjwEo2FFsqs0Ttg
+      - OIDC_AUTH_URI=https://keycloak.solvo.ru/realms/sso/protocol/openid-connect/auth
+      - OIDC_TOKEN_URI=https://keycloak.solvo.ru/realms/sso/protocol/openid-connect/token
+      - OIDC_USERINFO_URI=https://keycloak.solvo.ru/realms/sso/protocol/openid-connect/userinfo
+      - OIDC_LOGOUT_URI=https://keycloak.solvo.ru/realms/sso/protocol/openid-connect/logout
       - OIDC_USERNAME_CLAIM=email
       - OIDC_DISPLAY_NAME=Keycloak
       - OIDC_SCOPES=openid profile email
