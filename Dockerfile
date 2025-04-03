@@ -21,7 +21,7 @@ RUN if [ -n "$HTTP_PROXY" ]; then \
     echo "Acquire::ftp::Proxy \"$HTTP_PROXY\";" >> /etc/apt/apt.conf.d/80_proxy \
 ; fi
 
-RUN yarn install --no-optional --frozen-lockfile --network-timeout 1000000 && \
+RUN yarn install --no-optional --network-timeout 1000000 && \
   yarn cache clean
 
 COPY . .
@@ -30,7 +30,7 @@ RUN yarn build
 
 RUN rm -rf node_modules
 
-RUN yarn install --production=true --frozen-lockfile --network-timeout 1000000 && \
+RUN yarn install --production=true --network-timeout 1000000 && \
   yarn cache clean
 
 # ---
