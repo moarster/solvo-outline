@@ -44,7 +44,6 @@ services:
       - ENABLE_UPDATES=false
       - WEB_CONCURRENCY=4
       - DEBUG=http
-      - LOG_LEVEL=silly
       - RATE_LIMITER_ENABLED=true
       - RATE_LIMITER_REQUESTS=1000
       - RATE_LIMITER_DURATION_WINDOW=60
@@ -56,7 +55,6 @@ services:
       - UTILS_SECRET=7eee2571836979d3724f9900a55b1291aa3cdfbc32c42056aacfaaa5b9978649
       - URL=https://outline.solvo.ru
       - PORT=3000
-      - NODE_TLS_REJECT_UNAUTHORIZED=0
     networks:
       - redis-net
       - solvo_db_net
