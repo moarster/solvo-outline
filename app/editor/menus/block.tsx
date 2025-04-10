@@ -219,8 +219,8 @@ export default function blockMenuItems(
     },
     ...Object.entries(krokiDiagrams).map(([key, value]) => ({
       name: "code_block",
-      title: value,
-      icon: <Img src={`/images/${key}.png`} alt="" />,
+      title: value.label,
+      icon: <Img src={`/images/${key}.png`} onError={(e: any) => (e.target.src = `/images/kroki.png`)} alt="" />,
       keywords: "diagram flowchart",
       attrs: { language: key },
     })),
