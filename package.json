@@ -367,6 +367,6 @@
     "prismjs": "1.30.0",
     "eslint": "^9"
   },
-  "version": "0.82.0-solvo2",
+  "version": "0.83.0-solvo",
   "packageManager": "yarn@1.22.22"
 }

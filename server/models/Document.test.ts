@@ -1,5 +1,6 @@
 import { EmptyResultError } from "sequelize";
-import UserMembership from "./UserMembership";
+import { CollectionPermission } from "@shared/types";
+import slugify from "@shared/utils/slugify";
 import { parser } from "@server/editor";
 import Document from "@server/models/Document";
 import {
@@ -10,8 +11,8 @@ import {
   buildUser,
   buildGuestUser,
 } from "@server/test/factories";
-import { CollectionPermission } from "@shared/types";
-import slugify from "@shared/utils/slugify";
+import Collection from "./Collection";
+import UserMembership from "./UserMembership";
 
 beforeEach(() => {
   jest.resetAllMocks();
@@ -76,6 +77,34 @@ describe("#delete", () => {
     });
     expect(newDocument?.lastModifiedById).toBe(user.id);
     expect(newDocument?.deletedAt).toBeTruthy();
+  });
+
+  test("should soft delete archived document in an archived collection", async () => {
+    const user = await buildUser();
+    const collection = await buildCollection({
+      archivedAt: new Date(),
+      createdById: user.id,
+      teamId: user.teamId,
+    });
+    const document = await buildDocument({
+      archivedAt: new Date(),
+      collectionId: collection.id,
+      userId: user.id,
+      teamId: user.teamId,
+    });
+    await collection.addDocumentToStructure(document, 0);
+
+    await document.delete(user);
+    const [newDocument, newCollection] = await Promise.all([
+      Document.findByPk(document.id, {
+        paranoid: false,
+      }),
+      Collection.findByPk(collection.id),
+    ]);
+
+    expect(newDocument?.lastModifiedById).toEqual(user.id);
+    expect(newDocument?.deletedAt).toBeTruthy();
+    expect(newCollection?.documentStructure).toEqual([]);
   });
 
   it("should delete draft without collection", async () => {
