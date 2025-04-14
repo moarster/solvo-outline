@@ -1,4 +1,6 @@
-export const krokiDiagrams = {
+import {CodeLanguage} from "@shared/editor/lib/code";
+
+export const krokiDiagrams: Record<string, CodeLanguage> = {
   actdiag: { lang: "actdiag", label: "Actdiag Diagram" },
   blockdiag: { lang: "blockdiag", label: "Blockdiag Diagram" },
   bpmn: { lang: "bpmn", label: "BPMN Diagram" },
@@ -10,7 +12,7 @@ export const krokiDiagrams = {
   erd: { lang: "erd", label: "ERD Diagram" },
   excalidraw: { lang: "excalidraw", label: "Excalidraw Diagram" },
   graphviz: { lang: "graphviz", label: "Graphviz Diagram" },
-  mermaid: { lang: "mermaid", label: "Mermaid Diagram" },
+  mermaid: { lang: "mermaid", label: "Mermaid Diagram", loader: () => import("refractor/lang/mermaid").then((m) => m.default), },
   nomnoml: { lang: "nomnoml", label: "Nomnoml Diagram" },
   nwdiag: { lang: "nwdiag", label: "Nwdiag Diagram" },
   packetdiag: { lang: "packetdiag", label: "Packetdiag Diagram" },

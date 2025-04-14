@@ -7,7 +7,7 @@ const StorageKey = "frequent-code-languages";
 const frequentLanguagesToGet = 5;
 const frequentLanguagesToTrack = 10;
 
-type CodeLanguage = {
+export type CodeLanguage = {
   lang: string;
   label: string;
   loader?: () => Promise<RefractorSyntax>;
@@ -157,12 +157,6 @@ export const codeLanguages: Record<string, CodeLanguage> = {
     lang: "markdown",
     label: "Markdown",
     loader: () => import("refractor/lang/markdown").then((m) => m.default),
-  },
-  mermaidjs: {
-    lang: "mermaid",
-    label: "Mermaid Diagram",
-    // @ts-expect-error Mermaid is not in types but exists
-    loader: () => import("refractor/lang/mermaid").then((m) => m.default),
   },
   nginx: {
     lang: "nginx",
