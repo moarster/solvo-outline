@@ -1336,6 +1336,13 @@ mark {
   position: relative;
 }
 
+.code-block[data-language=none],
+.code-block[data-language=markdown] {
+  pre code {
+    color: ${props.theme.text};
+  }
+}
+
 .code-block[data-language=mermaidjs] {
   margin: 0.75em 0;
 
