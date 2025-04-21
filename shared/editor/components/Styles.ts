@@ -708,6 +708,7 @@ img.ProseMirror-separator {
   resize: none;
   user-select: text;
   margin: 0 auto !important;
+  max-width: 100vw;
 }
 
 .ProseMirror[contenteditable="false"] {
