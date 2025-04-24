@@ -1,16 +1,17 @@
 import Router from "koa-router";
 import find from "lodash/find";
-import { GitHubUtils } from "../../shared/GitHubUtils";
-import { GitHub } from "../github";
-import * as T from "./schema";
+import { IntegrationService, IntegrationType } from "@shared/types";
+import { parseDomain } from "@shared/utils/domains";
+import { createContext } from "@server/context";
 import Logger from "@server/logging/Logger";
 import auth from "@server/middlewares/authentication";
 import { transaction } from "@server/middlewares/transaction";
 import validate from "@server/middlewares/validate";
 import { IntegrationAuthentication, Integration, Team } from "@server/models";
 import { APIContext } from "@server/types";
-import { IntegrationService, IntegrationType } from "@shared/types";
-import { parseDomain } from "@shared/utils/domains";
+import { GitHubUtils } from "../../shared/GitHubUtils";
+import { GitHub } from "../github";
+import * as T from "./schema";
 
 const router = new Router();
 
@@ -88,29 +89,27 @@ router.get(
       },
       { transaction }
     );
-    await Integration.create(
-      {
-        service: IntegrationService.GitHub,
-        type: IntegrationType.Embed,
-        userId: user.id,
-        teamId: user.teamId,
-        authenticationId: authentication.id,
-        settings: {
-          github: {
-            installation: {
-              id: installationId!,
-              account: {
-                id: installation.account?.id,
+    await Integration.createWithCtx(createContext({ user, transaction }), {
+      service: IntegrationService.GitHub,
+      type: IntegrationType.Embed,
+      userId: user.id,
+      teamId: user.teamId,
+      authenticationId: authentication.id,
+      settings: {
+        github: {
+          installation: {
+            id: installationId!,
+            account: {
+              id: installation.account?.id,
+              name:
                 // @ts-expect-error Property 'login' does not exist on type
-                name: installation.account?.login,
-                avatarUrl: installation.account?.avatar_url,
-              },
+                installation.account?.login,
+              avatarUrl: installation.account?.avatar_url,
             },
           },
         },
       },
-      { transaction }
-    );
+    });
     ctx.redirect(GitHubUtils.url);
   }
 );

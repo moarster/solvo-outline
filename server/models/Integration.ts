@@ -13,14 +13,15 @@ import {
   IsIn,
   AfterDestroy,
 } from "sequelize-typescript";
+import { IssueSource } from "@shared/schema";
+import { IntegrationType, IntegrationService } from "@shared/types";
+import type { IntegrationSettings } from "@shared/types";
 import Collection from "@server/models/Collection";
 import IntegrationAuthentication from "@server/models/IntegrationAuthentication";
 import Team from "@server/models/Team";
 import User from "@server/models/User";
 import ParanoidModel from "@server/models/base/ParanoidModel";
 import Fix from "@server/models/decorators/Fix";
-import type { IntegrationSettings } from "@shared/types";
-import { IntegrationType, IntegrationService } from "@shared/types";
 
 @Scopes(() => ({
   withAuthentication: {
@@ -52,6 +53,9 @@ class Integration<T = unknown> extends ParanoidModel<
 
   @Column(DataType.ARRAY(DataType.STRING))
   events: string[];
+
+  @Column(DataType.JSONB)
+  issueSources: IssueSource[] | null;
 
   // associations
 
