@@ -1,8 +1,8 @@
-import * as React from "react";
+import { UserRole } from "@shared/types";
+import { createLazyComponent } from "~/components/LazyLoad";
+import { Hook, PluginManager } from "~/utils/PluginManager";
 import config from "../plugin.json";
 import Icon from "./Icon";
-import { UserRole } from "@shared/types";
-import { Hook, PluginManager } from "~/utils/PluginManager";
 
 PluginManager.add([
   {
@@ -11,7 +11,9 @@ PluginManager.add([
     value: {
       group: "Integrations",
       icon: Icon,
-      component: React.lazy(() => import("./Settings")),
+      description:
+        "Search your knowledge base directly in Slack, get /outline search, rich link previews, and notifications on new or updated docs.",
+      component: createLazyComponent(() => import("./Settings")),
       enabled: (_, user) =>
         [UserRole.Member, UserRole.Admin].includes(user.role),
     },

@@ -7,7 +7,7 @@ import { sequelize } from "@server/storage/database";
 type Props = {
   collectionId: string;
   actorId: string;
-  ip: string;
+  ip: string | null;
 };
 
 export default class DetachDraftsFromCollectionTask extends BaseTask<Props> {

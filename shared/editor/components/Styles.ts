@@ -56,7 +56,7 @@ const mathStyle = (props: Props) => css`
     cursor: auto;
     white-space: pre-wrap;
     overflow-x: auto;
-    overflow-y: none;
+    overflow-y: hidden;
   }
 
   .math-node.empty-math .math-render::before {
@@ -1090,6 +1090,10 @@ p a {
     text-decoration-color: ${props.theme.text};
     text-decoration-thickness: 1px;
   }
+}
+
+.heading-content a {
+  font-weight: inherit;
 }
 
 a {

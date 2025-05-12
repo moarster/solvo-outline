@@ -1,5 +1,4 @@
 import Router from "koa-router";
-
 import { Op, Sequelize } from "sequelize";
 import pagination from "../middlewares/pagination";
 import * as T from "./schema";
@@ -46,14 +45,8 @@ router.post(
     const documentIds = memberships
       .map((p) => p.documentId)
       .filter(Boolean) as string[];
-    const documents = await Document.scope([
-      "withDrafts",
-      { method: ["withMembership", user.id] },
-      { method: ["withCollectionPermissions", user.id] },
-    ]).findAll({
-      where: {
-        id: documentIds,
-      },
+    const documents = await Document.findByIds(documentIds, {
+      userId: user.id,
     });
 
     const policies = presentPolicies(user, [...documents, ...memberships]);

@@ -2,28 +2,28 @@ import { observer } from "mobx-react";
 import * as React from "react";
 import { useTranslation, Trans } from "react-i18next";
 import styled from "styled-components";
-import { SlackUtils } from "../shared/SlackUtils";
-import SlackIcon from "./Icon";
-import SlackButton from "./components/SlackButton";
-import SlackListItem from "./components/SlackListItem";
 import { IntegrationService, IntegrationType } from "@shared/types";
+import Collection from "~/models/Collection";
+import Integration from "~/models/Integration";
+import { ConnectedButton } from "~/scenes/Settings/components/ConnectedButton";
+import { IntegrationScene } from "~/scenes/Settings/components/IntegrationScene";
+import SettingRow from "~/scenes/Settings/components/SettingRow";
 import Flex from "~/components/Flex";
 import Heading from "~/components/Heading";
 import CollectionIcon from "~/components/Icons/CollectionIcon";
 import List from "~/components/List";
 import ListItem from "~/components/List/Item";
 import Notice from "~/components/Notice";
-import Scene from "~/components/Scene";
 import Text from "~/components/Text";
 import env from "~/env";
 import useCurrentTeam from "~/hooks/useCurrentTeam";
 import usePolicy from "~/hooks/usePolicy";
 import useQuery from "~/hooks/useQuery";
 import useStores from "~/hooks/useStores";
-import Collection from "~/models/Collection";
-import Integration from "~/models/Integration";
-import { ConnectedButton } from "~/scenes/Settings/components/ConnectedButton";
-import SettingRow from "~/scenes/Settings/components/SettingRow";
+import { SlackUtils } from "../shared/SlackUtils";
+import SlackIcon from "./Icon";
+import SlackButton from "./components/SlackButton";
+import SlackListItem from "./components/SlackListItem";
 
 function Slack() {
   const team = useCurrentTeam();
@@ -34,13 +34,7 @@ function Slack() {
   const error = query.get("error");
 
   React.useEffect(() => {
-    void collections.fetchPage({
-      limit: 100,
-    });
-    void integrations.fetchPage({
-      service: IntegrationService.Slack,
-      limit: 100,
-    });
+    void collections.fetchAll();
   }, [collections, integrations]);
 
   const commandIntegration = integrations.find({
@@ -67,7 +61,7 @@ function Slack() {
   const appName = env.APP_NAME;
 
   return (
-    <Scene title="Slack" icon={<SlackIcon />}>
+    <IntegrationScene title="Slack" icon={<SlackIcon />}>
       <Heading>Slack</Heading>
 
       {error === "access_denied" && (
@@ -205,7 +199,7 @@ function Slack() {
           </List>
         </>
       )}
-    </Scene>
+    </IntegrationScene>
   );
 }
 

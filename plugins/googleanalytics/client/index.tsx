@@ -1,7 +1,7 @@
-import * as React from "react";
+import { createLazyComponent } from "~/components/LazyLoad";
+import { Hook, PluginManager } from "~/utils/PluginManager";
 import config from "../plugin.json";
 import Icon from "./Icon";
-import { Hook, PluginManager } from "~/utils/PluginManager";
 
 PluginManager.add([
   {
@@ -10,7 +10,9 @@ PluginManager.add([
     value: {
       group: "Integrations",
       icon: Icon,
-      component: React.lazy(() => import("./Settings")),
+      description:
+        "Measure adoption and engagement by sending view and event analytics directly to your GA4 dashboard.",
+      component: createLazyComponent(() => import("./Settings")),
     },
   },
 ]);
