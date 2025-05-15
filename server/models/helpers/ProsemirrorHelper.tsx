@@ -488,7 +488,7 @@ export class ProsemirrorHelper {
     // Render the Prosemirror document using virtual DOM and serialize the
     // result to a string
     const dom = new JSDOM(
-      `<!DOCTYPE html>${
+      `<!DOCTYPE html><meta charset="utf-8">${
         options?.includeStyles === false ? "" : styleTags
       }${html}`
     );
