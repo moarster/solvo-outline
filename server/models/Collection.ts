@@ -14,6 +14,8 @@ import {
   EmptyResultError,
   type CreateOptions,
   type UpdateOptions,
+  type ScopeOptions,
+  type SaveOptions,
 } from "sequelize";
 import {
   Sequelize,
@@ -38,6 +40,7 @@ import {
   BeforeCreate,
   BeforeUpdate,
   DefaultScope,
+  AfterSave,
 } from "sequelize-typescript";
 import isUUID from "validator/lib/isUUID";
 import type { CollectionSort, ProsemirrorData } from "@shared/types";
@@ -47,6 +50,7 @@ import { sortNavigationNodes } from "@shared/utils/collections";
 import slugify from "@shared/utils/slugify";
 import { CollectionValidation } from "@shared/validations";
 import { ValidationError } from "@server/errors";
+import { CacheHelper } from "@server/utils/CacheHelper";
 import removeIndexCollision from "@server/utils/removeIndexCollision";
 import { generateUrlId } from "@server/utils/url";
 import { ValidateIndex } from "@server/validation";
@@ -69,6 +73,7 @@ import NotContainsUrl from "./validators/NotContainsUrl";
 type AdditionalFindOptions = {
   userId?: string;
   includeDocumentStructure?: boolean;
+  includeOwner?: boolean;
   rejectOnEmpty?: boolean | Error;
 };
 
@@ -332,6 +337,34 @@ class Collection extends ParanoidModel<
     if (!model.content) {
       model.content = await DocumentHelper.toJSON(model);
     }
+    if (model.changed("documentStructure")) {
+      await CacheHelper.clearData(
+        CacheHelper.getCollectionDocumentsKey(model.id)
+      );
+    }
+  }
+
+  @AfterSave
+  static async cacheDocumentStructure(
+    model: Collection,
+    options: SaveOptions<Collection>
+  ) {
+    if (model.changed("documentStructure")) {
+      const setData = () =>
+        CacheHelper.setData(
+          CacheHelper.getCollectionDocumentsKey(model.id),
+          model.documentStructure,
+          60
+        );
+
+      if (options.transaction) {
+        return (options.transaction.parent || options.transaction).afterCommit(
+          setData
+        );
+      }
+
+      await setData();
+    }
   }
 
   @BeforeDestroy
@@ -394,8 +427,11 @@ class Collection extends ParanoidModel<
     model: Collection,
     options: UpdateOptions<Collection>
   ) {
-    if (model.index && model.changed("index")) {
-      model.index = await removeIndexCollision(model.teamId, model.index, {
+    if (
+      (model.index && model.changed("index")) ||
+      (!model.archivedAt && model.changed("archivedAt"))
+    ) {
+      model.index = await removeIndexCollision(model.teamId, model.index!, {
         transaction: options.transaction,
       });
     }
@@ -509,14 +545,20 @@ class Collection extends ParanoidModel<
       return null;
     }
 
-    const { includeDocumentStructure, userId, ...rest } = options;
+    const { includeDocumentStructure, includeOwner, userId, ...rest } = options;
 
-    const scope = this.scope([
+    const scopes: (string | ScopeOptions)[] = [
       includeDocumentStructure ? "withDocumentStructure" : "defaultScope",
       {
         method: ["withMembership", userId],
       },
-    ]);
+    ];
+
+    if (includeOwner) {
+      scopes.push("withUser");
+    }
+
+    const scope = this.scope(scopes);
 
     if (isUUID(id)) {
       const collection = await scope.findOne({
