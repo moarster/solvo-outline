@@ -1,9 +1,9 @@
-import * as React from "react";
+import { useState, useCallback } from "react";
+import Collection from "~/models/Collection";
+import useStores from "~/hooks/useStores";
 import CollectionLink from "./CollectionLink";
 import CollectionLinkChildren from "./CollectionLinkChildren";
 import Relative from "./Relative";
-import useStores from "~/hooks/useStores";
-import Collection from "~/models/Collection";
 
 type Props = {
   collection: Collection;
@@ -13,15 +13,15 @@ type Props = {
 export function ArchivedCollectionLink({ collection, depth }: Props) {
   const { documents } = useStores();
 
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = useState(false);
 
-  const handleDisclosureClick = React.useCallback((ev) => {
+  const handleDisclosureClick = useCallback((ev) => {
     ev.preventDefault();
     ev.stopPropagation();
     setExpanded((e) => !e);
   }, []);
 
-  const handleClick = React.useCallback(() => {
+  const handleClick = useCallback(() => {
     setExpanded(true);
   }, []);
 

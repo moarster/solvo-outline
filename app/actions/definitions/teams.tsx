@@ -1,5 +1,4 @@
 import { ArrowIcon, PlusIcon } from "outline-icons";
-import * as React from "react";
 import styled from "styled-components";
 import { TeamSection } from "../sections";
 import { stringToColor } from "@shared/utils/color";

@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState, useCallback } from "react";
 import { Primitive } from "utility-types";
 import useEventListener from "./useEventListener";
 import Storage from "@shared/utils/Storage";
@@ -41,14 +41,14 @@ export default function usePersistedState<T extends Primitive | object>(
   defaultValue: T,
   options?: Options
 ): [T, (value: T) => void] {
-  const [storedValue, setStoredValue] = React.useState(() => {
+  const [storedValue, setStoredValue] = useState(() => {
     if (!isBrowser) {
       return defaultValue;
     }
     return Storage.get(key) ?? defaultValue;
   });
 
-  const setValue = React.useCallback(
+  const setValue = useCallback(
     (value: T | ((value: T) => void)) => {
       try {
         // Allow value to be a function so we have same API as useState

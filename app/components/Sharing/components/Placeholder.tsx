@@ -1,9 +1,8 @@
 import times from "lodash/times";
-import * as React from "react";
-import { ListItem } from "../components/ListItem";
 import { AvatarSize } from "~/components/Avatar";
 import Fade from "~/components/Fade";
 import PlaceholderText from "~/components/PlaceholderText";
+import { ListItem } from "../components/ListItem";
 
 type Props = {
   count?: number;

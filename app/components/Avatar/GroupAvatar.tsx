@@ -1,5 +1,4 @@
 import { GroupIcon } from "outline-icons";
-import * as React from "react";
 import { useTheme } from "styled-components";
 import { AvatarSize } from "../Avatar/Avatar";
 import Squircle from "@shared/components/Squircle";

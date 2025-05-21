@@ -1,6 +1,5 @@
 import { observer } from "mobx-react";
 import { SubscribeIcon } from "outline-icons";
-import * as React from "react";
 import styled from "styled-components";
 import Relative from "../Sidebar/components/Relative";
 import { s } from "@shared/styles";

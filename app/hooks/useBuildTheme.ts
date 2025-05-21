@@ -1,5 +1,4 @@
-import * as React from "react";
-import useStores from "./useStores";
+import { useMemo } from "react";
 import { breakpoints } from "@shared/styles";
 import {
   buildDarkTheme,
@@ -7,8 +6,9 @@ import {
   buildPitchBlackTheme,
 } from "@shared/styles/theme";
 import { CustomTheme } from "@shared/types";
-import useMediaQuery from "~/hooks/useMediaQuery";
 import type { Theme } from "~/stores/UiStore";
+import useMediaQuery from "~/hooks/useMediaQuery";
+import useStores from "./useStores";
 
 /**
  * Builds a theme based on the current user's preferences, the current device
@@ -27,17 +27,17 @@ export default function useBuildTheme(
   const isPrinting = useMediaQuery("print");
   const resolvedTheme = overrideTheme ?? ui.resolvedTheme;
 
-  const theme = React.useMemo(
+  const theme = useMemo(
     () =>
       isPrinting
         ? buildLightTheme(customTheme)
         : isMobile
-          ? resolvedTheme === "dark"
-            ? buildPitchBlackTheme(customTheme)
-            : buildLightTheme(customTheme)
-          : resolvedTheme === "dark"
-            ? buildDarkTheme(customTheme)
-            : buildLightTheme(customTheme),
+        ? resolvedTheme === "dark"
+          ? buildPitchBlackTheme(customTheme)
+          : buildLightTheme(customTheme)
+        : resolvedTheme === "dark"
+        ? buildDarkTheme(customTheme)
+        : buildLightTheme(customTheme),
     [customTheme, isMobile, isPrinting, resolvedTheme]
   );
 

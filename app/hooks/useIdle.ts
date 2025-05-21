@@ -1,7 +1,7 @@
 import throttle from "lodash/throttle";
-import * as React from "react";
-import useIsMounted from "./useIsMounted";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { Minute } from "@shared/utils/time";
+import useIsMounted from "./useIsMounted";
 
 const activityEvents = [
   "click",
@@ -27,10 +27,10 @@ export default function useIdle(
   events = activityEvents
 ) {
   const isMounted = useIsMounted();
-  const [isIdle, setIsIdle] = React.useState(false);
-  const timeout = React.useRef<ReturnType<typeof setTimeout>>();
+  const [isIdle, setIsIdle] = useState(false);
+  const timeout = useRef<ReturnType<typeof setTimeout>>();
 
-  const onActivity = React.useCallback(() => {
+  const onActivity = useCallback(() => {
     if (timeout.current) {
       clearTimeout(timeout.current);
     }
@@ -42,7 +42,7 @@ export default function useIdle(
     }, timeToIdle);
   }, [isMounted, timeToIdle]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleUserActivityEvent = throttle(() => {
       if (isMounted()) {
         setIsIdle(false);

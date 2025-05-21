@@ -1,6 +1,5 @@
 import { observer } from "mobx-react";
 import { TrashIcon } from "outline-icons";
-import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { permanentlyDeleteDocumentsInTrash } from "~/actions/definitions/documents";
 import Button from "~/components/Button";

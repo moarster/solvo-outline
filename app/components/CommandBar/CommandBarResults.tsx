@@ -1,5 +1,4 @@
 import { useMatches, KBarResults } from "kbar";
-import * as React from "react";
 import styled from "styled-components";
 import CommandBarItem from "./CommandBarItem";
 import Text from "~/components/Text";

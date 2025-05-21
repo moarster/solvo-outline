@@ -1,16 +1,15 @@
 import { PlusIcon } from "outline-icons";
-import * as React from "react";
-import stores from "~/stores";
 import { UserRole } from "@shared/types";
 import { UserRoleHelper } from "@shared/utils/UserRoleHelper";
-import { createAction } from "~/actions";
-import { UserSection } from "~/actions/sections";
+import stores from "~/stores";
+import User from "~/models/User";
+import Invite from "~/scenes/Invite";
 import {
   UserChangeRoleDialog,
   UserDeleteDialog,
 } from "~/components/UserDialogs";
-import User from "~/models/User";
-import Invite from "~/scenes/Invite";
+import { createAction } from "~/actions";
+import { UserSection } from "~/actions/sections";
 
 export const inviteUser = createAction({
   name: ({ t }) => `${t("Invite people")}…`,
@@ -46,8 +45,8 @@ export const updateUserRoleActionFactory = (user: User, role: UserRole) =>
       return UserRoleHelper.isRoleHigher(role, user.role)
         ? can.promote
         : UserRoleHelper.isRoleLower(role, user.role)
-          ? can.demote
-          : false;
+        ? can.demote
+        : false;
     },
     perform: ({ t }) => {
       stores.dialogs.openModal({

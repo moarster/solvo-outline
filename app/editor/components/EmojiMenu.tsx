@@ -1,11 +1,11 @@
 import capitalize from "lodash/capitalize";
-import React from "react";
+import { useMemo } from "react";
+import { emojiMartToGemoji, snakeCase } from "@shared/editor/lib/emoji";
+import { search as emojiSearch } from "@shared/utils/emoji";
 import EmojiMenuItem from "./EmojiMenuItem";
 import SuggestionsMenu, {
   Props as SuggestionsMenuProps,
 } from "./SuggestionsMenu";
-import { emojiMartToGemoji, snakeCase } from "@shared/editor/lib/emoji";
-import { search as emojiSearch } from "@shared/utils/emoji";
 
 type Emoji = {
   name: string;
@@ -23,7 +23,7 @@ type Props = Omit<
 const EmojiMenu = (props: Props) => {
   const { search = "" } = props;
 
-  const items = React.useMemo(
+  const items = useMemo(
     () =>
       emojiSearch({ query: search })
         .map((item) => {
