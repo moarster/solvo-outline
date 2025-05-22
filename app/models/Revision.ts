@@ -1,13 +1,13 @@
 import { computed } from "mobx";
 import Document from "./Document";
 import User from "./User";
-import Model from "./base/Model";
+import ParanoidModel from "./base/ParanoidModel";
 import Field from "./decorators/Field";
 import Relation from "./decorators/Relation";
 import { ProsemirrorData } from "@shared/types";
 import { isRTL } from "@shared/utils/rtl";
 
-class Revision extends Model {
+class Revision extends ParanoidModel {
   static modelName = "Revision";
 
   /** The document ID that the revision is related to */
