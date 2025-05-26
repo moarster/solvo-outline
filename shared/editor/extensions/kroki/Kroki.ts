@@ -25,7 +25,7 @@ export class Kroki {
       const response = await fetch(this.serverUrl, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json; charset=utf-8",
         },
         body: JSON.stringify({
           diagram_source: diagramText,
