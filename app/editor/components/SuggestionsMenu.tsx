@@ -596,8 +596,8 @@ function SuggestionsMenu<T extends MenuItem>(props: Props<T>) {
                     "placeholder" in insertItem
                       ? insertItem.placeholder
                       : insertItem.title
-                        ? dictionary.pasteLinkWithTitle(insertItem.title)
-                        : dictionary.pasteLink
+                      ? dictionary.pasteLinkWithTitle(insertItem.title)
+                      : dictionary.pasteLink
                   }
                   onKeyDown={handleLinkInputKeydown}
                   onPaste={handleLinkInputPaste}
