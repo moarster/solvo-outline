@@ -26,8 +26,10 @@ import { selectAll } from "../commands/selectAll";
 import toggleBlockType from "../commands/toggleBlockType";
 import { CodeHighlighting } from "../extensions/CodeHighlighting";
 import DiagramAsCode from "../extensions/DiagramAsCode";
-import Prism from "../extensions/Prism";
-import { getRecentCodeLanguage, setRecentCodeLanguage } from "../lib/code";
+import {
+  getRecentlyUsedCodeLanguage,
+  setRecentlyUsedCodeLanguage,
+} from "../lib/code";
 import { isCode } from "../lib/isCode";
 import { MarkdownSerializerState } from "../lib/markdown/serializer";
 import { findNextNewline, findPreviousNewline } from "../queries/findNewlines";
