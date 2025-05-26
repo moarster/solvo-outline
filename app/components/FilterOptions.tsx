@@ -1,16 +1,17 @@
 import deburr from "lodash/deburr";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import { useMenuState, MenuButton } from "reakit/Menu";
+import { MenuButton } from "reakit/Menu";
 import styled from "styled-components";
-import Input, { NativeInput, Outline } from "./Input";
-import PaginatedList, { PaginatedItem } from "./PaginatedList";
 import { s } from "@shared/styles";
+import type { FetchPageParams } from "~/stores/base/Store";
 import Button, { Inner } from "~/components/Button";
 import ContextMenu from "~/components/ContextMenu";
 import MenuItem from "~/components/ContextMenu/MenuItem";
 import Text from "~/components/Text";
-import type { FetchPageParams } from "~/stores/base/Store";
+import { useMenuState } from "~/hooks/useMenuState";
+import Input, { NativeInput, Outline } from "./Input";
+import PaginatedList, { PaginatedItem } from "./PaginatedList";
 
 interface TFilterOption extends PaginatedItem {
   key: string;

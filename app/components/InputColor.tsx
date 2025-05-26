@@ -1,15 +1,16 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import { MenuButton, useMenuState } from "reakit/Menu";
+import { MenuButton } from "reakit/Menu";
 import styled from "styled-components";
+import { s } from "@shared/styles";
+import { useMenuState } from "~/hooks/useMenuState";
+import lazyWithRetry from "~/utils/lazyWithRetry";
 import ContextMenu from "./ContextMenu";
 import DelayedMount from "./DelayedMount";
 import Input, { Props as InputProps } from "./Input";
 import NudeButton from "./NudeButton";
 import Relative from "./Sidebar/components/Relative";
 import Text from "./Text";
-import { s } from "@shared/styles";
-import lazyWithRetry from "~/utils/lazyWithRetry";
 
 type Props = Omit<InputProps, "onChange"> & {
   value: string | undefined;

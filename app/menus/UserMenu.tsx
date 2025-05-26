@@ -1,7 +1,6 @@
 import { observer } from "mobx-react";
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import { useMenuState } from "reakit/Menu";
 import { toast } from "sonner";
 import { UserRole } from "@shared/types";
 import { actionToMenuItem } from "~/actions";
@@ -18,6 +17,7 @@ import {
   UserChangeEmailDialog,
 } from "~/components/UserDialogs";
 import useActionContext from "~/hooks/useActionContext";
+import { useMenuState } from "~/hooks/useMenuState";
 import usePolicy from "~/hooks/usePolicy";
 import useStores from "~/hooks/useStores";
 import User from "~/models/User";
