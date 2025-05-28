@@ -793,7 +793,7 @@ h6:not(.placeholder)::before {
   h4,
   h5,
   h6 {
-    &:not(.placeholder):before {
+    &:not(.placeholder)::before {
       opacity: 1;
     }
   }

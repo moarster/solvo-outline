@@ -7,6 +7,13 @@ import Logger from "@server/logging/Logger";
 export type { RequestInit } from "node-fetch";
 
 /**
+ * Default user agent string for outgoing requests.
+ */
+export const outlineUserAgent = `Outline-${
+  env.VERSION ? `/${env.VERSION.slice(0, 7)}` : ""
+}`;
+
+/**
  * Fake Chrome user agent string for use in fetch requests to
  * improve reliability.
  */
@@ -34,6 +41,10 @@ export default async function fetch(
 
   const response = await fetchMethod(url, {
     ...init,
+    headers: {
+      "User-Agent": outlineUserAgent,
+      ...init?.headers,
+    },
     agent: env.isCloudHosted ? useAgent(url) : undefined,
   });
 

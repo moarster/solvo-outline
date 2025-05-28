@@ -14,8 +14,8 @@ import HealthMonitor from "@server/queues/HealthMonitor";
 import { Event } from "@server/types";
 import { initI18n } from "@server/utils/i18n";
 
-export default function init() {
-  void initI18n();
+export default async function init() {
+  await initI18n();
 
   // This queue processes the global event bus
   globalEventQueue
