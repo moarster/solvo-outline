@@ -18,6 +18,7 @@ import { CollectionPermission, IconType } from "@shared/types";
 import { determineIconType } from "@shared/utils/icon";
 import Share from "~/models/Share";
 import Flex from "~/components/Flex";
+import NudeButton from "~/components/NudeButton";
 import Scrollable from "~/components/Scrollable";
 import Text from "~/components/Text";
 import useCurrentTeam from "~/hooks/useCurrentTeam";
@@ -230,7 +231,9 @@ const AccessTooltip = ({
         {children}
       </Text>
       <Tooltip content={content ?? t("Access inherited from collection")}>
-        <QuestionMarkIcon size={18} />
+        <NudeButton size={18}>
+          <QuestionMarkIcon size={18} />
+        </NudeButton>
       </Tooltip>
     </Flex>
   );

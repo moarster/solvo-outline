@@ -4,16 +4,18 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { mergeRefs } from "react-merge-refs";
 import { useHistory, useRouteMatch } from "react-router-dom";
-import MultiplayerEditor from "./AsyncMultiplayerEditor";
-import DocumentMeta from "./DocumentMeta";
-import DocumentTitle from "./DocumentTitle";
+import styled from "styled-components";
+import Text from "@shared/components/Text";
 import { richExtensions, withComments } from "@shared/editor/nodes";
 import { TeamPreference } from "@shared/types";
 import { colorPalette } from "@shared/utils/collections";
+import Comment from "~/models/Comment";
+import Document from "~/models/Document";
 import { RefHandle } from "~/components/ContentEditable";
 import { useDocumentContext } from "~/components/DocumentContext";
 import Editor, { Props as EditorProps } from "~/components/Editor";
 import Flex from "~/components/Flex";
+import Time from "~/components/Time";
 import { withUIExtensions } from "~/editor/extensions";
 import useCurrentTeam from "~/hooks/useCurrentTeam";
 import useCurrentUser from "~/hooks/useCurrentUser";
@@ -22,14 +24,15 @@ import { useLocationSidebarContext } from "~/hooks/useLocationSidebarContext";
 import usePolicy from "~/hooks/usePolicy";
 import useQuery from "~/hooks/useQuery";
 import useStores from "~/hooks/useStores";
-import Comment from "~/models/Comment";
-import Document from "~/models/Document";
 import {
   documentHistoryPath,
   documentPath,
   matchDocumentHistory,
 } from "~/utils/routeHelpers";
 import { decodeURIComponentSafe } from "~/utils/urls";
+import MultiplayerEditor from "./AsyncMultiplayerEditor";
+import DocumentMeta from "./DocumentMeta";
+import DocumentTitle from "./DocumentTitle";
 
 const extensions = withUIExtensions(withComments(richExtensions));
 
@@ -229,16 +232,26 @@ function DocumentEditor(props: Props, ref: React.RefObject<any>) {
         onBlur={handleBlur}
         placeholder={t("Untitled")}
       />
-      {!shareId && (
+      {shareId ? (
+        document.updatedAt ? (
+          <SharedMeta type="tertiary">
+            {t("Last updated")} <Time dateTime={document.updatedAt} addSuffix />
+          </SharedMeta>
+        ) : null
+      ) : (
         <DocumentMeta
           document={document}
-          to={{
-            pathname:
-              match.path === matchDocumentHistory
-                ? documentPath(document)
-                : documentHistoryPath(document),
-            state: { sidebarContext },
-          }}
+          to={
+            shareId
+              ? undefined
+              : {
+                  pathname:
+                    match.path === matchDocumentHistory
+                      ? documentPath(document)
+                      : documentHistoryPath(document),
+                  state: { sidebarContext },
+                }
+          }
           rtl={direction === "rtl"}
         />
       )}
@@ -273,5 +286,10 @@ function DocumentEditor(props: Props, ref: React.RefObject<any>) {
     </Flex>
   );
 }
+
+const SharedMeta = styled(Text)`
+  margin: -12px 0 2em 0;
+  font-size: 14px;
+`;
 
 export default observer(React.forwardRef(DocumentEditor));

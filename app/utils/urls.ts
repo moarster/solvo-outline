@@ -14,7 +14,7 @@ export function isHash(href: string) {
     ) {
       return true;
     }
-  } catch {
+  } catch (_err) {
     // failed to parse as url
   }
 
@@ -32,7 +32,7 @@ export function decodeURIComponentSafe(text: string) {
     return text
       ? decodeURIComponent(text.replace(/%(?![0-9][0-9a-fA-F]+)/g, "%25"))
       : text;
-  } catch {
+  } catch (_) {
     return text;
   }
 }
