@@ -1,3 +1,4 @@
+/* eslint-disable lines-between-class-members */
 import compact from "lodash/compact";
 import isNil from "lodash/isNil";
 import uniq from "lodash/uniq";
@@ -39,13 +40,24 @@ import {
   Unique,
 } from "sequelize-typescript";
 import isUUID from "validator/lib/isUUID";
-import Backlink from "./Backlink";
+import type {
+  NavigationNode,
+  ProsemirrorData,
+  SourceMetadata,
+} from "@shared/types";
+import { ProsemirrorHelper } from "@shared/utils/ProsemirrorHelper";
+import { UrlHelper } from "@shared/utils/UrlHelper";
+import slugify from "@shared/utils/slugify";
+import { DocumentValidation } from "@shared/validations";
+import { ValidationError } from "@server/errors";
+import { generateUrlId } from "@server/utils/url";
 import Collection from "./Collection";
 import FileOperation from "./FileOperation";
 import Group from "./Group";
 import GroupMembership from "./GroupMembership";
 import GroupUser from "./GroupUser";
 import Import from "./Import";
+import Relationship from "./Relationship";
 import Revision from "./Revision";
 import Star from "./Star";
 import Team from "./Team";
@@ -57,17 +69,6 @@ import Fix from "./decorators/Fix";
 import { DocumentHelper } from "./helpers/DocumentHelper";
 import IsHexColor from "./validators/IsHexColor";
 import Length from "./validators/Length";
-import { ValidationError } from "@server/errors";
-import { generateUrlId } from "@server/utils/url";
-import type {
-  NavigationNode,
-  ProsemirrorData,
-  SourceMetadata,
-} from "@shared/types";
-import { ProsemirrorHelper } from "@shared/utils/ProsemirrorHelper";
-import { UrlHelper } from "@shared/utils/UrlHelper";
-import slugify from "@shared/utils/slugify";
-import { DocumentValidation } from "@shared/validations";
 
 export const DOCUMENT_VERSION = 2;
 
@@ -616,8 +617,8 @@ class Document extends ArchivableModel<
   @HasMany(() => Revision)
   revisions: Revision[];
 
-  @HasMany(() => Backlink)
-  backlinks: Backlink[];
+  @HasMany(() => Relationship)
+  relationships: Relationship[];
 
   @HasMany(() => Star)
   starred: Star[];
