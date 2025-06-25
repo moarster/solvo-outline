@@ -306,7 +306,7 @@ const embeds: EmbedDescriptor[] = [
     title: "GitLab Snippet",
     keywords: "code",
     regexMatch: [
-      new RegExp(`^https://gitlab\\.com/(([a-zA-Z\\d-]+)/)*-/snippets/\\d+$`),
+      new RegExp(`^https://gitlab\\.solvo\\.ru/(([a-zA-Z\\d-]+)/)*-/snippets/\\d+$`),
     ],
     icon: <Img src="/images/gitlab.png" alt="GitLab" />,
     component: GitLabSnippet,
