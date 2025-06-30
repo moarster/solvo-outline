@@ -1,4 +1,4 @@
-FROM dockerreg.solvo.ru/solvo/reg/node:20-slim AS base
+FROM dockerreg.solvo.ru/solvo/reg/node:22-slim AS base
 
 ARG APP_PATH
 ARG HTTP_PROXY
@@ -34,7 +34,7 @@ RUN yarn install --production=true --network-timeout 1000000 && \
   yarn cache clean
 
 # ---
-FROM dockerreg.solvo.ru/solvo/reg/node:20-slim AS runner
+FROM dockerreg.solvo.ru/solvo/reg/node:22-slim AS runner
 
 LABEL org.opencontainers.image.source="https://gitlab.solvo.ru/solvo/tool-forks/outline"
 

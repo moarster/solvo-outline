@@ -87,8 +87,8 @@ function usePosition({
     const position = codeBlock
       ? codeBlock.pos
       : noticeBlock
-      ? noticeBlock.pos
-      : null;
+        ? noticeBlock.pos
+        : null;
 
     if (position !== null) {
       const element = view.nodeDOM(position);

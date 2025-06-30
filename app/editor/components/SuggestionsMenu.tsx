@@ -470,7 +470,7 @@ function SuggestionsMenu<T extends MenuItem>(props: Props<T>) {
           item,
           section:
             "section" in item && item.section && "priority" in item.section
-              ? (item.section.priority as number) ?? 0
+              ? ((item.section.priority as number) ?? 0)
               : 0,
           priority: "priority" in item ? item.priority : 0,
           score:
@@ -596,8 +596,8 @@ function SuggestionsMenu<T extends MenuItem>(props: Props<T>) {
                     "placeholder" in insertItem
                       ? insertItem.placeholder
                       : insertItem.title
-                      ? dictionary.pasteLinkWithTitle(insertItem.title)
-                      : dictionary.pasteLink
+                        ? dictionary.pasteLinkWithTitle(insertItem.title)
+                        : dictionary.pasteLink
                   }
                   onKeyDown={handleLinkInputKeydown}
                   onPaste={handleLinkInputPaste}
