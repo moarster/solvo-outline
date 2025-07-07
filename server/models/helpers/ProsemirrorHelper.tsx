@@ -29,6 +29,8 @@ export type HTMLOptions = {
   title?: string;
   /** Whether to include style tags in the generated HTML (defaults to true) */
   includeStyles?: boolean;
+  /** Whether to include head tags in the generated HTML (defaults to true) */
+  includeHead?: boolean;
   /** Whether to include styles to center diff (defaults to true) */
   centered?: boolean;
   /** The base URL to use for relative links */
@@ -519,48 +521,62 @@ export class ProsemirrorHelper {
       }
     }
 
-    /* // TODO: Reuse for strucurizr embeds
-    if (true) {
-      const krokiElements = dom.window.document.querySelectorAll(
-        `[isKroki=true] pre code`
-      );
+      /* // TODO: Reuse for strucurizr embeds
+     if (true) {
+       const krokiElements = dom.window.document.querySelectorAll(
+         `[isKroki=true] pre code`
+       );
 
-      // Unwrap <pre> tags to enable Mermaid script to correctly render inner content
-      for (const el of krokiElements) {
-        el.setAttribute("class", "code-block with-line-numbers");
-        const parent = el.parentNode as HTMLElement;
-        if (parent) {
-          while (el.firstChild) {
-            parent.insertBefore(el.firstChild, el);
-          }
-          parent.removeChild(el);
-          parent.setAttribute("class", "kroki");
-        }
+       // Unwrap <pre> tags to enable Mermaid script to correctly render inner content
+       for (const el of krokiElements) {
+         el.setAttribute("class", "code-block with-line-numbers");
+         const parent = el.parentNode as HTMLElement;
+         if (parent) {
+           while (el.firstChild) {
+             parent.insertBefore(el.firstChild, el);
+           }
+           parent.removeChild(el);
+           parent.setAttribute("class", "kroki");
+         }
+       }
+
+       const element = dom.window.document.createElement("script");
+       element.setAttribute("type", "module");
+
+       // Inject Mermaid script
+       if (krokiElements.length) {
+         element.innerHTML = `
+           import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+           mermaid.initialize({
+             startOnLoad: true,
+             fontFamily: "inherit",
+           });
+           window.status = "ready";
+         `;
+       } else {
+         element.innerHTML = `
+           window.status = "ready";
+         `;
+       }
+
+       dom.window.document.body.appendChild(element);
+     }*/
+
+    const output = dom.serialize();
+
+    if (options?.includeHead === false) {
+      // replace everything upto and including "<body>"
+      const body = "<body>";
+      const bodyIndex = output.indexOf(body) + body.length;
+      if (bodyIndex !== -1) {
+        return output
+          .substring(bodyIndex)
+          .replace("</body>", "")
+          .replace("</html>", "");
       }
+    }
 
-      const element = dom.window.document.createElement("script");
-      element.setAttribute("type", "module");
-
-      // Inject Mermaid script
-      if (krokiElements.length) {
-        element.innerHTML = `
-          import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-          mermaid.initialize({
-            startOnLoad: true,
-            fontFamily: "inherit",
-          });
-          window.status = "ready";
-        `;
-      } else {
-        element.innerHTML = `
-          window.status = "ready";
-        `;
-      }
-
-      dom.window.document.body.appendChild(element);
-    }*/
-
-    return dom.serialize();
+    return output;
   }
 
   /**
