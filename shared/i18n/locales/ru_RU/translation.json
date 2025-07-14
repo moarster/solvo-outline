@@ -280,6 +280,8 @@
   "Objects": "Объекты",
   "Symbols": "Символы",
   "Flags": "Флаги",
+  "Sorry, the code you entered is invalid or has expired.": "Извините, Вы ввели некорректный код",
+  "Enter the sign-in code sent to the email <em>{{ emailLinkSentTo }}</em>": "Введите код, отправленый на адрес <em>{{ emailLinkSentTo }}</em>",
   "Select a color": "Выбрать цвет",
   "Loading": "Загрузка",
   "Search": "Поиск",
