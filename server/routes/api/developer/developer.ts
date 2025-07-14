@@ -1,7 +1,6 @@
 import { Context, Next } from "koa";
 import Router from "koa-router";
-import randomstring from "randomstring";
-import * as T from "./schema";
+import { randomString } from "@shared/random";
 import userInviter, { Invite } from "@server/commands/userInviter";
 import env from "@server/env";
 import Logger from "@server/logging/Logger";
@@ -9,6 +8,7 @@ import auth from "@server/middlewares/authentication";
 import validate from "@server/middlewares/validate";
 import { presentUser } from "@server/presenters";
 import { APIContext } from "@server/types";
+import * as T from "./schema";
 
 const router = new Router();
 
@@ -33,7 +33,7 @@ router.post(
     const invites = Array(Math.min(count, 100))
       .fill(0)
       .map(() => {
-        const rando = randomstring.generate(10);
+        const rando = randomString(10);
 
         return {
           email: `${rando}@example.com`,

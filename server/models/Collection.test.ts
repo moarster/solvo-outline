@@ -1,7 +1,6 @@
-import randomstring from "randomstring";
 import { v4 as uuidv4 } from "uuid";
-import Collection from "./Collection";
-import Document from "./Document";
+import { randomString } from "@shared/random";
+import slugify from "@shared/utils/slugify";
 import {
   buildUser,
   buildGroup,
@@ -9,7 +8,8 @@ import {
   buildTeam,
   buildDocument,
 } from "@server/test/factories";
-import slugify from "@shared/utils/slugify";
+import Collection from "./Collection";
+import Document from "./Document";
 
 beforeEach(() => {
   jest.resetAllMocks();
@@ -511,7 +511,7 @@ describe("#findByPk", () => {
   });
 
   it("should return null when no collection is found with urlId", async () => {
-    const id = `${slugify("test collection")}-${randomstring.generate(15)}`;
+    const id = `${slugify("test collection")}-${randomString(15)}`;
     const response = await Collection.findByPk(id);
     expect(response).toBe(null);
   });
