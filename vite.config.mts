@@ -150,6 +150,9 @@ export default () =>
       // Generate a stats.json file for webpack that will be consumed by RelativeCI
       webpackStats(),
     ],
+    experimental: {
+      enableNativePlugin: true,
+    },
     resolve: {
       alias: {
         "~": path.resolve(__dirname, "./app"),
@@ -166,6 +169,7 @@ export default () =>
       target: browserslistToEsbuild(),
       reportCompressedSize: false,
       rollupOptions: {
+        keepNames: true,
         onwarn(warning, warn) {
           // Suppress noisy warnings about module-level directives, e.g. "use client"
           if (warning.code === "MODULE_LEVEL_DIRECTIVE") {
