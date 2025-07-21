@@ -1,5 +1,6 @@
-import View from "./View";
+import { createContext } from "@server/context";
 import { buildTeam, buildDocument, buildUser } from "@server/test/factories";
+import View from "./View";
 
 describe("View", () => {
   describe("findByDocument", () => {
@@ -12,7 +13,7 @@ describe("View", () => {
         teamId: team.id,
       });
 
-      await View.incrementOrCreate({
+      await View.incrementOrCreate(createContext({ user }), {
         documentId: document.id,
         userId: user.id,
       });
@@ -33,7 +34,7 @@ describe("View", () => {
         teamId: team.id,
       });
 
-      await View.incrementOrCreate({
+      await View.incrementOrCreate(createContext({ user }), {
         documentId: document.id,
         userId: user.id,
       });

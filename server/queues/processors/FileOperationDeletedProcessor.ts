@@ -1,10 +1,10 @@
-import BaseProcessor from "./BaseProcessor";
-import collectionDestroyer from "@server/commands/collectionDestroyer";
+import { FileOperationState, FileOperationType } from "@shared/types";
+import { createContext } from "@server/context";
 import Logger from "@server/logging/Logger";
 import { Collection, FileOperation, User } from "@server/models";
 import { sequelize } from "@server/storage/database";
 import { Event as TEvent, FileOperationEvent } from "@server/types";
-import { FileOperationState, FileOperationType } from "@shared/types";
+import BaseProcessor from "./BaseProcessor";
 
 export default class FileOperationDeletedProcessor extends BaseProcessor {
   static applicableEvents: TEvent["name"][] = [
@@ -58,12 +58,9 @@ export default class FileOperationDeletedProcessor extends BaseProcessor {
         Logger.debug("processor", "Destroying collection created from import", {
           collectionId: collection.id,
         });
-        await collectionDestroyer({
-          collection,
-          transaction,
-          user,
-          ip: event.ip,
-        });
+        await collection.destroyWithCtx(
+          createContext({ user, ip: event.ip, transaction })
+        );
       }
     });
   }

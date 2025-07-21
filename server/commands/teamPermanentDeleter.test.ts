@@ -1,12 +1,20 @@
 import { subDays } from "date-fns";
-import teamPermanentDeleter from "./teamPermanentDeleter";
-import { Attachment, User, Document, Collection, Team } from "@server/models";
+import {
+  Attachment,
+  User,
+  Document,
+  Collection,
+  Team,
+  Import,
+} from "@server/models";
 import {
   buildAttachment,
   buildUser,
   buildTeam,
   buildDocument,
+  buildImport,
 } from "@server/test/factories";
+import teamPermanentDeleter from "./teamPermanentDeleter";
 
 describe("teamPermanentDeleter", () => {
   it("should destroy related data", async () => {
@@ -123,6 +131,26 @@ describe("teamPermanentDeleter", () => {
     ).toEqual(0);
     expect(
       await Collection.unscoped().count({
+        where: {
+          teamId: team.id,
+        },
+        paranoid: false,
+      })
+    ).toEqual(0);
+  });
+
+  it("should destroy imports", async () => {
+    const team = await buildTeam({
+      deletedAt: subDays(new Date(), 90),
+    });
+    const user = await buildUser({ teamId: team.id });
+    await buildImport({
+      teamId: team.id,
+      createdById: user.id,
+    });
+    await teamPermanentDeleter(team);
+    expect(
+      await Import.count({
         where: {
           teamId: team.id,
         },
