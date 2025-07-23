@@ -1,30 +1,32 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
+/* eslint-disable import/order */
 import env from "./env";
 
 import "./logging/tracer"; // must come before importing any instrumented module
 
 import http from "http";
 import https from "https";
-import { AddressInfo } from "net";
 import Koa from "koa";
 import helmet from "koa-helmet";
 import logger from "koa-logger";
 import Router from "koa-router";
+import { AddressInfo } from "net";
 import stoppable from "stoppable";
 import throng from "throng";
 import escape from "lodash/escape";
 import Logger from "./logging/Logger";
-import Metrics from "./logging/Metrics";
-import onerror from "./onerror";
 import services from "./services";
-import { checkConnection, sequelize } from "./storage/database";
-import RedisAdapter from "./storage/redis";
-import { PluginManager } from "./utils/PluginManager";
-import ShutdownHelper, { ShutdownOrder } from "./utils/ShutdownHelper";
 import { getArg } from "./utils/args";
 import { getSSLOptions } from "./utils/ssl";
+import { defaultRateLimiter } from "@server/middlewares/rateLimiter";
 import { printEnv, checkPendingMigrations } from "./utils/startup";
 import { checkUpdates } from "./utils/updates";
-import { defaultRateLimiter } from "@server/middlewares/rateLimiter";
+import onerror from "./onerror";
+import ShutdownHelper, { ShutdownOrder } from "./utils/ShutdownHelper";
+import { checkConnection, sequelize } from "./storage/database";
+import Redis from "@server/storage/redis";
+import Metrics from "@server/logging/Metrics";
+import { PluginManager } from "./utils/PluginManager";
 
 // The number of processes to run, defaults to the number of CPU's available
 // for the web service, and 1 for collaboration unless REDIS_COLLABORATION_URL is set.
@@ -147,7 +149,7 @@ async function start(_id: number, disconnect: () => void) {
     }
 
     try {
-      await RedisAdapter.defaultClient.ping();
+      await Redis.defaultClient.ping();
     } catch (err) {
       Logger.error("Redis ping failed", err);
       ctx.status = 500;
