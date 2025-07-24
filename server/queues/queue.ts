@@ -2,7 +2,6 @@ import Queue from "bull";
 import snakeCase from "lodash/snakeCase";
 import env from "@server/env";
 import Metrics from "@server/logging/Metrics";
-import Redis from "../storage/redis";
 import ShutdownHelper, { ShutdownOrder } from "@server/utils/ShutdownHelper";
 import { Second } from "@shared/utils/time";
 
@@ -16,6 +15,9 @@ export function createQueue(
   // https://github.com/OptimalBits/bull/blob/b6d530f72a774be0fd4936ddb4ad9df3b183f4b6/PATTERNS.md#reusing-redis-connections
   const queue = new Queue(name, {
     createClient(type) {
+      // Load dynamically so that this isn't pulled in at startup during tests
+      const Redis = require("../storage/redis").default;
+
       switch (type) {
         case "client":
           return Redis.defaultClient;
