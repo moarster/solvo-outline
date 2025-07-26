@@ -10,6 +10,7 @@ export type Props = {
   rtl: boolean;
   readOnly?: boolean;
   readOnlyWriteCheckboxes?: boolean;
+  commenting?: boolean;
   staticHTML?: boolean;
   editorStyle?: React.CSSProperties;
   grow?: boolean;
@@ -930,6 +931,9 @@ h6 {
   opacity: 1;
 }
 
+${
+  props.commenting
+    ? `
 .${EditorStyleHelper.comment} {
   &:not([data-resolved]):not([data-draft]), &[data-draft][data-user-id="${
     props.userId ?? ""
@@ -943,6 +947,14 @@ h6 {
       background: ${props.theme.commentMarkBackground};
     }
   }
+}
+`
+    : `
+.${EditorStyleHelper.comment} {
+  background: transparent !important;
+  border: none !important;
+}
+`
 }
 
 .notice-block {
@@ -1311,6 +1323,9 @@ hr.page-break::before {
 
 .math-inline .math-src .ProseMirror,
 code {
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+
   border-radius: 4px;
   border: 1px solid ${props.theme.codeBorder};
   background: ${props.theme.codeBackground};
@@ -1318,6 +1333,10 @@ code {
   color: ${props.theme.codeString};
   font-family: ${props.theme.fontFamilyMono};
   font-size: 90%;
+
+  .${EditorStyleHelper.codeWord} {
+    white-space: nowrap;
+  }
 }
 
 mark {
