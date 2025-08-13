@@ -13,6 +13,15 @@ let host: string | undefined;
 if (environment.NODE_ENV === "development") {
   host = host = new URL(environment.URL!).hostname;
 
+  try {
+    httpsConfig = {
+      key: fs.readFileSync("./server/config/certs/private.key"),
+      cert: fs.readFileSync("./server/config/certs/public.cert"),
+    };
+  } catch (_err) {
+    // oxlint-disable-next-line no-console
+    console.warn("No local SSL certs found, HTTPS will not be available");
+  }
 }
 
 export default () =>

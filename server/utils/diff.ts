@@ -425,6 +425,7 @@ MatchBinarySearchTree.prototype = {
 
     let current = this._root;
     if (current) {
+      // oxlint-disable-next-line no-constant-condition
       while (true) {
         // Determine if the match value should go to the left or right of the current
         // node.

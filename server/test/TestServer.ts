@@ -1,7 +1,7 @@
 import http from "http";
 import { AddressInfo } from "net";
 import Koa from "koa";
-
+// oxlint-disable-next-line no-restricted-imports
 import nodeFetch from "node-fetch";
 
 class TestServer {

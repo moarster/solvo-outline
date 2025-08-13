@@ -1,3 +1,4 @@
+/* oxlint-disable @typescript-eslint/no-var-requires */
 import find from "lodash/find";
 import { Scope } from "@shared/types";
 import env from "@server/env";

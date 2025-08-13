@@ -1,5 +1,4 @@
 import Router from "koa-router";
-import * as T from "./schema";
 import { ValidationError } from "@server/errors";
 import auth from "@server/middlewares/authentication";
 import { rateLimiter } from "@server/middlewares/rateLimiter";
@@ -9,6 +8,8 @@ import { authorize } from "@server/policies";
 import { presentView } from "@server/presenters";
 import { APIContext } from "@server/types";
 import { RateLimiterStrategy } from "@server/utils/RateLimiter";
+import * as T from "./schema";
+import { transaction } from "@server/middlewares/transaction";
 
 const router = new Router();
 
@@ -42,6 +43,7 @@ router.post(
   rateLimiter(RateLimiterStrategy.OneThousandPerHour),
   auth(),
   validate(T.ViewsCreateSchema),
+  transaction(),
   async (ctx: APIContext<T.ViewsCreateReq>) => {
     const { documentId } = ctx.input.body;
     const { user } = ctx.state.auth;

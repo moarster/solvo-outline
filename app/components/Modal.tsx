@@ -5,7 +5,6 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import breakpoint from "styled-components-breakpoint";
-import ErrorBoundary from "./ErrorBoundary";
 import { depths, s } from "@shared/styles";
 import Flex from "~/components/Flex";
 import NudeButton from "~/components/NudeButton";
@@ -15,6 +14,8 @@ import useMobile from "~/hooks/useMobile";
 import usePrevious from "~/hooks/usePrevious";
 import { fadeAndScaleIn, fadeIn } from "~/styles/animations";
 import Desktop from "~/utils/Desktop";
+import ErrorBoundary from "./ErrorBoundary";
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 
 type Props = {
   children?: React.ReactNode;
@@ -45,55 +46,57 @@ const Modal: React.FC<Props> = ({
       onOpenChange={(open) => !open && onRequestClose()}
     >
       <Dialog.Portal>
-        <StyledOverlay>
-          <StyledContent
-            onEscapeKeyDown={onRequestClose}
-            onPointerDownOutside={onRequestClose}
-            aria-describedby={undefined}
-          >
-            {isMobile ? (
-              <Mobile>
-                <Content>
-                  <Centered onClick={(ev) => ev.stopPropagation()} column>
-                    {title && (
-                      <Text size="xlarge" weight="bold">
-                        {title}
-                      </Text>
-                    )}
-                    <ErrorBoundary>{children}</ErrorBoundary>
-                  </Centered>
-                </Content>
-                <Close onClick={onRequestClose}>
-                  <CloseIcon size={32} />
-                </Close>
-                <Back onClick={onRequestClose}>
-                  <BackIcon size={32} />
-                  <Text>{t("Back")} </Text>
-                </Back>
-              </Mobile>
-            ) : (
-              <Small>
-                <Centered
-                  onClick={(ev) => ev.stopPropagation()}
-                  // maxHeight needed for proper overflow behavior in Safari
-                  style={{ maxHeight: "65vh" }}
-                  column
-                  reverse
-                >
-                  <SmallContent style={style} shadow>
-                    <ErrorBoundary component="div">{children}</ErrorBoundary>
-                  </SmallContent>
-                  <Header>
-                    {title && <Text size="large">{title}</Text>}
-                    <NudeButton onClick={onRequestClose}>
-                      <CloseIcon />
-                    </NudeButton>
-                  </Header>
+        <StyledOverlay />
+        <Dialog.Title asChild>
+          <VisuallyHidden.Root>{title}</VisuallyHidden.Root>
+        </Dialog.Title>
+        <StyledContent
+          onEscapeKeyDown={onRequestClose}
+          onPointerDownOutside={onRequestClose}
+          aria-describedby={undefined}
+        >
+          {isMobile ? (
+            <Mobile>
+              <Content>
+                <Centered onClick={(ev) => ev.stopPropagation()} column>
+                  {title && (
+                    <Text size="xlarge" weight="bold">
+                      {title}
+                    </Text>
+                  )}
+                  <ErrorBoundary>{children}</ErrorBoundary>
                 </Centered>
-              </Small>
-            )}
-          </StyledContent>
-        </StyledOverlay>
+              </Content>
+              <Close onClick={onRequestClose}>
+                <CloseIcon size={32} />
+              </Close>
+              <Back onClick={onRequestClose}>
+                <BackIcon size={32} />
+                <Text>{t("Back")} </Text>
+              </Back>
+            </Mobile>
+          ) : (
+            <Small>
+              <Centered
+                onClick={(ev) => ev.stopPropagation()}
+                // maxHeight needed for proper overflow behavior in Safari
+                style={{ maxHeight: "65vh" }}
+                column
+                reverse
+              >
+                <SmallContent style={style} shadow>
+                  <ErrorBoundary component="div">{children}</ErrorBoundary>
+                </SmallContent>
+                <Header>
+                  {title && <Text size="large">{title}</Text>}
+                  <NudeButton onClick={onRequestClose}>
+                    <CloseIcon />
+                  </NudeButton>
+                </Header>
+              </Centered>
+            </Small>
+          )}
+        </StyledContent>
       </Dialog.Portal>
     </Dialog.Root>
   );

@@ -1,3 +1,4 @@
+// oxlint-disable-next-line import/no-unresolved
 import "vite/modulepreload-polyfill";
 import { LazyMotion } from "framer-motion";
 import { KBarProvider } from "kbar";
@@ -7,14 +8,6 @@ import { render } from "react-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { Router } from "react-router-dom";
 import stores from "~/stores";
-import Desktop from "./components/DesktopEventHandler";
-import LazyPolyfill from "./components/LazyPolyfills";
-import PageScroll from "./components/PageScroll";
-import Routes from "./routes";
-import Logger from "./utils/Logger";
-import { PluginManager } from "./utils/PluginManager";
-import history from "./utils/history";
-import { initSentry } from "./utils/sentry";
 import Analytics from "~/components/Analytics";
 import Dialogs from "~/components/Dialogs";
 import ErrorBoundary from "~/components/ErrorBoundary";
@@ -24,6 +17,14 @@ import Theme from "~/components/Theme";
 import Toasts from "~/components/Toasts";
 import env from "~/env";
 import { initI18n } from "~/utils/i18n";
+import Desktop from "./components/DesktopEventHandler";
+import LazyPolyfill from "./components/LazyPolyfills";
+import PageScroll from "./components/PageScroll";
+import Routes from "./routes";
+import Logger from "./utils/Logger";
+import { PluginManager } from "./utils/PluginManager";
+import history from "./utils/history";
+import { initSentry } from "./utils/sentry";
 
 // Load plugins as soon as possible
 void PluginManager.loadPlugins();

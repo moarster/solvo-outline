@@ -1,3 +1,5 @@
+/* oxlint-disable @typescript-eslint/no-var-requires */
+
 const exec = require("child_process").execSync;
 const fs = require("fs");
 const path = require("path");
@@ -9,7 +11,7 @@ const sslKey = path.join(sslDir, "private.key");
 if (!fs.existsSync(sslKey) || !fs.existsSync(sslCert)) {
   try {
     exec(
-      `mkcert -cert-file "${sslDir}/public.cert" -key-file "${sslDir}/private.key" "*.outline.dev" && mkcert -install`
+      `mkcert -cert-file ${sslDir}/public.cert -key-file ${sslDir}/private.key "*.outline.dev" && mkcert -install`
     );
     console.log("🔒 Local SSL certificate created");
   } catch (e) {
