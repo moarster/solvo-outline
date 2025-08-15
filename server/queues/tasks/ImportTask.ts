@@ -4,7 +4,14 @@ import chunk from "lodash/chunk";
 import truncate from "lodash/truncate";
 import { InferCreationAttributes } from "sequelize";
 import tmp from "tmp";
-import BaseTask, { TaskPriority } from "./BaseTask";
+import {
+  AttachmentPreset,
+  CollectionPermission,
+  CollectionSort,
+  FileOperationState,
+  ProsemirrorData,
+} from "@shared/types";
+import { CollectionValidation } from "@shared/validations";
 import attachmentCreator from "@server/commands/attachmentCreator";
 import documentCreator from "@server/commands/documentCreator";
 import { createContext } from "@server/context";
@@ -21,14 +28,8 @@ import {
 import { sequelize } from "@server/storage/database";
 import ZipHelper from "@server/utils/ZipHelper";
 import { generateUrlId } from "@server/utils/url";
-import {
-  AttachmentPreset,
-  CollectionPermission,
-  CollectionSort,
-  FileOperationState,
-  ProsemirrorData,
-} from "@shared/types";
-import { CollectionValidation } from "@shared/validations";
+import BaseTask, { TaskPriority } from "./BaseTask";
+import env from "@server/env";
 
 type Props = {
   fileOperationId: string;
@@ -489,6 +490,9 @@ export default abstract class ImportTask extends BaseTask<Props> {
                 buffer: await item.buffer(),
                 user,
                 ctx: createContext({ user, transaction }),
+                fetchOptions: {
+                  timeout: env.FILE_STORAGE_IMPORT_TIMEOUT,
+                },
               });
               if (attachment) {
                 attachments.set(item.id, attachment);
